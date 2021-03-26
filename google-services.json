@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "496573870700",
+    "firebase_url": "https://oohm-3e5c8-default-rtdb.firebaseio.com",
+    "project_id": "oohm-3e5c8",
+    "storage_bucket": "oohm-3e5c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:496573870700:android:49e3e5ae94f783ae8a5e49",
+        "android_client_info": {
+          "package_name": "kr.hs.emirim.ohm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "496573870700-p78926alvr9hqd33sbpqigiktuc2k7j5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.hs.emirim.ohm",
+            "certificate_hash": "ef877fd0e6a1abeb92a5774dd92c10700c06f399"
+          }
+        },
+        {
+          "client_id": "496573870700-j5qod6v01gkcadc0dl506nv4um8iuo7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe0CJyAqPjZMZyG4Thp1vy-OP3KEazBLM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "496573870700-j5qod6v01gkcadc0dl506nv4um8iuo7q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
