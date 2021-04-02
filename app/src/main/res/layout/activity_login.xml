@@ -101,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
+        tools:ignore="MissingConstraints,OnClick"
         tools:layout_editor_absoluteY="430dp">
 
     </Button>
