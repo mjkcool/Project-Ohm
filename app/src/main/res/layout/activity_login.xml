@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login">
+
+
+    <TextView
+        android:layout_width="131dp"
+        android:layout_height="52dp"
+        android:gravity="center_horizontal"
+        android:text="로그인"
+        android:textColor="#000000"
+        android:textSize="80px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="140dp">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="62dp"
+        android:layout_height="18dp"
+        android:text="이메일"
+        android:textColor="#000000"
+        android:textSize="35px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="226dp">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="356dp"
+        android:layout_height="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="281dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="356dp"
+        android:layout_height="21dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="365dp">
+
+    </EditText>
+
+    <TextView
+        android:layout_width="62dp"
+        android:layout_height="18dp"
+        android:text="비밀번호"
+        android:textColor="#000000"
+        android:textSize="35px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="310dp">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="163dp"
+        android:layout_height="42dp"
+        android:stateListAnimator="@null"
+        android:text="비밀번호 찾기"
+        android:textColor="#C67D7F"
+        android:textSize="30px"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="375dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="286dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#D6D6D6"
+        android:stateListAnimator="@null"
+        android:text="로그인"
+        android:textColor="#FFFFFF"
+        android:textSize="40px"
+        app:backgroundTint="#F6F6F6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="430dp">
+
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

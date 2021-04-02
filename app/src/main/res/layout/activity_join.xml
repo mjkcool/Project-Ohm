@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    tools:context=".join">
+
+    <Button
+        android:layout_width="413dp"
+        android:layout_height="100dp"
+        android:stateListAnimator="@null"
+        android:background="@drawable/bar"
+        app:backgroundTint="@drawable/bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-7dp">
+
+    </Button>
+
+    <TextView
+        android:layout_width="131dp"
+        android:layout_height="52dp"
+        android:gravity="center_horizontal"
+        android:text="회원가입"
+        android:textColor="#000000"
+        android:textSize="60px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="46dp">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/nickname"
+        android:layout_width="410dp"
+        android:layout_height="61dp"
+        android:background="@drawable/edittext"
+        android:hint="     닉네임"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="111dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="410dp"
+        android:layout_height="61dp"
+        android:background="@drawable/edittext"
+        android:hint="     이메임(수정 불가)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="172dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="410dp"
+        android:layout_height="61dp"
+        android:background="@drawable/edittext"
+        android:hint="     비밀번호"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="251dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/password_check"
+        android:layout_width="410dp"
+        android:layout_height="61dp"
+        android:background="@drawable/edittext"
+        android:hint="     비밀번호 확인"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="312dp">
+
+    </EditText>
+
+    <CheckBox
+        android:id="@+id/event_check"
+        android:layout_width="391dp"
+        android:layout_height="29dp"
+        android:text="이메일을 통한 이벤트 등의 정보 수신에 동의합니다.(선택)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="415dp">
+
+    </CheckBox>
+
+    <CheckBox
+        android:id="@+id/push"
+        android:layout_width="391dp"
+        android:layout_height="29dp"
+        android:text="PUSH 알림 수신에 동의합니다.(선택)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="456dp">
+
+    </CheckBox>
+
+    <CheckBox
+        android:id="@+id/consent"
+        android:layout_width="391dp"
+        android:layout_height="29dp"
+        android:text="이용 약관에 동의합니다.(선택)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="496dp">
+
+    </CheckBox>
+
+    <Button
+        android:id="@+id/join_button"
+        android:layout_width="286dp"
+        android:layout_height="62dp"
+        android:backgroundTint="#7C7C7C"
+        android:stateListAnimator="@null"
+        android:text="모두 동의하고 회원가입"
+        android:textColor="#FFFFFF"
+        android:textSize="40px"
+        app:backgroundTint="#F6F6F6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="562dp">
+
+    </Button>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
