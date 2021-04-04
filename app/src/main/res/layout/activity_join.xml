@@ -17,16 +17,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="-7dp">
+        tools:layout_editor_absoluteY="-7dp"/>
 
-    </Button>
 
     <TextView
         android:layout_width="131dp"
         android:layout_height="52dp"
         android:gravity="center_horizontal"
         android:text="회원가입"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         android:textSize="60px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +52,7 @@
         android:layout_width="410dp"
         android:layout_height="61dp"
         android:background="@drawable/edittext"
-        android:hint="     이메임(수정 불가)"
+        android:hint="     이메일(수정 불가)"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
