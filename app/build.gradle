@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    //파이어베이스 연동 플러그인
+    id 'com.google.gms.google-services'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -33,12 +36,19 @@ android {
 }
 
 dependencies {
-
+    //파이어베이스 연동 디펜던시 1
+    implementation platform('com.google.firebase:firebase-bom:26.7.0')
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    //파이어베이스 연동 디펜던시 2
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    //파이어베이스 디비 관련 디펜던
+    implementation 'com.google.firebase:firebase-database:19.7.0'
+    //파이어베이스 구글 로그인 관련 디펜던시
+    implementation 'com.google.firebase:firebase-auth:20.0.3'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
