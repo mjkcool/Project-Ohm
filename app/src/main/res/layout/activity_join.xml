@@ -7,26 +7,28 @@
     android:background="#F7F7F7"
     tools:context=".join">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="413dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="12dp"
-        android:background="@drawable/bar"
-        android:stateListAnimator="@null"
-        app:backgroundTint="@drawable/bar"
-        app:layout_constraintBottom_toTopOf="@+id/nickname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+<!--    <Button-->
+<!--        android:id="@+id/button"-->
+<!--        android:layout_width="413dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginBottom="12dp"-->
+<!--        android:background="@drawable/bar"-->
+<!--        android:stateListAnimator="@null"-->
+<!--        app:backgroundTint="@drawable/bar"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/nickname"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:ignore="MissingConstraints">-->
 
-    </Button>
+<!--    </Button>-->
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="131dp"
         android:layout_height="52dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginBottom="636dp"
         android:gravity="center_horizontal"
         android:text="회원가입"
         android:textColor="#000000"
@@ -34,8 +36,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button"
-        app:layout_constraintVertical_bias="0.07"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
     </TextView>
@@ -62,7 +63,7 @@
         android:layout_width="410dp"
         android:layout_height="61dp"
         android:background="@drawable/edittext"
-        android:hint="     이메일(수정 불가)"
+        android:hint="         이메일(수정 불가)"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
