@@ -9,12 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ohm">
-        <activity android:name=".join" />
-        <activity android:name=".login" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".join"></activity>
+        <activity android:name=".login"></activity>
+        <activity android:name=".User_Login"></activity>
+        <activity android:name=".Main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
