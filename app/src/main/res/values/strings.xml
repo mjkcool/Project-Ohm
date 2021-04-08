@@ -1,6 +1,23 @@
 <resources>
     <string name="app_name">Ohm</string>
-    <string name="_5">구글로 5초만에 로그인</string>
-    <string name="login">로그인</string>
-    <string name="join">회원가입</string>
+
+        <string name="_5">구글로 5초만에 로그인</string>
+        <string name="login">로그인</string>
+        <string name="join">회원가입</string>
+
+        <!-- main tilte -->
+        <string name="main_title1">내 회의 </string>
+        <string name="main_title2">인기 급상승 토픽</string>
+        <string name="main_title3">옴 매거진</string>
+
+        <!-- main 인기상승 타이틀 -->
+        <string name="main_detail1">종합</string>
+        <string name="main_detail2">학교 / 전공</string>
+        <string name="main_detail3">예술</string>
+        <string name="main_detail4">체육</string>
+
+        <!-- main 더보기 창-->
+        <string name="puls">+</string>
+        <string name="main_detail5">군인</string>
+        <string name="main_detail6">기타</string>
 </resources>
