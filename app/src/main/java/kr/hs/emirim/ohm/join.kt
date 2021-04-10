@@ -17,7 +17,7 @@ class join : AppCompatActivity() {
         mAuth =  FirebaseAuth.getInstance();
 
         join_button.setOnClickListener {
-            if(email.text.toString().length == 0){
+            if(show_email.text.toString().length == 0){
                 Toast.makeText(this, "email을 입력해주세요.",Toast.LENGTH_SHORT).show()
             }else if(password.text.toString().length == 0){
                 Toast.makeText(this, "비밀번호를 입력해주세요",Toast.LENGTH_SHORT).show()
@@ -26,7 +26,7 @@ class join : AppCompatActivity() {
             }else if(password_check.text.toString().length == 0){
                 Toast.makeText(this, "비밀번호 확인을 입력해주세요.",Toast.LENGTH_SHORT).show()
             }else{
-                mAuth!!.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+                mAuth!!.createUserWithEmailAndPassword(show_email.text.toString(), password.text.toString())
                         .addOnCompleteListener(this){
                             if(it.isSuccessful){
                                 val user = mAuth!!.currentUser

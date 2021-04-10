@@ -21,12 +21,12 @@ class login : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance();
 
         login_button.setOnClickListener {
-            if (email.text.toString().length == 0) {
+            if (show_email.text.toString().length == 0) {
                 Toast.makeText(this, "이메일을 입력해주세요!", Toast.LENGTH_SHORT).show()
             } else if (password.text.toString().length == 0) {
                 Toast.makeText(this, "비밀번호를 입력해주세요!", Toast.LENGTH_SHORT).show()
             }else{
-                mAuth!!.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
+                mAuth!!.signInWithEmailAndPassword(show_email.text.toString(), password.text.toString())
                         .addOnCompleteListener(this){
                             if(it.isSuccessful){
                                 //로그인 성공
