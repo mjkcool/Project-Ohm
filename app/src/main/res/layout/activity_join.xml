@@ -7,21 +7,6 @@
     android:background="#F7F7F7"
     tools:context=".join">
 
-<!--    <Button-->
-<!--        android:id="@+id/button"-->
-<!--        android:layout_width="413dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:layout_marginBottom="12dp"-->
-<!--        android:background="@drawable/bar"-->
-<!--        android:stateListAnimator="@null"-->
-<!--        app:backgroundTint="@drawable/bar"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/nickname"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        tools:ignore="MissingConstraints">-->
-
-<!--    </Button>-->
 
     <TextView
         android:id="@+id/textView"
@@ -48,7 +33,7 @@
         android:layout_marginBottom="60dp"
         android:background="@drawable/edittext"
         android:hint="     닉네임"
-        app:layout_constraintBottom_toBottomOf="@+id/email"
+        app:layout_constraintBottom_toBottomOf="@+id/show_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,7 +44,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/show_email"
         android:layout_width="410dp"
         android:layout_height="61dp"
         android:background="@drawable/edittext"
@@ -85,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/show_email"
         app:layout_constraintVertical_bias="0.141"
         tools:ignore="MissingConstraints">
 
