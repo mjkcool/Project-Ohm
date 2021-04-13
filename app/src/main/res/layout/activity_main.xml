@@ -6,67 +6,65 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     android:orientation="vertical"
-    tools:context=".User_Login">
+    tools:context=".Main">
 
-    <Button
+    <ImageButton
         android:id="@+id/profile_btn"
-        android:layout_width="49dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="648dp"
-        android:background="@drawable/profile"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="56dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.925"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/profile" />
 
     <TextView
         android:id="@+id/main_title1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
         android:text="@string/main_title1"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/profile_btn" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="420dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
         android:fadingEdge="horizontal"
         android:scrollbars="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title1"></androidx.recyclerview.widget.RecyclerView>
 
     <ListView
         android:id="@+id/my_list_view"
         android:layout_width="416dp"
         android:layout_height="102dp"
-        android:dividerHeight="3dp"
+        android:layout_marginTop="8dp"
         android:divider="#00000000"
-        android:layout_marginBottom="216dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:dividerHeight="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail3">
 
     </ListView>
 
     <TextView
         android:id="@+id/detail1"
-        android:layout_width="54dp"
-        android:layout_height="36dp"
-        android:layout_marginBottom="332dp"
+        android:layout_width="63dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_1"
         android:clickable="true"
         android:focusable="true"
@@ -76,16 +74,16 @@
         android:textColor="#000000"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title2" />
 
     <TextView
         android:id="@+id/detail2"
         android:layout_width="69dp"
         android:layout_height="32dp"
-        android:layout_marginBottom="332dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_3"
         android:clickable="true"
         android:focusable="true"
@@ -94,16 +92,16 @@
         android:textColor="#000000"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.239"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toEndOf="@+id/detail1"
+        app:layout_constraintTop_toBottomOf="@+id/main_title2" />
 
     <TextView
         android:id="@+id/detail3"
         android:layout_width="46dp"
         android:layout_height="31dp"
-        android:layout_marginBottom="332dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_3"
         android:clickable="true"
         android:focusable="true"
@@ -113,16 +111,16 @@
         android:textColor="#000000"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.449"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toEndOf="@+id/detail2"
+        app:layout_constraintTop_toBottomOf="@+id/main_title2" />
 
     <TextView
         android:id="@+id/detail4"
         android:layout_width="46dp"
         android:layout_height="31dp"
-        android:layout_marginBottom="332dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_3"
         android:clickable="true"
         android:focusable="true"
@@ -132,16 +130,16 @@
         android:textColor="#000000"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.619"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title2" />
 
     <TextView
         android:id="@+id/detail5"
         android:layout_width="46dp"
         android:layout_height="31dp"
-        android:layout_marginBottom="332dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_3"
         android:clickable="true"
         android:focusable="true"
@@ -151,16 +149,16 @@
         android:textColor="#000000"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.791"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title2" />
 
     <TextView
         android:id="@+id/detail6"
         android:layout_width="46dp"
         android:layout_height="31dp"
-        android:layout_marginBottom="332dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/button_3"
         android:clickable="true"
         android:focusable="true"
@@ -170,18 +168,16 @@
         android:textColor="#000000"
         android:textSize="10sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title2" />
 
     <TextView
         android:id="@+id/main_title2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="328dp"
         android:text="@string/main_title2"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -189,42 +185,102 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view" />
 
     <TextView
         android:id="@+id/main_title3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="176dp"
         android:text="@string/main_title3"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_list_view" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="354dp"
-        android:layout_height="127dp"
-        android:layout_marginBottom="28dp"
+        android:layout_width="407dp"
+        android:layout_height="161dp"
+        android:layout_marginTop="12dp"
         android:src="@drawable/ohm_main"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_title3" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_sub1"
+        android:layout_width="76dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:backgroundTint="#000000"
+        android:src="@drawable/next"
+        android:tooltipText="캘린더"
+        android:visibility="visible"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/plus_btn"
-        android:layout_width="60dp"
-        android:layout_height="56dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_sub2"
+        android:layout_width="76dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/plus"
+        android:backgroundTint="#ffffff"
+        android:src="@drawable/next"
+        android:tooltipText="회의참여"
+        android:visibility="visible"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_sub3"
+        android:layout_width="76dp"
+        android:layout_height="65dp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#ffffff"
+        android:src="@drawable/next"
+        android:tooltipText="새 회의"
+        android:visibility="visible"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_main"
+        android:layout_width="67dp"
+        android:layout_height="63dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:background="@drawable/plus"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.997"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

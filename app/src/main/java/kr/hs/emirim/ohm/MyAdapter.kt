@@ -15,8 +15,8 @@ class MyAdapter     // Provide a suitable constructor (depends on the kind of da
     // you provide access to all the views for a data item in a view holder
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         // each data item is just a string in this case
+        var  mTextView: TextView
         var mImageView: ImageView
-        var mTextView: TextView
 
         init {
             mImageView = view.findViewById<View>(R.id.image) as ImageView
@@ -45,5 +45,4 @@ class MyAdapter     // Provide a suitable constructor (depends on the kind of da
         return mDataset.size
     }
 }
-
 class MyData(var text: String, var img: Int)
