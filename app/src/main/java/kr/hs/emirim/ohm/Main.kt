@@ -21,7 +21,8 @@ import java.util.*
           private var isOpen = false //애니메이션 기본값!=
      
           private lateinit var profile_btn : ImageButton //프로필 버튼
-          
+          private lateinit var profile : ImageView //프로필 사진
+
           private lateinit var fab_main : FloatingActionButton; //플로팅 버튼
           private lateinit var fab_sub1 : FloatingActionButton; //캘린더로 넘어가는 버튼
           private lateinit var fab_sub2 : FloatingActionButton; //새회의로 넘어가는 버튼
@@ -36,9 +37,11 @@ import java.util.*
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-         
-
          profile_btn = findViewById<ImageButton>(R.id.profile_btn) //마이페이지로 넘어가는 버튼
+
+         profile = findViewById<ImageView>(R.id.profile_btn); //프로필 사진 띄우기
+         profile.setImageResource(R.drawable.profile);
+
 
          fab_main = findViewById(R.id.fab_main) //플로팅 버튼이 뜨는 것
          fab_sub1 = findViewById(R.id.fab_sub1)

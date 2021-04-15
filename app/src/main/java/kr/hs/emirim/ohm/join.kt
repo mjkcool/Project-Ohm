@@ -39,7 +39,7 @@ class join : AppCompatActivity() {
 
         }
 
-        }
     }
+}
 
-    //이메일  회원가입
+//이메일  회원가입

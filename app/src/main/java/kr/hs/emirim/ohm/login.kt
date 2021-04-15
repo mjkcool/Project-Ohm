@@ -1,5 +1,6 @@
 package kr.hs.emirim.ohm
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -20,10 +21,15 @@ class login : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance();
 
+        find_button.setOnClickListener {
+            val intent = Intent(this, password_find::class.java)
+            startActivity(intent)
+        }
+
         login_button.setOnClickListener {
-            if (show_email.text.toString().length == 0) {
+            if(show_email.text.toString().isEmpty()) {
                 Toast.makeText(this, "이메일을 입력해주세요!", Toast.LENGTH_SHORT).show()
-            } else if (password.text.toString().length == 0) {
+            } else if (password.text.toString().isEmpty()) {
                 Toast.makeText(this, "비밀번호를 입력해주세요!", Toast.LENGTH_SHORT).show()
             }else{
                 mAuth!!.signInWithEmailAndPassword(show_email.text.toString(), password.text.toString())
