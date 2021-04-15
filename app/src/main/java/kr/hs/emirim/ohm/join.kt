@@ -17,16 +17,21 @@ class join : AppCompatActivity() {
         mAuth =  FirebaseAuth.getInstance();
 
         join_button.setOnClickListener {
-            if(show_email.text.toString().length == 0){
-                Toast.makeText(this, "email을 입력해주세요.",Toast.LENGTH_SHORT).show()
-            }else if(password.text.toString().length == 0){
-                Toast.makeText(this, "비밀번호를 입력해주세요",Toast.LENGTH_SHORT).show()
-            }else if(password.text.toString() != password_check.text.toString()){
-                Toast.makeText(this, "비밀번호 확인이 일치하지 않습니다.",Toast.LENGTH_SHORT).show()
-            }else if(password_check.text.toString().length == 0){
-                Toast.makeText(this, "비밀번호 확인을 입력해주세요.",Toast.LENGTH_SHORT).show()
-            }else{
-                mAuth!!.createUserWithEmailAndPassword(show_email.text.toString(), password.text.toString())
+            when {
+                show_email.text.toString().isEmpty() -> {
+                    Toast.makeText(this, "email을 입력해주세요.",Toast.LENGTH_SHORT).show()
+                }
+                password.text.toString().isEmpty() -> {
+                    Toast.makeText(this, "비밀번호를 입력해주세요",Toast.LENGTH_SHORT).show()
+                }
+                password.text.toString() != password_check.text.toString() -> {
+                    Toast.makeText(this, "비밀번호 확인이 일치하지 않습니다.",Toast.LENGTH_SHORT).show()
+                }
+                password_check.text.toString().isEmpty() -> {
+                    Toast.makeText(this, "비밀번호 확인을 입력해주세요.",Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    mAuth!!.createUserWithEmailAndPassword(show_email.text.toString(), password.text.toString())
                         .addOnCompleteListener(this){
                             if(it.isSuccessful){
                                 val user = mAuth!!.currentUser
@@ -35,6 +40,7 @@ class join : AppCompatActivity() {
                                 Toast.makeText(this, "회원가입에 실패했습니다.",Toast.LENGTH_SHORT).show()
                             }
                         }
+                }
             }
 
         }

@@ -27,9 +27,9 @@ class login : AppCompatActivity() {
         }
 
         login_button.setOnClickListener {
-            if (show_email.text.toString().length == 0) {
+            if(show_email.text.toString().isEmpty()) {
                 Toast.makeText(this, "이메일을 입력해주세요!", Toast.LENGTH_SHORT).show()
-            } else if (password.text.toString().length == 0) {
+            } else if (password.text.toString().isEmpty()) {
                 Toast.makeText(this, "비밀번호를 입력해주세요!", Toast.LENGTH_SHORT).show()
             }else{
                 mAuth!!.signInWithEmailAndPassword(show_email.text.toString(), password.text.toString())
