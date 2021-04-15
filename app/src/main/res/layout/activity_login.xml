@@ -88,7 +88,7 @@
     </TextView>
 
     <Button
-        android:id="@+id/search_button"
+        android:id="@+id/find_button"
         android:layout_width="163dp"
         android:layout_height="42dp"
         android:layout_marginTop="1dp"

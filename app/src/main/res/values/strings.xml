@@ -1,40 +1,40 @@
 <resources>
     <string name="app_name">Ohm</string>
 
-        <string name="_5">구글로 5초만에 로그인</string>
-        <string name="login">로그인</string>
-        <string name="join">회원가입</string>
+    <string name="_5">구글로 5초만에 로그인</string>
+    <string name="login">로그인</string>
+    <string name="join">회원가입</string>
 
-        <!-- main tilte -->
-        <string name="main_title1">내 회의 </string>
-        <string name="main_title2">인기 급상승 토픽</string>
-        <string name="main_title3">옴 매거진</string>
+    <!-- main tilte -->
+    <string name="main_title1">내 회의 </string>
+    <string name="main_title2">인기 급상승 토픽</string>
+    <string name="main_title3">옴 매거진</string>
 
-        <!-- main 인기상승 타이틀 -->
-        <string name="main_detail1">종합</string>
-        <string name="main_detail2">학교 / 전공</string>
-        <string name="main_detail3">예술</string>
-        <string name="main_detail4">체육</string>
+    <!-- main 인기상승 타이틀 -->
+    <string name="main_detail1">종합</string>
+    <string name="main_detail2">학교 / 전공</string>
+    <string name="main_detail3">예술</string>
+    <string name="main_detail4">체육</string>
 
-        <!-- main 더보기 창-->
-        <string name="puls">+</string>
-        <string name="main_detail5">군인</string>
-        <string name="main_detail6">기타</string>
+    <!-- main 더보기 창-->
+    <string name="puls">+</string>
+    <string name="main_detail5">군인</string>
+    <string name="main_detail6">기타</string>
 
-        <!-- 나의 페이지 창-->
-        <string name="name">이름</string>
-        <string name="textshow">한줄소개</string>
-        <string name="push">PUSH 알람설정</string>
-        <string name="darkmord">다크모드 설정</string>
-        <string name="my_btn">도움말</string>
-        <string name="my_programming">개발자 설명</string>
-        <string name="logout">로그아웃</string>
-        <string name="peopleout">회원탈퇴</string>
+    <!-- 나의 페이지 창-->
+    <string name="name">이름</string>
+    <string name="textshow">한줄소개</string>
+    <string name="push">PUSH 알람설정</string>
+    <string name="darkmord">다크모드 설정</string>
+    <string name="my_btn">도움말</string>
+    <string name="my_programming">개발자 설명</string>
+    <string name="logout">로그아웃</string>
+    <string name="peopleout">회원탈퇴</string>
 
-        <!-- 나의 프로필 수정-->
-        <string name="cancel">취소</string>
-        <string name="profile_title">내 정보 수정</string>
-        <string name="save">저장</string>
+    <!-- 나의 프로필 수정-->
+    <string name="cancel">취소</string>
+    <string name="profile_title">내 정보 수정</string>
+    <string name="save">저장</string>
 
 
 </resources>

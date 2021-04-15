@@ -1,5 +1,6 @@
 package kr.hs.emirim.ohm
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -19,6 +20,11 @@ class login : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         mAuth = FirebaseAuth.getInstance();
+
+        find_button.setOnClickListener {
+            val intent = Intent(this, password_find::class.java)
+            startActivity(intent)
+        }
 
         login_button.setOnClickListener {
             if (show_email.text.toString().length == 0) {
