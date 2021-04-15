@@ -11,12 +11,12 @@
         android:theme="@style/Theme.Ohm">
         <activity android:name=".password_find"></activity>
         <activity android:name=".toy_waitroom" /> <!-- 찬반투표 대기실 -->
-        <activity android:name=".join" /> <!-- 회원가입 -->
-        <activity android:name=".login" /> <!-- 로그인 -->
-        <activity android:name=".User_Login" /> <!-- 회원가입과 로그인을 할 수 있는 창 -->
         <activity android:name=".MyPage" /> <!-- 마이페이지 -->
         <activity android:name=".settings" /> <!-- 내 프로필을 설정 할 수 있는 창 -->
-        <activity android:name=".Main"> <!-- 메인 -->
+        <activity android:name=".Main" /> <!-- 메인 -->
+        <activity android:name=".login" /> <!-- 로그인 -->
+        <activity android:name=".join" /> <!-- 회원가입 -->
+        <activity android:name=".User_Login" > <!-- 회원가입과 로그인을 할 수 있는 창 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
