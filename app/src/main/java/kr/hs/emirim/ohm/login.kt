@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_login.*
 
 //Google Login result
 private val RC_SIGN_IN =9001
 
 //firebase 사용자...? Auth
-private var mAuth: FirebaseAuth? = null
+private var mAuth: FirebaseAuth = Firebase.auth
 
 
 class login : AppCompatActivity() {
@@ -19,7 +22,7 @@ class login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth =  Firebase.auth
 
         find_button.setOnClickListener {
             val intent = Intent(this, password_find::class.java)
@@ -38,6 +41,7 @@ class login : AppCompatActivity() {
                                 //로그인 성공
                                 Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
                                 val user = mAuth?.currentUser
+                                updateUI(user)
                             }else{
                                 //로그인 실패
                                 Toast.makeText(this, "로그인 실패 ㅜㅜ ", Toast.LENGTH_SHORT).show()
@@ -46,6 +50,11 @@ class login : AppCompatActivity() {
             }
         }
 
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        startActivity(Intent(this, Main::class.java))
+        finish()
     }
 
 }
