@@ -19,6 +19,11 @@ class join : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join)
 
+        nickname.setHorizontallyScrolling(true);
+        show_email.setHorizontallyScrolling(true);
+        password.setHorizontallyScrolling(true);
+        password_check.setHorizontallyScrolling(true);
+
         mAuth =  Firebase.auth
 
         // 현재 로그인 상태인지 파악

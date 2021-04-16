@@ -28,65 +28,69 @@
 
     <EditText
         android:id="@+id/nickname"
-        android:layout_width="410dp"
+        android:layout_width="390dp"
         android:layout_height="61dp"
         android:layout_marginBottom="60dp"
         android:background="@drawable/edittext"
-        android:hint="     닉네임"
+        android:hint="  닉네임"
+        android:scrollHorizontally="true"
         app:layout_constraintBottom_toBottomOf="@+id/show_email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.991"
         tools:ignore="MissingConstraints">
 
     </EditText>
 
     <EditText
         android:id="@+id/show_email"
-        android:layout_width="410dp"
+        android:layout_width="390dp"
         android:layout_height="61dp"
         android:background="@drawable/edittext"
-        android:hint="         이메일(수정 불가)"
+        android:hint="  이메일(수정 불가)"
+        android:scrollHorizontally="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256"
+        app:layout_constraintVertical_bias="0.255"
         tools:ignore="MissingConstraints">
 
     </EditText>
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="410dp"
+        android:layout_width="390dp"
         android:layout_height="61dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/edittext"
+        android:hint="  비밀번호(6자리 이상)"
+        android:scrollHorizontally="true"
         android:inputType="textPassword"
-        android:hint="     비밀번호(6자리 이상)"
         app:layout_constraintBottom_toTopOf="@+id/event_check"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/show_email"
-        app:layout_constraintVertical_bias="0.141"
+        app:layout_constraintVertical_bias="0.037"
         tools:ignore="MissingConstraints">
 
     </EditText>
 
     <EditText
         android:id="@+id/password_check"
-        android:layout_width="410dp"
+        android:layout_width="390dp"
         android:layout_height="61dp"
         android:background="@drawable/edittext"
-        android:hint="     비밀번호 확인"
+        android:hint="  비밀번호 확인"
+        android:scrollHorizontally="true"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/event_check"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.0"

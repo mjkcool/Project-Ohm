@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ohm">
-        <activity android:name=".password_find"></activity>
+        <activity android:name=".password_find" /> <!-- 비밀번호 찾기 -->
         <activity android:name=".toy_waitroom" /> <!-- 찬반투표 대기실 -->
         <activity android:name=".MyPage" /> <!-- 마이페이지 -->
         <activity android:name=".settings" /> <!-- 내 프로필을 설정 할 수 있는 창 -->
