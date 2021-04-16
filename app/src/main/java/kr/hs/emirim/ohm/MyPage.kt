@@ -97,8 +97,8 @@ class MyPage : Activity() {
         logout_btn.setOnClickListener {
             mAuth.signOut()
             Toast.makeText(this, "로그아웃 되었습니다.", LENGTH_SHORT).show()
-            val intent = Intent(this, User_Login::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, User_Login::class.java))
+            finish()
 
         }
 
@@ -108,8 +108,8 @@ class MyPage : Activity() {
                     if (task.isSuccessful) {
                         Log.d(TAG, "회원 탈퇴 완료.")
                         Toast.makeText(this, "회원 탈퇴 완료. 이용해주셔서 감사합니다 :)",Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, User_Login::class.java)
-                        startActivity(intent)
+                        startActivity(Intent(this, User_Login::class.java))
+                        finish()
                     }
                 }
         }

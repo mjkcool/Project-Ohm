@@ -35,21 +35,25 @@ class login : AppCompatActivity() {
             } else if (password.text.toString().isEmpty()) {
                 Toast.makeText(this, "비밀번호를 입력해주세요!", Toast.LENGTH_SHORT).show()
             }else{
-                mAuth!!.signInWithEmailAndPassword(show_email.text.toString(), password.text.toString())
-                        .addOnCompleteListener(this){
-                            if(it.isSuccessful){
-                                //로그인 성공
-                                Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
-                                val user = mAuth?.currentUser
-                                updateUI(user)
-                            }else{
-                                //로그인 실패
-                                Toast.makeText(this, "로그인 실패 ㅜㅜ ", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                login(show_email.text.toString(), password.text.toString())
             }
         }
 
+    }
+
+    private fun login(email: String, password:String){
+        mAuth!!.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this){
+                if(it.isSuccessful){
+                    //로그인 성공
+                    Toast.makeText(this, "로그인 성공!", Toast.LENGTH_SHORT).show()
+                    val user = mAuth?.currentUser
+                    updateUI(user)
+                }else{
+                    //로그인 실패
+                    Toast.makeText(this, "로그인 실패 ㅜㅜ ", Toast.LENGTH_SHORT).show()
+                }
+            }
     }
 
     private fun updateUI(user: FirebaseUser?) {

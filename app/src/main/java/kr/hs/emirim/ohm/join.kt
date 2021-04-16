@@ -37,27 +37,31 @@ class join : AppCompatActivity() {
             }else if(password_check.text.toString().length == 0){
                 Toast.makeText(this, "비밀번호 확인을 입력해주세요.",Toast.LENGTH_SHORT).show()
             }else{
-                mAuth!!.createUserWithEmailAndPassword(show_email.text.toString(), password.text.toString())
-                        .addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success")
-                                val user = mAuth!!.currentUser
-                                updateUI(user)
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.exception)
-                                Toast.makeText(baseContext, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                join(show_email.text.toString(), password.text.toString())
             }
 
         }
 
     }
 
+    private fun join(email: String, password: String){
+        mAuth!!.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                   //회원가입 성공
+                    Log.d(TAG, "createUserWithEmail:success")
+                    val user = mAuth!!.currentUser
+                    updateUI(user)
+                } else {
+                    //회원가입 실패
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(baseContext, "회원가입 실패",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
 
+    //화면 전환
     private fun updateUI(user: FirebaseUser?) {
         startActivity(Intent(this, login::class.java))
         finish()
