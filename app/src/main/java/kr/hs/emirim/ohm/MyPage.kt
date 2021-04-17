@@ -1,23 +1,15 @@
 package kr.hs.emirim.ohm
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.Toast
-import android.widget.Toast.LENGTH_SHORT
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_setting.*
 
 
 class MyPage : Activity() {
-    private var mAuth: FirebaseAuth = Firebase.auth
 
     private lateinit var back_btn : ImageButton //뒤로 돌아갈 수 있는 버튼
     private lateinit var back : ImageView
@@ -43,9 +35,6 @@ class MyPage : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mypage)
-
-        val user = Firebase.auth.currentUser!!
-        mAuth =  Firebase.auth
         
         profile = findViewById<ImageView>(R.id.my_profile); //내 프로필을 볼 수 있는 것 => 임시설정
         profile.setImageResource(R.drawable.button_1);
@@ -94,24 +83,6 @@ class MyPage : Activity() {
             startActivity(intent)
         }
 
-        logout_btn.setOnClickListener {
-            mAuth.signOut()
-            Toast.makeText(this, "로그아웃 되었습니다.", LENGTH_SHORT).show()
-            startActivity(Intent(this, User_Login::class.java))
-            finish()
 
-        }
-
-        out_btn.setOnClickListener{
-            user.delete()
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        Log.d(TAG, "회원 탈퇴 완료.")
-                        Toast.makeText(this, "회원 탈퇴 완료. 이용해주셔서 감사합니다 :)",Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this, User_Login::class.java))
-                        finish()
-                    }
-                }
-        }
     }
 }
