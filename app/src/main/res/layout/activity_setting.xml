@@ -8,7 +8,7 @@
     android:background="#F7F7F7">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/setting_1"
         android:layout_width="417dp"
         android:layout_height="66dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.038"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/setting_1"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/setting_1"
         app:srcCompat="@drawable/button_1" />
 
     <ImageButton
@@ -83,7 +83,7 @@
         app:srcCompat="@drawable/ohmm_mainpage" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/setting_2"
         android:layout_width="416dp"
         android:layout_height="65dp"
         android:layout_marginTop="32dp"
@@ -102,7 +102,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+        app:layout_constraintTop_toTopOf="@+id/setting_2" />
 
     <TextView
         android:id="@+id/show_email1"
@@ -113,10 +113,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.71"
         app:layout_constraintStart_toEndOf="@+id/show_email"
-        app:layout_constraintTop_toTopOf="@+id/imageView4" />
+        app:layout_constraintTop_toTopOf="@+id/setting_2" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/setting_3"
         android:layout_width="416dp"
         android:layout_height="62dp"
         android:layout_marginTop="348dp"
@@ -149,7 +149,7 @@
         app:layout_constraintTop_toBottomOf="@+id/show_email1" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/setting_4"
         android:layout_width="413dp"
         android:layout_height="62dp"
         android:layout_marginTop="408dp"
@@ -165,7 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="한줄소개"
-        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="@+id/setting_2"
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/show_name" />
