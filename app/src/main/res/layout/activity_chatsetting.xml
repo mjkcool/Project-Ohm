@@ -8,52 +8,124 @@
     android:orientation="vertical"
     tools:context=".toolbar">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+    <include
+        android:id="@+id/include"
+        layout="@layout/activity_toobal"
+        tools:layout_editor_absoluteX="72dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recycler_view2"
+        android:layout_width="409dp"
+        android:layout_height="351dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/include" />
 
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/menu_toolbar"
-            android:layout_width="422dp"
-            android:layout_height="61dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </androidx.appcompat.widget.Toolbar>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/my_recycler_view2"
-            android:layout_width="409dp"
-            android:layout_height="351dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="411dp"
-        android:layout_height="84dp"
-        android:orientation="horizontal"
-        android:weightSum="1"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="415dp"
+        android:layout_height="333dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view2"
+        app:srcCompat="@drawable/ohmm_mainpage" />
 
-        <EditText
-            android:id="@+id/Text_chat"
-            android:layout_width="295dp"
-            android:layout_height="71dp"
-            android:layout_weight="1" />
+    <ImageView
+        android:id="@+id/chat_background"
+        android:layout_width="421dp"
+        android:layout_height="62dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view2"
+        app:srcCompat="@drawable/textview" />
 
-        <ImageButton
-            android:layout_width="80dp"
-            android:layout_height="match_parent">
-        </ImageButton>
-    </LinearLayout>
+    <EditText
+        android:id="@+id/chat_setting"
+        android:layout_width="356dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view2" />
+
+    <ImageButton
+        android:id="@+id/say_btn"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/seemore"
+        app:layout_constraintEnd_toStartOf="@+id/chat_setting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view2" />
+
+    <ImageButton
+        android:id="@+id/up_btn"
+        android:layout_width="53dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/update"
+        app:layout_constraintEnd_toEndOf="@+id/chat_setting"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/say_btn"
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_view2" />
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="97dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintEnd_toEndOf="@+id/background"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_background"
+        app:srcCompat="@drawable/line" />
+
+    <ImageButton
+        android:id="@+id/say_btn1"
+        android:layout_width="92dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/say"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_background" />
+
+    <ImageButton
+        android:id="@+id/stop_btn"
+        android:layout_width="92dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/stop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.683"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_background" />
+
+    <ImageButton
+        android:id="@+id/vote_btn"
+        android:layout_width="76dp"
+        android:layout_height="103dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/vote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.259"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_background" />
+
+    <ImageButton
+        android:id="@+id/mvp_btn"
+        android:layout_width="92dp"
+        android:layout_height="102dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/mvp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.683"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chat_background" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
