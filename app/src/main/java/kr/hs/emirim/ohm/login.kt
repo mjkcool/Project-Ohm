@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
+//import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_join.*
 import kotlinx.android.synthetic.main.activity_login.*
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_login.show_email
 private val RC_SIGN_IN =9001
 
 //firebase 사용자...? Auth
-private var mAuth: FirebaseAuth = Firebase.auth
+private lateinit var mAuth: FirebaseAuth
 
 
 class login : AppCompatActivity() {
@@ -28,7 +28,7 @@ class login : AppCompatActivity() {
         show_email.setHorizontallyScrolling(true);
         password.setHorizontallyScrolling(true);
 
-        mAuth =  Firebase.auth
+        mAuth =  FirebaseAuth.getInstance()
 
         find_button.setOnClickListener {
             val intent = Intent(this, password_find::class.java)

@@ -7,12 +7,12 @@ import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.ktx.auth
+//import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_join.*
 
 //파이어베이스 회원가입 및 로그인
-private var mAuth: FirebaseAuth = Firebase.auth
+private lateinit var mAuth: FirebaseAuth
 
 class join : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class join : AppCompatActivity() {
         password.setHorizontallyScrolling(true);
         password_check.setHorizontallyScrolling(true);
 
-        mAuth =  Firebase.auth
+        mAuth =  FirebaseAuth.getInstance()
 
         // 현재 로그인 상태인지 파악
         val currentUser = mAuth.currentUser
