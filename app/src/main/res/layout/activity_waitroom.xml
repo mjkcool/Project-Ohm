@@ -78,7 +78,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:ignore="MissingConstraints" />
-
     </ViewSwitcher>
 
     <ViewSwitcher
@@ -98,21 +97,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:ignore="MissingConstraints" />
-
-    </ViewSwitcher>
-
-    <ViewSwitcher
-        android:layout_width="71dp"
-        android:layout_height="68dp"
-        android:background="@drawable/textview"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529"
-        tools:ignore="MissingConstraints" >
-
     </ViewSwitcher>
 
     <Button

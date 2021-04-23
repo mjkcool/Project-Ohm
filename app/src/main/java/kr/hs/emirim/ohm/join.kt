@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.CompoundButton
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -14,6 +15,14 @@ import kotlinx.android.synthetic.main.activity_join.*
 //파이어베이스 회원가입 및 로그인
 private lateinit var mAuth: FirebaseAuth
 
+public var TERMS_AGREE_1 = 0;
+public var TERMS_AGREE_2 = 0;
+public var TERMS_AGREE_3 = 0;
+
+//AppCompatCheckBox check1;
+//AppCompatCheckBox check2;
+//AppCompatCheckBox check3;
+
 class join : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +32,53 @@ class join : AppCompatActivity() {
         show_email.setHorizontallyScrolling(true);
         password.setHorizontallyScrolling(true);
         password_check.setHorizontallyScrolling(true);
+
+//        event_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//
+//                if (isChecked) {
+//
+//                    TERMS_AGREE_1 = 1;
+//                } else {
+//
+//                    TERMS_AGREE_1 = 0;
+//                }
+//            }
+//        });
+//
+//        // 2항동의
+//        push.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    TERMS_AGREE_2 = 1;
+//                } else {
+//                    TERMS_AGREE_2 = 0;
+//                }
+//            }
+//        }
+//        );
+//
+//        // 전체동의
+//        consent.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (isChecked) {
+//                    check1.setChecked(true);
+//                    check2.setChecked(true);
+//                    TERMS_AGREE_3 = 1;
+//                } else {
+//                    check1.setChecked(false);
+//                    check2.setChecked(false);
+//                    TERMS_AGREE_3 = 0;
+//                }
+//            }
+//        }
+//        );
 
         mAuth =  FirebaseAuth.getInstance()
 
