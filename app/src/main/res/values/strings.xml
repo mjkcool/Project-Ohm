@@ -36,5 +36,11 @@
     <string name="profile_title">내 정보 수정</string>
     <string name="save">저장</string>
 
+    <!-- 사회자 하단 바-->
+    <string name="mobar_setting">토론설정</string>
+    <string name="mobar_tip">토론절차</string>
+    <string name="mobar_vote">투표</string>
+    <string name="mobar_mvp">MVP 투표</string>
+
 
 </resources>
