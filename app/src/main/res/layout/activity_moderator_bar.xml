@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--메뉴(더보기, 입력, 전송) 레이어-->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="440dp">
+        <!--더보기 버튼-->
+        <ImageButton
+            android:id="@+id/btn_ViewMore"
+            android:layout_width="40dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:src="@drawable/view_more"
+            app:layout_constraintRight_toRightOf="parent" />
+        <!--이미지를 겹치기 위한 프레임 레이아웃-->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--채팅 입력창-->
+            <EditText
+                android:id="@+id/btn_Chat"
+                android:layout_width="345dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/mobar_rectangle" />
+            <!--보내기 버튼-->
+            <ImageButton
+                android:id="@+id/btn_Send"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="302dp"
+                android:background="@android:color/transparent"
+                android:scaleType="fitXY"
+                android:src="@drawable/send"
+                app:layout_constraintLeft_toLeftOf="parent" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!--더보기 레이어 전체-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="242dp"
+        android:background="#414141"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="490dp">
+
+        <!--토론 설정 레이어-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mobarSet"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="43dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="60dp"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:src="@drawable/mobar_setting"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="103dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="9dp"
+                android:text="@string/mobar_setting"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!--투표 절차 레이어-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/btn_mobarTip"
+                android:layout_width="20dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="119dp"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:src="@drawable/mobar_tip" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="43dp"
+                android:layout_marginTop="1dp"
+                android:text="@string/mobar_tip"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--하단 레이어 - 상단 하단을 나누기 위해서 레이어 새로 만듦-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="580dp">
+        <!--투표 레이어-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mobarVote"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="110dp"
+                android:layout_marginRight="60dp"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:src="@drawable/mobar_vote" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="117dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="9dp"
+                android:text="@string/mobar_vote"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!--MVP 투표 레이어-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/btn_mobarMVP"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="52dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="110dp"
+                android:scaleType="fitXY"
+                android:background="@android:color/transparent"
+                android:src="@drawable/mobar_mvp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="43dp"
+                android:layout_marginTop="9dp"
+                android:text="@string/mobar_mvp"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
