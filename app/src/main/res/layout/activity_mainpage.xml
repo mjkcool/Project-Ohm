@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainPageActivity">
+
+    <!-- 나의 페이지로 넘어가는 버튼 생성 -->
+    <ImageButton
+        android:id="@+id/my_page"
+        android:layout_width="43.33dp"
+        android:layout_height="43.33dp"
+        android:layout_marginStart="286dp"
+        android:layout_marginTop="33.33dp"
+        android:layout_marginEnd="30.67dp"
+        android:background="@drawable/main_peofile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 빠른메뉴를 알려주는 텍스트 -->
+    <TextView
+        android:id="@+id/speed_text"
+        android:layout_width="78dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="30.67dp"
+        android:layout_marginTop="78.76dp"
+        android:layout_marginEnd="251.33dp"
+        android:text="@string/mainpage_text1"
+        android:textColor="#000000"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/chatting_back"
+        android:layout_width="298.76dp"
+        android:layout_height="289.76dp"
+        android:layout_marginStart="30.67dp"
+        android:layout_marginTop="117.67dp"
+        android:layout_marginEnd="30.67dp"
+        android:elevation="1.67dp"
+        android:src="@drawable/main_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26.67dp"
+        android:layout_marginEnd="2.67dp"
+        android:src="@drawable/text_background"
+        app:layout_constraintEnd_toEndOf="@+id/chatting_back"
+        app:layout_constraintStart_toStartOf="@+id/chatting_back"
+        app:layout_constraintTop_toTopOf="@+id/chatting_back" />
+
+    <TextView
+        android:id="@+id/my_conference"
+        android:layout_width="59.67dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="30.67dp"
+        android:layout_marginTop="434.33dp"
+        android:layout_marginEnd="269.67dp"
+        android:text="@string/mainpage_text2"
+        android:textColor="#000000"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 카드메뉴를 보여주는 카드뷰 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:layout_width="340dp"
+        android:layout_height="186dp"
+        android:layout_marginStart="30.67dp"
+        android:layout_marginTop="473.33dp"
+        android:layout_marginBottom="33.67dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.074"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
