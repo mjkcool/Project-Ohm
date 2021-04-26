@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Ohm</string>
 
-    <string name="mainpage_text1">빠른 메뉴</string>
+    <!-- 메인 페이지에 사용되는 텍스트 -->
+    <string name="mainpage_text1">회의 참여</string>
     <string name="mainpage_text2">내 회의</string>
+    <string name="hint_input">참여코드 입력</string>
+    <string name="make_text">회의 생성</string>
+    <string name="reservation_text">회의 예약</string>
 </resources>

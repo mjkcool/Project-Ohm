@@ -1,7 +1,249 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainPageActivity">
+
+    <!-- 나의 페이지로 넘어가는 버튼 생성 -->
+    <ImageButton
+        android:id="@+id/my_page"
+        android:layout_width="43dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="286dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/main_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="286dp"
+        android:layout_marginRight="30dp" />
+
+    <!-- 내가 해야하는 회의 참여를 알려주는 텍스트 -->
+    <TextView
+        android:id="@+id/speed_text"
+        android:layout_width="78dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="251dp"
+        android:layout_marginRight="251dp"
+        android:text="@string/mainpage_text1"
+        android:textColor="#000000"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 코드 입력할 때 보이는 배경화면  -->
+    <ImageView
+        android:id="@+id/codeText_background"
+        android:layout_width="269dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/goto_btn"
+        app:layout_constraintHorizontal_bias="0.964"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chatting_background" />
+
+    <!-- 참여코드 입력창 -->
+    <EditText
+        android:layout_width="65dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="185dp"
+        android:hint="@string/hint_input"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toEndOf="@+id/codeText_background"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintStart_toStartOf="@+id/codeText_background"
+        app:layout_constraintTop_toTopOf="@+id/codeText_background" />
+
+    <!-- 대기실에 들어갈 수 있는 버튼  -->
+    <ImageButton
+        android:id="@+id/goto_btn"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/button1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageButton>
+
+    <!-- 대기실로 갈 수 있는 버튼 이미지 -->
+    <ImageView
+        android:id="@+id/goto_image"
+        android:layout_width="15dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="7dp"
+        app:layout_constraintEnd_toEndOf="@+id/goto_btn"
+        app:layout_constraintStart_toStartOf="@+id/goto_btn"
+        app:layout_constraintTop_toTopOf="@+id/goto_btn"
+        app:srcCompat="@drawable/door" />
+
+    <!-- 회의 생성 할 때 보이는 배경화면 및 버튼  -->
+    <ImageButton
+        android:id="@+id/make_background"
+        android:layout_width="144dp"
+        android:layout_height="231dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="185dp"
+        android:background="@drawable/main_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codeText_background" />
+
+    <!-- 회의 생성 할 때 글씨 보여주는 배경화면 -->
+    <ImageView
+        android:id="@+id/make_fondground"
+        android:layout_width="144dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="185dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/make_background"
+        app:srcCompat="@drawable/chatting_background" />
+
+    <!-- 회의생성 텍스트 -->
+    <TextView
+        android:id="@+id/make_subject"
+        android:layout_width="60dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="76dp"
+        android:text="@string/make_text"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/make_fondground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/make_fondground"
+        app:layout_constraintTop_toTopOf="@+id/make_background" />
+
+    <!-- 회의생성에 대해 어느정도 알려주는 정보창 -->
+    <TextView
+        android:id="@+id/make_object"
+        android:layout_width="127dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:text="텍스트로 빠르고 간편하게\n 회의를 생성해보세요."
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/make_fondground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/make_fondground"
+        app:layout_constraintTop_toBottomOf="@+id/make_subject" />
+
+    <!-- 회의 예약 할 때 보이는 배경화면 및 버튼  -->
+    <ImageButton
+        android:id="@+id/reservation_background"
+        android:layout_width="144dp"
+        android:layout_height="231dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/main_background2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/make_background"
+        app:layout_constraintTop_toBottomOf="@+id/codeText_background" />
+
+    <!-- 회의 예약 할 때 글씨 보여주는 배경화면 -->
+    <ImageView
+        android:id="@+id/reservation_fontground"
+        android:layout_width="144dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="185dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.75"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/reservation_background"
+        app:srcCompat="@drawable/chatting_background" />
+
+    <!-- 회의예약 텍스트 -->
+    <TextView
+        android:id="@+id/reservation_subject"
+        android:layout_width="60dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="76dp"
+        android:text="@string/reservation_text"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/reservation_fontground"
+        app:layout_constraintStart_toStartOf="@+id/reservation_fontground"
+        app:layout_constraintTop_toTopOf="@+id/reservation_background" />
+
+    <!-- 회의예약에 대해 어느정도 알려주는 정보창 -->
+    <TextView
+        android:id="@+id/reservation_object"
+        android:layout_width="127dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:text="회의를 예약해두면 잊지 않게\n 알림을 보내드립니다."
+        android:textSize="8sp"
+        app:layout_constraintEnd_toEndOf="@+id/reservation_fontground"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/reservation_fontground"
+        app:layout_constraintTop_toBottomOf="@+id/reservation_subject" />
+
+    <!-- 내 회의를 알려주는 텍스트 -->
+    <TextView
+        android:id="@+id/my_conference"
+        android:layout_width="59dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="434dp"
+        android:layout_marginEnd="269dp"
+        android:text="@string/mainpage_text2"
+        android:textColor="#000000"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="269dp" />
+
+    <!-- 카드메뉴를 보여주는 카드뷰 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:layout_width="352dp"
+        android:layout_height="188dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="473dp"
+        android:layout_marginBottom="33dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.222"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
