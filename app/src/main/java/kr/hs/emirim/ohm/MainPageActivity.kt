@@ -2,6 +2,7 @@ package kr.hs.emirim.ohm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.app.AlertDialog;
 
 class MainPageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -76,7 +76,6 @@
         android:layout_marginStart="296dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/button1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"

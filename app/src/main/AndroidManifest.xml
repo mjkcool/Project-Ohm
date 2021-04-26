@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar">
-        <activity android:name=".MainPageActivity"> <!--임시로 해둔 실행창입니다. -->
+        <activity
+            android:name=".MainPageActivity"
+            android:theme="@style/AppTheme"> <!--Default activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
