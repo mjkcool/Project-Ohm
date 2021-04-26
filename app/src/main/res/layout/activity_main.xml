@@ -43,13 +43,12 @@
     <!-- 코드 입력할 때 보이는 배경화면  -->
     <ImageView
         android:id="@+id/codeText_background"
-        android:layout_width="269dp"
+        android:layout_width="256dp"
         android:layout_height="33dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="120dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/goto_btn"
-        app:layout_constraintHorizontal_bias="0.964"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/chatting_background" />
@@ -73,12 +72,12 @@
         android:id="@+id/goto_btn"
         android:layout_width="33dp"
         android:layout_height="33dp"
-        android:layout_marginStart="296dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toEndOf="@+id/codeText_background"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
 
     <!-- 대기실로 갈 수 있는 버튼 이미지 -->
@@ -157,15 +156,18 @@
         android:id="@+id/reservation_background"
         android:layout_width="144dp"
         android:layout_height="231dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="185dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/main_background2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/make_background"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/codeText_background" />
 
     <!-- 회의 예약 할 때 글씨 보여주는 배경화면 -->
+
+    <!-- 회의예약 텍스트 -->
+
     <ImageView
         android:id="@+id/reservation_fontground"
         android:layout_width="144dp"
@@ -174,12 +176,10 @@
         android:layout_marginTop="160dp"
         android:layout_marginEnd="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/reservation_background"
         app:srcCompat="@drawable/chatting_background" />
 
-    <!-- 회의예약 텍스트 -->
     <TextView
         android:id="@+id/reservation_subject"
         android:layout_width="60dp"
