@@ -26,12 +26,10 @@
     <TextView
         android:id="@+id/speed_text"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="29dp"
         android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="78dp"
         android:layout_marginEnd="251dp"
-        android:layout_marginRight="251dp"
         android:text="@string/mainpage_text1"
         android:textColor="#000000"
         android:textSize="19sp"
@@ -48,6 +46,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="72dp"
+        android:background="@drawable/chatting_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -55,7 +54,7 @@
 
     <!-- 참여코드 입력창 -->
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="65dp"
         android:layout_height="16dp"
         android:layout_marginStart="6dp"
         android:layout_marginTop="8dp"
@@ -75,6 +74,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="30dp"
+        android:background="@drawable/button1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.037"
         app:layout_constraintStart_toEndOf="@+id/codeText_background"
@@ -122,7 +122,7 @@
     <!-- 회의생성 텍스트 -->
     <TextView
         android:id="@+id/make_subject"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="168dp"
@@ -182,7 +182,7 @@
 
     <TextView
         android:id="@+id/reservation_subject"
-        android:layout_width="wrap_content"
+        android:layout_width="60dp"
         android:layout_height="22dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="168dp"
@@ -213,8 +213,8 @@
     <!-- 내 회의를 알려주는 텍스트 -->
     <TextView
         android:id="@+id/my_conference"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="59dp"
+        android:layout_height="29dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="434dp"
         android:layout_marginEnd="269dp"
@@ -224,7 +224,9 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="269dp" />
 
     <!-- 카드메뉴를 보여주는 카드뷰 -->
     <androidx.recyclerview.widget.RecyclerView
