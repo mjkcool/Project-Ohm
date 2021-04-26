@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.NoTitleBar">
         <activity
-            android:name=".MainPageActivity"
-            android:theme="@style/AppTheme"> <!--Default activity -->
+            android:name=".MainPageActivity"> <!--Default activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
