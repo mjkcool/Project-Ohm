@@ -41,20 +41,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- 코드 입력할 때 보이는 배경화면  -->
+
+    <!-- 참여코드 입력창 -->
     <ImageView
         android:id="@+id/codeText_background"
-        android:layout_width="269dp"
+        android:layout_width="256dp"
         android:layout_height="33dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="120dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/goto_btn"
-        app:layout_constraintHorizontal_bias="0.964"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/chatting_background" />
 
-    <!-- 참여코드 입력창 -->
     <EditText
         android:layout_width="65dp"
         android:layout_height="16dp"
@@ -69,20 +69,22 @@
         app:layout_constraintTop_toTopOf="@+id/codeText_background" />
 
     <!-- 대기실에 들어갈 수 있는 버튼  -->
+
+    <!-- 대기실로 갈 수 있는 버튼 이미지 -->
+
     <ImageButton
         android:id="@+id/goto_btn"
         android:layout_width="33dp"
         android:layout_height="33dp"
-        android:layout_marginStart="296dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/button1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.75"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toEndOf="@+id/codeText_background"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
 
-    <!-- 대기실로 갈 수 있는 버튼 이미지 -->
     <ImageView
         android:id="@+id/goto_image"
         android:layout_width="15dp"
