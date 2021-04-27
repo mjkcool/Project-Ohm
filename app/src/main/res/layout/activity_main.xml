@@ -54,15 +54,15 @@
 
     <!-- 참여코드 입력창 -->
     <EditText
-        android:layout_width="65dp"
-        android:layout_height="16dp"
+        android:layout_width="136dp"
+        android:layout_height="35dp"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="185dp"
         android:hint="@string/hint_input"
         android:textSize="11sp"
+        android:background="@null"
         app:layout_constraintEnd_toEndOf="@+id/codeText_background"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/codeText_background"
         app:layout_constraintTop_toTopOf="@+id/codeText_background" />
 
@@ -74,24 +74,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="30dp"
-        android:background="@drawable/button1"
+        android:adjustViewBounds="true"
+        android:background="@drawable/button_1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toEndOf="@+id/codeText_background"
         app:layout_constraintTop_toTopOf="parent"></ImageButton>
-
-    <!-- 대기실로 갈 수 있는 버튼 이미지 -->
-    <ImageView
-        android:id="@+id/goto_image"
-        android:layout_width="15dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="7dp"
-        app:layout_constraintEnd_toEndOf="@+id/goto_btn"
-        app:layout_constraintStart_toStartOf="@+id/goto_btn"
-        app:layout_constraintTop_toTopOf="@+id/goto_btn"
-        app:srcCompat="@drawable/door" />
 
     <!-- 회의 생성 할 때 보이는 배경화면 및 버튼  -->
     <ImageButton
@@ -106,32 +94,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/codeText_background" />
 
-    <!-- 회의 생성 할 때 글씨 보여주는 배경화면 -->
-
+    <!-- 임시 배경화면1 -->
     <ImageView
-        android:id="@+id/inmain1"
-        android:layout_width="112dp"
-        android:layout_height="127dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/imageView3"
+        android:layout_width="56dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="9dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="225dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toTopOf="@+id/make_background"
+        app:srcCompat="@drawable/inmain1_2" />
+
+    <!-- 임시 배경화면2 -->
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="59dp"
+        android:layout_height="127dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="89dp"
         app:layout_constraintEnd_toEndOf="@+id/make_background"
-        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="@+id/make_background"
         app:layout_constraintTop_toTopOf="@+id/make_background"
-        app:srcCompat="@drawable/inmain1" />
+        app:srcCompat="@drawable/inmain1_1" />
 
+    <!-- 회의 생성 할 때 글씨 보여주는 배경화면 -->
     <ImageView
-        android:id="@+id/make_fondground"
-        android:layout_width="144dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="185dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/make_background"
-        app:srcCompat="@drawable/chatting_background" />
+           android:id="@+id/make_fondground"
+           android:layout_width="144dp"
+           android:layout_height="71dp"
+           android:layout_marginStart="30dp"
+           android:layout_marginTop="160dp"
+           android:layout_marginEnd="185dp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="@+id/make_background"
+           app:srcCompat="@drawable/chatting_background2" />
 
     <!-- 회의생성 텍스트 -->
     <TextView
@@ -178,10 +180,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/codeText_background" />
 
+    <!-- 임시 배경화면 -->
+    <ImageView
+        android:id="@+id/inmain_ground2"
+        android:layout_width="71dp"
+        android:layout_height="129dp"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="192dp"
+        android:layout_marginEnd="83dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/inmain2" />
+
     <!-- 회의 예약 할 때 글씨 보여주는 배경화면 -->
-
-    <!-- 회의예약 텍스트 -->
-
     <ImageView
         android:id="@+id/reservation_fontground"
         android:layout_width="144dp"
@@ -192,8 +205,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/reservation_background"
-        app:srcCompat="@drawable/chatting_background" />
+        app:srcCompat="@drawable/chatting_background2" />
 
+    <!-- 회의예약 텍스트 -->
     <TextView
         android:id="@+id/reservation_subject"
         android:layout_width="60dp"
@@ -251,6 +265,8 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="473dp"
         android:layout_marginBottom="33dp"
+        android:fadingEdge="horizontal"
+        android:scrollbars="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -258,16 +274,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.222"
         tools:ignore="MissingConstraints" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="81dp"
-        android:layout_height="126dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="@+id/reservation_background"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="@+id/reservation_background"
-        app:layout_constraintTop_toTopOf="@+id/reservation_background"
-        app:srcCompat="@drawable/inmain2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
