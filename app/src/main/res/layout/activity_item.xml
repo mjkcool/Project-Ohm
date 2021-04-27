@@ -1,58 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
         android:layout_width="152dp"
         android:layout_height="152dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
-        app:cardPreventCornerOverlap="true"
-        app:cardUseCompatPadding="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027">
+        android:layout_margin="8dp"
+        app:cardCornerRadius="20dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="152dp"
             android:layout_height="152dp"
-            android:background="#FADBDB"
-            android:gravity="top"
-            android:orientation="vertical"
-            android:padding="0dp">
+            android:background="#F9D5D3">
 
             <TextView
-                android:id="@+id/chat_title"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="30dp"
-                android:gravity="start"
-                android:text="Chat_title"
-                android:textColor="@android:color/secondary_text_light"
-                android:textSize="20sp"
+                android:id="@+id/card_day"
+                android:layout_width="27dp"
+                android:layout_height="13dp"
+                android:layout_marginStart="113dp"
+                android:layout_marginLeft="113dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="11dp"
+                android:text="이틀후"
+                android:textSize="9sp" />
+
+            <TextView
+                android:id="@+id/card_title"
+                android:layout_width="133dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginLeft="11dp"
+                android:layout_marginTop="85dp"
+                android:layout_marginEnd="11dp"
+                android:text="회의주제"
+                android:textColor="#000000"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher" />
-            </androidx.recyclerview.widget.RecyclerView>
+            <!-- ellipsize = "end" - 뒷 부분을 ...으로 표시 -->
+            <!-- maxLine = "3" 에서는 작동 안함 -->
+            <TextView
+                android:id="@+id/card_desc"
+                android:layout_width="43dp"
+                android:layout_height="12dp"
+                android:layout_below="@id/card_title"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="11dp"
+                android:drawablePadding="10dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="날짜입력"
+                android:textSize="8sp" />
 
-        </LinearLayout>
+
+            <ImageView
+                android:id="@+id/card_image"
+                android:layout_width="124dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="118dp"
+                android:layout_marginEnd="30dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
+
+
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
