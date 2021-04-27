@@ -2,6 +2,7 @@ package kr.hs.emirim.ohm;
 
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -14,8 +15,6 @@ public class MainPage extends AppCompatActivity {
     ViewPager viewPager;
     Adapter adapter;
     List<Model> models;
-    Integer[] colors = null;
-    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +30,10 @@ public class MainPage extends AppCompatActivity {
 
         viewPager = findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
-        viewPager.setPadding(130, 360, 130, 0);
+
+        viewPager.setClipToPadding(false);
+        viewPager.setPadding(0, 0, 100, 0);
+        viewPager.setPageMargin(30);
+
     }
 }
