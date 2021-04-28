@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity
-            android:name=".MainPage"> <!--Default activity -->
+        <activity android:name=".create_meeting_3"></activity>
+        <activity android:name=".create_meeting_2" />
+        <activity android:name=".create_meeting_1" />
+        <activity android:name=".MainPage"> <!-- Default activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
