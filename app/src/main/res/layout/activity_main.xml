@@ -181,12 +181,14 @@
         app:layout_constraintTop_toBottomOf="@+id/codeText_background" />
 
     <!-- 임시 배경화면 -->
+
+    <!-- 회의 예약 할 때 글씨 보여주는 배경화면 -->
     <ImageView
         android:id="@+id/inmain_ground2"
         android:layout_width="71dp"
         android:layout_height="129dp"
         android:layout_marginStart="250dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginTop="196dp"
         android:layout_marginEnd="83dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -194,7 +196,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/inmain2" />
 
-    <!-- 회의 예약 할 때 글씨 보여주는 배경화면 -->
     <ImageView
         android:id="@+id/reservation_fontground"
         android:layout_width="144dp"
@@ -257,36 +258,17 @@
         android:layout_marginRight="269dp" />
 
     <!-- 카드메뉴를 보여주는 카드뷰 -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
-        android:layout_width="352dp"
-        android:layout_height="188dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="473dp"
-        android:layout_marginBottom="33dp"
-        android:fadingEdge="horizontal"
-        android:scrollbars="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.222"
-        tools:ignore="MissingConstraints" />
-
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="354dp"
-        android:layout_height="187dp"
+        android:layout_width="318dp"
+        android:layout_height="161dp"
         android:layout_centerInParent="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="8dp"
         android:clipToPadding="false"
         android:overScrollMode="never"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.412"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_conference">
-    </androidx.viewpager.widget.ViewPager>
+        app:layout_constraintTop_toBottomOf="@+id/my_conference"></androidx.viewpager.widget.ViewPager>
 </androidx.constraintlayout.widget.ConstraintLayout>
