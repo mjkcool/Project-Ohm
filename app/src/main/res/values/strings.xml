@@ -6,4 +6,5 @@
     <string name="reservation_text">회의 예약</string>
     <string name="make_text">회의 생성</string>
     <string name="hint_input">참여코드 입력</string>
+
 </resources>
