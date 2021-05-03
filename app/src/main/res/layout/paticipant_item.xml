@@ -8,13 +8,14 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ProfileImg"
-        android:layout_width="30.33dp"
-        android:layout_height="30.33dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:src="@tools:sample/avatars"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingClass" />
 
     <TextView
         android:id="@+id/UserName"
@@ -24,7 +25,7 @@
         android:gravity="clip_vertical"
         android:includeFontPadding="false"
         android:singleLine="true"
-        android:text="미림인"
+        android:text="@string/paticipant_1"
         android:textColor="#000000"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,10 +37,10 @@
         android:layout_width="29dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="17dp"
-        android:text="대기중"
+        android:text="@string/paticipant_2"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="9.67sp"
+        android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

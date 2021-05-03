@@ -27,7 +27,7 @@
                 android:layout_marginLeft="113dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginEnd="11dp"
-                android:text="이틀후"
+                android:text="@string/card_day"
                 android:textSize="9sp" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_marginLeft="11dp"
                 android:layout_marginTop="85dp"
                 android:layout_marginEnd="11dp"
-                android:text="회의주제"
+                android:text="@string/card_title"
                 android:textColor="#000000"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -58,7 +58,7 @@
                 android:drawablePadding="10dp"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="날짜입력"
+                android:text="@string/card_desc"
                 android:textSize="8sp" />
 
 
@@ -71,7 +71,6 @@
                 android:layout_marginEnd="30dp"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher" />
-
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
