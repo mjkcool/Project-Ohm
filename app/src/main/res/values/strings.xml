@@ -7,4 +7,11 @@
     <string name="make_text">회의 생성</string>
     <string name="hint_input">참여코드 입력</string>
 
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="chat_toolbar">2학년 3반</string>
+    <string name="chat_toolbar_title">2학년 3반 반티</string>
+    <string name="chat_toolbar_people">참여자 (4)</string>
+    <string name="chat_toolbar_volut">투표</string>
+
 </resources>
