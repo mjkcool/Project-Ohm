@@ -79,9 +79,11 @@
 
             <Button
                 android:id="@+id/button2"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/btn_yellow"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
@@ -90,14 +92,15 @@
                 android:singleLine="true"
                 android:text="코드 복사"
                 android:textSize="10sp"
-                style="?android:attr/borderlessButtonStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/button3" />
 
             <Button
                 android:id="@+id/button3"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/btn_blue"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
@@ -105,7 +108,6 @@
                 android:paddingVertical="2.67dp"
                 android:text="코드 공유"
                 android:textSize="10sp"
-                style="?android:attr/borderlessButtonStyle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -128,6 +130,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="12.67dp"
             android:layout_marginBottom="33.33dp"
+            android:background="@drawable/participant_list_bg"
             app:layout_constraintBottom_toTopOf="@+id/button4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -145,6 +148,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
