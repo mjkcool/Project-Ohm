@@ -1,93 +1,69 @@
-package kr.hs.emirim.ohm;
+package kr.hs.emirim.ohm
 
-import android.content.Context;
-import android.content.Intent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
+import android.content.Context
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager.widget.PagerAdapter
 
-import java.util.List;
-
-public class Adapter extends PagerAdapter {
-
-    private List<Model> models;
-    private LayoutInflater layoutInflater;
-    private Context context;
-
-
-    public Adapter(List<Model> models, Context context) {
-        this.models = models;
-        this.context = context;
+class Adapter(private val models: List<Model>, private val context: Context) : PagerAdapter() {
+    private var layoutInflater: LayoutInflater? = null
+    override fun getCount(): Int {
+        return models.size
     }
 
-    @Override
-    public int getCount() {
-        return models.size();
+    override fun isViewFromObject(view: View, `object`: Any): Boolean {
+        return view == `object`
     }
 
-    @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-        return view.equals(object);
-    }
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        layoutInflater = LayoutInflater.from(context)
+        val view = layoutInflater!!.inflate(R.layout.activity_item, container, false)
 
-    @NonNull
-    @Override
-    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
-        layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.activity_item, container, false);
+        val imageView: ImageView
+        val title: TextView
+        val desc: TextView
+        val day: TextView
 
-        ImageView imageView;
-        TextView title, desc, day;
+        imageView = view.findViewById(R.id.card_image)
+        title = view.findViewById(R.id.card_title)
+        desc = view.findViewById(R.id.card_desc)
+        day = view.findViewById(R.id.card_day)
 
-        imageView = view.findViewById(R.id.card_image);
-        title = view.findViewById(R.id.card_title);
-        desc = view.findViewById(R.id.card_desc);
-        day = view.findViewById(R.id.card_day);
+        imageView.setImageResource(models[position].image)
+        title.text = models[position].title
+        desc.text = models[position].desc
+        day.text = models[position].day
 
-        imageView.setImageResource(models.get(position).getImage());
-        title.setText(models.get(position).getTitle());
-        desc.setText(models.get(position).getDesc());
-        day.setText(models.get(position).getDay());
-
-
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(position==0) {
-                    Intent intent = new Intent(context, MainPage.class);
-                    //intent.putExtra("param", models.get(position).getTitle());
-                    context.startActivity(intent);
-
-                }
-                else if(position==1){
-                    Intent intent = new Intent(context,  MainPage.class);
-                    //intent.putExtra("param", models.get(position).getTitle());
-                    context.startActivity(intent);
-                }
-                else if(position==2){
-                    Intent intent = new Intent(context,  MainPage.class);
-                    //intent.putExtra("param", models.get(position).getTitle());
-                    context.startActivity(intent);
-                }
-                else if(position==3){
-                    Intent intent = new Intent(context,  MainPage.class);
-                    //intent.putExtra("param", models.get(position).getTitle());
-                    context.startActivity(intent);
-                }
+        view.setOnClickListener {
+            if (position == 0) {
+                val intent = Intent(context, create_meeting_1::class.java)
+                //intent.putExtra("param", models.get(position).getTitle());
+                context.startActivity(intent)
+            } else if (position == 1) {
+                val intent = Intent(context, create_meeting_2::class.java)
+                //intent.putExtra("param", models.get(position).getTitle());
+                context.startActivity(intent)
+            } else if (position == 2) {
+                val intent = Intent(context, create_meeting_3::class.java)
+                //intent.putExtra("param", models.get(position).getTitle());
+                context.startActivity(intent)
+            } else if (position == 3) {
+                val intent = Intent(context, create_meeting_1::class.java)
+                //intent.putExtra("param", models.get(position).getTitle());
+                context.startActivity(intent)
             }
-
-        });
-
-        container.addView(view, 0);
-        return view;
+        }
+        container.addView(view, 0)
+        return view
     }
 
-    @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        container.removeView((View)object);
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        container.removeView(`object` as View)
     }
 }
+

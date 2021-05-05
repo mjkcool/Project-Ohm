@@ -5,17 +5,9 @@
     android:layout_width="271dp"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <!-- 지금은 채팅에 집중하고 있습니다. 이미지는 나중에 추가할께요 ! -->
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/chat_profile"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:src="@tools:sample/avatars"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+    <!--내가 사용하고 있는 이름 -->
     <TextView
         android:id="@+id/chat_nickname"
         android:layout_width="wrap_content"
@@ -24,8 +16,7 @@
         android:gravity="clip_vertical"
         android:includeFontPadding="false"
         android:singleLine="true"
-        android:text="이름"
-        android:textColor="#000000"
+        android:text="@string/chat_nickname"
         android:textSize="9sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.187"
@@ -33,11 +24,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/State"
+        android:id="@+id/chat_msg"
         android:layout_width="107dp"
         android:layout_height="16dp"
         android:layout_marginTop="20dp"
-        android:text="내가 하고 싶은 말 적기"
+        android:text="@string/chat_saysomething"
         android:textColor="#000000"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"

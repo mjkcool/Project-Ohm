@@ -6,22 +6,12 @@
     <string name="mainpage_text2">내 회의</string>
     <string name="reservation_text">회의 예약</string>
     <string name="make_text">회의 생성</string>
-    <string name="hint_input">참여코드 입력</string>
+    <string name="input_hint">참여코드 입력</string>
 
     <!-- 카드뷰에 사용하는 String-->
     <string name="card_day">이틀후</string>
     <string name="card_title">회의주제</string>
     <string name="card_desc">날짜입력</string>
-
-    <!-- 채팅에 메뉴바 -->
-    <string name="open">open</string>
-    <string name="close">close</string>
-
-    <!-- 메뉴에 보이는 String -->
-    <string name="chat_toolbar">2학년 3반</string>
-    <string name="chat_toolbar_title">2학년 3반 반티</string>
-    <string name="chat_toolbar_people">참여자 (4)</string>
-    <string name="chat_toolbar_volut">투표</string>
 
     <!-- 대기실에 사용하는 나의 프로필 -->
     <string name="paticipant_name1">나</string>
@@ -31,5 +21,10 @@
     <!-- 대기실에 사용하는 다른사람의 프로필 -->
     <string name="paticipant_1">미림인</string>
     <string name="paticipant_2">대기중</string>
+
+    <!-- 채팅 할 때 사용하는 것 -->
+    <string name="chatting_hint">입력하세요.</string>
+    <string name="chat_nickname">이름</string>
+    <string name="chat_saysomething">내가 하고 싶은 말 적기</string>
 
 </resources>
