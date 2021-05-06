@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
-    private List<ChatData> mDataset;
+public class Chating_Adapter extends RecyclerView.Adapter<Chating_Adapter.ViewHolder> {
+    private List<Chating_Data> mDataset;
     private String mNickName;
 
 
@@ -29,14 +29,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         }
     }
 
-    public ChatAdapter(List<ChatData> MyDataSet, Context context, String mNickName) {
+    public Chating_Adapter(List<Chating_Data> MyDataSet, Context context, String mNickName) {
         mDataset = MyDataSet;
         this.mNickName = mNickName;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public ChatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Chating_Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Create a new view, which defines the UI of the list item
         LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_row_chat, parent, false);
 
@@ -48,7 +48,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        ChatData chat = mDataset.get(position);
+        Chating_Data chat = mDataset.get(position);
 
         holder.chat_nickname.setText(chat.getNickname());
         holder.chat_msg.setText(chat.getMsg()); //DTD
@@ -68,10 +68,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     public int getItemCount() {
         return mDataset == null ? 0 : mDataset.size();
     }
-    public ChatData getChat(int positon){
+    public Chating_Data getChat(int positon){
       return mDataset != null ? mDataset.get(positon) : null;
     }
-    public void addChat(ChatData chat){
+    public void addChat(Chating_Data chat){
         mDataset.add(chat);
         notifyItemInserted(mDataset.size()-1); //갱신
     }
