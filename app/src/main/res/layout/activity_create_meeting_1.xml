@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".create_meeting_1">
+    tools:context=".Create_meeting_1_Activity">
 
     <Button
         android:id="@+id/back_button"
