@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainPage"></activity>
-        <activity android:name=".create_meeting_3" />
-        <activity android:name=".create_meeting_2" />
-        <activity android:name=".create_meeting_1" />
-        <activity android:name=".Chat"> <!-- Default activity -->
+        <activity android:name=".MainPage_Activity"></activity>
+        <activity android:name=".Create_meeting_3_Activity" />
+        <activity android:name=".Create_meeting_2_Activity" />
+        <activity android:name=".Create_meeting_1_Activity" />
+        <activity android:name=".Chating_Activity"> <!-- 임시설정 : 채팅 구현  -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
