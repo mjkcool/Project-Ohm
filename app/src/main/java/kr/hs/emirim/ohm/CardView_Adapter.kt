@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
 
-class Adapter(private val models: List<Model>, private val context: Context) : PagerAdapter() {
+class CardView_Adapter(private val models: List<CardView_Data>, private val context: Context) : PagerAdapter() {
     private var layoutInflater: LayoutInflater? = null
 
     override fun getCount(): Int {
@@ -41,19 +41,19 @@ class Adapter(private val models: List<Model>, private val context: Context) : P
 
         view.setOnClickListener { //카드메뉴를 누를 시에 이동되는 클래스
             if (position == 0) {
-                val intent = Intent(context, create_meeting_1::class.java)
+                val intent = Intent(context, Create_meeting_1_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 1) {
-                val intent = Intent(context, create_meeting_2::class.java)
+                val intent = Intent(context, Create_meeting_2_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 2) {
-                val intent = Intent(context, create_meeting_3::class.java)
+                val intent = Intent(context, Create_meeting_3_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 3) {
-                val intent = Intent(context, create_meeting_1::class.java)
+                val intent = Intent(context, Create_meeting_1_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             }
