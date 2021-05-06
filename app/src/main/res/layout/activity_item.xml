@@ -8,17 +8,20 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical">
 
+    <!-- 카드뷰 -->
     <androidx.cardview.widget.CardView
         android:layout_width="152dp"
         android:layout_height="152dp"
         android:layout_margin="8dp"
         app:cardCornerRadius="20dp">
 
+        <!-- 카드메뉴에 들어가야 할 것들에 대한 레이아웃 -->
         <RelativeLayout
             android:layout_width="152dp"
             android:layout_height="152dp"
             android:background="#F9D5D3">
 
+            <!-- 카드뷰를 만든 날짜를 현재로 기반하여 나타난 날짜 -->
             <TextView
                 android:id="@+id/card_day"
                 android:layout_width="27dp"
@@ -30,6 +33,7 @@
                 android:text="@string/card_day"
                 android:textSize="9sp" />
 
+            <!-- 카드뷰를 만들 때 사용하는 제목 -->
             <TextView
                 android:id="@+id/card_title"
                 android:layout_width="133dp"
@@ -45,9 +49,9 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-
-            <!-- ellipsize = "end" - 뒷 부분을 ...으로 표시 -->
-            <!-- maxLine = "3" 에서는 작동 안함 -->
+            <!-- 카드뷰를 만든 날짜 -->
+              <!-- ellipsize = "end" - 뒷 부분을 ...으로 표시 -->
+              <!-- maxLine = "3" 에서는 작동 안함 -->
             <TextView
                 android:id="@+id/card_desc"
                 android:layout_width="43dp"
@@ -61,7 +65,7 @@
                 android:text="@string/card_desc"
                 android:textSize="8sp" />
 
-
+            <!-- 카드뷰에 표시할 사람을 표시 -->
             <ImageView
                 android:id="@+id/card_image"
                 android:layout_width="122dp"
