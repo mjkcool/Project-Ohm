@@ -1,6 +1,6 @@
 package kr.hs.emirim.ohm;
 
-public class ChatData { //채팅 데이터 값
+public class Chating_Data { //채팅 데이터 값
     private String nickname; //닉네임
     private String msg; //채팅 내용
 
