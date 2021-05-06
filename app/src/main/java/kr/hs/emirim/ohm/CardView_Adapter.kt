@@ -2,6 +2,7 @@ package kr.hs.emirim.ohm
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.ColorSpace
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,25 +36,25 @@ class CardView_Adapter(private val models: List<CardView_Data>, private val cont
         day = view.findViewById(R.id.card_day)
 
         imageView.setImageResource(models[position].image)
-        title.text = models[position].title 
+        title.text = models[position].title
         desc.text = models[position].desc
         day.text = models[position].day
 
         view.setOnClickListener { //카드메뉴를 누를 시에 이동되는 클래스
             if (position == 0) {
-                val intent = Intent(context, Create_meeting_1_Activity::class.java)
+                val intent = Intent(context, MainPage_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 1) {
-                val intent = Intent(context, Create_meeting_2_Activity::class.java)
+                val intent = Intent(context, MainPage_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 2) {
-                val intent = Intent(context, Create_meeting_3_Activity::class.java)
+                val intent = Intent(context,  MainPage_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 3) {
-                val intent = Intent(context, Create_meeting_1_Activity::class.java)
+                val intent = Intent(context,  MainPage_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             }
