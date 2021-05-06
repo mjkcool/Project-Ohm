@@ -18,11 +18,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Chat extends AppCompatActivity {
+public class Chating_Activity extends AppCompatActivity {
     private RecyclerView recyclerView; //리사이클뷰
     public RecyclerView.Adapter chatAapter; //리사이클뷰에 들어갈 채팅 어챕터
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
-    private List<ChatData> chatlist; //채팅 데이터 리스트
+    private List<Chating_Data> chatlist; //채팅 데이터 리스트
 
     private String nick = "nick1"; //닉네임 임시설정
 
@@ -45,7 +45,7 @@ public class Chat extends AppCompatActivity {
                 String msg = chatting_say.getText().toString(); //채팅 할 때 사용하는 메세지
 
                 if(msg != null) { //칠 내용이 null값이 아닌경우
-                    ChatData chat = new ChatData(); //주의상황 : 파이어베이스에 다른 클래스의데이터베이스를 넣을거면 전에 있던 값을 삭제
+                    Chating_Data chat = new Chating_Data(); //주의상황 : 파이어베이스에 다른 클래스의데이터베이스를 넣을거면 전에 있던 값을 삭제
                     chat.setNickname(nick);
                     chat.setMsg(msg);
                     myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
@@ -61,7 +61,7 @@ public class Chat extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager); //리사이클뷰의 레이아웃을 정의
 
         chatlist = new ArrayList<>();
-        chatAapter = new ChatAdapter(chatlist, Chat.this, nick);
+        chatAapter = new Chating_Adapter(chatlist, Chating_Activity.this, nick);
         recyclerView.setAdapter(chatAapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
@@ -72,8 +72,8 @@ public class Chat extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Log.d("CHATCHAT", snapshot.getValue().toString()); //오류가 나서 값이 제대로 실행 되는지 보기 위한 코드
-                ChatData chat = snapshot.getValue(ChatData.class); //데이터값에 데이터 클래스를 넣어주는 것
-                ((ChatAdapter) chatAapter).addChat(chat); //리사이클뷰 어뎁터에 데이터를 넣어 알려주는 것 
+                Chating_Data chat = snapshot.getValue(Chating_Data.class); //데이터값에 데이터 클래스를 넣어주는 것
+                ((Chating_Adapter) chatAapter).addChat(chat); //리사이클뷰 어뎁터에 데이터를 넣어 알려주는 것
             }
 
             @Override
