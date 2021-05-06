@@ -7,11 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 
 class Adapter(private val models: List<Model>, private val context: Context) : PagerAdapter() {
     private var layoutInflater: LayoutInflater? = null
+
     override fun getCount(): Int {
         return models.size
     }
@@ -35,11 +35,11 @@ class Adapter(private val models: List<Model>, private val context: Context) : P
         day = view.findViewById(R.id.card_day)
 
         imageView.setImageResource(models[position].image)
-        title.text = models[position].title
+        title.text = models[position].title 
         desc.text = models[position].desc
         day.text = models[position].day
 
-        view.setOnClickListener {
+        view.setOnClickListener { //카드메뉴를 누를 시에 이동되는 클래스
             if (position == 0) {
                 val intent = Intent(context, create_meeting_1::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
@@ -58,7 +58,7 @@ class Adapter(private val models: List<Model>, private val context: Context) : P
                 context.startActivity(intent)
             }
         }
-        container.addView(view, 0)
+        container.addView(view, 0) //카드메뉴 추가
         return view
     }
 
@@ -66,4 +66,3 @@ class Adapter(private val models: List<Model>, private val context: Context) : P
         container.removeView(`object` as View)
     }
 }
-
