@@ -1,68 +1,78 @@
 package kr.hs.emirim.ohm;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
+    private List<ChatData> mDataset;
+    private String mNickName;
 
-    private String[] localDataSet;
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView textView;
+        private TextView chat_nickname; //닉네임 
+        private TextView chat_msg; //채팅 내용
+        private View rootView;
 
-        public ViewHolder(View v) {
+        public ViewHolder(LinearLayout v) {
             super(v);
-            textView = v;
-            // Define click listener for the ViewHolder's View
-
-            //textView = (TextView) v.findViewById(R.id.textView);
+            chat_msg = v.findViewById(R.id.chat_msg);
+            chat_nickname = v.findViewById(R.id.chat_nickname);
+            rootView = v;
         }
-
-//        public TextView getTextView() {
-//            return textView;
-//        }
     }
 
-    /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
-     */
-    public ChatAdapter(String[] dataSet) {
-        localDataSet = dataSet;
+    public ChatAdapter(List<ChatData> MyDataSet, Context context, String mNickName) {
+        mDataset = MyDataSet;
+        this.mNickName = mNickName;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+    public ChatAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Create a new view, which defines the UI of the list item
-        View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.activity_row_chat, viewGroup, false);
+        LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_row_chat, parent, false);
 
-        return new ViewHolder(v);
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        ChatData chat = mDataset.get(position);
 
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-        viewHolder.getTextView().setText(localDataSet[position]);
+        holder.chat_nickname.setText(chat.getNickname());
+        holder.chat_msg.setText(chat.getMsg()); //DTD
+
+        if(chat.getNickname().equals(this.mNickName)){
+            holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            holder.chat_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END); //내가 채팅을 할 경우 오른쪽
+
+        }else{
+            holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            holder.chat_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START); //상대방이 채팅을 할 경우 왼쪽
+        }
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return localDataSet.length;
+        return mDataset == null ? 0 : mDataset.size();
+    }
+    public ChatData getChat(int positon){
+      return mDataset != null ? mDataset.get(positon) : null;
+    }
+    public void addChat(ChatData chat){
+        mDataset.add(chat);
+        notifyItemInserted(mDataset.size()-1); //갱신
     }
 }
