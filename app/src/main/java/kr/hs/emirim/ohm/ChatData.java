@@ -1,8 +1,23 @@
 package kr.hs.emirim.ohm;
 
-import java.io.Serializable;
+public class ChatData { //채팅 데이터 값
+    private String nickname; //닉네임
+    private String msg; //채팅 내용
 
-public class ChatData implements Serializable {
-    private String nickname;;
-    private String msg;
+    public String getMsg(){
+        return msg;
+    }
+
+    public void setMsg(String msg){
+        this.msg = msg;
+    }
+
+    public String getNickname(){
+        return nickname;
+    }
+
+    public void setNickname(String nickname){
+        this.nickname = nickname;
+    }
+
 }
