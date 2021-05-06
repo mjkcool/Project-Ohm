@@ -22,9 +22,4 @@
     <string name="paticipant_1">미림인</string>
     <string name="paticipant_2">대기중</string>
 
-    <!-- 채팅 할 때 사용하는 것 -->
-    <string name="chatting_hint">입력하세요.</string>
-    <string name="chat_nickname">이름</string>
-    <string name="chat_saysomething">내가 하고 싶은 말 적기</string>
-
 </resources>
