@@ -42,19 +42,19 @@ class CardView_Adapter(private val models: List<CardView_Data>, private val cont
 
         view.setOnClickListener { //카드메뉴를 누를 시에 이동되는 클래스
             if (position == 0) {
-                val intent = Intent(context, MainPage_Activity::class.java)
+                val intent = Intent(context, Chating_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 1) {
-                val intent = Intent(context, MainPage_Activity::class.java)
+                val intent = Intent(context, Chating_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 2) {
-                val intent = Intent(context,  MainPage_Activity::class.java)
+                val intent = Intent(context,  Chating_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 3) {
-                val intent = Intent(context,  MainPage_Activity::class.java)
+                val intent = Intent(context,   Chating_Activity::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             }

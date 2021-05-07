@@ -21,5 +21,6 @@
     <!-- 대기실에 사용하는 다른사람의 프로필 -->
     <string name="paticipant_1">미림인</string>
     <string name="paticipant_2">대기중</string>
+    <string name="chatting_hint">이ㅂ</string>
 
 </resources>
