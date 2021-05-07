@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class Chating_Adapter extends RecyclerView.Adapter<Chating_Adapter.ViewHo
         private TextView chat_msg; //채팅 내용
         private View rootView;
 
-        public ViewHolder(LinearLayout v) {
+        public ViewHolder(ConstraintLayout v) {
             super(v);
             chat_msg = v.findViewById(R.id.chat_msg);
             chat_nickname = v.findViewById(R.id.chat_nickname);
@@ -38,7 +39,7 @@ public class Chating_Adapter extends RecyclerView.Adapter<Chating_Adapter.ViewHo
     @Override
     public Chating_Adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Create a new view, which defines the UI of the list item
-        LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_row_chat, parent, false);
+        ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_row_chat, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
