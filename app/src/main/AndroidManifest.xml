@@ -13,6 +13,7 @@
         <activity android:name=".Create_meeting_3_Activity" />
         <activity android:name=".Create_meeting_2_Activity" />
         <activity android:name=".Create_meeting_1_Activity" />
+        <activity android:name=".login_Activity"/>
         <activity android:name=".Chating_Activity"> <!-- 임시설정 : 채팅 구현  -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
