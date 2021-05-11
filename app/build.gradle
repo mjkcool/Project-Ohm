@@ -50,6 +50,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.7.0'
     //파이어베이스 구글 로그인 관련 디펜던시
     implementation 'com.google.firebase:firebase-auth:20.0.4'
+    implementation 'androidx.navigation:navigation-runtime:2.3.5'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

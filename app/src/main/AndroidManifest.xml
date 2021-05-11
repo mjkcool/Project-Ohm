@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="kr.hs.emirim.ohm">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="kr.hs.emirim.ohm">
 
     <application
         android:allowBackup="true"
@@ -9,10 +8,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".MainPage_Activity"></activity>
+        <activity android:name=".Mainpage"/>
         <activity android:name=".Create_meeting_3_Activity" />
         <activity android:name=".Create_meeting_2_Activity" />
         <activity android:name=".Create_meeting_1_Activity" />
+
         <activity android:name=".Chating_Activity"> <!-- 임시설정 : 채팅 구현  -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
