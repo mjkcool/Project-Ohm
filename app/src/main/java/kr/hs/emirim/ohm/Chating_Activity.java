@@ -73,7 +73,10 @@ public class Chating_Activity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Log.d("CHATCHAT", snapshot.getValue().toString()); //오류가 나서 값이 제대로 실행 되는지 보기 위한 코드
                 Chating_Data chat = snapshot.getValue(Chating_Data.class); //데이터값에 데이터 클래스를 넣어주는 것
-                ((Chating_Adapter) chatAapter).addChat(chat); //리사이클뷰 어뎁터에 데이터를 넣어 알려주는 것
+                chatlist.add(chat);
+                recyclerView.setAdapter(chatAapter);
+                //recyclerView.invalidate();
+                //((Chating_Adapter) chatAapter).addChat(chat); //리사이클뷰 어뎁터에 데이터를 넣어 알려주는 것
             }
 
             @Override
