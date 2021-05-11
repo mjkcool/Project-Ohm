@@ -4,26 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <!-- toolbar 생성 -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="410dp"
-        android:layout_height="66dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
 
     <!-- 채팅할 때 사용하는 리사이클뷰 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_View"
-        android:layout_width="411dp"
-        android:layout_height="520dp"
+        android:layout_width="416dp"
+        android:layout_height="670dp"
+        app:defaultNavHost="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.recyclerview.widget.RecyclerView>
 
     <!-- 채팅을 칠 때 키보드 입력창도 같이 위에 딸려 오는 것 -->
     <androidx.constraintlayout.widget.ConstraintLayout
