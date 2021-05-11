@@ -3,13 +3,20 @@ package kr.hs.emirim.ohm;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toolbar;
+
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,27 +27,45 @@ import java.util.List;
 
 public class Chating_Activity extends AppCompatActivity {
     private RecyclerView recyclerView; //리사이클뷰
-    public RecyclerView.Adapter chatAapter; //리사이클뷰에 들어갈 채팅 어챕터
+    public  RecyclerView.Adapter chatAapter; //리사이클뷰에 들어갈 채팅 어챕터
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
     private List<Chating_Data> chatlist; //채팅 데이터 리스트
 
-    private String nick = "nick1"; //닉네임 임시설정
+    private String nick = "nick2"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
 
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
 
     private DatabaseReference myRef; //파이어베이스 값을 불러오는 것
 
+    private ImageView exit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        chatting_send =  findViewById(R.id.chatting_send);
-        chatting_say = findViewById(R.id.chatting_say);
+        Toolbar toolbar = findViewById(R.id.toolbar); //toolbar 선언
+        setSupportActionBar(toolbar); //toolbar에 있는 기능들 꺼내기
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout); //레이아웃 선언
+        NavigationView navigationView = findViewById(R.id.nav_view); //네이게이션 선언
+
+        chatting_send =  findViewById(R.id.chatting_send); //메세지 보내는 거 id 선언
+        chatting_say = findViewById(R.id.chatting_say); //메세지 받는 거 id 선언
+
+        exit = findViewById(R.id.exit); //채팅방 나가는 것
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                final Intent intent = new Intent(this, Mainpage.class);
+//                startActivity(intent);
+            }
+        });
 
         chatting_send.setOnClickListener(new View.OnClickListener() { //버튼을 누를 시
-            @Override
+            @Override 
             public void onClick(View v) {
                 String msg = chatting_say.getText().toString(); //채팅 할 때 사용하는 메세지
 
@@ -60,7 +85,7 @@ public class Chating_Activity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this); 
         recyclerView.setLayoutManager(layoutManager); //리사이클뷰의 레이아웃을 정의
 
-        chatlist = new ArrayList<>();
+        chatlist = new ArrayList<>(); //전에 있는 채팅을 읽어오는것
         chatAapter = new Chating_Adapter(chatlist, Chating_Activity.this, nick);
         recyclerView.setAdapter(chatAapter);
 
@@ -99,5 +124,8 @@ public class Chating_Activity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void setSupportActionBar(Toolbar toolbar) {
     }
 }
