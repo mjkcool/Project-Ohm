@@ -9,11 +9,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Mainpage"/>
-        <activity android:name=".Create_meeting_3_Activity" />
-        <activity android:name=".Create_meeting_2_Activity" />
-        <activity android:name=".Create_meeting_1_Activity" />
-
-        <activity android:name=".Chating_Activity"> <!-- 임시설정 : 채팅 구현  -->
+        <activity android:name=".CreateMeeting3Activity" />
+        <activity android:name=".CreateMeeting2Activity" />
+        <activity android:name=".CreateMeeting1Activity" />
+        <activity android:name=".ChatingActivity"> <!-- 임시설정 : 채팅 구현  -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
