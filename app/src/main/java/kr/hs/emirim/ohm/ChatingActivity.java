@@ -4,15 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,39 +35,60 @@ public class ChatingActivity extends AppCompatActivity {
     private String nick = "nick2"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
 
     private EditText chatting_say; //채팅 칠 내용
-    private Button chatting_send; // 채팅 보내는 버튼
+    private ImageView chatting_send; // 채팅 보내는 버튼
 
     private DatabaseReference myRef; //파이어베이스 값을 불러오는 것
 
     private ImageView exit; //나가기 버튼
-
-    private AppBarConfiguration mAppBarConfiguration;
-    
-    private Toolbar toolbar;
+    private ImageView search; //검색하는 버튼
+    private ImageView drawer; //창을 열고 닫을 수 있는 버튼
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-//        Toolbar toolbar = findViewById(R.id.toolbar); //toolbar 선언
-//        setSupportActionBar(toolbar); //toolbar에 있는 기능들 꺼내기
+        chatting_send = (ImageView)  findViewById(R.id.chatting_send); //메세지 보내는 거 id 선언
+        chatting_say = (EditText) findViewById(R.id.chatting_say); //메세지 받는 거 id 선언
 
-//        DrawerLayout drawer = findViewById(R.id.drawer_layout); //레이아웃 선언
-//        NavigationView navigationView = findViewById(R.id.nav_view); //네이게이션 선언
+        exit = (ImageView) findViewById(R.id.exit); //채팅방 나가는 것
+        search = (ImageView) findViewById(R.id.seach_bar); //채팅을 하다가 모르는 거 검색
+        drawer = (ImageView) findViewById(R.id.show_bar); //채팅에서 필요한 정보를 보여줄 수 있는 것
 
-        chatting_send =  findViewById(R.id.chatting_send); //메세지 보내는 거 id 선언
-        chatting_say = findViewById(R.id.chatting_say); //메세지 받는 거 id 선언
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_View);
+        recyclerView.setHasFixedSize(true); //리사이클뷰의 크기와 넓이를 그대로 지정해주는 것
 
-        exit = findViewById(R.id.exit); //채팅방 나가는 것
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager); //리사이클뷰의 레이아웃을 정의
 
-//        NavController navController = Navigation.findNavController(this, R.id.my_recycler_View);
-//        NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-//        NavigationUI.setupWithNavController(navigationView, navController);
+        chatlist = new ArrayList<>(); //전에 있는 채팅을 읽어오는것
+        chatAapter = new ChatingAdapter(chatlist, ChatingActivity.this, nick);
+        recyclerView.setAdapter(chatAapter);
 
+        drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
+            @Override
+            public void onClick(View v) {
+                DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View);
+                if(!drawerLayout.isDrawerOpen(Gravity.RIGHT)){
+                    drawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            }
+        });
 
-        chatting_send.setOnClickListener(new View.OnClickListener() { //버튼을 누를 시
-            @Override 
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        chatting_send.setOnClickListener(new View.OnClickListener() { //채팅을 보내는 버튼을 누를 시
+            @Override
             public void onClick(View v) {
                 String msg = chatting_say.getText().toString(); //채팅 할 때 사용하는 메세지
 
@@ -83,21 +101,11 @@ public class ChatingActivity extends AppCompatActivity {
                 }
             }
         });
-        
-        recyclerView = findViewById(R.id.my_recycler_View);
-        recyclerView.setHasFixedSize(true); //리사이클뷰의 크기와 넓이를 그대로 지정해주는 것
 
-        layoutManager = new LinearLayoutManager(this); 
-        recyclerView.setLayoutManager(layoutManager); //리사이클뷰의 레이아웃을 정의
-
-        chatlist = new ArrayList<>(); //전에 있는 채팅을 읽어오는것
-        chatAapter = new ChatingAdapter(chatlist, ChatingActivity.this, nick);
-        recyclerView.setAdapter(chatAapter);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
         myRef = database.getReference();
-        
-        
+
         myRef.addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -129,15 +137,7 @@ public class ChatingActivity extends AppCompatActivity {
 
             }
         });
-    }
 
-//    private void setSupportActionBar(Toolbar toolbar) {
-//    }
-//
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        NavController navController = Navigation.findNavController(this, R.id.my_recycler_View);
-//        return NavigationUI.navigateUp(navController, mAppBarConfiguration)
-//                || super.onSupportNavigateUp();
-//    }
+
+    }
 }
