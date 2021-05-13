@@ -29,12 +29,12 @@ class CardViewAdapter(private val models: List<CardViewData>, private val contex
         val desc: TextView
         val day: TextView
 
-        imageView = view.findViewById(R.id.card_image)
+//        imageView = view.findViewById(R.id.card_image)
         title = view.findViewById(R.id.card_title)
         desc = view.findViewById(R.id.card_desc)
         day = view.findViewById(R.id.card_day)
 
-        imageView.setImageResource(models[position].image)
+//        imageView.setImageResource(models[position].image)
         title.text = models[position].title
         desc.text = models[position].desc
         day.text = models[position].day

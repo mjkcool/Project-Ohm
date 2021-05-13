@@ -40,11 +40,11 @@ class Mainpage :  AppCompatActivity() {
             viewPager!!.setAdapter(fragmentAdapter)
             viewPager!!.setClipToPadding(false) //이상한 패딩 값을 넣지 않는 것
 
-            val dpValue = 12
-            val d = resources.displayMetrics.density //dp를 정해주는 것
+            val dpValue = 10
+            val d = resources.displayMetrics.density //카드메뉴 값을 지정해주는 것
             val margin = (dpValue * d).toInt()
             viewPager!!.setPadding(margin, 0, margin, 0) //viewpager의 안에 있는 패딩값을 조절
-            //viewPager!!.setPageMargin(margin / 2) //viewpager의 마진을 조절
+            viewPager!!.setPageMargin(margin / 1) //viewpager의 마진을 조절
 
             // FragmentAdapter에 Fragment 추가, 카드메뉴 개수만큼 추가
             for (i in models.indices) {
@@ -57,7 +57,7 @@ class Mainpage :  AppCompatActivity() {
                 cardViewFragment.arguments = bundle
                 fragmentAdapter.addItem(cardViewFragment)
             }
-            fragmentAdapter.notifyDataSetChanged() //변동시 초기화를 해주는 코드
+            fragmentAdapter.notifyDataSetChanged() //
 
 
             goto_btn.setOnClickListener(View.OnClickListener {
