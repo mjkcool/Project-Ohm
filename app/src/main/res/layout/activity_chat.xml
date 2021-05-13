@@ -2,74 +2,72 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_bar_chat">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="end">
 
+    <include
+        layout="@layout/activity_bar_chat"
+        android:id="@+id/chat_toolbar"/>
 
     <!-- 채팅할 때 사용하는 리사이클뷰 -->
-
-    <!-- 채팅을 칠 때 키보드 입력창도 같이 위에 딸려 오는 것 -->
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_View"
-        android:layout_width="403dp"
-        android:layout_height="617dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="409dp"
+        android:layout_height="590dp"
+        android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.recyclerview.widget.RecyclerView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/chat_text"
-        android:layout_width="410dp"
-        android:layout_height="53dp"
-        android:orientation="horizontal"
+    <ImageView
+        android:id="@+id/chatting"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="2dp"
+        android:background="@drawable/edixtext_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_View">
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_View" />
 
-        <ImageView
-            android:id="@+id/chatting"
-            android:layout_width="382dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="9dp"
-            android:background="@drawable/edixtext_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/chatting_say"
+        android:layout_width="342dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="2dp"
+        android:background="@null"
+        android:hint="@string/chatting_hint"
+        android:textSize="11sp"
+        app:layout_constraintEnd_toStartOf="@+id/chatting_send"
+        app:layout_constraintStart_toStartOf="@+id/chatting"
+        app:layout_constraintTop_toBottomOf="@+id/my_recycler_View" />
 
-        <EditText
-            android:id="@+id/chatting_say"
-            android:layout_width="321dp"
-            android:layout_height="33dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="4dp"
-            android:background="@null"
-            android:hint="@string/chatting_hint"
-            android:textSize="11sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/chatting"
-            app:layout_constraintTop_toTopOf="@+id/chatting" />
+    <ImageView
+        android:id="@+id/chatting_send"
+        android:layout_width="37dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/button_2"
+        app:layout_constraintEnd_toEndOf="@+id/chatting"
+        app:layout_constraintTop_toTopOf="@+id/chatting" />
 
-        <Button
-            android:id="@+id/chatting_send"
-            android:layout_width="39dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="4dp"
-            android:layout_marginEnd="9dp"
-            android:background="@drawable/button_2"
-            app:layout_constraintEnd_toEndOf="@+id/chatting"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/chatting"
-            app:layout_constraintTop_toTopOf="@+id/chatting_say" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <!-- 채팅을 칠 때 키보드 입력창도 같이 위에 딸려 오는 것 -->
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/my_drawer_View"
+        android:layout_width="254dp"
+        android:layout_height="730dp"
+        android:layout_gravity="end"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/activity_nav_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.drawerlayout.widget.DrawerLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
