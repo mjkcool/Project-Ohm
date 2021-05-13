@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,11 +8,12 @@
     android:background="@drawable/participant_item_bg">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/ProfileImg"
-        android:layout_width="30.33dp"
-        android:layout_height="30.33dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
-        android:src="@tools:sample/avatars"
+        android:src="@mipmap/avatar_foreground"
         app:civ_border_color="#707070"
         app:civ_border_width="0.1dp"
         app:layout_constraintBottom_toBottomOf="parent"
