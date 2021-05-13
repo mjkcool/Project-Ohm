@@ -63,8 +63,6 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.4'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.ImaginativeShohag:Why-Not-Image-Carousel:v1.0.0'
-    implementation 'androidx.navigation:navigation-fragment:2.3.5'
-    implementation 'androidx.navigation:navigation-ui:2.3.5'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation "androidx.drawerlayout:drawerlayout:1.1.1"
+
 }
