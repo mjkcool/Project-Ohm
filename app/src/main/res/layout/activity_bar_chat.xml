@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
-        android:layout_width="411dp"
-        android:layout_height="53dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,57 +20,35 @@
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             android:gravity="center"
-            android:text="@string/chat_title1"
+            android:text="2학년 3반 반티"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16sp" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="407dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/bar_timer"
         android:layout_width="72dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="13.33dp"
+        android:background="@drawable/btn_white"
+        android:includeFontPadding="false"
+        android:padding="2dp"
+        android:singleLine="true"
         android:text="@string/timer"
         android:textAlignment="center"
-        android:background="@drawable/chatting_background2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/seach_bar"
-        android:layout_width="37dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="68dp"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/search" />
-
-    <ImageView
-        android:id="@+id/show_bar"
-        android:layout_width="37dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="330dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drawer" />
+        app:layout_constraintBottom_toBottomOf="@+id/appBarLayout"
+        app:layout_constraintStart_toStartOf="@+id/appBarLayout"
+        app:layout_constraintTop_toTopOf="@+id/appBarLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

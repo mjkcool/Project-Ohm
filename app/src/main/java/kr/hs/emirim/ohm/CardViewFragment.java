@@ -15,12 +15,12 @@ public class CardViewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_item, container, false);
+        View view = inflater.inflate(R.layout.item_room, container, false);
 
         ImageView card_image = view.findViewById(R.id.card_image);
-        TextView card_title = view.findViewById(R.id.card_title);
-        TextView card_desc = view.findViewById(R.id.card_desc);
-        TextView card_day = view.findViewById(R.id.card_day);
+        TextView card_title = view.findViewById(R.id.title_meeting_item);
+        TextView card_desc = view.findViewById(R.id.desc_meeting_item);
+        TextView card_day = view.findViewById(R.id.date_meeting_item);
 
 
         if (getArguments() != null) {
