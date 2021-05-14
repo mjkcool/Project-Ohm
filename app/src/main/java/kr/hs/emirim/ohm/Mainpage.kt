@@ -33,9 +33,10 @@ class Mainpage :  AppCompatActivity() {
             adapter = CardViewAdapter(models, this) //어뎁터를 선언 => 여기에 기본값을 알 수 있도록 선언
             viewPager = findViewById(R.id.viewPager) //페이저를 선언
 
-            models.add(CardViewData(R.drawable.inmain_people, "목적지로 가는 길", "2021.04.22", "5일전")) //카드메뉴 정보 값, 위에 올라갈 수록 최신순
-            models.add(CardViewData(R.drawable.inmain_people, "반민초 vs 민초", "2021.04.26", "하루전"))
-            models.add(CardViewData(R.drawable.inmain_people, "엄마 vs 아빠", "2021.04.01", "26일전"))
+            models.add(CardViewData("목적지로 가는 길", "2021.04.22", "5일전")) //카드메뉴 정보 값, 위에 올라갈 수록 최신순
+            models.add(CardViewData("반민초 vs 민초", "2021.04.26", "하루전"))
+            models.add(CardViewData("엄마 vs 아빠", "2021.04.01", "26일전"))
+            //models.add(CardViewData("목적지로 가는 길", "2021.04.22", "5일전")) //카드메뉴 정보 값, 위에 올라갈 수록 최신순
 
             viewPager!!.setAdapter(fragmentAdapter)
             viewPager!!.setClipToPadding(false) //이상한 패딩 값을 넣지 않는 것
@@ -50,7 +51,7 @@ class Mainpage :  AppCompatActivity() {
             for (i in models.indices) {
                 val cardViewFragment = CardViewFragment() 
                 val bundle = Bundle()
-                bundle.putInt("imgRes", models[i].image) //이미지를 불러올 때 사용하는 것
+                //bundle.putInt("imgRes", models[i].image) //이미지를 불러올 때 사용하는 것
                 bundle.putString("titleRes", models[i].title)
                 bundle.putString("descRes", models[i].desc)
                 bundle.putString("dayRes", models[i].day)

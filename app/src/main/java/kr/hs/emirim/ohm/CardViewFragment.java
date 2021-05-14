@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,7 +18,7 @@ public class CardViewFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_item, container, false);
 
-        ImageView card_image = view.findViewById(R.id.card_image);
+        ListView card_image = view.findViewById(R.id.card_list);
         TextView card_title = view.findViewById(R.id.card_title);
         TextView card_desc = view.findViewById(R.id.card_desc);
         TextView card_day = view.findViewById(R.id.card_day);
@@ -26,7 +27,6 @@ public class CardViewFragment extends Fragment {
         if (getArguments() != null) {
             Bundle args = getArguments();
             // MainActivity에서 받아온 Resource를 ImageView에 셋팅
-            card_image.setImageResource(args.getInt("imgRes"));
             card_title.setText(args.getString("titleRes"));
             card_desc.setText(args.getString("descRes"));
             card_day.setText(args.getString("dayRes"));
