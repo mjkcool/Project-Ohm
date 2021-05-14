@@ -47,7 +47,7 @@
     <!-- 카드메뉴를 보여주는 뷰페이저 -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/home_top_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="30.67dp"
@@ -56,7 +56,7 @@
         tools:layout_editor_absoluteX="31dp">
 
         <TextView
-            android:id="@+id/speed_text"
+            android:id="@+id/h1_title_01_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="43.33dp"
@@ -65,12 +65,12 @@
             android:textColor="#000000"
             android:textSize="20.00sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/createSet"
+            app:layout_constraintBottom_toTopOf="@+id/admission_layout_set"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/my_page"
+            android:id="@+id/User_profile_btn"
             android:layout_width="43.33dp"
             android:layout_height="43.33dp"
             android:src="@mipmap/avatar_foreground"
@@ -80,7 +80,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/createSet"
+            android:id="@+id/admission_layout_set"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -89,7 +89,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <EditText
-                android:id="@+id/invitation_code"
+                android:id="@+id/input_invitation_code"
                 android:layout_width="256.67dp"
                 android:layout_height="33.33dp"
                 android:layout_marginRight="8.67dp"
@@ -98,12 +98,12 @@
                 android:paddingHorizontal="6.67dp"
                 android:textSize="11sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/goto_btn"
+                app:layout_constraintEnd_toStartOf="@+id/admission_btn"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/goto_btn"
+                android:id="@+id/admission_btn"
                 android:layout_width="33.33dp"
                 android:layout_height="33.33dp"
                 android:adjustViewBounds="true"
@@ -118,7 +118,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/home_create_btn_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30.67dp"
@@ -127,40 +127,39 @@
         android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#E6EAFD"
         app:cardCornerRadius="6.67dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        app:layout_constraintEnd_toStartOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
+        app:layout_constraintEnd_toStartOf="@+id/home_book_btn_layout"
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/make_background"
+            android:id="@+id/btn_bg_layout01_home"
             android:layout_width="144.33dp"
             android:layout_height="231.33dp">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/bg_img01_home_create"
                 android:layout_width="52.33dp"
                 android:layout_height="111.13dp"
                 android:layout_marginStart="14dp"
                 android:layout_marginRight="8.73dp"
-                app:layout_constraintBottom_toTopOf="@+id/make_fondground"
-                app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
+                app:layout_constraintEnd_toStartOf="@+id/bg_img02_home_create"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/inmain1_1" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/bg_img02_home_create"
                 android:layout_width="57.23dp"
                 android:layout_height="111.13dp"
                 android:layout_marginStart="9dp"
                 android:layout_marginEnd="12dp"
-                app:layout_constraintBottom_toTopOf="@+id/make_fondground"
+                app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toEndOf="@+id/bg_img01_home_create"
                 app:srcCompat="@drawable/inmain1_2" />
 
             <LinearLayout
-                android:id="@+id/make_fondground"
+                android:id="@+id/txt_layout01_home_create"
                 android:layout_width="match_parent"
                 android:layout_height="71.33dp"
                 android:background="@drawable/main_background_white"
@@ -174,7 +173,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/make_subject"
+                    android:id="@+id/h2_subtitle_home_create"
                     android:layout_width="match_parent"
                     android:layout_height="22dp"
                     android:text="@string/make_text"
@@ -183,7 +182,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/make_object"
+                    android:id="@+id/desc_home_create"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
                     android:text="텍스트로 빠르고 간편하게\n회의를 생성해보세요."
@@ -194,7 +193,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/home_book_btn_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
@@ -203,28 +202,27 @@
         android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#FDF6E6"
         app:cardCornerRadius="6.67dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+        app:layout_constraintStart_toEndOf="@+id/home_create_btn_layout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/reservation_background"
+            android:id="@+id/btn_bg_layout02_home"
             android:layout_width="144.33dp"
             android:layout_height="231.33dp">
 
             <ImageView
-                android:id="@+id/inmain_ground2"
+                android:id="@+id/bg_img01_home_book"
                 android:layout_width="71dp"
                 android:layout_height="113.53dp"
-                app:layout_constraintBottom_toTopOf="@+id/reservation_fontground"
+                app:layout_constraintBottom_toTopOf="@+id/txt_layout02_home_book"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
                 app:srcCompat="@drawable/inmain2" />
 
             <LinearLayout
-                android:id="@+id/reservation_fontground"
+                android:id="@+id/txt_layout02_home_book"
                 android:layout_width="match_parent"
                 android:layout_height="71.33dp"
                 android:background="@drawable/main_background_white"
@@ -238,7 +236,7 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
-                    android:id="@+id/make_subject2"
+                    android:id="@+id/h2_subtitle_home_book"
                     android:layout_width="match_parent"
                     android:layout_height="22dp"
                     android:text="회의 예약"
@@ -247,7 +245,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/make_object2"
+                    android:id="@+id/desc_home_book"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
                     android:text="회의를 예약해두면 잊지 않게\n알림을 보내드립니다."
@@ -257,7 +255,7 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+        android:id="@+id/home_btm_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30.67dp"
@@ -268,7 +266,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/my_conference"
+            android:id="@+id/h1_title_02_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mainpage_text2"
@@ -279,7 +277,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewPager"
+            android:id="@+id/rooms_viewPage_home"
             android:layout_width="0dp"
             android:layout_height="133.33dp"
             android:layout_centerInParent="true"
@@ -288,7 +286,7 @@
             android:overScrollMode="never"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/my_conference">
+            app:layout_constraintTop_toBottomOf="@+id/h1_title_02_home">
 
         </androidx.viewpager.widget.ViewPager>
     </androidx.constraintlayout.widget.ConstraintLayout>
