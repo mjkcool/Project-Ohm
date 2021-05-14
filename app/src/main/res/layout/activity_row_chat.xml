@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <!-- 지금은 채팅에 집중하고 있습니다. 이미지는 나중에 추가할께요 ! -->
+    <!-- 디테일 잡는 중입니다 -->
 
     <!--내가 사용하고 있는 이름 -->
     <!--사용자가 지정해야기 때문에 텍스트를 작성 안 했습니다 ! -->
@@ -31,8 +32,11 @@
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="11sp"
+        android:background="@drawable/chat_bubble"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="20px"
+        android:layout_marginBottom="13px"
         app:layout_constraintTop_toBottomOf="@+id/chat_nickname" />
 </androidx.constraintlayout.widget.ConstraintLayout>
