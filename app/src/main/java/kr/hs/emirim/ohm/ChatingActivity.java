@@ -48,8 +48,8 @@ public class ChatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        chatting_send = (ImageView)  findViewById(R.id.chatting_send); //메세지 보내는 거 id 선언
-        chatting_say = (EditText) findViewById(R.id.chatting_say); //메세지 받는 거 id 선언
+        //chatting_send = (ImageView)  findViewById(R.id.chatting_send); //메세지 보내는 거 id 선언
+        //chatting_say = (EditText) findViewById(R.id.chatting_say); //메세지 받는 거 id 선언
 
         exit = (ImageView) findViewById(R.id.exit); //채팅방 나가는 것
 
@@ -67,7 +67,7 @@ public class ChatingActivity extends AppCompatActivity {
         recyclerView.setAdapter(chatAapter);
 
         //drawer.setOnClickListener(this);
-        drawer.setOnClickListener(View.OnClickListener { //drawer창의 이미지을 눌렀을 경우 열리는 코드
+        drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
             public void onClick(View v) {
                 DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View);
                 if(!drawerLayout.isDrawerOpen(Gravity.RIGHT)){
