@@ -11,5 +11,5 @@
         android:name="first"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_profile_set" />
+        tools:layout="@layout/fragment_nickname_set" />
 </FrameLayout>
