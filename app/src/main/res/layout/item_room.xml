@@ -28,7 +28,7 @@
             <!-- 카드뷰를 만들 때 사용하는 제목 -->
 
             <TextView
-                android:id="@+id/card_day"
+                android:id="@+id/date_meeting_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -42,7 +42,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/card_title"
+                android:id="@+id/title_meeting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -52,16 +52,16 @@
                 android:textColor="#000000"
                 android:textSize="13.33dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/card_desc" />
+                app:layout_constraintBottom_toTopOf="@+id/desc_meeting_item" />
 
             <!-- 카드뷰를 만든 날짜 -->
             <!-- ellipsize = "end" - 뒷 부분을 ...으로 표시 -->
             <!-- maxLine = "3" 에서는 작동 안함 -->
             <TextView
-                android:id="@+id/card_desc"
+                android:id="@+id/desc_meeting_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/card_title"
+                android:layout_below="@id/title_meeting_item"
                 android:drawablePadding="10dp"
                 android:ellipsize="end"
                 android:maxLines="3"
@@ -71,15 +71,16 @@
                 android:textSize="7.33dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_title" />
+                app:layout_constraintTop_toBottomOf="@+id/title_meeting_item" />
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="16.67dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="18dp"
                 android:layout_marginTop="3.33dp"
                 android:background="#B69B9B"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card_desc" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/desc_meeting_item" />
 
             <!-- 카드뷰에 표시할 사람을 표시 -->
 

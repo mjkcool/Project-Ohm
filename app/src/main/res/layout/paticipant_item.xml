@@ -7,7 +7,6 @@
     android:background="@drawable/participant_item_bg">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/ProfileImg"
         android:layout_width="30.33dp"
         android:layout_height="30.33dp"

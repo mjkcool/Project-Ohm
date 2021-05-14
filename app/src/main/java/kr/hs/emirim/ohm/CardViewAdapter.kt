@@ -22,7 +22,7 @@ class CardViewAdapter(private val models: List<CardViewData>, private val contex
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         layoutInflater = LayoutInflater.from(context)
-        val view = layoutInflater!!.inflate(R.layout.activity_item, container, false)
+        val view = layoutInflater!!.inflate(R.layout.item_room, container, false)
 
         val imageView: ImageView
         val title: TextView
@@ -30,9 +30,9 @@ class CardViewAdapter(private val models: List<CardViewData>, private val contex
         val day: TextView
 
 //        imageView = view.findViewById(R.id.card_image)
-        title = view.findViewById(R.id.card_title)
-        desc = view.findViewById(R.id.card_desc)
-        day = view.findViewById(R.id.card_day)
+        title = view.findViewById(R.id.title_meeting_item)
+        desc = view.findViewById(R.id.desc_meeting_item)
+        day = view.findViewById(R.id.date_meeting_item)
 
 //        imageView.setImageResource(models[position].image)
         title.text = models[position].title
@@ -41,19 +41,19 @@ class CardViewAdapter(private val models: List<CardViewData>, private val contex
 
         view.setOnClickListener { //카드메뉴를 누를 시에 이동되는 클래스
             if (position == 0) {
-                val intent = Intent(context, ChatingActivity::class.java)
+                val intent = Intent(context, Mainpage::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 1) {
-                val intent = Intent(context, ChatingActivity::class.java)
+                val intent = Intent(context, Mainpage::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 2) {
-                val intent = Intent(context,  ChatingActivity::class.java)
+                val intent = Intent(context,  Mainpage::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             } else if (position == 3) {
-                val intent = Intent(context,   ChatingActivity::class.java)
+                val intent = Intent(context, Mainpage::class.java)
                 //intent.putExtra("param", models.get(position).getTitle());
                 context.startActivity(intent)
             }
