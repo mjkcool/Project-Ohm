@@ -1,8 +1,10 @@
 package kr.hs.emirim.ohm
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -21,17 +23,17 @@ class Mainpage :  AppCompatActivity() {
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
+            setContentView(R.layout.activity_home)
 
-            val goto_btn = findViewById<ImageView>(R.id.goto_btn) //코드를 입력시 들어갈 수 있는 이미지버튼
-            val myprofile_btn = findViewById<ImageView>(R.id.my_page) //내 프로필로 넘어갈 수 있는 이미지버튼
-            val make_btn = findViewById<ImageView>(R.id.make_background) //회의생성으로 넘어갈 수 있는 이미지버튼
-            val reservation_btn = findViewById<ImageView>(R.id.reservation_background) //회의예약으로 넘어갈 수 있는 이미지버튼
+            val goto_btn = findViewById<Button>(R.id.admission_btn) //코드를 입력시 들어갈 수 있는 이미지버튼
+            val myprofile_btn = findViewById<ImageView>(R.id.User_profile_btn) //내 프로필로 넘어갈 수 있는 이미지버튼
+            val make_btn = findViewById<ImageView>(R.id.btn_bg_layout01_home) //회의생성으로 넘어갈 수 있는 이미지버튼
+            val reservation_btn = findViewById<ImageView>(R.id.btn_bg_layout02_home) //회의예약으로 넘어갈 수 있는 이미지버튼
 
             //goto_btn.visibility = View.INVISIBLE//View.GONE//View.VISIBLE
 
             adapter = CardViewAdapter(models, this) //어뎁터를 선언 => 여기에 기본값을 알 수 있도록 선언
-            viewPager = findViewById(R.id.viewPager) //페이저를 선언
+            viewPager = findViewById(R.id.rooms_viewPage_home) //페이저를 선언
 
             models.add(CardViewData("목적지로 가는 길", "2021.04.22", "5일전")) //카드메뉴 정보 값, 위에 올라갈 수록 최신순
             models.add(CardViewData("반민초 vs 민초", "2021.04.26", "하루전"))
@@ -63,7 +65,7 @@ class Mainpage :  AppCompatActivity() {
 
             goto_btn.setOnClickListener(View.OnClickListener {
                 if (i == true) {
-                    goto_btn.setImageResource(R.drawable.button1_1)
+                    goto_btn.setBackgroundColor(Color.parseColor("#1E349D"))
                     i = false
                     val intent = Intent(applicationContext, CreateMeeting1Activity::class.java)
                     startActivity(intent) //액티비티 띄우기

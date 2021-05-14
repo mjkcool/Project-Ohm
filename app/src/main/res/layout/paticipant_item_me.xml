@@ -6,13 +6,12 @@
     android:layout_height="45.33dp"
     android:background="@drawable/participant_item_bg">
 
-    <!--android:src="@tools:sample/avatars" -->
-
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ProfileImg"
         android:layout_width="30.33dp"
         android:layout_height="30.33dp"
         android:layout_marginStart="8dp"
+        android:src="@mipmap/avatar_foreground"
         app:civ_border_color="#707070"
         app:civ_border_width="0.1dp"
         app:layout_constraintBottom_toBottomOf="parent"

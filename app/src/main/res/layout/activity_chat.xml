@@ -2,125 +2,79 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:fitsSystemWindows="true"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:openDrawer="end">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="411dp"
-        android:layout_height="53dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!-- toolbar 생성 -->
-        <TextView
-            android:id="@+id/title_bar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:text="@string/chat_title1"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="407dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <TextView
-        android:id="@+id/bar_timer"
-        android:layout_width="72dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="300dp"
-        android:text="@string/timer"
-        android:textAlignment="center"
-        android:background="@drawable/chatting_background2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/seach_bar"
-        android:layout_width="37dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="68dp"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/search" />
-
-    <ImageView
-        android:id="@+id/show_bar"
-        android:layout_width="37dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="330dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drawer" />
+    <include
+        android:id="@+id/chat_toolbar"
+        layout="@layout/activity_bar_chat" />
 
     <!-- 채팅할 때 사용하는 리사이클뷰 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_View"
-        android:layout_width="409dp"
-        android:layout_height="590dp"
-        android:layout_marginTop="55dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="11.67dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/chat_toolbar">
+
     </androidx.recyclerview.widget.RecyclerView>
 
-    <ImageView
-        android:id="@+id/chatting"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="2dp"
-        android:background="@drawable/edixtext_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_View" />
-
-    <EditText
-        android:id="@+id/chatting_say"
-        android:layout_width="342dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="2dp"
-        android:background="@null"
-        android:hint="@string/chatting_hint"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toStartOf="@+id/chatting_send"
-        app:layout_constraintStart_toStartOf="@+id/chatting"
-        app:layout_constraintTop_toBottomOf="@+id/my_recycler_View" />
-
-    <ImageView
-        android:id="@+id/chatting_send"
-        android:layout_width="37dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/button_2"
-        app:layout_constraintEnd_toEndOf="@+id/chatting"
-        app:layout_constraintTop_toTopOf="@+id/chatting" />
-
     <!-- 채팅을 칠 때 키보드 입력창도 같이 위에 딸려 오는 것 -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/input_set"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#ffffff"
+        app:cardCornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="11.67dp"
+            android:layout_marginVertical="3.33dp"
+            android:background="@drawable/edixtext_background"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextTextMultiLine2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="13.33dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/my_drawer_View"
         android:layout_width="254dp"
@@ -131,6 +85,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </androidx.drawerlayout.widget.DrawerLayout>
+        app:layout_constraintTop_toTopOf="parent"></androidx.drawerlayout.widget.DrawerLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
