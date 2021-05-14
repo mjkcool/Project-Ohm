@@ -13,7 +13,6 @@
         android:layout_marginStart="34dp"
         android:layout_marginTop="39dp"
         android:layout_marginEnd="356dp"
-        android:background="@drawable/back_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

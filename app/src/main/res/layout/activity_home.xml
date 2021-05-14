@@ -126,12 +126,11 @@
         android:layout_marginLeft="30.67dp"
         android:layout_marginTop="13.33dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#E6EAFD"
         app:cardCornerRadius="6.67dp"
-        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toStartOf="@+id/home_book_btn_layout"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_top_layout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_bg_layout01_home"
@@ -201,12 +200,11 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="13.33dp"
         android:layout_marginRight="30.67dp"
-        android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#FDF6E6"
         app:cardCornerRadius="6.67dp"
-        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/home_create_btn_layout">
+        app:layout_constraintStart_toEndOf="@+id/home_create_btn_layout"
+        app:layout_constraintTop_toBottomOf="@+id/home_top_layout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_bg_layout02_home"

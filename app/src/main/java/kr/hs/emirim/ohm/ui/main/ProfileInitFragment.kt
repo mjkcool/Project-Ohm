@@ -18,7 +18,7 @@ class ProfileInitFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.first_nickname_fragment, container, false)
+        return inflater.inflate(R.layout.fragment_nickname_set, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
