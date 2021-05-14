@@ -11,7 +11,7 @@
     tools:context=".WaitingRoomActivity">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/back_btn_nickname_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/ic_toback" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/next_btn_nickname_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/h3_nickname_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="104.33dp"
