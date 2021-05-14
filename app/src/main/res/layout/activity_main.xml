@@ -121,7 +121,6 @@
         android:id="@+id/main_functions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFFFFF"
         android:paddingHorizontal="30.67dp"
         android:paddingTop="13.33dp"
         android:paddingBottom="20dp"
@@ -134,7 +133,6 @@
             android:layout_height="wrap_content"
             app:cardBackgroundColor="#FDF6E6"
             app:cardCornerRadius="6.67dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardView2"
             app:layout_constraintTop_toTopOf="parent">
@@ -191,10 +189,9 @@
             android:id="@+id/cardView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
             app:cardBackgroundColor="#E6EAFD"
             app:cardCornerRadius="6.67dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/cardView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -277,6 +274,7 @@
         <TextView
             android:id="@+id/my_conference"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/mainpage_text2"
             android:textColor="#000000"
             android:textSize="20sp"
