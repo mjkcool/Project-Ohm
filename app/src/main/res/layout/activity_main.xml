@@ -102,12 +102,12 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/goto_btn"
                 android:layout_width="33.33dp"
                 android:layout_height="33.33dp"
                 android:adjustViewBounds="true"
-                android:background="@drawable/button_1"
+                android:background="@drawable/btn_gray"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

@@ -1,8 +1,10 @@
 package kr.hs.emirim.ohm
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -23,7 +25,7 @@ class Mainpage :  AppCompatActivity() {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
 
-            val goto_btn = findViewById<ImageView>(R.id.goto_btn) //코드를 입력시 들어갈 수 있는 이미지버튼
+            val goto_btn = findViewById<Button>(R.id.goto_btn) //코드를 입력시 들어갈 수 있는 이미지버튼
             val myprofile_btn = findViewById<ImageView>(R.id.my_page) //내 프로필로 넘어갈 수 있는 이미지버튼
             val make_btn = findViewById<ImageView>(R.id.make_background) //회의생성으로 넘어갈 수 있는 이미지버튼
             val reservation_btn = findViewById<ImageView>(R.id.reservation_background) //회의예약으로 넘어갈 수 있는 이미지버튼
@@ -62,7 +64,7 @@ class Mainpage :  AppCompatActivity() {
 
             goto_btn.setOnClickListener(View.OnClickListener {
                 if (i == true) {
-                    goto_btn.setImageResource(R.drawable.button1_1)
+                    goto_btn.setBackgroundColor(Color.parseColor("#1E349D"))
                     i = false
                     val intent = Intent(applicationContext, CreateMeeting1Activity::class.java)
                     startActivity(intent) //액티비티 띄우기

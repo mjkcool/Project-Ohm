@@ -11,7 +11,7 @@
         android:layout_width="30.33dp"
         android:layout_height="30.33dp"
         android:layout_marginStart="8dp"
-        android:src="@tools:sample/avatars"
+        android:src="@mipmap/avatar_foreground"
         app:civ_border_color="#707070"
         app:civ_border_width="0.1dp"
         app:layout_constraintBottom_toBottomOf="parent"
