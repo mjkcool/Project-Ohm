@@ -32,7 +32,7 @@ class LoginActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     //google
     private lateinit var googleSignInClient: GoogleSignInClient
-    val GOOGLE_LOGIN_CODE = 9001
+    private val GOOGLE_LOGIN_CODE = 9001
 
     //facebook
     private lateinit var callbackManager: CallbackManager

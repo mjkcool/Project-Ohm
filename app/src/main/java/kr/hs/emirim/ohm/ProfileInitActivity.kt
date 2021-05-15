@@ -1,11 +1,11 @@
 package kr.hs.emirim.ohm
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.Toast
+import android.view.View
+import android.widget.*
+import androidx.core.app.ActivityCompat
 import kr.hs.emirim.ohm.fragments.FragInitImage
 import kr.hs.emirim.ohm.fragments.FragInitIntroduce
 import kr.hs.emirim.ohm.fragments.FragInitNickname
@@ -27,12 +27,14 @@ class ProfileInitActivity : AppCompatActivity() {
         toBackBtn.setOnClickListener{
             when(curFagNum){
                 0 ->{
-
+                    toBackBtn.visibility = View.INVISIBLE
                 }
                 1 ->{
+                    toBackBtn.visibility = View.VISIBLE
                     setFrag(--curFagNum)
                 }
                 2 ->{
+                    toBackBtn.visibility = View.VISIBLE
                     setFrag(--curFagNum)
                 }
             }
@@ -43,18 +45,26 @@ class ProfileInitActivity : AppCompatActivity() {
                 0 ->{
                     val nickname = findViewById<EditText>(R.id.input_nickname_set)
                     if (nickname.length() in 2..10){ //입력 필수 확인
+                        
+                        // ***파이어베이스에 닉네임 데이터 등록(필수)
+                        
                         setFrag(++curFagNum)
-                    }
-                    else{
+                    }else{
                         Toast.makeText(this, "2자 이상 10자 이하로 입력해주세요", Toast.LENGTH_SHORT)
                     }
-
                 }
                 1 ->{
+                    // 파이어베이스에 프로필사진 데이터 등록(선택)
+
                     setFrag(++curFagNum)
                 }
                 2 ->{
+                    // 파이어베이스에 한줄소개 데이터 등록(선택)
 
+                    //HomeActivity로 이동
+                    var intent = Intent(this, HomeActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK //실행 액티비티 외 모두 제거
+                    startActivity(intent)
                 }
             }
 

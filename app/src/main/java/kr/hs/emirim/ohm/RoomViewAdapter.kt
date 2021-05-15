@@ -15,9 +15,9 @@ import java.util.ArrayList
 class RoomViewAdapter(val context: Context, private val RoomData: ArrayList<RoomVo>): RecyclerView.Adapter<RoomViewAdapter.ViewHolder>(){
 
     inner class ViewHolder(view: View?) : RecyclerView.ViewHolder(view!!){
-        val title = view?.findViewById<TextView>(R.id.title_meeting_item)
-        val desc = view?.findViewById<TextView>(R.id.desc_meeting_item)
-        val day = view?.findViewById<TextView>(R.id.date_meeting_item)
+        private val title = view?.findViewById<TextView>(R.id.title_meeting_item)
+        private val desc = view?.findViewById<TextView>(R.id.desc_meeting_item)
+        private val day = view?.findViewById<TextView>(R.id.date_meeting_item)
 
         fun bind(room: RoomVo, context: Context){
             title?.text = room.title
