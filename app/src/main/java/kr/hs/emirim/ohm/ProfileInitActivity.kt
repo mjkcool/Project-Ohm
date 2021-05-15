@@ -11,7 +11,7 @@ class ProfileInitActivity : AppCompatActivity() {
         setContentView(R.layout.profile_init_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, ProfileInitFragment.newInstance())
+                    .replace(R.id.profileInitContainer, ProfileInitFragment.newInstance())
                     .commitNow()
         }
     }

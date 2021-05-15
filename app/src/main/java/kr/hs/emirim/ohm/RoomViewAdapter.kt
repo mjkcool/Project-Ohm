@@ -12,8 +12,6 @@ import androidx.fragment.app.FragmentPagerAdapter
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
 
-// (RecyclerView.Adapter<RecyclerView.ViewHolder!>?..RecyclerView.Adapter<*>?)
-
 class RoomViewAdapter(val context: Context, private val RoomData: ArrayList<RoomVo>): RecyclerView.Adapter<RoomViewAdapter.ViewHolder>(){
 
     inner class ViewHolder(view: View?) : RecyclerView.ViewHolder(view!!){

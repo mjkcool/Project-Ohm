@@ -9,10 +9,8 @@ import de.hdodenhof.circleimageview.CircleImageView
 import java.util.ArrayList
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var roomsRecyclerView: RecyclerView //회의 목록 뷰페이저
-    var roomData = ArrayList<RoomVo>() //기본 정보값
-    // var i = true //코드값으로 구분 => 다음 페이지로 넘어갈 때 **사용되지 않는 변수
-
+    lateinit var roomsRecyclerView: RecyclerView
+    var roomData = ArrayList<RoomVo>()
     lateinit var roomAdapter: RoomViewAdapter
 
     private lateinit var admissionBtn: Button //회의 입장 버튼
@@ -41,30 +39,6 @@ class HomeActivity : AppCompatActivity() {
 
         roomAdapter = RoomViewAdapter(this, roomData)
         roomsRecyclerView.adapter = roomAdapter
-
-
-//        val dpValue = 10
-//        val d = resources.displayMetrics.density //카드메뉴 값을 지정해주는 것
-//        val margin = (dpValue * d).toInt()
-//        roomsViewPager.setPadding(margin, 0, margin, 0) //viewpager의 안에 있는 패딩값을 조절
-//        roomsViewPager.pageMargin = margin / 1 //viewpager의 마진을 조절
-
-
-        // FragmentAdapter에 Fragment 추가
-//        for (i in roomData.indices) {
-//            var cardViewFragment = CardViewFragment()
-//            val bundle = Bundle()
-//            bundle.putString("titleRes", roomData[i].title)
-//            bundle.putString("descRes", roomData[i].desc)
-//            bundle.putString("dayRes", roomData[i].day)
-//            cardViewFragment.arguments = bundle
-//            roomViewAdapter.addItem(cardViewFragment)
-//        }
-//
-//        roomViewAdapter.notifyDataSetChanged()
-
-
-
 
 
 
