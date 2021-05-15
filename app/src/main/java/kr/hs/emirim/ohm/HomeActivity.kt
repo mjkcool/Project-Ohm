@@ -36,7 +36,6 @@ class HomeActivity : AppCompatActivity() {
         roomData.add(RoomVo("반민초 vs 민초", "2021.04.26", "하루전"))
         roomData.add(RoomVo("엄마 vs 아빠", "2021.04.01", "26일전"))
 
-
         roomAdapter = RoomViewAdapter(this, roomData)
         roomsRecyclerView.adapter = roomAdapter
 
