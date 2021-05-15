@@ -70,12 +70,12 @@ class LoginActivity: AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        // 사용자 정보가 있는지 확인하는 부분
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        // 사용자 정보가 있는지 확인하는 부분
+//        val currentUser = auth.currentUser
+//        updateUI(currentUser)
+//    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -117,7 +117,7 @@ class LoginActivity: AppCompatActivity() {
         //사용자 정보가 있다면?
         if(user != null){
             Toast.makeText(this, "로그인", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, ProfileInitActivity::class.java))
             finish()
         }
     }
@@ -135,11 +135,11 @@ class LoginActivity: AppCompatActivity() {
             }
 
             override fun onCancel() {
-                TODO("Not yet implemented")
+                Log.d("facebooklogin", "facebook:onCancel")
             }
 
             override fun onError(error: FacebookException?) {
-                TODO("Not yet implemented")
+                Log.d("facebooklogin", "facebook:onCancel")
             }
         })
     }
