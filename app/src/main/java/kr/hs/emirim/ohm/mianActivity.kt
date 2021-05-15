@@ -27,8 +27,8 @@ class Mainpage :  AppCompatActivity() {
 
             val goto_btn = findViewById<Button>(R.id.admission_btn) //코드를 입력시 들어갈 수 있는 이미지버튼
             val myprofile_btn = findViewById<ImageView>(R.id.User_profile_btn) //내 프로필로 넘어갈 수 있는 이미지버튼
-            val make_btn = findViewById<ImageView>(R.id.btn_bg_layout01_home) //회의생성으로 넘어갈 수 있는 이미지버튼
-            val reservation_btn = findViewById<ImageView>(R.id.btn_bg_layout02_home) //회의예약으로 넘어갈 수 있는 이미지버튼
+//            val make_btn = findViewById<ImageView>(R.id.btn_bg_layout01_home) //회의생성으로 넘어갈 수 있는 이미지버튼
+//            val reservation_btn = findViewById<ImageView>(R.id.btn_bg_layout02_home) //회의예약으로 넘어갈 수 있는 이미지버튼
 
             //goto_btn.visibility = View.INVISIBLE//View.GONE//View.VISIBLE
 
@@ -80,15 +80,15 @@ class Mainpage :  AppCompatActivity() {
                 startActivity(intent)
             }
 
-            make_btn.setOnClickListener {
-                val intent = Intent(application, MakeConferenceActivity::class.java)
-                startActivity(intent)
-            }
-
-            reservation_btn.setOnClickListener {
-                val intent = Intent(application, Reservation_conferenceActivity::class.java)
-                startActivity(intent)
-            }
+//            make_btn.setOnClickListener {
+//                val intent = Intent(application, MakeConferenceActivity::class.java)
+//                startActivity(intent)
+//            }
+//
+//            reservation_btn.setOnClickListener {
+//                val intent = Intent(application, Reservation_conferenceActivity::class.java)
+//                startActivity(intent)
+//            }
         }
 }
 

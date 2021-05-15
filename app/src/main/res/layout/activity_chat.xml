@@ -10,23 +10,20 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
-        android:layout_width="360dp"
+        android:layout_width="390dp"
         android:layout_height="53dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- toolbar 생성 --><![CDATA[
-        android:textColor="#000000"
-        android:textSize="16sp" />
-
-
-
-
-
-
-
-        ]]>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/title_bar"
@@ -39,18 +36,7 @@
             android:textColor="#000000"
             android:textSize="16sp" />
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="360dp"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <TextView
+        <TextView
         android:id="@+id/bar_timer"
         android:layout_width="72dp"
         android:layout_height="24dp"
@@ -89,6 +75,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/drawer" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
     <!-- 채팅할 때 사용하는 리사이클뷰 -->
 
@@ -165,5 +154,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.drawerlayout.widget.DrawerLayout>
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.drawerlayout.widget.DrawerLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
