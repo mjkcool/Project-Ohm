@@ -55,6 +55,7 @@
         android:hint="2자 이상 10자 이하"
         android:inputType="textPersonName"
         android:padding="5.67dp"
+        android:singleLine="true"
         android:textAlignment="center"
         android:textColorHint="#C2C2C2"
         android:textSize="18sp"

@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileInit" />
+        <activity android:name=".ProfileInitActivity" />
         <activity android:name=".CreateMeeting3Activity" />
         <activity android:name=".CreateMeeting2Activity" />
         <activity android:name=".CreateMeeting1Activity" />

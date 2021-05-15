@@ -4,12 +4,14 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileInit" >
+    android:layout_marginHorizontal="30.67dp"
+    android:layout_marginVertical="33.33dp"
+    tools:context=".ProfileInitActivity">
 
     <fragment
         android:id="@+id/first_nicknameset"
-        android:name="first"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout="@layout/fragment_nickname_set" />
+
 </FrameLayout>
