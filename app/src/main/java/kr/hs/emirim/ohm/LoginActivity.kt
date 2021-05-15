@@ -13,6 +13,16 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
+import com.google.firebase.auth.FacebookAuthProvider
+import java.util.*
 
 class LoginActivity: AppCompatActivity() {
 
@@ -22,13 +32,20 @@ class LoginActivity: AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     //google
     private lateinit var googleSignInClient: GoogleSignInClient
-    val GOOGLE_LOGIN_CODE = 9001 // Intent Request ID
+    val GOOGLE_LOGIN_CODE = 9001
+
+    //facebook
+    private lateinit var callbackManager: CallbackManager
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         auth = FirebaseAuth.getInstance()
+        //페이스북 로그인
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
 
         //구글 로그인 옵션
         var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -38,6 +55,8 @@ class LoginActivity: AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
+        callbackManager = CallbackManager.Factory.create()
+
         googleLoginBtn = findViewById(R.id.floatingActionButton)
         facebookLoginBtn = findViewById(R.id.floatingActionButton2)
 
@@ -46,20 +65,23 @@ class LoginActivity: AppCompatActivity() {
         }
 
         facebookLoginBtn.setOnClickListener() {
-
+            facebookLogin()
         }
 
     }
 
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
+        // 사용자 정보가 있는지 확인하는 부분
         val currentUser = auth.currentUser
         updateUI(currentUser)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        callbackManager?.onActivityResult(requestCode, resultCode, data)
+
         if (requestCode == GOOGLE_LOGIN_CODE) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
@@ -103,5 +125,33 @@ class LoginActivity: AppCompatActivity() {
     private fun googleLogin() {
         var signInIntent = googleSignInClient?.signInIntent
         startActivityForResult(signInIntent, GOOGLE_LOGIN_CODE)
+    }
+
+    private fun facebookLogin() {
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "email"))
+        LoginManager.getInstance().registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                handleFacebookAccessToken(loginResult.accessToken)
+            }
+
+            override fun onCancel() {
+                TODO("Not yet implemented")
+            }
+
+            override fun onError(error: FacebookException?) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+    // Facebook 토큰을 Firebase로 넘겨주는 코드
+    fun handleFacebookAccessToken(token: AccessToken) {
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        auth?.signInWithCredential(credential)
+            ?.addOnCompleteListener { task ->
+                //다음 페이지 이동
+                if (task.isSuccessful) {
+                    updateUI(auth?.currentUser)
+                }
+            }
     }
 }
