@@ -8,75 +8,36 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:openDrawer="end">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="390dp"
-        android:layout_height="53dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:background="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
         <TextView
             android:id="@+id/title_bar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="143dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="142dp"
             android:text="@string/chat_title1"
-            android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="16sp" />
 
         <TextView
-        android:id="@+id/bar_timer"
-        android:layout_width="72dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="280dp"
-        android:background="@drawable/chatting_background2"
-        android:text="@string/timer"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/time_bar"
+            android:layout_width="63dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="300dp"
+            android:text="@string/timer"/>
+    </androidx.appcompat.widget.Toolbar>
 
-    <ImageView
-        android:id="@+id/seach_bar"
-        android:layout_width="37dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="270dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="68dp"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/search" />
-
-    <ImageView
-        android:id="@+id/show_bar"
-        android:layout_width="37dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="300dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginEnd="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/drawer" />
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
 
 
     <!-- 채팅할 때 사용하는 리사이클뷰 -->
@@ -88,11 +49,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="11.67dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.695"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -145,10 +106,9 @@
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/my_drawer_View"
-        android:layout_width="233dp"
-        android:layout_height="match_parent"
+        android:layout_width="249dp"
+        android:layout_height="642dp"
         android:layout_gravity="end"
-        android:layout_marginTop="4dp"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/activity_nav_header"
         app:layout_constraintEnd_toEndOf="parent"

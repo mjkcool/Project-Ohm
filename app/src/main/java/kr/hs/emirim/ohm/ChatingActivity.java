@@ -6,18 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toolbar;
-
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +23,7 @@ import java.util.List;
 
 public class ChatingActivity extends AppCompatActivity {
 
-    /*
+
     private RecyclerView recyclerView; //리사이클뷰
     public  RecyclerView.Adapter chatAapter; //리사이클뷰에 들어갈 채팅 어챕터
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
@@ -141,8 +136,5 @@ public class ChatingActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
-    */
 }
