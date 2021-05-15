@@ -73,9 +73,9 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="11dp"
         android:foregroundGravity="fill_horizontal|center_vertical|center_horizontal"
         android:gravity="center"
         android:orientation="horizontal"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <View
-            android:layout_width="81.00dp"
+            android:layout_width="96.67dp"
             android:layout_height="1.33dp"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="51dp"
@@ -94,10 +94,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginHorizontal="19.00dp"
             android:gravity="center"
-            android:text="먼저 로그인해주세요"
+            android:text="소셜 로그인"
             android:textColor="#000000"
             android:textSize="13.33sp"
             android:textStyle="bold"
@@ -106,7 +105,7 @@
 
         <View
             android:id="@+id/view"
-            android:layout_width="81.00dp"
+            android:layout_width="96.67dp"
             android:layout_height="1.33dp"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="51dp"
@@ -118,12 +117,83 @@
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="33.33dp"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8.33dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/google_icon"
+                android:clickable="true"
+                app:backgroundTint="#1E349D"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
+                app:maxImageSize="22dp"
+                app:srcCompat="@drawable/google_icon" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3.33dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="Google"
+                android:textColor="#000000"
+                android:textSize="8sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8.33dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="#B15959"
+                android:clickable="true"
+                app:backgroundTint="#1E349D"
+                app:borderWidth="0dp"
+                app:elevation="0dp"
+                app:fabSize="mini"
+                app:maxImageSize="22dp"
+                app:srcCompat="@drawable/facebook_icon" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3.33dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="Facebook"
+                android:textColor="#000000"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

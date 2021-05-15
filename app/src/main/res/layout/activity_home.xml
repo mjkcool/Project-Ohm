@@ -76,7 +76,8 @@
             app:civ_border_color="#707070"
             app:civ_border_width="0.1dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:clickable="true"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/admission_layout_set"
@@ -130,7 +131,8 @@
         app:cardCornerRadius="6.67dp"
         app:layout_constraintEnd_toStartOf="@+id/home_book_btn_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_top_layout">
+        app:layout_constraintTop_toBottomOf="@+id/home_top_layout"
+        android:clickable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_bg_layout01_home"
@@ -146,7 +148,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
                 app:layout_constraintEnd_toStartOf="@+id/bg_img02_home_create"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/inmain1_1" />
+                app:srcCompat="@drawable/inmain1_1"
+                android:clickable="false"/>
 
             <ImageView
                 android:id="@+id/bg_img02_home_create"
@@ -157,7 +160,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bg_img01_home_create"
-                app:srcCompat="@drawable/inmain1_2" />
+                app:srcCompat="@drawable/inmain1_2"
+                android:clickable="false"/>
 
             <LinearLayout
                 android:id="@+id/txt_layout01_home_create"
@@ -171,7 +175,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                android:clickable="false">
 
                 <TextView
                     android:id="@+id/h2_subtitle_home_create"
@@ -180,14 +185,16 @@
                     android:text="@string/make_text"
                     android:textColor="#000000"
                     android:textSize="15.33sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:clickable="false"/>
 
                 <TextView
                     android:id="@+id/desc_home_create"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
                     android:text="텍스트로 빠르고 간편하게\n회의를 생성해보세요."
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    android:clickable="false"/>
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -204,12 +211,14 @@
         app:cardCornerRadius="6.67dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/home_create_btn_layout"
-        app:layout_constraintTop_toBottomOf="@+id/home_top_layout">
+        app:layout_constraintTop_toBottomOf="@+id/home_top_layout"
+        android:clickable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_bg_layout02_home"
             android:layout_width="144.33dp"
-            android:layout_height="231.33dp">
+            android:layout_height="231.33dp"
+            android:clickable="false">
 
             <ImageView
                 android:id="@+id/bg_img01_home_book"
@@ -219,7 +228,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/inmain2" />
+                app:srcCompat="@drawable/inmain2"
+                android:clickable="false"/>
 
             <LinearLayout
                 android:id="@+id/txt_layout02_home_book"
@@ -233,7 +243,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                android:clickable="false">
 
                 <TextView
                     android:id="@+id/h2_subtitle_home_book"
@@ -242,14 +253,16 @@
                     android:text="회의 예약"
                     android:textColor="#000000"
                     android:textSize="15.33sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:clickable="false"/>
 
                 <TextView
                     android:id="@+id/desc_home_book"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
                     android:text="회의를 예약해두면 잊지 않게\n알림을 보내드립니다."
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    android:clickable="false"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
