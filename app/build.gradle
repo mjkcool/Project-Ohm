@@ -67,7 +67,7 @@ dependencies {
     implementation 'com.github.ImaginativeShohag:Why-Not-Image-Carousel:v1.0.0'
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
     //페이스북 관련
-    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.facebook.android:facebook-android-sdk:5.+'
 
     implementation "com.karumi:dexter:5.0.0"
     implementation 'com.github.yalantis:ucrop:2.2.2'
