@@ -8,11 +8,42 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:openDrawer="end">
 
-    <include
-        android:id="@+id/chat_toolbar"
-        layout="@layout/activity_bar_chat" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/title_bar"
+            android:layout_width="100dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="143dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="142dp"
+            android:text="@string/chat_title1"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/time_bar"
+            android:layout_width="63dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="19dp"
+            android:layout_marginEnd="300dp"
+            android:text="@string/timer"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
 
     <!-- 채팅할 때 사용하는 리사이클뷰 -->
+
+    <!-- 채팅을 칠 때 키보드 입력창도 같이 위에 딸려 오는 것 -->
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_View"
         android:layout_width="0dp"
@@ -22,11 +53,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chat_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-    <!-- 채팅을 칠 때 키보드 입력창도 같이 위에 딸려 오는 것 -->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/input_set"
@@ -77,13 +106,14 @@
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/my_drawer_View"
-        android:layout_width="254dp"
-        android:layout_height="730dp"
+        android:layout_width="249dp"
+        android:layout_height="642dp"
         android:layout_gravity="end"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/activity_nav_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></androidx.drawerlayout.widget.DrawerLayout>
+        app:layout_constraintTop_toTopOf="parent">
+    </androidx.drawerlayout.widget.DrawerLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

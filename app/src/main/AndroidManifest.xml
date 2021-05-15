@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,6 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileInitActivity" />
+        <activity android:name=".ChatingActivity" />
+        <activity android:name=".HomeActivity" />
         <activity android:name=".CreateMeeting3Activity" />
         <activity android:name=".CreateMeeting2Activity" />
         <activity android:name=".CreateMeeting1Activity" />
