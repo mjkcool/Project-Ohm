@@ -76,7 +76,8 @@
             app:civ_border_color="#707070"
             app:civ_border_width="0.1dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:clickable="true"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/admission_layout_set"
@@ -93,9 +94,10 @@
                 android:layout_height="33.33dp"
                 android:layout_marginRight="8.67dp"
                 android:background="@drawable/chatting_background"
-                android:hint="@string/input_hint"
-                android:paddingHorizontal="6.67dp"
-                android:textSize="11sp"
+                android:hint="참여코드 입력"
+                android:textStyle="bold"
+                android:paddingHorizontal="10dp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/admission_btn"
                 app:layout_constraintStart_toStartOf="parent"
@@ -126,12 +128,12 @@
         android:layout_marginLeft="30.67dp"
         android:layout_marginTop="13.33dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#E6EAFD"
         app:cardCornerRadius="6.67dp"
-        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toStartOf="@+id/home_book_btn_layout"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_top_layout"
+        android:clickable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_bg_layout01_home"
@@ -147,7 +149,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
                 app:layout_constraintEnd_toStartOf="@+id/bg_img02_home_create"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/inmain1_1" />
+                app:srcCompat="@drawable/inmain1_1"
+                android:clickable="false"/>
 
             <ImageView
                 android:id="@+id/bg_img02_home_create"
@@ -158,7 +161,8 @@
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bg_img01_home_create"
-                app:srcCompat="@drawable/inmain1_2" />
+                app:srcCompat="@drawable/inmain1_2"
+                android:clickable="false"/>
 
             <LinearLayout
                 android:id="@+id/txt_layout01_home_create"
@@ -172,7 +176,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                android:clickable="false">
 
                 <TextView
                     android:id="@+id/h2_subtitle_home_create"
@@ -181,14 +186,16 @@
                     android:text="@string/make_text"
                     android:textColor="#000000"
                     android:textSize="15.33sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:clickable="false"/>
 
                 <TextView
                     android:id="@+id/desc_home_create"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
                     android:text="텍스트로 빠르고 간편하게\n회의를 생성해보세요."
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    android:clickable="false"/>
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -201,17 +208,18 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="13.33dp"
         android:layout_marginRight="30.67dp"
-        android:layout_marginBottom="20dp"
         app:cardBackgroundColor="#FDF6E6"
         app:cardCornerRadius="6.67dp"
-        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/home_create_btn_layout">
+        app:layout_constraintStart_toEndOf="@+id/home_create_btn_layout"
+        app:layout_constraintTop_toBottomOf="@+id/home_top_layout"
+        android:clickable="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_bg_layout02_home"
             android:layout_width="144.33dp"
-            android:layout_height="231.33dp">
+            android:layout_height="231.33dp"
+            android:clickable="false">
 
             <ImageView
                 android:id="@+id/bg_img01_home_book"
@@ -221,7 +229,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/inmain2" />
+                app:srcCompat="@drawable/inmain2"
+                android:clickable="false"/>
 
             <LinearLayout
                 android:id="@+id/txt_layout02_home_book"
@@ -235,7 +244,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent">
+                app:layout_constraintStart_toStartOf="parent"
+                android:clickable="false">
 
                 <TextView
                     android:id="@+id/h2_subtitle_home_book"
@@ -244,14 +254,16 @@
                     android:text="회의 예약"
                     android:textColor="#000000"
                     android:textSize="15.33sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:clickable="false"/>
 
                 <TextView
                     android:id="@+id/desc_home_book"
                     android:layout_width="match_parent"
                     android:layout_height="33dp"
                     android:text="회의를 예약해두면 잊지 않게\n알림을 보내드립니다."
-                    android:textSize="8sp" />
+                    android:textSize="8sp"
+                    android:clickable="false"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -260,9 +272,6 @@
         android:id="@+id/home_btm_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30.67dp"
-        android:layout_marginBottom="33.33dp"
-        android:paddingBottom="16.67dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -271,6 +280,8 @@
             android:id="@+id/h1_title_02_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="30.67dp"
+            android:gravity="left"
             android:text="@string/mainpage_text2"
             android:textColor="#000000"
             android:textSize="20sp"
@@ -278,19 +289,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/rooms_viewPage_home"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rooms_recycleView_home"
             android:layout_width="0dp"
-            android:layout_height="133.33dp"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginTop="8.67dp"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
+            android:layout_marginTop="3.67dp"
+            android:orientation="horizontal"
+            android:paddingLeft="30.67dp"
+            android:paddingBottom="45dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/h1_title_02_home">
 
-        </androidx.viewpager.widget.ViewPager>
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

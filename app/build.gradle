@@ -67,4 +67,6 @@ dependencies {
     implementation 'com.github.ImaginativeShohag:Why-Not-Image-Carousel:v1.0.0'
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
 
+    implementation "com.karumi:dexter:5.0.0"
+    implementation 'com.github.yalantis:ucrop:2.2.2'
 }

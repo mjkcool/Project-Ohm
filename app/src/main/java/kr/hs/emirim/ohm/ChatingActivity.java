@@ -28,6 +28,7 @@ import java.util.List;
 
 public class ChatingActivity extends AppCompatActivity {
 
+    /*
     private RecyclerView recyclerView; //리사이클뷰
     public  RecyclerView.Adapter chatAapter; //리사이클뷰에 들어갈 채팅 어챕터
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
@@ -143,4 +144,5 @@ public class ChatingActivity extends AppCompatActivity {
 
 
     }
+    */
 }
