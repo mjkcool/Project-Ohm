@@ -86,20 +86,20 @@ public class ChatingActivity extends AppCompatActivity {
 //
 //            }
 //        });
-//        chatting_send.setOnClickListener(new View.OnClickListener() { //채팅을 보내는 버튼을 누를 시
-//            @Override
-//            public void onClick(View v) {
-//                String msg = chatting_say.getText().toString(); //채팅 할 때 사용하는 메세지
-//
-//                if(msg != null) { //칠 내용이 null값이 아닌경우
-//                    ChatingData chat = new ChatingData(); //주의상황 : 파이어베이스에 다른 클래스의데이터베이스를 넣을거면 전에 있던 값을 삭제
-//                    chat.setNickname(nick);
-//                    chat.setMsg(msg);
-//                    myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
-//
-//                }
-//            }
-//        });
+        chatting_send.setOnClickListener(new View.OnClickListener() { //채팅을 보내는 버튼을 누를 시
+            @Override
+            public void onClick(View v) {
+                String msg = chatting_say.getText().toString(); //채팅 할 때 사용하는 메세지
+
+                if(msg != null) { //칠 내용이 null값이 아닌경우
+                    ChatingData chat = new ChatingData(); //주의상황 : 파이어베이스에 다른 클래스의데이터베이스를 넣을거면 전에 있던 값을 삭제
+                    chat.setNickname(nick);
+                    chat.setMsg(msg);
+                    myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
+
+                }
+            }
+        });
 
 
         FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
