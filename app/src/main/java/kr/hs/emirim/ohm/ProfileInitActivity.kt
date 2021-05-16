@@ -18,12 +18,17 @@ import kr.hs.emirim.ohm.fragments.FragInitImage.Companion.profileImageView
 import kr.hs.emirim.ohm.fragments.FragInitIntroduce
 import kr.hs.emirim.ohm.fragments.FragInitNickname
 import android.net.Uri
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 
 class ProfileInitActivity : AppCompatActivity() {
     companion object{
         lateinit var ProfileInitContext: Context
     }
+
     lateinit var toBackBtn: ImageButton
     lateinit var toNextBtn: Button
     private var curFagNum = 0
@@ -33,19 +38,34 @@ class ProfileInitActivity : AppCompatActivity() {
     private lateinit var myUri: String
     lateinit var nickname : String
 
+    private lateinit var database: DatabaseReference
+
+    fun initializeDbRef() {
+        database = Firebase.database.reference
+    }
+
+    val ref = FirebaseDatabase.getInstance().getReference("users")
+
+     fun checkFirst() {
+        ref.child(auth.currentUser.uid.toString()).get().addOnSuccessListener {
+            if(it.value != null) {
+                updateUI(auth.currentUser)
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        auth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+        checkFirst()
         setContentView(R.layout.profile_init_activity)
         ProfileInitContext = this
-        
         toBackBtn = findViewById(R.id.back_btn_nickname_set)
         toNextBtn = findViewById(R.id.next_btn_nickname_set)
 
-
-
-
         setFrag(curFagNum) //첫 프래그먼트
+
+        initializeDbRef()
 
         toBackBtn.setOnClickListener{
             when(curFagNum){
@@ -68,8 +88,6 @@ class ProfileInitActivity : AppCompatActivity() {
                     if (nickname.length in 2..10){ //입력 필수 확인
 
                         // ***파이어베이스에 닉네임 데이터 등록(필수)
-
-
                         setFrag(++curFagNum)
                     }
                     else{
@@ -80,13 +98,12 @@ class ProfileInitActivity : AppCompatActivity() {
                 1 ->{
                     // 파이어베이스에 프로필사진 데이터 등록(선택)
                     val profileImg = findViewById<CircleImageView>(R.id.init_profileimg_view) //등록할 이미지 데이터를 가진 객체(데이터 아님, 데이터 직접 추출해주길..감사^^)
-
                     setFrag(++curFagNum)
                 }
                 2 ->{
                     // 파이어베이스에 한줄소개 데이터 등록(선택)
                     val introduceTxt = findViewById<EditText>(R.id.input_introduce_set).text //등록할 텍스트 데이터
-                    moveandadd(introduceTxt.toString(), nickname)
+                    writeNewUser(nickname, introduceTxt.toString())
 
                 }
             }
@@ -127,24 +144,23 @@ class ProfileInitActivity : AppCompatActivity() {
         }
     }
 
-    fun moveandadd(nickname: String,introduceTxt : String){
-        val hashMap: HashMap<Any, String> = HashMap()
-        hashMap["uid"] = auth.uid.toString()
-        hashMap["nickname"] = nickname
-//        hashMap["profileImg"] = profileImg.toString()
-        hashMap["introduceTxt"] = introduceTxt
 
-        val ref = FirebaseDatabase.getInstance().getReference("User")
-        ref.push().setValue(hashMap)
+    fun writeNewUser(nickname: String, introduceTxt: String) {
+        val user = User(nickname, introduceTxt)
+        database.child("users").child(auth.currentUser.uid.toString()).setValue(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "사용자 디비 적재 성공", Toast.LENGTH_SHORT).show()
-                var intent = Intent(this, HomeActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK //실행 액티비티 외 모두 제거
-                startActivity(intent)
+                updateUI(auth.currentUser)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "사용자 디비 적재 실패", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun updateUI(user: FirebaseUser) {
+        var intent = Intent(this, HomeActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK //실행 액티비티 외 모두 제거
+        startActivity(intent)
     }
 
 
