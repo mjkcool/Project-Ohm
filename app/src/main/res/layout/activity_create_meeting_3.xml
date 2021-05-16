@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateMeeting1Activity">
+    tools:context=".CreateMeeting3Activity">
 
     <Button
-        android:id="@+id/back_button"
+        android:id="@+id/back_button3"
         android:layout_width="55.85px"
         android:layout_height="42.72px"
         android:layout_marginStart="34dp"
@@ -19,7 +19,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/next_button"
+        android:id="@+id/next_button3"
         android:layout_width="156px"
         android:layout_height="58px"
         android:layout_marginStart="260dp"

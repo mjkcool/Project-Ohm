@@ -8,7 +8,7 @@
     tools:context=".CreateMeeting1Activity">
 
     <Button
-        android:id="@+id/back_button"
+        android:id="@+id/back_button1"
         android:layout_width="55.85px"
         android:layout_height="42.72px"
         android:layout_marginStart="34dp"
@@ -20,7 +20,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/next_button"
+        android:id="@+id/next_button1"
         android:layout_width="74px"
         android:layout_height="58px"
         android:layout_marginStart="293dp"
