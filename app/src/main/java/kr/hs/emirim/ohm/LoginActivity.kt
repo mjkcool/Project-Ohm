@@ -3,6 +3,7 @@ package kr.hs.emirim.ohm
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -38,13 +39,14 @@ class LoginActivity: AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
         auth = FirebaseAuth.getInstance()
         //페이스북 로그인
-        FacebookSdk.sdkInitialize(application);
-        AppEventsLogger.activateApp(application);
+//        FacebookSdk.sdkInitialize(getApplicationContext());
+//        AppEventsLogger.activateApp(this);
 
         //구글 로그인 옵션
         var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -115,7 +117,7 @@ class LoginActivity: AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         //사용자 정보가 있다면?
         if(user != null){
-//            Toast.makeText(this, "로그인", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "로그인", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, ProfileInitActivity::class.java))
             finish()
         }

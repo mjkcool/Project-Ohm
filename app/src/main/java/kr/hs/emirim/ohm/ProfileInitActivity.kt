@@ -1,24 +1,24 @@
 package kr.hs.emirim.ohm
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import com.theartofdev.edmodo.cropper.CropImage
 import de.hdodenhof.circleimageview.CircleImageView
 import kr.hs.emirim.ohm.fragments.FragInitImage
 import kr.hs.emirim.ohm.fragments.FragInitImage.Companion.profileImageView
 import kr.hs.emirim.ohm.fragments.FragInitIntroduce
 import kr.hs.emirim.ohm.fragments.FragInitNickname
+import android.net.Uri
+
 
 class ProfileInitActivity : AppCompatActivity() {
     companion object{
@@ -28,16 +28,21 @@ class ProfileInitActivity : AppCompatActivity() {
     lateinit var toNextBtn: Button
     private var curFagNum = 0
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var imageUri: Uri
     private lateinit var myUri: String
+    lateinit var nickname : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        auth = FirebaseAuth.getInstance()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.profile_init_activity)
         ProfileInitContext = this
         
         toBackBtn = findViewById(R.id.back_btn_nickname_set)
         toNextBtn = findViewById(R.id.next_btn_nickname_set)
+
+
 
 
         setFrag(curFagNum) //첫 프래그먼트
@@ -59,11 +64,11 @@ class ProfileInitActivity : AppCompatActivity() {
         toNextBtn.setOnClickListener{
             when(curFagNum){
                 0 ->{
-                    val nickname = findViewById<EditText>(R.id.input_nickname_set).text
+                    nickname = findViewById<EditText>(R.id.input_nickname_set).text.toString()
                     if (nickname.length in 2..10){ //입력 필수 확인
 
                         // ***파이어베이스에 닉네임 데이터 등록(필수)
-                        nickname //등록할 텍스트 데이터(.text가 필수인가..?)
+
 
                         setFrag(++curFagNum)
                     }
@@ -81,12 +86,8 @@ class ProfileInitActivity : AppCompatActivity() {
                 2 ->{
                     // 파이어베이스에 한줄소개 데이터 등록(선택)
                     val introduceTxt = findViewById<EditText>(R.id.input_introduce_set).text //등록할 텍스트 데이터
-                    
+                    moveandadd(introduceTxt.toString(), nickname)
 
-                    //HomeActivity로 이동
-                    var intent = Intent(this, HomeActivity::class.java)
-                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK //실행 액티비티 외 모두 제거
-                    startActivity(intent)
                 }
             }
 
@@ -125,5 +126,26 @@ class ProfileInitActivity : AppCompatActivity() {
             profileImageView.setImageURI(result.uri)
         }
     }
+
+    fun moveandadd(nickname: String,introduceTxt : String){
+        val hashMap: HashMap<Any, String> = HashMap()
+        hashMap["uid"] = auth.uid.toString()
+        hashMap["nickname"] = nickname
+//        hashMap["profileImg"] = profileImg.toString()
+        hashMap["introduceTxt"] = introduceTxt
+
+        val ref = FirebaseDatabase.getInstance().getReference("User")
+        ref.push().setValue(hashMap)
+            .addOnSuccessListener {
+                Toast.makeText(this, "사용자 디비 적재 성공", Toast.LENGTH_SHORT).show()
+                var intent = Intent(this, HomeActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK //실행 액티비티 외 모두 제거
+                startActivity(intent)
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "사용자 디비 적재 실패", Toast.LENGTH_SHORT).show()
+            }
+    }
+
 
 }
