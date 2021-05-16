@@ -10,35 +10,13 @@
     android:paddingHorizontal="0dp"
     tools:context=".WaitingRoomActivity">
 
-    <ImageButton
-        android:id="@+id/back_btn_nickname_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_toback" />
-
-    <Button
-        android:id="@+id/next_btn_nickname_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:text="다음"
-        android:textColor="#000000"
-        android:textSize="13.33sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
-        android:id="@+id/h3_nickname_set"
+        android:id="@+id/h3_introduce_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="104.33dp"
         android:gravity="center"
-        android:text="여러분만의 닉네임을 설정해주세요!"
+        android:text="한줄소개로 여러분을 표현해보세요!"
         android:textColor="#000000"
         android:textSize="13.33sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/input_nickname_set"
+        android:id="@+id/input_introduce_set"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="79.67dp"
@@ -61,6 +39,6 @@
         android:textSize="13.33sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/h3_nickname_set" />
+        app:layout_constraintTop_toBottomOf="@+id/h3_introduce_set" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
