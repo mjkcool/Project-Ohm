@@ -44,20 +44,10 @@ class ProfileInitActivity : AppCompatActivity() {
         database = Firebase.database.reference
     }
 
-    val ref = FirebaseDatabase.getInstance().getReference("users")
-
-     fun checkFirst() {
-        ref.child(auth.currentUser.uid.toString()).get().addOnSuccessListener {
-            if(it.value != null) {
-                updateUI(auth.currentUser)
-            }
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         auth = FirebaseAuth.getInstance()
-        checkFirst()
         setContentView(R.layout.profile_init_activity)
         ProfileInitContext = this
         toBackBtn = findViewById(R.id.back_btn_nickname_set)
