@@ -10,27 +10,7 @@
     android:paddingHorizontal="0dp"
     tools:context=".WaitingRoomActivity">
 
-    <ImageButton
-        android:id="@+id/back_btn_nickname_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_toback" />
 
-    <Button
-        android:id="@+id/next_btn_nickname_set"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:minWidth="0dp"
-        android:minHeight="0dp"
-        android:text="다음"
-        android:textColor="#000000"
-        android:textSize="13.33sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/h3_nickname_set"
