@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "496573870700-l3etg6d86r1ujj571jkdq4qq2227gncc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.hs.emirim.ohm",
+            "certificate_hash": "8178c96ea5b19fc0caa0dcfa180d81afb16e918c"
+          }
+        },
+        {
           "client_id": "496573870700-p78926alvr9hqd33sbpqigiktuc2k7j5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
