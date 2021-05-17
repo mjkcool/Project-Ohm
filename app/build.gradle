@@ -28,7 +28,6 @@ android {
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -68,8 +67,7 @@ dependencies {
     implementation 'com.github.ImaginativeShohag:Why-Not-Image-Carousel:v1.0.0'
     implementation "androidx.drawerlayout:drawerlayout:1.1.1"
     //페이스북 관련
-    implementation 'com.facebook.android:facebook-android-sdk:5.4.0'
-
+    implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
     implementation "com.karumi:dexter:5.0.0"
     implementation 'com.github.yalantis:ucrop:2.2.2'
 }

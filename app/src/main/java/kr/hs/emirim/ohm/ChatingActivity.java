@@ -23,7 +23,6 @@ import java.util.List;
 
 public class ChatingActivity extends AppCompatActivity {
 
-
     private RecyclerView recyclerView; //리사이클뷰
     public  RecyclerView.Adapter chatAapter; //리사이클뷰에 들어갈 채팅 어챕터
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
@@ -50,7 +49,6 @@ public class ChatingActivity extends AppCompatActivity {
         //chatting_say = (EditText) findViewById(R.id.chatting_say); //메세지 받는 거 id 선언
 
         exit = (ImageView) findViewById(R.id.exit); //채팅방 나가는 것
-
         search = (ImageView) findViewById(R.id.seach_bar); //채팅을 하다가 모르는 거 검색
         //drawer = (ImageView) findViewById(R.id.show_bar); //채팅에서 필요한 정보를 보여줄 수 있는 것
         drawer = (TextView)findViewById(R.id.title_bar);
