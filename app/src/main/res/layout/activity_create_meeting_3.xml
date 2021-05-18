@@ -52,26 +52,56 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/timer"
-        android:layout_width="80.667dp"
-        android:layout_height="26.667dp"
-        android:layout_marginStart="139.667dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="139.667dp"
-        android:layout_marginBottom="384dp"
-        android:background="@drawable/timer"
-        android:gravity="center"
-        android:text="00:00:00"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.017"
-        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/hour"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:inputType="number"
+        android:hint="00"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="106dp"
+        tools:layout_editor_absoluteY="228dp" />
+
+    <EditText
+        android:id="@+id/min"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:hint="00"
+        android:inputType="number"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="156dp"
+        tools:layout_editor_absoluteY="228dp" />
+
+    <EditText
+        android:id="@+id/second"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:hint="00"
+        android:inputType="number"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="206dp"
+        tools:layout_editor_absoluteY="228dp" />
+
+    <!--    <TextView-->
+<!--        android:id="@+id/timer"-->
+<!--        android:layout_width="80.667dp"-->
+<!--        android:layout_height="26.667dp"-->
+<!--        android:layout_marginStart="139.667dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginEnd="139.667dp"-->
+<!--        android:layout_marginBottom="384dp"-->
+<!--        android:background="@drawable/timer"-->
+<!--        android:gravity="center"-->
+<!--        android:text="00:00:00"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="17sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.475"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView"-->
+<!--        app:layout_constraintVertical_bias="0.017"-->
+<!--        tools:ignore="MissingConstraints" />-->
 
     <!--    <TimePicker-->
 <!--        android:id="@+id/time"-->

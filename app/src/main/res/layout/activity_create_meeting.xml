@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".create_meeting">
+
+    <!-- create_meeting_1 -->
+    <FrameLayout
+        android:id="@+id/CM_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/back_button1"
+            android:layout_width="18.617dp"
+            android:layout_height="14.240dp"
+            android:layout_marginStart="30.667dp"
+            android:layout_marginTop="33.333dp"
+            android:layout_marginEnd="310.733dp"
+            android:layout_marginBottom="592.433dp"
+            android:background="@drawable/ic_toback"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/next_button1"
+            android:layout_width="24.667dp"
+            android:layout_height="19.333dp"
+            android:layout_marginStart="304.667dp"
+            android:layout_marginTop="30.667dp"
+            android:layout_marginEnd="30.667dp"
+            android:layout_marginBottom="592.433dp"
+            android:background="#00ff0000"
+            android:text="다음"
+            android:textColor="#4D000000"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back_button1"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="135.333dp"
+            android:layout_height="19.333dp"
+            android:layout_marginStart="112.333dp"
+            android:layout_marginTop="190dp"
+            android:layout_marginEnd="112.333dp"
+            android:text="방 제목을 입력해 주세요."
+            android:textColor="#CC000000"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/room_name"
+            android:layout_width="260dp"
+            android:layout_height="19.333dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="230dp"
+            android:layout_marginEnd="50dp"
+            android:maxLength="30"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/text_number"
+            android:layout_width="29dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="290dp"
+            android:layout_marginTop="269.333dp"
+            android:layout_marginEnd="49.333dp"
+            android:layout_marginBottom="356dp"
+            android:text="0/30"
+            android:textColor="#CC000000"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.887"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/room_name"
+            tools:ignore="MissingConstraints" />
+
+    </FrameLayout>
+
+    <!-- create_meeting_2 -->
+    <fragment
+        android:id="@+id/CM_2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/back_button2"
+            android:layout_width="18.617dp"
+            android:layout_height="14.240dp"
+            android:layout_marginStart="30.667dp"
+            android:layout_marginTop="33.333dp"
+            android:layout_marginEnd="310.733dp"
+            android:layout_marginBottom="592.433dp"
+            android:background="@drawable/ic_toback"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/next_button2"
+            android:layout_width="24.667dp"
+            android:layout_height="19.333dp"
+            android:layout_marginStart="304.667dp"
+            android:layout_marginTop="30.667dp"
+            android:layout_marginEnd="30.667dp"
+            android:layout_marginBottom="592.433dp"
+            android:background="#00ff0000"
+            android:text="다음"
+            android:textColor="#4D000000"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back_button2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="148dp"
+            android:layout_height="19.333dp"
+            android:layout_marginStart="106dp"
+            android:layout_marginTop="190dp"
+            android:layout_marginEnd="106dp"
+            android:text="회의 주제를 입력해 주세요."
+            android:textColor="#CC000000"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/meeting_topic"
+            android:layout_width="260dp"
+            android:layout_height="19.333dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="230dp"
+            android:layout_marginEnd="50dp"
+            android:maxLength="30"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/text_number2"
+            android:layout_width="29dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="290dp"
+            android:layout_marginTop="269.333dp"
+            android:layout_marginEnd="49.333dp"
+            android:layout_marginBottom="356dp"
+            android:text="0/30"
+            android:textColor="#CC000000"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.887"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meeting_topic"
+            tools:ignore="MissingConstraints" />
+
+    </fragment>
+
+    <!-- create_meeting_3 -->
+    <fragment
+        android:id="@+id/CM_3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/back_button3"
+            android:layout_width="18.617dp"
+            android:layout_height="14.240dp"
+            android:layout_marginStart="30.667dp"
+            android:layout_marginTop="33.333dp"
+            android:layout_marginEnd="310.733dp"
+            android:layout_marginBottom="592.433dp"
+            android:background="@drawable/ic_toback"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/next_button3"
+            android:layout_width="52dp"
+            android:layout_height="19.333dp"
+            android:layout_marginStart="277.333dp"
+            android:layout_marginTop="30.667dp"
+            android:layout_marginEnd="30.667dp"
+            android:background="#00ff0000"
+            android:text="코드생성"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back_button3"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="148dp"
+            android:layout_height="19.333dp"
+            android:layout_marginStart="106dp"
+            android:layout_marginTop="190dp"
+            android:layout_marginEnd="106dp"
+            android:text="회의 시간을 설정해 주세요."
+            android:textColor="#CC000000"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/hour"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:inputType="number"
+            android:hint="00"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="106dp"
+            tools:layout_editor_absoluteY="228dp" />
+
+        <EditText
+            android:id="@+id/min"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:hint="00"
+            android:inputType="number"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="156dp"
+            tools:layout_editor_absoluteY="228dp" />
+
+        <EditText
+            android:id="@+id/second"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:hint="00"
+            android:inputType="number"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="206dp"
+            tools:layout_editor_absoluteY="228dp" />
+
+    </fragment>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
