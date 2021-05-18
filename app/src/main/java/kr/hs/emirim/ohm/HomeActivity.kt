@@ -41,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
         roomsRecyclerView.adapter = roomAdapter
 
         createMeetingBtn.setOnClickListener ({
-            val intent = Intent(this, CreateMeeting1Activity::class.java)
+            val intent = Intent(this, create_meeting::class.java)
             startActivity(intent)
         })
 
