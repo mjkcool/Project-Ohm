@@ -41,6 +41,19 @@
     <!-- 페이스북 관련 -->
     <string name="facebook_app_id">323192849161088</string>
     <string name="fb_login_protocol_scheme">fb323192849161088</string>
+    <string name="voit_title">2학년 3반의 반티를 뽑아봐요</string>
+    <string name="voit_text">2학년 3반의 반티를 뽑아봐요.</string>
+    <string name="voit_title1">해리포터 망토</string>
+    <string name="voit_title2">이누아샤</string>
+    <string name="voit_title3">손오공 밴드 + 헤어밴드</string>
+    <string name="voit_button">투표하기</string>
+    <string name="voit_main_title1">해리포터 망토</string>
+    <string name="voit_main_title2">이누아샤</string>
+    <string name="voit_main_title3">손오공 밴드 + 헤어밴드</string>
+    <string name="voit_main_plus">항목 추가</string>
+    <string name="voit_main_btn">저장하고 나가기</string>
+    <string name="voit_main_title1_1">투표 제목을 입력하세요</string>
+    <string name="voit_main_title">항목을 입력해주세요.</string>
 
 
 </resources>
