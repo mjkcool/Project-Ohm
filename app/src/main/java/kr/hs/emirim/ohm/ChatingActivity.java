@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +42,7 @@ public class ChatingActivity extends AppCompatActivity {
     private ImageView search; //검색하는 버튼
     //private ImageView drawer; //창을 열고 닫을 수 있는 버튼
     private TextView drawer;
+    private Button goto_voit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class ChatingActivity extends AppCompatActivity {
         exit = (ImageView) findViewById(R.id.exit); //채팅방 나가는 것
         search = (ImageView) findViewById(R.id.seach_bar); //채팅을 하다가 모르는 거 검색
         //drawer = (ImageView) findViewById(R.id.show_bar); //채팅에서 필요한 정보를 보여줄 수 있는 것
+        goto_voit = (Button)findViewById(R.id.voit_button); //투표방으로 넘어가는 버튼
         drawer = (TextView)findViewById(R.id.title_bar);
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View);
 
@@ -69,6 +74,14 @@ public class ChatingActivity extends AppCompatActivity {
                 if(!drawerLayout.isDrawerOpen(Gravity.LEFT)){
                     drawerLayout.openDrawer(Gravity.LEFT);
                 }
+            }
+        });
+
+        goto_voit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChatingActivity.this, voit_main.class);
+                startActivity(intent);
             }
         });
 
