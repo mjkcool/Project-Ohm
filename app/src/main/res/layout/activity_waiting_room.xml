@@ -11,7 +11,7 @@
 
 
     <ImageButton
-        android:id="@+id/quitBtn"
+        android:id="@+id/quit_btn"
         android:layout_width="13.33dp"
         android:layout_height="13.33dp"
         android:background="#00FFFFFF"
