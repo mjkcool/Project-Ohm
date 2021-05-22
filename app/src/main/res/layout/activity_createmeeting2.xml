@@ -71,7 +71,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/text_number"
+        android:id="@+id/text_number2"
         android:layout_width="29dp"
         android:layout_height="16dp"
         android:layout_marginStart="290dp"
