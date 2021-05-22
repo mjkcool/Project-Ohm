@@ -1,5 +1,5 @@
-//package kr.hs.emirim.ohm
-//
+package kr.hs.emirim.ohm
+
 //import android.content.Intent
 //import android.os.Bundle
 //import android.widget.Button
