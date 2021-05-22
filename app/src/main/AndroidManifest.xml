@@ -37,9 +37,9 @@
         <activity android:name=".ProfileInitActivity" />
         <activity android:name=".ChatingActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".CreateMeeting3Activity" />
+        <!-- <activity android:name=".CreateMeeting3Activity" />
         <activity android:name=".CreateMeeting2Activity" />
-        <activity android:name=".CreateMeeting1Activity" />
+        <activity android:name=".CreateMeeting1Activity" /> -->
         <activity android:name=".WaitingRoomActivity" />
 
         <meta-data
