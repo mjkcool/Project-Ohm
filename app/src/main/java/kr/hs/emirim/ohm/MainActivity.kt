@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val user = Firebase.auth.currentUser
         val ref = FirebaseDatabase.getInstance().getReference("users")
         auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
         if(user != null){
             ref.child(auth.currentUser.uid).get().addOnSuccessListener {
                 if(it.value != null) {
