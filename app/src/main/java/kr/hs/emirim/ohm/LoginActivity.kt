@@ -107,13 +107,23 @@ class LoginActivity: AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         //사용자 정보가 있다면?
-        Toast.makeText(this, "프로필 설정", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, ProfileInitActivity::class.java))
-        finish()
+        val ref = FirebaseDatabase.getInstance().getReference("users")
+        if (user != null) {
+            ref.child(auth.currentUser.uid).get().addOnSuccessListener {
+                if (it.value != null) {
+                    Toast.makeText(this, "최초 로그인이 아닌 로그인", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, "최초 로그인", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, ProfileInitActivity::class.java))
+                    finish()
+                }
+            }
+        }
     }
 
     private fun googleLogin() {
-
         var signInIntent = googleSignInClient?.signInIntent
         startActivityForResult(signInIntent, GOOGLE_LOGIN_CODE)
     }
@@ -124,7 +134,6 @@ class LoginActivity: AppCompatActivity() {
             override fun onSuccess(loginResult: LoginResult) {
                 handleFacebookAccessToken(loginResult.accessToken)
             }
-
             override fun onCancel() {
                 Log.d("facebooklogin", "facebook:onCancel")
             }
