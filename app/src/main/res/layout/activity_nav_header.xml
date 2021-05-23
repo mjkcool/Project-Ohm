@@ -120,7 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
-            android:background="@drawable/voit_background"
+            android:background="@drawable/chatting_background"
             android:text="@string/voit_title1" />
 
         <RadioButton
@@ -128,7 +128,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
-            android:background="@drawable/voit_background"
+            android:background="@drawable/chatting_background"
             android:text="@string/voit_title2" />
 
         <RadioButton
@@ -136,7 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
-            android:background="@drawable/voit_background"
+            android:background="@drawable/chatting_background"
             android:text="@string/voit_title3" />
     </RadioGroup>
 
