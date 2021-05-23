@@ -18,29 +18,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".createmeeting_3"></activity>
-        <activity android:name=".createmeeting_2" />
-        <activity android:name=".createmeeting_1" />
         <activity android:name=".create_calendar" />
         <activity android:name=".calendar" />
         <activity android:name=".ProfilePage" />
         <activity android:name=".ModifyProfileActivity" />
         <activity
-            android:name=".LoginActivity"
-            android:theme="@style/SplashTheme">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".ProfileInitActivity" />
         <activity android:name=".ChatingActivity" />
         <activity android:name=".HomeActivity" />
-        <!-- <activity android:name=".CreateMeeting3Activity" />
-        <activity android:name=".CreateMeeting2Activity" />
-        <activity android:name=".CreateMeeting1Activity" /> -->
+        <activity android:name=".createroom_name" />
+        <activity android:name=".createroom_time" />
+        <activity android:name=".createroom_topic" />
         <activity android:name=".WaitingRoomActivity" />
+        <activity android:name=".LoginActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

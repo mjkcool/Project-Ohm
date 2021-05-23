@@ -37,7 +37,6 @@ class LoginActivity: AppCompatActivity() {
 
     //facebook
     private lateinit var callbackManager: CallbackManager
-    val ref = FirebaseDatabase.getInstance().getReference("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
@@ -70,13 +69,6 @@ class LoginActivity: AppCompatActivity() {
             facebookLogin()
         }
 
-    }
-
-    override fun onStart() {
-        super.onStart()
-        // 사용자 정보가 있는지 확인하는 부분
-        val currentUser = auth.currentUser
-        updateUI(currentUser)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -117,19 +109,9 @@ class LoginActivity: AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         //사용자 정보가 있다면?
-        if(user != null){
-            ref.child(auth.currentUser.uid).get().addOnSuccessListener {
-                if(it.value != null) {
-                    Toast.makeText(this, "최초 로그인이 아닌 로그인", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, HomeActivity::class.java))
-                    finish()
-                }else{
-                    Toast.makeText(this, "최초 로그인", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, ProfileInitActivity::class.java))
-                    finish()
-                }
-            }
-        }
+        Toast.makeText(this, "프로필 설정", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this, ProfileInitActivity::class.java))
+        finish()
     }
 
     private fun googleLogin() {

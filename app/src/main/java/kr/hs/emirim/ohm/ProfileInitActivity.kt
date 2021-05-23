@@ -126,9 +126,7 @@ class ProfileInitActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
         if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null){
-
             var result = CropImage.getActivityResult(data) //result.uri
             profileImageView.setImageURI(result.uri)
             imageUri = result.uri
