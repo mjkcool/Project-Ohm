@@ -18,15 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".createmeeting_3"></activity>
-        <activity android:name=".createmeeting_2" />
-        <activity android:name=".createmeeting_1" />
+        <activity android:name=".createroom_name"/>
+        <activity android:name=".createroom_time" />
+        <activity android:name=".createroom_topic" />
         <activity android:name=".create_calendar" />
         <activity android:name=".calendar" />
         <activity android:name=".ProfilePage" />
         <activity android:name=".ModifyProfileActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ChatingActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileInitActivity" />
-        <activity android:name=".ChatingActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
         <!-- <activity android:name=".CreateMeeting3Activity" />
         <activity android:name=".CreateMeeting2Activity" />
