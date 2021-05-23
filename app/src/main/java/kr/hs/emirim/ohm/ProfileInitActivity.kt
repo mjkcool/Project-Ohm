@@ -93,7 +93,7 @@ class ProfileInitActivity : AppCompatActivity() {
                 2 ->{
                     // 파이어베이스에 한줄소개 데이터 등록(선택)
                     val introduceTxt = findViewById<EditText>(R.id.input_introduce_set).text //등록할 텍스트 데이터
-                    writeNewUser(nickname, imageUri ,introduceTxt.toString())
+                    writeNewUser(nickname, introduceTxt.toString())
 
                 }
             }
@@ -134,9 +134,9 @@ class ProfileInitActivity : AppCompatActivity() {
     }
 
 
-    fun writeNewUser(nickname: String, profileImg : Uri ,introduceTxt: String) {
-        val user = User(nickname, profileImg, introduceTxt)
-        database.child("users").child(auth.currentUser.uid.toString()).setValue(user)
+    fun writeNewUser(nickname: String,introduceTxt: String) {
+        val user = User(nickname, introduceTxt)
+        database.child("users").child(auth.currentUser.uid).setValue(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "사용자 디비 적재 성공", Toast.LENGTH_SHORT).show()
                 updateUI(auth.currentUser)
