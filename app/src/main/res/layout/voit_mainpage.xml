@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_quit" />
 
-    <TextView
+    <EditText
         android:id="@+id/voit_main_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,6 +26,7 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="44dp"
         android:text="@string/voit_main_title1_1"
+        android:background="@null"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/voit_main_title"
         app:srcCompat="@drawable/line" />
 
-    <TextView
+    <EditText
         android:id="@+id/voit_title_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/voit_main1"
         app:srcCompat="@drawable/line" />
 
-    <TextView
+    <EditText
         android:id="@+id/voit_title_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

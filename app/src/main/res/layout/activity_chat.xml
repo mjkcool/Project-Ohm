@@ -86,7 +86,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.cardview.widget.CardView
@@ -118,12 +117,12 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button5"
+                app:layout_constraintEnd_toStartOf="@+id/send"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/send"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginRight="5dp"
@@ -133,25 +132,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 
     <androidx.drawerlayout.widget.DrawerLayout
         android:id="@+id/my_drawer_View"
-        android:layout_width="328dp"
-        android:layout_height="739dp"
+        android:layout_width="336dp"
+        android:layout_height="809dp"
         android:layout_gravity="end"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/activity_nav_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -212,7 +206,7 @@
             app:layout_constraintTop_toBottomOf="@+id/header_main_title1">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
+                android:layout_width="338dp"
                 android:layout_height="match_parent"
                 tools:listitem="@layout/paticipant_item" />
         </LinearLayout>
@@ -230,15 +224,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <ImageView
-            android:id="@+id/voit_background"
-            android:layout_width="369dp"
-            android:layout_height="214dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/header_main_title2"
-            app:srcCompat="@drawable/main_background" />
+            <ImageView
+                android:id="@+id/voit_background"
+                android:layout_width="330dp"
+                android:layout_height="208dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header_main_title2"
+                app:srcCompat="@drawable/main_background" />
 
         <TextView
             android:id="@+id/voit_title"
@@ -311,8 +305,7 @@
             app:layout_constraintHorizontal_bias="0.965"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/voit_background"
-            app:srcCompat="@drawable/exit"/>
+            app:srcCompat="@drawable/exit" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
