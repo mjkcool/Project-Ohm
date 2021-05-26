@@ -2,20 +2,28 @@ package kr.hs.emirim.ohm;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,8 +49,14 @@ public class ChatingActivity extends AppCompatActivity {
     private ImageView exit; //나가기 버튼
     private ImageView search; //검색하는 버튼
     private ImageView drawer; //창을 열고 닫을 수 있는 버튼
-    private Button goto_voit;
 
+    private SeekBar seekBar1, seekBar2, seekBar3; //투표할 수 있는 전체적 투표바
+    private TextView poll_result1, poll_result2, poll_result3; // 투표의 전체 값
+    private TextView poll_index1, poll_index2 ,poll_index3; //투표를 하는 후보들
+    double count1=1, count2=1, count3=1;
+    boolean flag1=true, flag2=true, flag3=true;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +69,20 @@ public class ChatingActivity extends AppCompatActivity {
         search = (ImageView) findViewById(R.id.search_bar); //채팅을 하다가 모르는 거 검색
         drawer = (ImageView) findViewById(R.id.hamberger_bar); //채팅에서 필요한 정보를 보여줄 수 있는 것
 
-        goto_voit = (Button)findViewById(R.id.voit_button); //투표방으로 넘어가는 버튼;
+        seekBar1 = findViewById(R.id.seek_id1); //투표 결과를 알려주는 그래프
+        seekBar2 = findViewById(R.id.seek_id2);
+        seekBar3 = findViewById(R.id.seek_id3);
+
+        poll_result1 = findViewById(R.id.poll_result1); //투표를 하는 종목
+        poll_result2 = findViewById(R.id.poll_result2);
+        poll_result3 = findViewById(R.id.poll_result3);
+
+        poll_index1 = findViewById(R.id.poll_index1); //투표를 몇 % 정도 했는지 알려주는 것
+        poll_index2 = findViewById(R.id.poll_index2);
+        poll_index3 = findViewById(R.id.poll_index3);
         
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
+        drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_View);
         recyclerView.setHasFixedSize(true); //리사이클뷰의 크기와 넓이를 그대로 지정해주는 것
@@ -71,29 +96,107 @@ public class ChatingActivity extends AppCompatActivity {
 
         drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
             public void onClick(View v) {
-                if(!drawerLayout.isDrawerOpen(Gravity.LEFT)){
-                    drawerLayout.openDrawer(Gravity.LEFT);
+                if(!drawerLayout.isDrawerOpen(Gravity.RIGHT)){
+                    drawerLayout.openDrawer(Gravity.RIGHT);
                 }
             }
         });
 
-        goto_voit.setOnClickListener(new View.OnClickListener() { //투표를 할 수 있는 창으로 넘어가기
+        seekBar1.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+
+        poll_index1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatingActivity.this, voit_main.class);
-                startActivity(intent);
+                if (flag1){
+                    count1++;
+                    count2 = 1;
+                    count3 = 1;
+
+                    flag1=false;
+                    flag2=true;
+                    flag3=true;
+                    calculatePercent();
+                }
+
+            }
+        });
+
+        seekBar2.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+
+        poll_index2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag2){
+                    count1 = 1;
+                    count2++;
+                    count3 = 1;
+
+                    flag1=true;
+                    flag2=false;
+                    flag3=true;
+                    calculatePercent();
+                }
+
+            }
+        });
+
+        seekBar3.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+
+        poll_index3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (flag3){
+                    count1 = 1;
+                    count2 = 1;
+                    count3++;
+
+                    flag1=true;
+                    flag2=true;
+                    flag3=false;
+
+                    calculatePercent();
+                }
+
             }
         });
 
         exit.setOnClickListener(new View.OnClickListener() { //나가기 버튼을 눌렀을경우
             @Override
             public void onClick(View v) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//                builder.setTitle("삭제 확인");
+//                builder.setMessage("삭제하시겠습니까?");
+//                builder.setNegativeButton("예", new DialogInterface.OnClickListener()
+//                { @Override public void onClick(DialogInterface dialog, int which);
             }
         });
 
         search.setOnClickListener(new View.OnClickListener() { //검색하기 버튼을 눌렀을경우
             @Override
             public void onClick(View v) {
+                Context context = getApplicationContext();
+                CharSequence text = "죄송합니다. 아직 개발하지 못 했습니다. 조금만 기달려주세요 ! ";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
 
             }
         });
@@ -148,5 +251,21 @@ public class ChatingActivity extends AppCompatActivity {
 
             }
         });
+    }
+    private void calculatePercent() {
+        double total = count1+count2+count3;
+        double percent1 = (count1/total) * 100;
+        double percent2 = (count2/total) * 100;
+        double percent3 = (count3/total) * 100;
+
+        poll_result1.setText(String.format("%.0f%%", percent1));
+
+        seekBar1.setProgress((int)percent1);
+        poll_result2.setText((String.format("%.0f%%",percent2)));
+
+        seekBar2.setProgress((int)percent2);
+        poll_result3.setText((String.format("%.0f%%",percent3)));
+
+        seekBar3.setProgress((int)percent3);
     }
 }

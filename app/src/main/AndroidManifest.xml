@@ -26,7 +26,7 @@
         <activity android:name=".ProfilePage" />
         <activity android:name=".ModifyProfileActivity" />
         <activity
-            android:name=".LoginActivity">
+            android:name=".ChatingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileInitActivity" />
-        <activity android:name=".ChatingActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".HomeActivity" />
         <!-- <activity android:name=".CreateMeeting3Activity" />
         <activity android:name=".CreateMeeting2Activity" />
