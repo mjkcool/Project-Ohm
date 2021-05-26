@@ -1,7 +1,10 @@
 package kr.hs.emirim.ohm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +27,8 @@ class createroom_time : AppCompatActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_createmeeting3)
+
+
             init()
 
             next_button3.setOnClickListener {
@@ -40,15 +45,15 @@ class createroom_time : AppCompatActivity() {
         fun createroom(){
             val room = Room(room_name, room_topic, room_time)
             makeCode()
-            database.child("rooms").child(code).setValue(room)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, WaitingRoomActivity::class.java)
-                    startActivity(intent)
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this, "방 생성 실패", Toast.LENGTH_SHORT).show()
-                }
+//            database.child("rooms").child(code).setValue(room)
+//                .addOnSuccessListener {
+//                    Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(this, WaitingRoomActivity::class.java)
+//                    startActivity(intent)
+//                }
+//                .addOnFailureListener {
+//                    Toast.makeText(this, "방 생성 실패", Toast.LENGTH_SHORT).show()
+//                }
         }
 
         fun makeCode(){

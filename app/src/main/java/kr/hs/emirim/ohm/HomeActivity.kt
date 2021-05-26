@@ -43,6 +43,14 @@ class HomeActivity : AppCompatActivity() {
         createMeetingBtn.setOnClickListener ({
             val intent = Intent(this, createroom_name::class.java)
             startActivity(intent)
+            finish()
+        })
+
+        userProfileBtn.setOnClickListener({
+            val intent = Intent(this, ProfilePage::class.java)
+            startActivity(intent)
+            finish()
+
         })
 
         /*

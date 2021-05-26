@@ -48,7 +48,7 @@ class LoginActivity: AppCompatActivity() {
 //        AppEventsLogger.activateApp(this);
 
         //구글 로그인 옵션
-        var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
@@ -73,21 +73,21 @@ class LoginActivity: AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        callbackManager?.onActivityResult(requestCode, resultCode, data)
-
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == GOOGLE_LOGIN_CODE) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
-                Log.d("googlelogin", "firebaseAuthWithGoogle:" + account.id)
+                Log.d("googleLogin", "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
             } catch (e: ApiException) {
                 // Google Sign In failed, update UI appropriately
-                Log.w("googlelogin", "Google sign in failed", e)
+                Log.w("googleLogin", "Google sign in failed", e)
             }
         }
     }
+
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
@@ -101,16 +101,26 @@ class LoginActivity: AppCompatActivity() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w("googleLogin", "signInWithCredential:failure", task.exception)
-                    updateUI(null)
                 }
             }
     }
 
     private fun updateUI(user: FirebaseUser?) {
         //사용자 정보가 있다면?
-        Toast.makeText(this, "프로필 설정", Toast.LENGTH_SHORT).show()
-        startActivity(Intent(this, ProfileInitActivity::class.java))
-        finish()
+        val ref = FirebaseDatabase.getInstance().getReference("users")
+        if (user != null) {
+            ref.child(auth.currentUser.uid).get().addOnSuccessListener {
+                if (it.value != null) {
+                    Toast.makeText(this, "최초 로그인이 아닌 로그인", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                } else {
+                    Toast.makeText(this, "최초 로그인", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, ProfileInitActivity::class.java))
+                    finish()
+                }
+            }
+        }
     }
 
     private fun googleLogin() {
@@ -124,7 +134,6 @@ class LoginActivity: AppCompatActivity() {
             override fun onSuccess(loginResult: LoginResult) {
                 handleFacebookAccessToken(loginResult.accessToken)
             }
-
             override fun onCancel() {
                 Log.d("facebooklogin", "facebook:onCancel")
             }
