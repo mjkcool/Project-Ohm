@@ -18,7 +18,7 @@
         <!-- 툴바를 선언해줌 -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="62dp"
             android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
@@ -28,8 +28,9 @@
 
             <!-- 툴바 안에 시간, 제목, 검색, 메뉴바 설정해주는 layout -->
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                tools:layout_editor_absoluteX="16dp">
 
                 <!-- 채팅 시간을 알려주는 text -->
                 <TextView
