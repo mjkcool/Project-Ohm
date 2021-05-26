@@ -53,7 +53,7 @@ public class ChatingAdapter extends RecyclerView.Adapter<ChatingAdapter.ViewHold
         holder.chat_nickname.setText(chat.getNickname());
         holder.chat_msg.setText(chat.getMsg()); //DTD
 
-        if(chat.getNickname().equals(this.mNickName)){
+        if(chat.getNickname() != null && chat.getNickname().equals(this.mNickName)){
             holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             holder.chat_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END); //내가 채팅을 할 경우 오른쪽
 
