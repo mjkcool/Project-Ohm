@@ -378,7 +378,7 @@
                 app:layout_constraintStart_toStartOf="@+id/seek_id3"
                 app:layout_constraintTop_toTopOf="@+id/seek_id3" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/exit"
                 android:layout_width="23dp"
                 android:layout_height="26dp"

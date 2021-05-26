@@ -19,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class ChatingActivity extends AppCompatActivity {
 
     private DatabaseReference myRef; //파이어베이스 값을 불러오는 것
 
-    private ImageView exit; //나가기 버튼
+    private ImageButton exit; //나가기 버튼
     private ImageView search; //검색하는 버튼
     private ImageView drawer; //창을 열고 닫을 수 있는 버튼
 
@@ -65,7 +66,7 @@ public class ChatingActivity extends AppCompatActivity {
         chatting_send = (Button) findViewById(R.id.send); //메세지 보내는 거 id 선언
         chatting_say = (EditText) findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
 
-        exit = (ImageView) findViewById(R.id.exit); //채팅방 나가는 것
+        exit = (ImageButton) findViewById(R.id.exit); //채팅방 나가는 것
         search = (ImageView) findViewById(R.id.search_bar); //채팅을 하다가 모르는 거 검색
         drawer = (ImageView) findViewById(R.id.hamberger_bar); //채팅에서 필요한 정보를 보여줄 수 있는 것
 
@@ -198,6 +199,13 @@ public class ChatingActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
 
+            }
+        });
+
+        exit.setOnClickListener(new View.OnClickListener() { // 나가기 창
+            @Override
+            public void onClick(View v) {
+                
             }
         });
 
