@@ -24,7 +24,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         admissionBtn = findViewById(R.id.admission_btn)
-        userProfileBtn = findViewById(R.id.User_profile_btn)
+        userProfileBtn = findViewById(R.id.user_profile_btn)
         createMeetingBtn = findViewById(R.id.home_create_btn_layout)
         bookMeetingBtn = findViewById(R.id.home_book_btn_layout)
 
@@ -40,19 +40,22 @@ class HomeActivity : AppCompatActivity() {
         roomAdapter = RoomViewAdapter(this, roomData)
         roomsRecyclerView.adapter = roomAdapter
 
-        createMeetingBtn.setOnClickListener ({
+        createMeetingBtn.setOnClickListener {
             val intent = Intent(this, createroom_name::class.java)
             startActivity(intent)
             finish()
-        })
+        }
 
-        userProfileBtn.setOnClickListener({
+        userProfileBtn.setOnClickListener {
             val intent = Intent(this, ProfilePage::class.java)
             startActivity(intent)
             finish()
 
-        })
+        }
 
+        userProfileBtn.setOnClickListener{
+
+        }
         /*
         goto_btn.setOnClickListener(View.OnClickListener {
 
