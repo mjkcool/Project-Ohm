@@ -1,2 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+<!--    standard size-->
+    <dimen name="dp43.33">43.33dp</dimen>
+    <dimen name="dp15.33">15.33dp</dimen>
+    <dimen name="dp8.67">8.67dp</dimen>
+    <dimen name="sp20">20sp</dimen>
+    <dimen name="sp12">12sp</dimen>
+    <dimen name="dp33.33">33.33dp</dimen>
+    <dimen name="dp30.67">30.67dp</dimen>
+    <dimen name="dp144.33">144.33dp</dimen>
+    <dimen name="dp231.33">231.33dp</dimen>
+    <dimen name="dp256.67">256.67dp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp7.83">7.83dp</dimen>
+    <dimen name="dp13.33">13.33dp</dimen>
+    <dimen name="dp52.33">52.33dp</dimen>
+    <dimen name="dp14">14dp</dimen>
+    <dimen name="dp111.13">111.13dp</dimen>
+    <dimen name="dp8.73">8.73dp</dimen>
+    <dimen name="dp6.67">6.67dp</dimen>
+    <dimen name="dp5">5dp</dimen>
+    <dimen name="dp57.23">57.23dp</dimen>
+    <dimen name="dp9">9dp</dimen>
+    <dimen name="dp12">12dp</dimen>
+    <dimen name="dp71.33">71.33dp</dimen>
+    <dimen name="dp8.33">8.33dp</dimen>
+    <dimen name="dp7">7dp</dimen>
+    <dimen name="dp33">33dp</dimen>
+    <dimen name="sp8">8sp</dimen>
+    <dimen name="dp71">71dp</dimen>
+    <dimen name="dp113.53">113.53dp</dimen>
+    <dimen name="dp22">22dp</dimen>
+
+</resources>
