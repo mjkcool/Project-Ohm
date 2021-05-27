@@ -31,5 +31,6 @@
     <dimen name="dp71">71dp</dimen>
     <dimen name="dp113.53">113.53dp</dimen>
     <dimen name="dp22">22dp</dimen>
-
+    <dimen name="sp15.33">15.33sp</dimen>
+    <dimen name="dp45">45dp</dimen>
 </resources>

@@ -182,10 +182,10 @@
                 <TextView
                     android:id="@+id/h2_subtitle_home_create"
                     android:layout_width="match_parent"
-                    android:layout_height="22dp"
+                    android:layout_height="@dimen/dp22"
                     android:text="@string/make_text"
                     android:textColor="#000000"
-                    android:textSize="15.33sp"
+                    android:textSize="@dimen/sp15.33"
                     android:textStyle="bold"
                     android:clickable="false"/>
 
@@ -253,16 +253,16 @@
                     android:layout_height="@dimen/dp22"
                     android:text="회의 예약"
                     android:textColor="#000000"
-                    android:textSize="15.33sp"
+                    android:textSize="@dimen/sp15.33"
                     android:textStyle="bold"
                     android:clickable="false"/>
 
                 <TextView
                     android:id="@+id/desc_home_book"
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
+                    android:layout_height="@dimen/dp33"
                     android:text="회의를 예약해두면 잊지 않게\n알림을 보내드립니다."
-                    android:textSize="8sp"
+                    android:textSize="@dimen/sp8"
                     android:clickable="false"/>
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -280,11 +280,11 @@
             android:id="@+id/h1_title_02_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30.67dp"
+            android:layout_marginStart="@dimen/dp30.67"
             android:gravity="left"
             android:text="@string/mainpage_text2"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="@dimen/sp20"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -294,10 +294,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginTop="3.67dp"
+            android:layout_marginTop="@dimen/dp30.67"
             android:orientation="horizontal"
-            android:paddingLeft="30.67dp"
-            android:paddingBottom="45dp"
+            android:paddingLeft="@dimen/dp30.67"
+            android:paddingBottom="@dimen/dp45"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
