@@ -6,7 +6,7 @@
     android:id="@+id/BaseLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="0dp"
+    android:paddingHorizontal="@dimen/dp0"
     tools:context=".WaitingRoomActivity"
     android:orientation="vertical">
 
@@ -14,20 +14,20 @@
         android:id="@+id/profile_layout_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30.67dp"
-        android:layout_marginTop="33.33dp">
+        android:layout_marginHorizontal="@dimen/dp30.67"
+        android:layout_marginTop="@dimen/dp33.33">
 
         <Button
             android:id="@+id/modify_profile_cancel_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="13.33dp"
+            android:layout_marginRight="@dimen/dp13.33"
             android:background="@null"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
+            android:minWidth="@dimen/dp0"
+            android:minHeight="@dimen/dp0"
             android:text="취소"
             android:textColor="#707070"
-            android:textSize="13.33sp"
+            android:textSize="@dimen/sp13.33"
             app:layout_constraintEnd_toStartOf="@+id/modify_profile_save_btn"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,10 +35,10 @@
             android:id="@+id/init_profileimg_nickname_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="@dimen/dp12"
             android:text="닉네임"
             android:textColor="#000000"
-            android:textSize="13.33sp"
+            android:textSize="@dimen/sp13.33"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="내 정보 수정"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="@dimen/sp20"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -59,35 +59,35 @@
             android:id="@+id/profile_img_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="66.67dp"
+            android:layout_marginTop="@dimen/dp66.67"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/init_profileimg_view"
-                android:layout_width="88.67dp"
-                android:layout_height="88.67dp"
+                android:layout_width="@dimen/dp88.67"
+                android:layout_height="@dimen/dp88.67"
                 android:layout_gravity="center"
-                android:layout_margin="2dp"
+                android:layout_margin="@dimen/dp2"
                 android:src="@mipmap/avatar_foreground"
                 app:civ_border_color="#707070"
-                app:civ_border_width="0.1dp"
+                app:civ_border_width="@dimen/dp0.1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/init_profileimg_reset_btn"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
                 android:layout_gravity="bottom|right"
-                android:layout_margin="2dp"
+                android:layout_margin="@dimen/dp2"
                 android:clickable="true"
                 app:backgroundTint="#FFFFFF"
-                app:elevation="2dp"
-                app:fabCustomSize="25dp"
+                app:elevation="@dimen/dp2"
+                app:fabCustomSize="@dimen/dp25"
                 app:fabSize="auto"
-                app:maxImageSize="13.33dp"
+                app:maxImageSize="@dimen/dp13.33"
                 app:srcCompat="@drawable/ic_modify" />
         </FrameLayout>
 
@@ -96,11 +96,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
+            android:minWidth="@dimen/dp0"
+            android:minHeight="@dimen/dp0"
             android:text="저장"
             android:textColor="#1E349D"
-            android:textSize="13.33sp"
+            android:textSize="@dimen/sp13.33"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -109,10 +109,10 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25.33dp"
+        android:layout_marginTop="@dimen/dp25.33"
         app:cardBackgroundColor="#00FFFFFF"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
+        app:cardElevation="@dimen/dp0"
+        app:cardMaxElevation="@dimen/dp0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/init_profileimg_nickname_view">
@@ -122,21 +122,21 @@
             android:layout_height="match_parent"
             android:background="@drawable/profile_card_bg"
             android:orientation="vertical"
-            android:paddingHorizontal="30.67dp">
+            android:paddingHorizontal="@dimen/dp30.67">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48.50dp"
+                android:layout_height="@dimen/dp48.50"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="10dp"
+                    android:layout_width="@dimen/dp10"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="닉네임"
                     android:textColor="#5A5A5A"
-                    android:textSize="13.33dp" />
+                    android:textSize="@dimen/dp13.33" />
 
                 <EditText
                     android:id="@+id/modify_profile_nickname_input"
@@ -148,31 +148,31 @@
                     android:inputType="textPersonName"
                     android:singleLine="true"
                     android:text="닉네임"
-                    android:textSize="13.33dp" />
+                    android:textSize="@dimen/dp13.33" />
             </LinearLayout>
 
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="51dp"
+                android:layout_height="@dimen/dp0.1"
+                android:layout_marginStart="@dimen/dp0"
+                android:layout_marginLeft="@dimen/dp51"
                 android:background="#3D707070"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48.50dp"
+                android:layout_height="@dimen/dp48.50"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="10dp"
+                    android:layout_width="@dimen/dp10"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="한줄소개"
                     android:textColor="#5A5A5A"
-                    android:textSize="13.33dp" />
+                    android:textSize="@dimen/dp13.33" />
 
                 <EditText
                     android:id="@+id/modify_profile_introduce_input"
@@ -183,7 +183,7 @@
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="한줄소개"
-                    android:textSize="13.33dp" />
+                    android:textSize="@dimen/dp13.33" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

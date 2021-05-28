@@ -10,13 +10,13 @@
 
     <TextView
         android:id="@+id/toast_board"
-        android:layout_width="373dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="208dp"
+        android:layout_width="@dimen/dp373"
+        android:layout_height="@dimen/dp33"
+        android:layout_marginTop="@dimen/dp208"
         android:gravity="center"
-        android:padding="20dp"
+        android:padding="@dimen/dp20"
         android:textColor="#E31206"
-        android:textSize="15sp"
+        android:textSize="@dimen/sp15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.398"
         app:layout_constraintStart_toStartOf="parent"

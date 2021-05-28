@@ -8,21 +8,21 @@
 
     <!-- 카드뷰 -->
     <androidx.cardview.widget.CardView
-        android:layout_width="133.33dp"
-        android:layout_height="133.33dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="5dp"
+        android:layout_width="@dimen/dp133.33"
+        android:layout_height="@dimen/dp133.33"
+        android:layout_marginLeft="@dimen/dp2"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginRight="@dimen/dp8"
+        android:layout_marginBottom="@dimen/dp5"
         app:cardBackgroundColor="#F9D5D3"
-        app:cardCornerRadius="11.67dp">
+        app:cardCornerRadius="@dimen/dp11.67">
 
         <!-- 카드메뉴에 들어가야 할 것들에 대한 레이아웃 -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10.67dp"
+            android:layout_marginHorizontal="@dimen/dp10"
+            android:layout_marginVertical="@dimen/dp10.67"
             android:orientation="vertical">
 
             <!-- 카드뷰를 만든 날짜를 현재로 기반하여 나타난 날짜 -->
@@ -39,7 +39,7 @@
                 android:singleLine="true"
                 android:text="이틀 후"
                 android:textColor="#4E4E4E"
-                android:textSize="8sp"
+                android:textSize="@dimen/sp8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,7 +52,7 @@
                 android:singleLine="true"
                 android:text="회의 주제"
                 android:textColor="#000000"
-                android:textSize="13.33dp"
+                android:textSize="@dimen/dp133.33"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/desc_meeting_item" />
 
@@ -64,21 +64,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title_meeting_item"
-                android:drawablePadding="10dp"
+                android:drawablePadding="@dimen/dp10"
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:singleLine="true"
                 android:text="2021.04.26"
                 android:textColor="#4E4E4E"
-                android:textSize="7.33dp"
+                android:textSize="@dimen/dp7.33"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title_meeting_item" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginTop="3.33dp"
+                android:layout_height="@dimen/dp18"
+                android:layout_marginTop="@dimen/dp3.33"
                 android:background="#B69B9B"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

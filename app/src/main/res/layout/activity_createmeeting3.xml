@@ -9,12 +9,12 @@
 
     <Button
         android:id="@+id/back_button3"
-        android:layout_width="18.617dp"
-        android:layout_height="14.240dp"
-        android:layout_marginStart="30.667dp"
-        android:layout_marginTop="33.333dp"
-        android:layout_marginEnd="310.733dp"
-        android:layout_marginBottom="592.433dp"
+        android:layout_width="@dimen/dp18.617"
+        android:layout_height="@dimen/dp14.240"
+        android:layout_marginStart="@dimen/dp30.667"
+        android:layout_marginTop="@dimen/dp33.333"
+        android:layout_marginEnd="@dimen/dp310.733"
+        android:layout_marginBottom="@dimen/dp592.433"
         android:background="@drawable/ic_toback"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,11 +24,11 @@
 
     <Button
         android:id="@+id/next_button3"
-        android:layout_width="52dp"
-        android:layout_height="19.333dp"
-        android:layout_marginStart="228.067dp"
-        android:layout_marginTop="30.667dp"
-        android:layout_marginEnd="30.667dp"
+        android:layout_width="@dimen/dp52"
+        android:layout_height="@dimen/dp19.333"
+        android:layout_marginStart="@dimen/dp228.067"
+        android:layout_marginTop="@dimen/dp30.667"
+        android:layout_marginEnd="@dimen/dp30.667"
         android:background="#00ff0000"
         android:text="코드생성"
         android:textSize="13sp"
@@ -39,14 +39,14 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="148dp"
-        android:layout_height="19.333dp"
-        android:layout_marginStart="106dp"
-        android:layout_marginTop="190dp"
-        android:layout_marginEnd="106dp"
+        android:layout_width="@dimen/dp148"
+        android:layout_height="@dimen/dp19.333"
+        android:layout_marginStart="@dimen/dp106"
+        android:layout_marginTop="@dimen/dp190"
+        android:layout_marginEnd="@dimen/dp106"
         android:text="회의 시간을 설정해 주세요."
         android:textColor="#CC000000"
-        android:textSize="13sp"
+        android:textSize="@dimen/sp13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -54,35 +54,35 @@
 
     <EditText
         android:id="@+id/hour"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
         android:inputType="number"
         android:gravity="center"
         android:hint="00"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="106dp"
-        tools:layout_editor_absoluteY="228dp" />
+        tools:layout_editor_absoluteX="@dimen/dp106"
+        tools:layout_editor_absoluteY="@dimen/dp228" />
 
     <EditText
         android:id="@+id/min"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
         android:gravity="center"
         android:hint="00"
         android:inputType="number"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="228dp" />
+        tools:layout_editor_absoluteX="@dimen/dp156"
+        tools:layout_editor_absoluteY="@dimen/dp228" />
 
     <EditText
         android:id="@+id/second"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/dp50"
+        android:layout_height="@dimen/dp50"
         android:gravity="center"
         android:hint="00"
         android:inputType="number"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="206dp"
-        tools:layout_editor_absoluteY="228dp" />
+        tools:layout_editor_absoluteX="@dimen/dp206"
+        tools:layout_editor_absoluteY="@dimen/dp228" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
