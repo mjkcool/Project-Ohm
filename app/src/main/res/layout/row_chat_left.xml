@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-
+    <!-- 왼쪽 채팅 메세지 xml -->
     <!--내가 사용하고 있는 이름 -->
     <!--사용자가 지정해야기 때문에 텍스트를 작성 안 했습니다 ! -->
     <TextView
-        android:id="@+id/chat_nickname"
+        android:id="@+id/chat_nickname_left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="clip_vertical"
@@ -25,12 +25,12 @@
 
     <!--사용자가 지정해야기 때문에 텍스트를 작성 안 했습니다 ! -->
     <TextView
-        android:id="@+id/chat_msg"
+        android:id="@+id/chat_msg_left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="@dimen/sp11"
-        android:background="@drawable/chat_bubble"
+        android:background="@drawable/chat_bubble_left"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,5 +38,5 @@
         android:layout_marginEnd="@dimen/dp13.33"
         android:layout_marginTop="@dimen/dp8.00"
         android:layout_marginBottom="@dimen/dp8.67"
-        app:layout_constraintTop_toBottomOf="@+id/chat_nickname" />
+        app:layout_constraintTop_toBottomOf="@+id/chat_nickname_left" />
 </androidx.constraintlayout.widget.ConstraintLayout>
