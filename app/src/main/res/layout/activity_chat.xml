@@ -18,8 +18,8 @@
         <!-- 툴바를 선언해줌 -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="0dp"
-            android:layout_height="62dp"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="@dimen/dp62"
             android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -30,16 +30,16 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="16dp">
+                tools:layout_editor_absoluteX="@dimen/dp16">
 
                 <!-- 채팅 시간을 알려주는 text -->
                 <TextView
                     android:id="@+id/time_bar"
-                    android:layout_width="63dp"
-                    android:layout_height="21dp"
-                    android:layout_marginStart="26dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="260dp"
+                    android:layout_width="@dimen/dp63"
+                    android:layout_height="@dimen/dp21"
+                    android:layout_marginStart="@dimen/dp26"
+                    android:layout_marginTop="@dimen/dp24"
+                    android:layout_marginEnd="@dimen/dp260"
                     android:text="@string/timer"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -50,13 +50,13 @@
                 <TextView
                     android:id="@+id/title_bar"
                     android:layout_width="wrap_content"
-                    android:layout_height="19dp"
-                    android:layout_marginStart="48dp"
-                    android:layout_marginTop="19dp"
-                    android:layout_marginEnd="143dp"
+                    android:layout_height="@dimen/dp19"
+                    android:layout_marginStart="@dimen/dp48"
+                    android:layout_marginTop="@dimen/dp19"
+                    android:layout_marginEnd="@dimen/dp143"
                     android:text="@string/chat_title1"
                     android:textColor="#000000"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/sp16"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/time_bar"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -64,11 +64,11 @@
                 <!-- 검색을 할 수 있게 해주는 이미지 -->
                 <ImageView
                     android:id="@+id/search_bar"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="60dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="60dp"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
+                    android:layout_marginStart="@dimen/dp60"
+                    android:layout_marginTop="@dimen/dp16"
+                    android:layout_marginEnd="@dimen/dp60"
                     android:src="@drawable/search"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
@@ -78,10 +78,10 @@
                 <!-- 메뉴를 볼 수 있게 해주는 이미지 -->
                 <ImageView
                     android:id="@+id/hamberger_bar"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_width="@dimen/dp36"
+                    android:layout_height="@dimen/dp36"
+                    android:layout_marginStart="@dimen/dp16"
+                    android:layout_marginTop="@dimen/dp16"
                     android:src="@drawable/hamberger"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/search_bar"
@@ -92,10 +92,10 @@
         <!-- 채팅을 할 수 있는 recyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_recycler_View"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dp0"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="11.67dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="@dimen/dp11.67"
+            android:layout_marginTop="@dimen/dp10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardBackgroundColor="#ffffff"
-            app:cardCornerRadius="0dp"
+            app:cardCornerRadius="@dimen/dp0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -117,18 +117,18 @@
             <!-- 채팅을 입력할 수 있게 묶어줌 -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginHorizontal="11.67dp"
-                android:layout_marginVertical="3.33dp"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginHorizontal="@dimen/dp11.67"
+                android:layout_marginVertical="@dimen/dp3.33"
                 android:background="@drawable/edixtext_background"
                 android:orientation="horizontal">
 
                 <!-- 채팅을 할 수 있게 값을 입력 해주는 Edittext -->
                 <EditText
                     android:id="@+id/editTextTextMultiLine2"
-                    android:layout_width="0dp"
+                    android:layout_width="@dimen/dp0"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="13.33dp"
+                    android:layout_marginHorizontal="@dimen/dp13.33"
                     android:layout_weight="1"
                     android:background="@null"
                     android:ems="10"
@@ -142,9 +142,9 @@
                 <!-- 채팅 보내는 버튼 -->
                 <Button
                     android:id="@+id/send"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="5dp"
+                    android:layout_width="@dimen/dp20"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_marginEnd="@dimen/dp5"
                     android:layout_weight="1"
                     android:background="@drawable/btn_blue"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -159,21 +159,21 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_gravity="right"
         android:background="@drawable/chatting_background"
-        android:layout_width="336dp"
-        android:layout_height="809dp"
+        android:layout_width="@dimen/dp336"
+        android:layout_height="@dimen/dp809"
         android:fitsSystemWindows="true"
-        android:paddingLeft="21dp"
-        android:paddingTop="16dp"
-        android:paddingRight="21dp">
+        android:paddingLeft="@dimen/dp21"
+        android:paddingTop="@dimen/dp16"
+        android:paddingRight="@dimen/dp21">
 
             <TextView
                 android:id="@+id/text_big_title"
                 android:layout_width="wrap_content"
-                android:layout_height="18dp"
-                android:layout_marginTop="60dp"
+                android:layout_height="@dimen/dp18"
+                android:layout_marginTop="@dimen/dp60"
                 android:text="@string/text_big_title"
                 android:textColor="#1D1D1D"
-                android:textSize="13sp"
+                android:textSize="@dimen/sp13"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.002"
                 app:layout_constraintStart_toStartOf="parent"
@@ -182,11 +182,11 @@
             <TextView
                 android:id="@+id/text_title"
                 android:layout_width="wrap_content"
-                android:layout_height="26dp"
-                android:layout_marginTop="4dp"
+                android:layout_height="@dimen/dp26"
+                android:layout_marginTop="@dimen/dp4"
                 android:text="@string/text_title2"
                 android:textColor="#000000"
-                android:textSize="17sp"
+                android:textSize="@dimen/sp17"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -196,11 +196,11 @@
             <TextView
                 android:id="@+id/header_main_title1"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_marginTop="53dp"
+                android:layout_height="@dimen/dp19"
+                android:layout_marginTop="@dimen/dp53"
                 android:text="@string/header_main1"
                 android:textColor="#000000"
-                android:textSize="14sp"
+                android:textSize="@dimen/sp14"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -209,8 +209,8 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:layout_marginTop="12dp"
+                android:layout_height="@dimen/dp180"
+                android:layout_marginTop="@dimen/dp12"
                 android:background="@drawable/participant_list_bg"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -219,7 +219,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/header_main_title1">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="338dp"
+                    android:layout_width="@dimen/dp338"
                     android:layout_height="match_parent"
                     tools:listitem="@layout/paticipant_item" />
             </LinearLayout>
@@ -227,11 +227,11 @@
             <TextView
                 android:id="@+id/header_main_title2"
                 android:layout_width="wrap_content"
-                android:layout_height="19dp"
-                android:layout_marginTop="38dp"
+                android:layout_height="@dimen/dp19"
+                android:layout_marginTop="@dimen/dp38"
                 android:text="@string/header_main_title2"
                 android:textColor="#000000"
-                android:textSize="14sp"
+                android:textSize="@dimen/sp14"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.004"
                 app:layout_constraintStart_toStartOf="parent"
@@ -239,9 +239,9 @@
 
             <ImageView
                 android:id="@+id/voit_background"
-                android:layout_width="301dp"
-                android:layout_height="239dp"
-                android:layout_marginTop="16dp"
+                android:layout_width="@dimen/dp301"
+                android:layout_height="@dimen/dp239"
+                android:layout_marginTop="@dimen/dp16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.542"
                 app:layout_constraintStart_toStartOf="parent"
@@ -252,9 +252,9 @@
                 android:id="@+id/voit_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="23dp"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginEnd="@dimen/dp23"
                 android:text="@string/voit_text"
                 app:layout_constraintEnd_toEndOf="@+id/voit_background"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -265,8 +265,8 @@
             <SeekBar
                 android:id="@+id/seek_id1"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="@dimen/dp43"
+                android:layout_marginTop="@dimen/dp10"
                 android:max="100"
                 android:progress="25"
                 android:progressDrawable="@drawable/progress_track"
@@ -278,11 +278,11 @@
 
             <TextView
                 android:id="@+id/poll_index1"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="@dimen/dp44"
                 android:gravity="center_vertical"
-                android:paddingStart="32dp"
-                android:paddingEnd="0dp"
+                android:paddingStart="@dimen/dp44"
+                android:paddingEnd="@dimen/dp0"
                 android:text="해리포터 망토"
                 app:layout_constraintEnd_toEndOf="@+id/seek_id1"
                 app:layout_constraintStart_toStartOf="@+id/seek_id1"
@@ -292,10 +292,10 @@
             <TextView
                 android:id="@+id/poll_result1"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp40"
                 android:gravity="center_vertical"
-                android:paddingStart="0dp"
-                android:paddingEnd="32dp"
+                android:paddingStart="@dimen/dp0"
+                android:paddingEnd="@dimen/dp32"
                 android:text="25%"
                 app:layout_constraintEnd_toEndOf="@+id/voit_background"
                 app:layout_constraintHorizontal_bias="0.962"
@@ -305,8 +305,8 @@
             <SeekBar
                 android:id="@+id/seek_id2"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="@dimen/dp43"
+                android:layout_marginTop="@dimen/dp6"
                 android:max="100"
                 android:progress="25"
                 android:progressDrawable="@drawable/progress_track"
@@ -317,11 +317,11 @@
 
             <TextView
                 android:id="@+id/poll_index2"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="@dimen/dp44"
                 android:gravity="center_vertical"
-                android:paddingStart="32dp"
-                android:paddingEnd="0dp"
+                android:paddingStart="@dimen/dp32"
+                android:paddingEnd="@dimen/dp0"
                 android:text="이누아샤"
                 app:layout_constraintEnd_toEndOf="@+id/seek_id2"
                 app:layout_constraintStart_toStartOf="@+id/seek_id2"
@@ -330,10 +330,10 @@
             <TextView
                 android:id="@+id/poll_result2"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp40"
                 android:gravity="center_vertical"
-                android:paddingStart="0dp"
-                android:paddingEnd="32dp"
+                android:paddingStart="@dimen/dp0"
+                android:paddingEnd="@dimen/dp32"
                 android:text="25%"
                 app:layout_constraintEnd_toEndOf="@+id/seek_id2"
                 app:layout_constraintHorizontal_bias="0.996"
@@ -343,8 +343,8 @@
             <SeekBar
                 android:id="@+id/seek_id3"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:layout_marginTop="6dp"
+                android:layout_height="@dimen/dp43"
+                android:layout_marginTop="@dimen/dp6"
                 android:max="100"
                 android:progress="25"
                 android:progressDrawable="@drawable/progress_track"
@@ -356,11 +356,11 @@
 
             <TextView
                 android:id="@+id/poll_index3"
-                android:layout_width="0dp"
-                android:layout_height="44dp"
+                android:layout_width="@dimen/dp0"
+                android:layout_height="@dimen/dp44"
                 android:gravity="center_vertical"
-                android:paddingStart="32dp"
-                android:paddingEnd="0dp"
+                android:paddingStart="@dimen/dp32"
+                android:paddingEnd="@dimen/dp0"
                 android:text="손오공 밴드 + 복장"
                 app:layout_constraintEnd_toEndOf="@+id/seek_id3"
                 app:layout_constraintStart_toStartOf="@+id/seek_id3"
@@ -369,10 +369,10 @@
             <TextView
                 android:id="@+id/poll_result3"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/dp40"
                 android:gravity="center_vertical"
-                android:paddingStart="0dp"
-                android:paddingEnd="32dp"
+                android:paddingStart="@dimen/dp0"
+                android:paddingEnd="@dimen/dp32"
                 android:text="25%"
                 app:layout_constraintEnd_toEndOf="@+id/seek_id3"
                 app:layout_constraintHorizontal_bias="0.996"
@@ -381,9 +381,9 @@
 
             <ImageButton
                 android:id="@+id/exit"
-                android:layout_width="23dp"
-                android:layout_height="26dp"
-                android:layout_marginTop="24dp"
+                android:layout_width="@dimen/dp23"
+                android:layout_height="@dimen/dp26"
+                android:layout_marginTop="@dimen/dp24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.932"
                 app:layout_constraintStart_toStartOf="parent"
