@@ -170,9 +170,9 @@
     <dimen name="dp21.33">64dp</dimen>
     <dimen name="dp11.33">34dp</dimen>
     <dimen name="dp18">54dp</dimen>
-    <dimen name="dp49">49dp</dimen>
+    <dimen name="dp49">147dp</dimen>
     <dimen name="dp52">52dp</dimen>
-    <dimen name="dp290">290dp</dimen>
-    <dimen name="dp6.33">6.33dp</dimen>
-    <dimen name="dp16.66">16.66dp</dimen>
+    <dimen name="dp290">156dp</dimen>
+    <dimen name="dp6.33">19dp</dimen>
+    <dimen name="dp16.66">50dp</dimen>
 </resources>
