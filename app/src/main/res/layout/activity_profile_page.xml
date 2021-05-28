@@ -5,7 +5,7 @@
     android:id="@+id/BaseLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="0dp"
+    android:paddingHorizontal="@dimen/dp0"
     tools:context=".WaitingRoomActivity"
     android:orientation="vertical">
 
@@ -13,14 +13,14 @@
         android:id="@+id/profile_layout_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30.67dp"
-        android:layout_marginTop="33.33dp"
+        android:layout_marginHorizontal="@dimen/dp30.67"
+        android:layout_marginTop="@dimen/dp33.33"
         android:orientation="vertical">
 
         <ImageButton
             android:id="@+id/quit_btn"
-            android:layout_width="13.33dp"
-            android:layout_height="13.33dp"
+            android:layout_width="@dimen/dp13.33"
+            android:layout_height="@dimen/dp13.33"
             android:background="#00FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +28,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="13.33dp" />
+            android:layout_height="@dimen/dp13.33" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -41,19 +41,19 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/User_profile"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="@dimen/dp60"
+                android:layout_height="@dimen/dp60"
                 android:clickable="true"
                 android:src="@mipmap/avatar_foreground"
                 app:civ_border_color="#707070"
-                app:civ_border_width="0.1dp"
+                app:civ_border_width="@dimen/dp0.1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="@dimen/dp10"
                 android:orientation="vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/User_profile"
@@ -66,7 +66,7 @@
                     android:text="닉네임"
                     android:textAlignment="textEnd"
                     android:textColor="#000000"
-                    android:textSize="16.67dp"
+                    android:textSize="@dimen/dp16.67"
                     android:textStyle="bold" />
 
                 <TextView
@@ -75,23 +75,23 @@
                     android:layout_height="wrap_content"
                     android:text="한줄소개"
                     android:textAlignment="textEnd"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/sp10" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="16.67dp" />
+            android:layout_height="@dimen/dp16.67" />
 
         <Button
             android:id="@+id/to_modify_btn"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/dp30"
             android:background="@drawable/btn_white_outline"
             android:text="내 정보 수정"
             android:textColor="#5A5A5A"
-            android:textSize="12sp"
+            android:textSize="@dimen/sp12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -101,7 +101,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25.33dp"
+        android:layout_marginTop="@dimen/dp25.33"
         app:cardBackgroundColor="#00FFFFFF"
         app:cardElevation="0dp"
         app:cardMaxElevation="0dp"
@@ -114,11 +114,11 @@
             android:layout_height="match_parent"
             android:background="@drawable/profile_card_bg"
             android:orientation="vertical"
-            android:paddingHorizontal="30.67dp">
+            android:paddingHorizontal="@dimen/dp30.67">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48.50dp"
+                android:layout_height="@dimen/dp48.50"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -128,7 +128,7 @@
                     android:layout_weight="1"
                     android:text="PUSH 알림 설정"
                     android:textColor="#5A5A5A"
-                    android:textSize="13.33dp" />
+                    android:textSize="@dimen/dp13.33" />
 
                 <Switch
                     android:id="@+id/push_switch"
@@ -143,26 +143,26 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="0.1dp"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="51dp"
+                android:layout_height="@dimen/dp0.1"
+                android:layout_marginStart="@dimen/dp0"
+                android:layout_marginLeft="@dimen/dp51"
                 android:background="#3D707070"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="48.50dp"
+                android:layout_height="@dimen/dp48.50"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/btn_logout"
-                    android:layout_width="10dp"
+                    android:layout_width="@dimen/dp10"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="로그아웃"
                     android:textColor="#5A5A5A"
-                    android:textSize="13.33dp" />
+                    android:textSize="@dimen/dp13.33" />
 
             </LinearLayout>
         </LinearLayout>

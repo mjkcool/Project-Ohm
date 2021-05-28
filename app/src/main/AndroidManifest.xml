@@ -18,15 +18,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".createroom_name"></activity>
         <activity android:name=".createroom_topic" />
+        <activity android:name=".createroom_name"></activity>
         <activity android:name=".createroom_time" />
         <activity android:name=".create_calendar" />
         <activity android:name=".calendar" />
         <activity android:name=".ProfilePage" />
         <activity android:name=".ModifyProfileActivity" />
         <activity
-            android:name=".MainActivity">
+            android:name=".ChatingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ProfileInitActivity" />
-        <activity android:name=".ChatingActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".WaitingRoomActivity" />
         <activity android:name=".LoginActivity" />
