@@ -43,6 +43,11 @@ class createroom_name : AppCompatActivity(){
                     text_number?.setText(s.length.toString() + "/ 30")
                 }
             })
+
+            val inputroom_name = room_name.text.toString()
+            val nextIntent = Intent(this, createroom_topic::class.java)
+            nextIntent.putExtra("room_name", inputroom_name)
+            startActivity(nextIntent)
         }
 
 }

@@ -6,7 +6,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_createmeeting1.*
 import kotlinx.android.synthetic.main.activity_createmeeting2.*
 
 class createroom_topic : AppCompatActivity() {
@@ -40,5 +42,13 @@ class createroom_topic : AppCompatActivity() {
                     text_number2?.setText(s.length.toString() + "/ 30")
                 }
             })
+
+            val inputroom_name = room_name.text.toString()
+            if (intent.hasExtra("room_name")) {
+                inputroom_name.text = intent.getStringExtra("room_name")
+            } else {
+                Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
+            }
+
         }
 }
