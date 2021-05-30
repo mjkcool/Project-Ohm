@@ -96,6 +96,7 @@ class ProfileInitActivity : AppCompatActivity() {
                 2 ->{
                     // 파이어베이스에 한줄소개 데이터 등록(선택)
                     val introduceTxt = findViewById<EditText>(R.id.input_introduce_set).text //등록할 텍스트 데이터
+                    create_photo()
                     writeNewUser(nickname, introduceTxt.toString())
 
                 }
@@ -148,9 +149,9 @@ class ProfileInitActivity : AppCompatActivity() {
                 Toast.makeText(this, "사용자 디비 적재 실패", Toast.LENGTH_SHORT).show()
             }
     }
+
     fun create_photo(){
         var storageRef = storage.reference
-        var imagesRef: StorageReference? = storageRef.child("profile_imgs")
         var filename = auth.currentUser!!.uid + ".jpg"
 
         var profileRef = storageRef.child("images/"+filename)
