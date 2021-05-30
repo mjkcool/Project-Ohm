@@ -109,7 +109,7 @@ class LoginActivity: AppCompatActivity() {
         //사용자 정보가 있다면?
         val ref = FirebaseDatabase.getInstance().getReference("users")
         if (user != null) {
-            ref.child(auth.currentUser.uid).get().addOnSuccessListener {
+            ref.child(auth.currentUser!!.uid).get().addOnSuccessListener {
                 if (it.value != null) {
                     Toast.makeText(this, "최초 로그인이 아닌 로그인", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, HomeActivity::class.java))

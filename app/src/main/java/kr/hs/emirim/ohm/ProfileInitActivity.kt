@@ -35,12 +35,11 @@ class ProfileInitActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var imageUri: Uri
-    private lateinit var myUri: String
     lateinit var nickname : String
 
     private lateinit var database: DatabaseReference
 
-    fun initializeDbRef() {
+    private fun initializeDbRef() {
         database = Firebase.database.reference
     }
 
@@ -87,13 +86,12 @@ class ProfileInitActivity : AppCompatActivity() {
                 }
                 1 ->{
                     // 파이어베이스에 프로필사진 데이터 등록(선택)
-                    val profileImg = findViewById<CircleImageView>(R.id.init_profileimg_view) //등록할 이미지 데이터를 가진 객체(데이터 아님, 데이터 직접 추출해주길..감사^^)
                     setFrag(++curFagNum)
                 }
                 2 ->{
                     // 파이어베이스에 한줄소개 데이터 등록(선택)
                     val introduceTxt = findViewById<EditText>(R.id.input_introduce_set).text //등록할 텍스트 데이터
-                    writeNewUser(nickname, introduceTxt.toString())
+                    writeNewUser(nickname, imageUri, introduceTxt.toString())
 
                 }
             }
@@ -134,12 +132,12 @@ class ProfileInitActivity : AppCompatActivity() {
     }
 
 
-    fun writeNewUser(nickname: String,introduceTxt: String) {
-        val user = User(nickname, introduceTxt)
-        database.child("users").child(auth.currentUser.uid).setValue(user)
+    private fun writeNewUser(nickname: String, profileImg: Uri, introduceTxt: String) {
+        val user = User(nickname, profileImg, introduceTxt)
+        database.child("users").child(auth.currentUser!!.uid).setValue(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "사용자 디비 적재 성공", Toast.LENGTH_SHORT).show()
-                updateUI(auth.currentUser)
+                updateUI(auth.currentUser!!)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "사용자 디비 적재 실패", Toast.LENGTH_SHORT).show()
@@ -148,7 +146,7 @@ class ProfileInitActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser) {
         var intent = Intent(this, HomeActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK //실행 액티비티 외 모두 제거
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
 
