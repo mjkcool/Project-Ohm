@@ -26,7 +26,7 @@
         <activity android:name=".ProfilePage" />
         <activity android:name=".ModifyProfileActivity" />
         <activity
-            android:name=".ChatingActivity">
+            android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +37,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".WaitingRoomActivity" />
-        <activity android:name=".LoginActivity" />
+<!--        <activity android:name=".LoginActivity" />-->
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
