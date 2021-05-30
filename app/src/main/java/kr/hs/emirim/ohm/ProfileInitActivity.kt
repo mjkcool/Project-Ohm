@@ -10,7 +10,6 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.theartofdev.edmodo.cropper.CropImage
 import de.hdodenhof.circleimageview.CircleImageView
 import kr.hs.emirim.ohm.fragments.FragInitImage
@@ -22,6 +21,9 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 
 
 class ProfileInitActivity : AppCompatActivity() {
@@ -37,6 +39,7 @@ class ProfileInitActivity : AppCompatActivity() {
     private lateinit var imageUri: Uri
     private lateinit var myUri: String
     lateinit var nickname : String
+    lateinit var storage: FirebaseStorage
 
     private lateinit var database: DatabaseReference
 
@@ -52,7 +55,7 @@ class ProfileInitActivity : AppCompatActivity() {
         ProfileInitContext = this
         toBackBtn = findViewById(R.id.back_btn_nickname_set)
         toNextBtn = findViewById(R.id.next_btn_nickname_set)
-
+        storage = Firebase.storage
         setFrag(curFagNum) //첫 프래그먼트
 
         initializeDbRef()
@@ -136,14 +139,27 @@ class ProfileInitActivity : AppCompatActivity() {
 
     fun writeNewUser(nickname: String,introduceTxt: String) {
         val user = User(nickname, introduceTxt)
-        database.child("users").child(auth.currentUser.uid).setValue(user)
+        database.child("users").child(auth.currentUser!!.uid).setValue(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "사용자 디비 적재 성공", Toast.LENGTH_SHORT).show()
-                updateUI(auth.currentUser)
+                updateUI(auth.currentUser!!)
             }
             .addOnFailureListener {
                 Toast.makeText(this, "사용자 디비 적재 실패", Toast.LENGTH_SHORT).show()
             }
+    }
+    fun create_photo(){
+        var storageRef = storage.reference
+        var imagesRef: StorageReference? = storageRef.child("profile_imgs")
+        var filename = auth.currentUser!!.uid + ".jpg"
+
+        var profileRef = storageRef.child("images/"+filename)
+        var uploadTask = profileRef?.putFile(imageUri)
+        uploadTask?.addOnFailureListener{
+            Toast.makeText(this, "프로필 사진 저장 실패", Toast.LENGTH_SHORT).show()
+        }?.addOnSuccessListener {
+            Toast.makeText(this, "프로필 사진 저장 성공", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun updateUI(user: FirebaseUser) {

@@ -37,7 +37,7 @@ android {
 
 dependencies {
     //파이어베이스 연동 디펜던시 1
-    implementation platform('com.google.firebase:firebase-bom:27.0.0')
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.google.firebase:firebase-database-ktx'
@@ -47,10 +47,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     //파이어베이스 연동 디펜던시 2
     implementation 'com.google.firebase:firebase-analytics-ktx'
-    //파이어베이스 디비 관련 디펜던
-    implementation 'com.google.firebase:firebase-database:19.7.0'
-    //파이어베이스 구글 로그인 관련 디펜던시
-    implementation 'com.google.firebase:firebase-auth:20.0.4'
+    //파이어베이스 스토리지
+    implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'androidx.navigation:navigation-runtime:2.3.5'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
