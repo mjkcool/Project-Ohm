@@ -10,9 +10,7 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.FirebaseDatabase
 import com.theartofdev.edmodo.cropper.CropImage
-import de.hdodenhof.circleimageview.CircleImageView
 import kr.hs.emirim.ohm.fragments.FragInitImage
 import kr.hs.emirim.ohm.fragments.FragInitImage.Companion.profileImageView
 import kr.hs.emirim.ohm.fragments.FragInitIntroduce
@@ -91,7 +89,7 @@ class ProfileInitActivity : AppCompatActivity() {
                 2 ->{
                     // 파이어베이스에 한줄소개 데이터 등록(선택)
                     val introduceTxt = findViewById<EditText>(R.id.input_introduce_set).text //등록할 텍스트 데이터
-                    writeNewUser(nickname, imageUri, introduceTxt.toString())
+                    writeNewUser(nickname, /*imageUri, */introduceTxt.toString())
 
                 }
             }
@@ -132,8 +130,8 @@ class ProfileInitActivity : AppCompatActivity() {
     }
 
 
-    private fun writeNewUser(nickname: String, profileImg: Uri, introduceTxt: String) {
-        val user = User(nickname, profileImg, introduceTxt)
+    private fun writeNewUser(nickname: String, /*profileImg: String,*/ introduceTxt: String) {
+        val user = User(nickname, /*profileImg,*/ introduceTxt)
         database.child("users").child(auth.currentUser!!.uid).setValue(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "사용자 디비 적재 성공", Toast.LENGTH_SHORT).show()
