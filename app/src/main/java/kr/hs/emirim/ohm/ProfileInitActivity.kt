@@ -31,8 +31,8 @@ class ProfileInitActivity : AppCompatActivity() {
         lateinit var ProfileInitContext: Context
     }
 
-    lateinit var toBackBtn: ImageButton
-    lateinit var toNextBtn: Button
+    private lateinit var toBackBtn: ImageButton
+    private lateinit var toNextBtn: Button
     private var curFagNum = 0
 
     private lateinit var auth: FirebaseAuth

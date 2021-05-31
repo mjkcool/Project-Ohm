@@ -35,7 +35,7 @@ class FragInitImage: Fragment() {
         nicknameView = view.findViewById(R.id.init_profileimg_nickname_view)
         nicknameView.text = nicknameInput.text
 
-        resetImageButton.setOnClickListener(){
+        resetImageButton.setOnClickListener{
             CropImage.activity().setAspectRatio(1, 1).start(ProfileInitContext as Activity)
         }
 
