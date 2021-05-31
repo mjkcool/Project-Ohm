@@ -132,6 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp8.33"
             android:layout_weight="1"
+            android:background="#ffffff"
             android:orientation="vertical">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -152,7 +153,7 @@
                 android:id="@+id/google_txt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp33.33"
+                android:layout_marginTop="@dimen/dp3.33"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:includeFontPadding="false"

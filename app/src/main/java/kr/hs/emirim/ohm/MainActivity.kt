@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
         if(user != null){
-            ref.child(auth.currentUser.uid).get().addOnSuccessListener {
+            ref.child(auth.currentUser!!.uid).get().addOnSuccessListener {
                 if(it.value != null) {
                     Toast.makeText(this, "최초 로그인이 아닌 로그인", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, HomeActivity::class.java))

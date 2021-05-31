@@ -47,14 +47,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         userProfileBtn.setOnClickListener {
-            val intent = Intent(this, ProfilePage::class.java)
+            val intent = Intent(this, ProfilePageActivity::class.java)
             startActivity(intent)
             finish()
-
-        }
-
-        userProfileBtn.setOnClickListener{
-
         }
         /*
         goto_btn.setOnClickListener(View.OnClickListener {

@@ -20,11 +20,11 @@ class createroom_name : AppCompatActivity(){
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_createmeeting1)
 
-            room_name = findViewById<EditText>(R.id.room_name)
-            text_number = findViewById<TextView>(R.id.text_number)
+            room_name = findViewById(R.id.room_name)
+            text_number = findViewById(R.id.text_number)
 
             next_button1.setOnClickListener {
-                Toast.makeText(this, room_name, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, room_name.toString(), Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, createroom_topic::class.java)
                 startActivity(intent)
             }

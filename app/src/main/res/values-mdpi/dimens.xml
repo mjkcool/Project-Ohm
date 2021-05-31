@@ -33,7 +33,6 @@
     <dimen name="sp15.33">46sp</dimen>
     <dimen name="dp3.67">11dp</dimen>
     <dimen name="dp45">135dp</dimen>
-    <!-- 2차 -->
     <dimen name="dp131.67">395dp</dimen>
     <dimen name="dp26.67">80dp</dimen>
     <dimen name="sp14.67">44sp</dimen>
@@ -101,7 +100,7 @@
     <dimen name="dp16">48dp</dimen>
     <dimen name="dp265">795dp</dimen>
     <dimen name="dp59">177dp</dimen>
-    <dimen name="dp69">621dp</dimen>
+    <dimen name="dp69">207dp</dimen>
     <dimen name="dp175">525dp</dimen>
     <dimen name="dp151">453dp</dimen>
     <dimen name="sp13">39sp</dimen>
@@ -170,9 +169,9 @@
     <dimen name="dp21.33">64dp</dimen>
     <dimen name="dp11.33">34dp</dimen>
     <dimen name="dp18">54dp</dimen>
-    <dimen name="dp49">49dp</dimen>
+    <dimen name="dp49">147dp</dimen>
     <dimen name="dp52">52dp</dimen>
-    <dimen name="dp290">290dp</dimen>
-    <dimen name="dp6.33">6.33dp</dimen>
-    <dimen name="dp16.66">16.66dp</dimen>
+    <dimen name="dp290">156dp</dimen>
+    <dimen name="dp6.33">19dp</dimen>
+    <dimen name="dp16.66">50dp</dimen>
 </resources>
