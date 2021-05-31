@@ -37,7 +37,6 @@ class ProfileInitActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var imageUri: Uri
-    private lateinit var myUri: String
     lateinit var nickname : String
     lateinit var storage: FirebaseStorage
 
