@@ -157,7 +157,7 @@
 
     <!-- Drawer 역할 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_gravity=""
+        android:layout_gravity="right"
         android:background="@drawable/chatting_background"
         android:layout_width="@dimen/dp336"
         android:layout_height="@dimen/dp809"

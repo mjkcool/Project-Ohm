@@ -95,6 +95,9 @@ public class ChatingActivity extends AppCompatActivity {
         chatAapter = new ChatingAdapter(chatlist, ChatingActivity.this, nick);
         recyclerView.setAdapter(chatAapter);
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
+        myRef = database.getReference();
+
         drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
             public void onClick(View v) {
                 if(!drawerLayout.isDrawerOpen(Gravity.RIGHT)){
@@ -178,17 +181,6 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
 
-        exit.setOnClickListener(new View.OnClickListener() { //나가기 버튼을 눌렀을경우
-            @Override
-            public void onClick(View v) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//                builder.setTitle("삭제 확인");
-//                builder.setMessage("삭제하시겠습니까?");
-//                builder.setNegativeButton("예", new DialogInterface.OnClickListener()
-//                { @Override public void onClick(DialogInterface dialog, int which);
-            }
-        });
-
         search.setOnClickListener(new View.OnClickListener() { //검색하기 버튼을 눌렀을경우
             @Override
             public void onClick(View v) {
@@ -221,14 +213,10 @@ public class ChatingActivity extends AppCompatActivity {
                     chat.setNickname(nick);
                     chat.setMsg(msg);
                     myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
-
                 }
             }
         });
 
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
-        myRef = database.getReference();
 
         myRef.addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
             @Override

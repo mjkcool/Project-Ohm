@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_createmeeting2.*
 
 class createroom_topic : AppCompatActivity() {
 
-        var meeting_topic: EditText? = null
+        lateinit var meeting_topic: EditText
         var text_number2: TextView? = null
 
         override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,9 +43,9 @@ class createroom_topic : AppCompatActivity() {
                 }
             })
 
-            val inputroom_name = room_name.text.toString()
+            var inputroom_name = room_name.text.toString()
             if (intent.hasExtra("room_name")) {
-                inputroom_name.text = intent.getStringExtra("room_name")
+               // inputroom_name = intent.getStringExtra("room_name")
             } else {
                 Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
             }
