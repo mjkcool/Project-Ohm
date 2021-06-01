@@ -45,6 +45,8 @@ public class ChatingActivity extends AppCompatActivity {
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
 
+    private TextView count; //카운트다운
+
     private DatabaseReference myRef; //파이어베이스 값을 불러오는 것
 
     private ImageButton exit; //나가기 버튼
@@ -81,6 +83,8 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index1 = findViewById(R.id.poll_index1); //투표를 몇 % 정도 했는지 알려주는 것
         poll_index2 = findViewById(R.id.poll_index2);
         poll_index3 = findViewById(R.id.poll_index3);
+
+        count = findViewById(R.id.time_bar); //화면에 보일 시간
         
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
         drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
