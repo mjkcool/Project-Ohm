@@ -51,6 +51,13 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+        //회의 일정
+        bookMeetingBtn.setOnClickListener{
+            val intent = Intent(this, calendar::class.java)
+            startActivity(intent)
+            finish()
+        }
         /*
         goto_btn.setOnClickListener(View.OnClickListener {
 

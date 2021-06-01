@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.activity_createmeeting1.*
 class createroom_name : AppCompatActivity(){
 
     lateinit var room_name: EditText
-    var text_number: TextView? = null
+    lateinit var text_number: TextView
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)

@@ -251,7 +251,7 @@
                     android:id="@+id/h2_subtitle_home_book"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp22"
-                    android:text="회의 예약"
+                    android:text="회의 일정"
                     android:textColor="#000000"
                     android:textSize="@dimen/sp15.33"
                     android:textStyle="bold"
@@ -261,7 +261,7 @@
                     android:id="@+id/desc_home_book"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp33"
-                    android:text="회의를 예약해두면 잊지 않게\n알림을 보내드립니다."
+                    android:text="간편하게 회의 일정을 등록하고,\n관리해보세요."
                     android:textSize="8sp"
                     android:clickable="false"/>
             </LinearLayout>
