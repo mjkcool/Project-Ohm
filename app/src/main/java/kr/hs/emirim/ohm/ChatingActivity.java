@@ -209,7 +209,9 @@ public class ChatingActivity extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() { // 나가기 창
             @Override
             public void onClick(View v) {
-                
+
+                Intent intent = new Intent(ChatingActivity.this, out_room_modal.class);
+                startActivity(intent); //액티비티 이동
             }
         });
 
