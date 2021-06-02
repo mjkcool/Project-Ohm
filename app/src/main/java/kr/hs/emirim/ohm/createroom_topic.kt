@@ -43,12 +43,10 @@ class createroom_topic : AppCompatActivity() {
                 }
             })
 
-            var inputroom_name = room_name.text.toString()
-            if (intent.hasExtra("room_name")) {
-               // inputroom_name = intent.getStringExtra("room_name")
-            } else {
-                Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
+            if(intent.hasExtra("rname")) {
+                val room_name = intent.getStringExtra("rname")
             }
+
 
         }
 }
