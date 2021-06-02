@@ -71,4 +71,7 @@ dependencies {
     //image 불러오기 & cropper
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    //슬라이딩 라이브러리
+    implementation 'com.sothree.slidinguppanel:library:3.4.0'
 }
