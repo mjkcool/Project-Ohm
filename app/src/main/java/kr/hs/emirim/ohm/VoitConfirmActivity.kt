@@ -21,7 +21,7 @@ class VoitConfirmActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.voit_main)
+        setContentView(R.layout.voit_confirm)
 
         back = findViewById<ImageView>(R.id.quit_btn)  //취소하고 채팅방으로 넘어가는 버튼
 
