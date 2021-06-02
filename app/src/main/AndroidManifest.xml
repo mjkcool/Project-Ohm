@@ -24,6 +24,8 @@
         <activity android:name=".createroom_time" />
         <activity android:name=".create_calendar" />
         <activity android:name=".calendar" />
+        <activity android:name=".voitActivity"/>
+        <activity android:name=".VoitConfirmActivity"/>
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".ModifyProfileActivity" />
         <activity android:name=".ChatingActivity">
