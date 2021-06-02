@@ -23,7 +23,7 @@
             android:layout_height="51dp"
             android:layout_marginTop="32dp"
             android:gravity="center"
-            android:text="정말 회의를 종료하시겠습니까?\n지금까지 대화한 내용이 모두 사라집니다."
+            android:text="정말 회의를 종료하시겠습니까?\n지금까지 대화한 내용이 사라집니다."
             android:textColor="#000000"
             android:textSize="13.33sp"
             app:layout_constraintEnd_toEndOf="parent"
