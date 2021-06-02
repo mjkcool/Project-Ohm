@@ -26,6 +26,7 @@ class createroom_name : AppCompatActivity(){
             next_button1.setOnClickListener {
                 Toast.makeText(this, room_name.toString(), Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, createroom_topic::class.java)
+                intent.putExtra("rname", room_name.text.toString())
                 startActivity(intent)
             }
 
@@ -44,10 +45,6 @@ class createroom_name : AppCompatActivity(){
                 }
             })
 
-            val inputroom_name = room_name.text.toString()
-            val nextIntent = Intent(this, createroom_topic::class.java)
-            nextIntent.putExtra("room_name", inputroom_name)
-            startActivity(nextIntent)
         }
 
 }

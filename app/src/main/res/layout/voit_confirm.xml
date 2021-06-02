@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ImageButton
+    <ImageView
         android:id="@+id/quit_btn"
         android:layout_width="@dimen/dp14"
         android:layout_height="@dimen/dp14"
@@ -39,7 +39,7 @@
         android:layout_width="@dimen/dp265"
         android:layout_height="@dimen/dp40"
         android:layout_marginStart="@dimen/dp47"
-        android:layout_marginTop="@dimen/dp50"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="@dimen/dp44"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.133"
@@ -48,7 +48,7 @@
         app:srcCompat="@drawable/line" />
 
     <EditText
-        android:id="@+id/voit_title_1"
+        android:id="@+id/voit_confirm1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp13"
@@ -76,7 +76,7 @@
         app:srcCompat="@drawable/line" />
 
     <EditText
-        android:id="@+id/voit_title_2"
+        android:id="@+id/voit_confirm2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp13"
@@ -129,37 +129,12 @@
         app:layout_constraintTop_toTopOf="@+id/voit_main4"
         app:srcCompat="@drawable/plus" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="@dimen/dp119"
-        android:layout_height="@dimen/dp95"
-        android:layout_marginTop="@dimen/dp28"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/voit_main4">
-
-        <RadioButton
-            android:id="@+id/voit_main_radio1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:text="익명 투표" />
-
-        <RadioButton
-            android:id="@+id/voit_main_radio2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp10"
-            android:text="복수 투표" />
-    </RadioGroup>
-
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/goto_save1"
         android:layout_width="@dimen/dp273"
         android:layout_height="@dimen/dp53"
         android:layout_marginStart="@dimen/dp50"
-        android:layout_marginTop="@dimen/dp48"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/dp49"
         android:background="@drawable/btn_darkblue"
         android:text="@string/voit_main_btn"
@@ -167,7 +142,7 @@
         android:textSize="@dimen/sp13"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.007"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/voit_main4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
