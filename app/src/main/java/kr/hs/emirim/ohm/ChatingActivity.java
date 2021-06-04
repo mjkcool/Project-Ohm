@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +82,7 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index1 = findViewById(R.id.poll_index1); //투표를 몇 % 정도 했는지 알려주는 것
         poll_index2 = findViewById(R.id.poll_index2);
         poll_index3 = findViewById(R.id.poll_index3);
-        
+
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
         drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
 
@@ -94,12 +96,9 @@ public class ChatingActivity extends AppCompatActivity {
         chatAapter = new ChatingAdapter(chatlist, ChatingActivity.this, nick);
         recyclerView.setAdapter(chatAapter);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
-        myRef = database.getReference();
-
         drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
             public void onClick(View v) {
-                if(!drawerLayout.isDrawerOpen(Gravity.RIGHT)){ //열리는 쪽이 오른쪽 일 경우
+                if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) { //열리는 쪽이 오른쪽 일 경우
                     drawerLayout.openDrawer(Gravity.RIGHT);
                 }
             }
@@ -115,14 +114,14 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (flag1){
+                if (flag1) {
                     count1++;
                     count2 = 1;
                     count3 = 1;
 
-                    flag1=false;
-                    flag2=true;
-                    flag3=true;
+                    flag1 = false;
+                    flag2 = true;
+                    flag3 = true;
                     calculatePercent();
                 }
 
@@ -140,14 +139,14 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (flag2){
+                if (flag2) {
                     count1 = 1;
                     count2++;
                     count3 = 1;
 
-                    flag1=true;
-                    flag2=false;
-                    flag3=true;
+                    flag1 = true;
+                    flag2 = false;
+                    flag3 = true;
                     calculatePercent();
                 }
 
@@ -165,14 +164,14 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (flag3){
+                if (flag3) {
                     count1 = 1;
                     count2 = 1;
                     count3++;
 
-                    flag1=true;
-                    flag2=true;
-                    flag3=false;
+                    flag1 = true;
+                    flag2 = true;
+                    flag3 = false;
 
                     calculatePercent();
                 }
@@ -203,7 +202,6 @@ public class ChatingActivity extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() { // 나가기 창
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(ChatingActivity.this, out_room_modal.class);
                 startActivity(intent); //액티비티 이동
             }
@@ -223,10 +221,13 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
+        myRef = database.getReference();
+
         myRef.addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                //Log.d("CHATCHAT", snapshot.getValue().toString()); //오류가 나서 값이 제대로 실행 되는지 보기 위한 코드
+                Log.d("CHATCHAT", snapshot.getValue().toString()); //오류가 나서 값이 제대로 실행 되는지 보기 위한 코드
                 ChatingData chat = snapshot.getValue(ChatingData.class); //데이터값에 데이터 클래스를 넣어주는 것
                 chatlist.add(chat);
                 recyclerView.setAdapter(chatAapter);

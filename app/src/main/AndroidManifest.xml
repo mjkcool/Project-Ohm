@@ -25,9 +25,11 @@
         <activity android:name=".calendar" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".ModifyProfileActivity" />
-        <activity android:name=".ChatingActivity"/>
+        <activity android:name=".MainActivity"/>
         <activity android:name=".ProfileInitActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".voitActivity"/>
+        <activity android:name=".VoitConfirmActivity"/>
+        <activity android:name=".ChatingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
