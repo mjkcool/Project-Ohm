@@ -25,6 +25,11 @@ class createroom_topic : AppCompatActivity() {
                 startActivity(intent)
             })
 
+            back_button2.setOnClickListener {
+                val intent = Intent(this, createroom_name::class.java)
+                startActivity(intent)
+            }
+
             meeting_topic = findViewById<EditText>(R.id.meeting_topic)
             text_number2 = findViewById<TextView>(R.id.text_number2)
 

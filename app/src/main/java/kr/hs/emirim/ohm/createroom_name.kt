@@ -30,6 +30,11 @@ class createroom_name : AppCompatActivity(){
                 startActivity(intent)
             }
 
+            back_button1.setOnClickListener {
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            }
+
             room_name?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence,
