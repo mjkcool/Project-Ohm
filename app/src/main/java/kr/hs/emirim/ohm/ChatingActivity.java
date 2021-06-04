@@ -191,7 +191,7 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
-                CharSequence text = "죄송합니다. 아직 개발하지 못 했습니다. 조금만 기달려주세요 ! ";
+                CharSequence text = "죄송합니다. 아직 개발하지 못 했습니다. 조금만 기다려주세요 ! ";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(context, text, duration);
@@ -242,12 +242,13 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String msg = chatting_say.getText().toString(); //채팅 할 때 사용하는 메세지
-
                 if(msg != null) { //칠 내용이 null값이 아닌경우
                     ChatingData chat = new ChatingData(); //주의상황 : 파이어베이스에 다른 클래스의데이터베이스를 넣을거면 전에 있던 값을 삭제
                     chat.setNickname(nick);
                     chat.setMsg(msg);
                     myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
+                }else{
+                    Toast.makeText(getApplicationContext(),"입력 받은 텍스트가 없습니다", Toast.LENGTH_SHORT).show();
                 }
             }
         });
