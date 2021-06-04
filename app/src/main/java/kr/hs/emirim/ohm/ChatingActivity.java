@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -57,6 +59,8 @@ public class ChatingActivity extends AppCompatActivity {
     double count1=1, count2=1, count3=1; //값
     boolean flag1=true, flag2=true, flag3=true; //투표하는 거 클릭시 값 들어가는 것
 
+    Dialog dilaog01; //다이얼로그
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +99,10 @@ public class ChatingActivity extends AppCompatActivity {
         chatlist = new ArrayList<>(); //전에 있는 채팅을 읽어오는것
         chatAapter = new ChatingAdapter(chatlist, ChatingActivity.this, nick);
         recyclerView.setAdapter(chatAapter);
+
+        dilaog01 = new Dialog(ChatingActivity.this); //다이얼로그 초기화
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); //타이틀 제거
+        dilaog01.setContentView(R.layout.activity_out_room_modal); //레이아웃 연결
 
         drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
             public void onClick(View v) {
@@ -200,12 +208,35 @@ public class ChatingActivity extends AppCompatActivity {
         });
 
         exit.setOnClickListener(new View.OnClickListener() { // 나가기 창
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ChatingActivity.this, out_room_modal.class);
-                startActivity(intent); //액티비티 이동
-            }
-        });
+                                    @Override
+                                    public void onClick(View v) {
+                                        showDialog01();
+                                    }
+
+                                    public void showDialog01() {
+                                        dilaog01.show();
+
+                                        Button endBtn = dilaog01.findViewById(R.id.end_button);
+                                        endBtn.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                Intent intent = new Intent(ChatingActivity.this, end_room_dialog.class);
+                                                startActivity(intent);
+                                                dilaog01.dismiss(); // 다이얼로그 닫기
+                                            }
+                                        });
+
+                                        dilaog01.findViewById(R.id.out_button).setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                Intent intent = new Intent(ChatingActivity.this, out_room_modal.class);
+                                                startActivity(intent);
+                                                dilaog01.dismiss();  // 다이얼로그 닫기
+                                            }
+                                        });
+                                    }
+                                });
+
 
         chatting_send.setOnClickListener(new View.OnClickListener() { //채팅을 보내는 버튼을 누를 시
             @Override
