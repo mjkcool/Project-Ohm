@@ -2,21 +2,21 @@ package kr.hs.emirim.ohm;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -30,6 +30,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,24 +41,25 @@ public class ChatingActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
     private List<ChatingData> chatlist; //채팅 데이터 리스트
 
-    private String nick = "nick2"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
+    private String nick = "nick"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
 
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
-
-    private TextView count; //카운트다운
 
     private DatabaseReference myRef; //파이어베이스 값을 불러오는 것
 
     private ImageButton exit; //나가기 버튼
     private ImageView search; //검색하는 버튼
     private ImageView drawer; //창을 열고 닫을 수 있는 버튼
+    private Button goto_voit; //투표하기 창으로 갈 수 있는 버튼
 
     private SeekBar seekBar1, seekBar2, seekBar3; //투표할 수 있는 전체적 투표바
     private TextView poll_result1, poll_result2, poll_result3; // 투표의 전체 값
     private TextView poll_index1, poll_index2 ,poll_index3; //투표를 하는 후보들
-    double count1=1, count2=1, count3=1;
-    boolean flag1=true, flag2=true, flag3=true;
+    double count1=1, count2=1, count3=1; //값
+    boolean flag1=true, flag2=true, flag3=true; //투표하는 거 클릭시 값 들어가는 것
+
+    Dialog dilaog01; //다이얼로그
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -71,6 +73,7 @@ public class ChatingActivity extends AppCompatActivity {
         exit = (ImageButton) findViewById(R.id.exit); //채팅방 나가는 것
         search = (ImageView) findViewById(R.id.search_bar); //채팅을 하다가 모르는 거 검색
         drawer = (ImageView) findViewById(R.id.hamberger_bar); //채팅에서 필요한 정보를 보여줄 수 있는 것
+        goto_voit = (Button) findViewById(R.id.goto_voit); //투표하기 상세정보 볼 수 있는 창
 
         seekBar1 = findViewById(R.id.seek_id1); //투표 결과를 알려주는 그래프
         seekBar2 = findViewById(R.id.seek_id2);
@@ -84,8 +87,6 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index2 = findViewById(R.id.poll_index2);
         poll_index3 = findViewById(R.id.poll_index3);
 
-        count = findViewById(R.id.time_bar); //화면에 보일 시간
-        
         DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
         drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
 
@@ -99,9 +100,13 @@ public class ChatingActivity extends AppCompatActivity {
         chatAapter = new ChatingAdapter(chatlist, ChatingActivity.this, nick);
         recyclerView.setAdapter(chatAapter);
 
+        dilaog01 = new Dialog(ChatingActivity.this); //다이얼로그 초기화
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); //타이틀 제거
+        dilaog01.setContentView(R.layout.activity_out_room_modal); //레이아웃 연결
+
         drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
             public void onClick(View v) {
-                if(!drawerLayout.isDrawerOpen(Gravity.RIGHT)){
+                if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) { //열리는 쪽이 오른쪽 일 경우
                     drawerLayout.openDrawer(Gravity.RIGHT);
                 }
             }
@@ -117,14 +122,14 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (flag1){
+                if (flag1) {
                     count1++;
                     count2 = 1;
                     count3 = 1;
 
-                    flag1=false;
-                    flag2=true;
-                    flag3=true;
+                    flag1 = false;
+                    flag2 = true;
+                    flag3 = true;
                     calculatePercent();
                 }
 
@@ -142,14 +147,14 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (flag2){
+                if (flag2) {
                     count1 = 1;
                     count2++;
                     count3 = 1;
 
-                    flag1=true;
-                    flag2=false;
-                    flag3=true;
+                    flag1 = true;
+                    flag2 = false;
+                    flag3 = true;
                     calculatePercent();
                 }
 
@@ -167,29 +172,18 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (flag3){
+                if (flag3) {
                     count1 = 1;
                     count2 = 1;
                     count3++;
 
-                    flag1=true;
-                    flag2=true;
-                    flag3=false;
+                    flag1 = true;
+                    flag2 = true;
+                    flag3 = false;
 
                     calculatePercent();
                 }
 
-            }
-        });
-
-        exit.setOnClickListener(new View.OnClickListener() { //나가기 버튼을 눌렀을경우
-            @Override
-            public void onClick(View v) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//                builder.setTitle("삭제 확인");
-//                builder.setMessage("삭제하시겠습니까?");
-//                builder.setNegativeButton("예", new DialogInterface.OnClickListener()
-//                { @Override public void onClick(DialogInterface dialog, int which);
             }
         });
 
@@ -202,18 +196,47 @@ public class ChatingActivity extends AppCompatActivity {
 
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+            }
+        });
 
+        goto_voit.setOnClickListener(new View.OnClickListener() { //투표하기 창
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ChatingActivity.this, voitActivity.class);
+                startActivity(intent);
             }
         });
 
         exit.setOnClickListener(new View.OnClickListener() { // 나가기 창
-            @Override
-            public void onClick(View v) {
+                                    @Override
+                                    public void onClick(View v) {
+                                        showDialog01();
+                                    }
 
-                Intent intent = new Intent(ChatingActivity.this, out_room_modal.class);
-                startActivity(intent); //액티비티 이동
-            }
-        });
+                                    public void showDialog01() {
+                                        dilaog01.show();
+
+                                        Button endBtn = dilaog01.findViewById(R.id.end_button);
+                                        endBtn.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                Intent intent = new Intent(ChatingActivity.this, end_room_dialog.class);
+                                                startActivity(intent);
+                                                dilaog01.dismiss(); // 다이얼로그 닫기
+                                            }
+                                        });
+
+                                        dilaog01.findViewById(R.id.out_button).setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                Intent intent = new Intent(ChatingActivity.this, out_room_modal.class);
+                                                startActivity(intent);
+                                                dilaog01.dismiss();  // 다이얼로그 닫기
+                                            }
+                                        });
+                                    }
+                                });
+
 
         chatting_send.setOnClickListener(new View.OnClickListener() { //채팅을 보내는 버튼을 누를 시
             @Override
@@ -225,11 +248,9 @@ public class ChatingActivity extends AppCompatActivity {
                     chat.setNickname(nick);
                     chat.setMsg(msg);
                     myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
-
                 }
             }
         });
-
 
         FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
         myRef = database.getReference();

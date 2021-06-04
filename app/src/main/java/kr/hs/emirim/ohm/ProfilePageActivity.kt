@@ -5,10 +5,12 @@ import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Layout
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
@@ -20,6 +22,8 @@ class ProfilePageActivity : AppCompatActivity() {
     lateinit var introduceView: TextView
     lateinit var profileImgView: CircleImageView
     lateinit var toModifyPageBtn: Button
+    lateinit var deleteuser : View
+    val user = Firebase.auth.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +35,13 @@ class ProfilePageActivity : AppCompatActivity() {
         introduceView = findViewById(R.id.profile_introduce)
         profileImgView = findViewById(R.id.User_profile)
         toModifyPageBtn = findViewById(R.id.to_modify_btn)
+        deleteuser = findViewById(R.id.btn_userout)
 
         //**파이어베이스-최수림 :: 현재 로그인 된 Auth에서 정보 불러오기 & TextView 지정 바랍니다.
         
-        nicknameView.text = "[닉네임 from Firebase]"
+        nicknameView.text = user!!.displayName
         introduceView.text = "[한줄소개 from Firebase]"
-        //profileImgView.setImageURI([Uri값 from Firebase])
-
-
+        profileImgView.setImageURI(user.photoUrl)
 
 
         toModifyPageBtn.setOnClickListener {
@@ -52,7 +55,19 @@ class ProfilePageActivity : AppCompatActivity() {
         }
 
         quitBtn.setOnClickListener{
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
 
+        deleteuser.setOnClickListener {
+            user.delete()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d("ProfilePage", "User account deleted.")
+                    }
+                }
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
 
     }

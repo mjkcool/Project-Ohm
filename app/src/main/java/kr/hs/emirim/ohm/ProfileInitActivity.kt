@@ -17,7 +17,9 @@ import kr.hs.emirim.ohm.fragments.FragInitImage.Companion.profileImageView
 import kr.hs.emirim.ohm.fragments.FragInitIntroduce
 import kr.hs.emirim.ohm.fragments.FragInitNickname
 import android.net.Uri
+import android.util.Log
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -95,8 +97,10 @@ class ProfileInitActivity : AppCompatActivity() {
                 2 ->{
                     // 파이어베이스에 한줄소개 데이터 등록(선택)
                     val introduceTxt = findViewById<EditText>(R.id.input_introduce_set).text //등록할 텍스트 데이터
-                    create_photo()
-                    writeNewUser(nickname, introduceTxt.toString())
+//                    create_photo()
+//                    writeNewUser(nickname, introduceTxt.toString())
+                    editinfo()
+                    updateUI(auth.currentUser!!)
 
                 }
             }
@@ -146,6 +150,21 @@ class ProfileInitActivity : AppCompatActivity() {
             }
             .addOnFailureListener {
                 Toast.makeText(this, "사용자 디비 적재 실패", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    fun editinfo(){
+        val user = auth.currentUser
+        val profileUpdates = userProfileChangeRequest {
+            displayName = nickname
+            photoUri = Uri.parse("https://example.com/jane-q-user/profile.jpg")
+        }
+
+        user!!.updateProfile(profileUpdates)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("initprofile", "User profile updated.")
+                }
             }
     }
 

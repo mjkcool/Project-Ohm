@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="@dimen/dp0"
-    tools:context=".WaitingRoomActivity"
+    tools:context=".ProfilePageActivity"
     android:orientation="vertical">
 
     <LinearLayout
@@ -161,6 +161,32 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="로그아웃"
+                    android:textColor="#5A5A5A"
+                    android:textSize="@dimen/dp13.33" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp0.1"
+                android:layout_marginStart="@dimen/dp0"
+                android:layout_marginLeft="@dimen/dp51"
+                android:background="#3D707070"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/btn_userout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp48.50"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="@dimen/dp10"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="회원 탈퇴"
                     android:textColor="#5A5A5A"
                     android:textSize="@dimen/dp13.33" />
 

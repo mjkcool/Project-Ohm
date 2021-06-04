@@ -18,24 +18,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".end_room_dialog"></activity>
         <activity android:name=".out_room_modal" />
         <activity android:name=".createroom_topic" />
         <activity android:name=".createroom_name" />
         <activity android:name=".createroom_time" />
-        <activity android:name=".create_calendar" />
         <activity android:name=".calendar" />
-        <activity android:name=".ProfilePage" />
+        <activity android:name=".ProfilePageActivity" />
         <activity android:name=".ModifyProfileActivity" />
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".ProfileInitActivity" />
+        <activity android:name=".voitActivity"/>
+        <activity android:name=".VoitConfirmActivity"/>
         <activity android:name=".ChatingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileInitActivity" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".WaitingRoomActivity" />
         <activity android:name=".LoginActivity" />

@@ -13,15 +13,20 @@ import kotlinx.android.synthetic.main.activity_createmeeting2.*
 
 class createroom_topic : AppCompatActivity() {
 
-        var meeting_topic: EditText? = null
+        lateinit var meeting_topic: EditText
         var text_number2: TextView? = null
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_createmeeting2)
 
-            next_button2.setOnClickListener {
+            next_button2.setOnClickListener({
                 val intent = Intent(this, createroom_time::class.java)
+                startActivity(intent)
+            })
+
+            back_button2.setOnClickListener {
+                val intent = Intent(this, createroom_name::class.java)
                 startActivity(intent)
             }
 
@@ -39,16 +44,14 @@ class createroom_topic : AppCompatActivity() {
 
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
                 override fun afterTextChanged(s: Editable) {
-                    text_number2?.text = s.length.toString() + "/ 30"
+                    text_number2?.setText(s.length.toString() + "/ 30")
                 }
             })
 
-            /*val inputroom_name = room_name.text.toString()
-            if (intent.hasExtra("room_name")) {
-                inputroom_name.text = intent.getStringExtra("room_name")
-            } else {
-                Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
-            }*/
+            if(intent.hasExtra("rname")) {
+                val room_name = intent.getStringExtra("rname")
+            }
+
 
         }
 }
