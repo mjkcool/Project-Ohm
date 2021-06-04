@@ -204,7 +204,7 @@
                     android:background="@null"
                     android:ems="10"
                     android:singleLine="true"
-                    android:text="제목"
+                    android:hint="제목"
                     android:textSize="@dimen/dp9.33" />
             </LinearLayout>
 
@@ -247,7 +247,7 @@
                     android:background="@null"
                     android:ems="10"
                     android:singleLine="true"
-                    android:text="주제"
+                    android:hint="주제"
                     android:textSize="@dimen/dp9.33" />
             </LinearLayout>
 
@@ -362,7 +362,7 @@
                     android:background="@null"
                     android:ems="10"
                     android:singleLine="true"
-                    android:text="회의시간"
+                    android:hint="회의시간"
                     android:textSize="@dimen/dp9.33" />
             </LinearLayout>
 
