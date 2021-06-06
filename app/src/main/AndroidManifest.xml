@@ -29,15 +29,14 @@
         <activity android:name=".ProfileInitActivity" />
         <activity android:name=".voitActivity"/>
         <activity android:name=".VoitConfirmActivity"/>
-        <activity android:name=".ChatingActivity">
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".ChatingActivity" />
         <activity android:name=".WaitingRoomActivity" />
-        <activity android:name=".LoginActivity" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

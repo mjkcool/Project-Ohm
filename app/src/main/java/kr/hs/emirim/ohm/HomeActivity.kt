@@ -32,6 +32,12 @@ class HomeActivity : AppCompatActivity() {
 
         roomsRecyclerView = findViewById(R.id.rooms_recycleView_home)
 
+
+        //파베에서 유저 프로필 사진 불러오기, 지정
+        //userProfileBtn.setImageURI()
+        
+        
+
         //회의 목록 테스트 값
         roomData.add(RoomVo("목적지로 가는 길", "2021.04.22", "5일전"))
         roomData.add(RoomVo("반민초 vs 민초", "2021.04.26", "하루전"))

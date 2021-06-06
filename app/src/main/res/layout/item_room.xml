@@ -2,14 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="@dimen/dp133.33"
+    android:layout_height="match_parent"
     android:gravity="center_vertical">
 
     <!-- 카드뷰 -->
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/dp133.33"
-        android:layout_height="@dimen/dp133.33"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/dp2"
         android:layout_marginTop="@dimen/dp5"
         android:layout_marginRight="@dimen/dp8"
@@ -46,15 +46,17 @@
             <TextView
                 android:id="@+id/title_meeting_item"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:singleLine="true"
-                android:text="회의 주제"
                 android:textColor="#000000"
                 android:textSize="@dimen/dp133.33"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/desc_meeting_item" />
+                app:layout_constraintBottom_toTopOf="@+id/desc_meeting_item"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- 카드뷰를 만든 날짜 -->
             <!-- ellipsize = "end" - 뒷 부분을 ...으로 표시 -->

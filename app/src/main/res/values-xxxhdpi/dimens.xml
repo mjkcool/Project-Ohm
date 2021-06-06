@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--작업 중-->
+    <!--*0.75-->
     <dimen name="dp43.33">32.5dp</dimen>
     <dimen name="dp15.33">11.5dp</dimen>
     <dimen name="dp8.67">6.5dp</dimen>

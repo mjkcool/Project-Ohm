@@ -44,13 +44,15 @@
 
     <!-- 카드메뉴를 보여주는 뷰페이저 -->
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_top_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp30.67"
-        android:layout_marginTop="@dimen/dp33.33"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -90,7 +92,7 @@
 
             <EditText
                 android:id="@+id/input_invitation_code"
-                android:layout_width="@dimen/dp256.67"
+                android:layout_width="0dp"
                 android:layout_height="@dimen/dp33.33"
                 android:layout_marginRight="@dimen/dp8.67"
                 android:background="@drawable/chatting_background"
@@ -120,25 +122,26 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/home_create_btn_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="@dimen/dp30.67"
         android:layout_marginTop="@dimen/dp13.33"
         android:layout_marginRight="@dimen/dp5"
+        android:layout_marginBottom="60dp"
+        android:clickable="true"
         app:cardBackgroundColor="#E6EAFD"
         app:cardCornerRadius="@dimen/dp6.67"
+        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toStartOf="@+id/home_book_btn_layout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/home_top_layout"
-        android:clickable="true">
+        app:layout_constraintTop_toBottomOf="@+id/home_top_layout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_bg_layout01_home"
-            android:layout_width="@dimen/dp144.33"
-            android:layout_height="@dimen/dp231.33">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/bg_img01_home_create"
@@ -146,11 +149,11 @@
                 android:layout_height="@dimen/dp111.13"
                 android:layout_marginStart="@dimen/dp14"
                 android:layout_marginRight="@dimen/dp8.73"
+                android:clickable="false"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
                 app:layout_constraintEnd_toStartOf="@+id/bg_img02_home_create"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/inmain1_1"
-                android:clickable="false"/>
+                app:srcCompat="@drawable/inmain1_1" />
 
             <ImageView
                 android:id="@+id/bg_img02_home_create"
@@ -158,17 +161,18 @@
                 android:layout_height="@dimen/dp111.13"
                 android:layout_marginStart="@dimen/dp9"
                 android:layout_marginEnd="@dimen/dp12"
+                android:clickable="false"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/bg_img01_home_create"
-                app:srcCompat="@drawable/inmain1_2"
-                android:clickable="false"/>
+                app:srcCompat="@drawable/inmain1_2" />
 
             <LinearLayout
                 android:id="@+id/txt_layout01_home_create"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp71.33"
                 android:background="@drawable/main_background_white"
+                android:clickable="false"
                 android:gravity="bottom"
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/dp8.33"
@@ -176,26 +180,25 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                android:clickable="false">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
                     android:id="@+id/h2_subtitle_home_create"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp22"
+                    android:clickable="false"
                     android:text="@string/make_text"
                     android:textColor="#000000"
                     android:textSize="@dimen/sp15.33"
-                    android:textStyle="bold"
-                    android:clickable="false"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/desc_home_create"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp33"
+                    android:clickable="false"
                     android:text="텍스트로 빠르고 간편하게\n회의를 생성해보세요."
-                    android:textSize="@dimen/sp8"
-                    android:clickable="false"/>
+                    android:textSize="@dimen/sp8" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -203,40 +206,43 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/home_book_btn_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginLeft="@dimen/dp5"
         android:layout_marginTop="@dimen/dp13.33"
         android:layout_marginRight="@dimen/dp30.67"
+        android:layout_marginBottom="60dp"
+        android:clickable="true"
         app:cardBackgroundColor="#FDF6E6"
         app:cardCornerRadius="@dimen/dp6.67"
+        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/home_create_btn_layout"
-        app:layout_constraintTop_toBottomOf="@+id/home_top_layout"
-        android:clickable="true">
+        app:layout_constraintTop_toBottomOf="@+id/home_top_layout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/btn_bg_layout02_home"
-            android:layout_width="@dimen/dp144.33"
-            android:layout_height="@dimen/dp231.33"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:clickable="false">
 
             <ImageView
                 android:id="@+id/bg_img01_home_book"
                 android:layout_width="@dimen/dp71"
                 android:layout_height="@dimen/dp113.53"
+                android:clickable="false"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout02_home_book"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.506"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/inmain2"
-                android:clickable="false"/>
+                app:srcCompat="@drawable/inmain2" />
 
             <LinearLayout
                 android:id="@+id/txt_layout02_home_book"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp71.33"
                 android:background="@drawable/main_background_white"
+                android:clickable="false"
                 android:gravity="bottom"
                 android:orientation="vertical"
                 android:paddingHorizontal="@dimen/dp8.33"
@@ -244,26 +250,25 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                android:clickable="false">
+                app:layout_constraintStart_toStartOf="parent">
 
                 <TextView
                     android:id="@+id/h2_subtitle_home_book"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp22"
+                    android:clickable="false"
                     android:text="회의 일정"
                     android:textColor="#000000"
                     android:textSize="@dimen/sp15.33"
-                    android:textStyle="bold"
-                    android:clickable="false"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/desc_home_book"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp33"
+                    android:clickable="false"
                     android:text="간편하게 회의 일정을 등록하고,\n관리해보세요."
-                    android:textSize="8sp"
-                    android:clickable="false"/>
+                    android:textSize="@dimen/sp8" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -292,7 +297,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rooms_recycleView_home"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp151"
             android:layout_centerInParent="true"
             android:layout_marginTop="@dimen/dp3.67"
             android:orientation="horizontal"
