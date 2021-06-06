@@ -40,7 +40,6 @@ class ProfileInitActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var imageUri: Uri
     lateinit var nickname : String
-    lateinit var storage: FirebaseStorage
 
     private lateinit var database: DatabaseReference
 
@@ -56,7 +55,6 @@ class ProfileInitActivity : AppCompatActivity() {
         ProfileInitContext = this
         toBackBtn = findViewById(R.id.back_btn_nickname_set)
         toNextBtn = findViewById(R.id.next_btn_nickname_set)
-        storage = Firebase.storage
         setFrag(curFagNum) //첫 프래그먼트
 
         initializeDbRef()
@@ -97,9 +95,8 @@ class ProfileInitActivity : AppCompatActivity() {
                 2 ->{
                     // 파이어베이스에 한줄소개 데이터 등록(선택)
                     val introduceTxt = findViewById<EditText>(R.id.input_introduce_set).text //등록할 텍스트 데이터
-//                    create_photo()
-//                    writeNewUser(nickname, introduceTxt.toString())
                     editinfo()
+                    writeNewUser(introduceTxt.toString())
                     updateUI(auth.currentUser!!)
 
                 }
@@ -140,9 +137,8 @@ class ProfileInitActivity : AppCompatActivity() {
         }
     }
 
-
-    fun writeNewUser(nickname: String,introduceTxt: String) {
-        val user = User(nickname, introduceTxt)
+    fun writeNewUser(introduceTxt: String) {
+        val user = User(introduceTxt)
         database.child("users").child(auth.currentUser!!.uid).setValue(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "사용자 디비 적재 성공", Toast.LENGTH_SHORT).show()
@@ -157,7 +153,7 @@ class ProfileInitActivity : AppCompatActivity() {
         val user = auth.currentUser
         val profileUpdates = userProfileChangeRequest {
             displayName = nickname
-            photoUri = Uri.parse("https://example.com/jane-q-user/profile.jpg")
+            photoUri = Uri.parse(imageUri.toString())
         }
 
         user!!.updateProfile(profileUpdates)
@@ -166,19 +162,6 @@ class ProfileInitActivity : AppCompatActivity() {
                     Log.d("initprofile", "User profile updated.")
                 }
             }
-    }
-
-    fun create_photo(){
-        var storageRef = storage.reference
-        var filename = auth.currentUser!!.uid + ".jpg"
-
-        var profileRef = storageRef.child("images/"+filename)
-        var uploadTask = profileRef?.putFile(imageUri)
-        uploadTask?.addOnFailureListener{
-            Toast.makeText(this, "프로필 사진 저장 실패", Toast.LENGTH_SHORT).show()
-        }?.addOnSuccessListener {
-            Toast.makeText(this, "프로필 사진 저장 성공", Toast.LENGTH_SHORT).show()
-        }
     }
 
     private fun updateUI(user: FirebaseUser) {

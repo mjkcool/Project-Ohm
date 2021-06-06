@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.ArrayList
 
@@ -15,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
     lateinit var roomAdapter: RoomViewAdapter
 
     private lateinit var admissionBtn: Button //회의 입장 버튼
-    private lateinit var userProfileBtn: CircleImageView //상단 우측 유저 프로필 버튼
+    lateinit var userProfileBtn: CircleImageView //상단 우측 유저 프로필 버튼
     private lateinit var createMeetingBtn: CardView //회의 생성 카드 버튼
     private lateinit var bookMeetingBtn: CardView //회의 예약 카드 버튼
 
@@ -32,11 +34,9 @@ class HomeActivity : AppCompatActivity() {
 
         roomsRecyclerView = findViewById(R.id.rooms_recycleView_home)
 
-
+        val user = Firebase.auth.currentUser
         //파베에서 유저 프로필 사진 불러오기, 지정
-        //userProfileBtn.setImageURI()
-        
-        
+        userProfileBtn.setImageURI(user?.photoUrl)
 
         //회의 목록 테스트 값
         roomData.add(RoomVo("목적지로 가는 길", "2021.04.22", "5일전"))
