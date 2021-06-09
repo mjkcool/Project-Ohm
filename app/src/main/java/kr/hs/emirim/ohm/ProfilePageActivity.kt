@@ -61,6 +61,7 @@ class ProfilePageActivity : AppCompatActivity() {
 
         toModifyPageBtn.setOnClickListener {
             startActivity(Intent(this, ModifyProfileActivity::class.java))
+            finish()
         }
 
         logoutBtn.setOnClickListener {

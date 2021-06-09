@@ -44,19 +44,16 @@ class ModifyProfileActivity : AppCompatActivity() {
 
 
         //**파이어베이스-최수림 :: 현재 로그인 된 Auth에서 정보 불러오기 & TextView 지정 바랍니다.
-        lateinit var introduce : String
         nicknameInput.setText(user?.displayName)
         database = Firebase.database.reference
         profileImageView.setImageURI(user!!.photoUrl)
 
         database.child("users").child(user!!.uid).child("introduce").get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
-            introduce = it.value.toString()
+            introduceInput.setText(it.value.toString())
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
-
-        introduceInput.setText(" ")
 
         resetImageButton.setOnClickListener{
             CropImage.activity().setAspectRatio(1, 1).start(this)
@@ -88,6 +85,7 @@ class ModifyProfileActivity : AppCompatActivity() {
                         Log.d("modify user profile", "User profile updated.")
                     }
                 }
+            startActivity(Intent(this, ProfilePageActivity::class.java))
             finish() //현재 액티비티 종료
         }
         cancelBtn.setOnClickListener{
