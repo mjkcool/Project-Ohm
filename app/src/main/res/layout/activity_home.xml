@@ -92,6 +92,7 @@
 
             <EditText
                 android:id="@+id/input_invitation_code"
+                android:inputType="number"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp33.33"
                 android:layout_marginRight="@dimen/dp8.67"

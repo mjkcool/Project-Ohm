@@ -112,10 +112,14 @@ class HomeActivity : AppCompatActivity() {
         //한줄소개 불러오는 부분
         database.child("rooms").child(code).get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
-            val intent = Intent(this, ChatingActivity::class.java)
-            intent.putExtra("code", code)
-            startActivity(intent)
-            finish()
+            if(it.value != null){
+                val intent = Intent(this, ChatingActivity::class.java)
+                intent.putExtra("code", code)
+                startActivity(intent)
+                finish()
+            }else {
+                Toast.makeText(this, "해당 코드를 가진 방이 없습니다.", Toast.LENGTH_SHORT).show()
+            }
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
             Toast.makeText(this, "해당 코드를 가진 방이 없습니다.", Toast.LENGTH_SHORT).show()
