@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var createMeetingBtn: CardView //회의 생성 카드 버튼
     private lateinit var bookMeetingBtn: CardView //회의 예약 카드 버튼
     private lateinit var code: EditText
-    private var database: DatabaseReference = Firebase.database.reference
+    private var database: DatabaseReference = Firebase.database.reference.child("rooms")
     private var user: FirebaseUser = Firebase.auth.currentUser!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,11 +110,12 @@ class HomeActivity : AppCompatActivity() {
     }
     fun checkCode(code:String){
         //한줄소개 불러오는 부분
-        database.child("rooms").child(code).get().addOnSuccessListener {
+        database.child(code).get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
             if(it.value != null){
                 val intent = Intent(this, ChatingActivity::class.java)
                 intent.putExtra("code", code)
+                database.child(code).child("member").setValue(user.uid)
                 startActivity(intent)
                 finish()
             }else {

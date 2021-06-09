@@ -80,10 +80,13 @@ class ProfilePageActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d("ProfilePage", "User account deleted.")
+                        database.child("users").child(user.uid).removeValue().addOnSuccessListener {
+                            startActivity(Intent(this, MainActivity::class.java))
+                            Toast.makeText(this, "지금까지 옴을 이용해주셔서 감사합니다.", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
                     }
                 }
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
         }
 
     }
