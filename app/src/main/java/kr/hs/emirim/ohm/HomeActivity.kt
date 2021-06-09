@@ -3,10 +3,16 @@ package kr.hs.emirim.ohm
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.ArrayList
@@ -20,6 +26,9 @@ class HomeActivity : AppCompatActivity() {
     lateinit var userProfileBtn: CircleImageView //상단 우측 유저 프로필 버튼
     private lateinit var createMeetingBtn: CardView //회의 생성 카드 버튼
     private lateinit var bookMeetingBtn: CardView //회의 예약 카드 버튼
+    private lateinit var code: EditText
+    private var database: DatabaseReference = Firebase.database.reference
+    private var user: FirebaseUser = Firebase.auth.currentUser!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,11 +39,12 @@ class HomeActivity : AppCompatActivity() {
         createMeetingBtn = findViewById(R.id.home_create_btn_layout)
         bookMeetingBtn = findViewById(R.id.home_book_btn_layout)
 
+        code = findViewById(R.id.input_invitation_code)
+
         //admissionBtn.visibility = View.INVISIBLE//View.GONE//View.VISIBLE
 
         roomsRecyclerView = findViewById(R.id.rooms_recycleView_home)
 
-        val user = Firebase.auth.currentUser
         //파베에서 유저 프로필 사진 불러오기, 지정
         userProfileBtn.setImageURI(user?.photoUrl)
 
@@ -63,6 +73,10 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, calendar::class.java)
             startActivity(intent)
             finish()
+        }
+
+        admissionBtn.setOnClickListener {
+            checkCode(code.text.toString())
         }
         /*
         goto_btn.setOnClickListener(View.OnClickListener {
@@ -93,5 +107,19 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
         */
+    }
+    fun checkCode(code:String){
+        //한줄소개 불러오는 부분
+        database.child("rooms").child(code).get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value}")
+            val intent = Intent(this, ChatingActivity::class.java)
+            intent.putExtra("code", code)
+            startActivity(intent)
+            finish()
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+            Toast.makeText(this, "해당 코드를 가진 방이 없습니다.", Toast.LENGTH_SHORT).show()
+        }
+
     }
 }

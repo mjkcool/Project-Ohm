@@ -47,12 +47,12 @@ class ProfilePageActivity : AppCompatActivity() {
         //**파이어베이스-최수림 :: 현재 로그인 된 Auth에서 정보 불러오기 & TextView 지정 바랍니다.
         database = Firebase.database.reference
     //한줄소개 불러오는 부분
-//        database.child("users").child(user!!.uid).child("introduce").get().addOnSuccessListener {
-//            Log.i("firebase", "Got value ${it.value}")
-//            introduceView.text  = it.value.toString()
-//        }.addOnFailureListener{
-//            Log.e("firebase", "Error getting data", it)
-//        }
+        database.child("users").child(user!!.uid).child("introduce").get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value}")
+            introduceView.text  = it.value.toString()
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
 
         nicknameView.text = user!!.displayName
 

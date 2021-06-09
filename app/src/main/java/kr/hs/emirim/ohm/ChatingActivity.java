@@ -25,6 +25,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,8 +47,12 @@ public class ChatingActivity extends AppCompatActivity {
 
     private String nick = "nick"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
 
+    private TextView text_title;
+
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
+
+    private TextView title_bar;
 
     private DatabaseReference myRef; //파이어베이스 값을 불러오는 것
 
@@ -59,6 +67,8 @@ public class ChatingActivity extends AppCompatActivity {
     double count1=1, count2=1, count3=1; //값
     boolean flag1=true, flag2=true, flag3=true; //투표하는 거 클릭시 값 들어가는 것
 
+    private DatabaseReference mDatabase;
+
     Dialog dilaog01; //다이얼로그
 
     @SuppressLint("ClickableViewAccessibility")
@@ -66,6 +76,8 @@ public class ChatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        nick = user.getDisplayName();
 
         chatting_send = (Button) findViewById(R.id.send); //메세지 보내는 거 id 선언
         chatting_say = (EditText) findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
@@ -103,6 +115,28 @@ public class ChatingActivity extends AppCompatActivity {
         dilaog01 = new Dialog(ChatingActivity.this); //다이얼로그 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); //타이틀 제거
         dilaog01.setContentView(R.layout.activity_out_room_modal); //레이아웃 연결
+
+        title_bar = findViewById(R.id.title_bar);
+        text_title = findViewById(R.id.text_title);
+
+        Intent intent = getIntent();
+        String code = intent.getExtras().getString("code");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase.child("rooms").child(code).child("roomname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    title_bar.setText(String.valueOf(task.getResult().getValue()));
+                    text_title.setText(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
 
         drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
             public void onClick(View v) {
