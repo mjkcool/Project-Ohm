@@ -12,6 +12,11 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -24,6 +29,8 @@ class ProfilePageActivity : AppCompatActivity() {
     lateinit var toModifyPageBtn: Button
     lateinit var deleteuser : View
     val user = Firebase.auth.currentUser
+    private lateinit var database: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,14 +45,23 @@ class ProfilePageActivity : AppCompatActivity() {
         deleteuser = findViewById(R.id.btn_userout)
 
         //**파이어베이스-최수림 :: 현재 로그인 된 Auth에서 정보 불러오기 & TextView 지정 바랍니다.
-        
+        database = Firebase.database.reference
+    //한줄소개 불러오는 부분
+        database.child("users").child(user!!.uid).child("introduce").get().addOnSuccessListener {
+            Log.i("firebase", "Got value ${it.value}")
+            introduceView.text  = it.value.toString()
+        }.addOnFailureListener{
+            Log.e("firebase", "Error getting data", it)
+        }
+
         nicknameView.text = user!!.displayName
-        introduceView.text = "[한줄소개 from Firebase]"
+
         profileImgView.setImageURI(user.photoUrl)
 
 
         toModifyPageBtn.setOnClickListener {
             startActivity(Intent(this, ModifyProfileActivity::class.java))
+            finish()
         }
 
         logoutBtn.setOnClickListener {
@@ -64,10 +80,13 @@ class ProfilePageActivity : AppCompatActivity() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d("ProfilePage", "User account deleted.")
+                        database.child("users").child(user.uid).removeValue().addOnSuccessListener {
+                            startActivity(Intent(this, MainActivity::class.java))
+                            Toast.makeText(this, "지금까지 옴을 이용해주셔서 감사합니다.", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
                     }
                 }
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
         }
 
     }

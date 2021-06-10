@@ -45,15 +45,15 @@ class createroom_time : AppCompatActivity() {
         fun createroom(){
             val room = Room(room_name, room_topic, room_time)
             makeCode()
-//            database.child("rooms").child(code).setValue(room)
-//                .addOnSuccessListener {
-//                    Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
-//                    val intent = Intent(this, WaitingRoomActivity::class.java)
-//                    startActivity(intent)
-//                }
-//                .addOnFailureListener {
-//                    Toast.makeText(this, "방 생성 실패", Toast.LENGTH_SHORT).show()
-//                }
+            database.child("rooms").child(code).setValue(room)
+                .addOnSuccessListener {
+                    Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, WaitingRoomActivity::class.java)
+                    startActivity(intent)
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "방 생성 실패", Toast.LENGTH_SHORT).show()
+                }
         }
 
         fun makeCode(){

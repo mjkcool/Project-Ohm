@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -23,6 +25,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,8 +47,12 @@ public class ChatingActivity extends AppCompatActivity {
 
     private String nick = "nick2"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
 
+    private TextView text_title;
+
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
+
+    private TextView title_bar;
 
     private DatabaseReference myRef; //파이어베이스 값을 불러오는 것
 
@@ -57,11 +67,17 @@ public class ChatingActivity extends AppCompatActivity {
     double count1=1, count2=1, count3=1; //값
     boolean flag1=true, flag2=true, flag3=true; //투표하는 거 클릭시 값 들어가는 것
 
+    private DatabaseReference mDatabase;
+
+    Dialog dilaog01; //다이얼로그
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        nick = user.getDisplayName();
 
         chatting_send = (Button) findViewById(R.id.send); //메세지 보내는 거 id 선언
         chatting_say = (EditText) findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
@@ -95,6 +111,32 @@ public class ChatingActivity extends AppCompatActivity {
         chatlist = new ArrayList<>(); //전에 있는 채팅을 읽어오는것
         chatAapter = new ChatingAdapter(chatlist, ChatingActivity.this, nick);
         recyclerView.setAdapter(chatAapter);
+
+        dilaog01 = new Dialog(ChatingActivity.this); //다이얼로그 초기화
+        dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); //타이틀 제거
+        dilaog01.setContentView(R.layout.activity_out_room_modal); //레이아웃 연결
+
+        title_bar = findViewById(R.id.title_bar);
+        text_title = findViewById(R.id.text_title);
+
+        Intent intent = getIntent();
+        String code = intent.getExtras().getString("code");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase.child("rooms").child(code).child("roomname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    title_bar.setText(String.valueOf(task.getResult().getValue()));
+                    text_title.setText(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
 
         drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
             public void onClick(View v) {
@@ -183,7 +225,7 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
-                CharSequence text = "죄송합니다. 아직 개발하지 못 했습니다. 조금만 기달려주세요 ! ";
+                CharSequence text = "죄송합니다. 아직 개발하지 못 했습니다. 조금만 기다려주세요 ! ";
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(context, text, duration);
@@ -200,23 +242,47 @@ public class ChatingActivity extends AppCompatActivity {
         });
 
         exit.setOnClickListener(new View.OnClickListener() { // 나가기 창
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ChatingActivity.this, out_room_modal.class);
-                startActivity(intent); //액티비티 이동
-            }
-        });
+                                    @Override
+                                    public void onClick(View v) {
+                                        showDialog01();
+                                    }
+
+                                    public void showDialog01() {
+                                        dilaog01.show();
+
+                                        Button endBtn = dilaog01.findViewById(R.id.end_button);
+                                        endBtn.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                Intent intent = new Intent(ChatingActivity.this, end_room_dialog.class);
+                                                startActivity(intent);
+                                                dilaog01.dismiss(); // 다이얼로그 닫기
+                                            }
+                                        });
+
+                                        dilaog01.findViewById(R.id.out_button).setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                Intent intent = new Intent(ChatingActivity.this, goout_dialog.class);
+                                                startActivity(intent);
+                                                dilaog01.dismiss();  // 다이얼로그 닫기
+                                            }
+                                        });
+                                    }
+                                });
+
 
         chatting_send.setOnClickListener(new View.OnClickListener() { //채팅을 보내는 버튼을 누를 시
             @Override
             public void onClick(View v) {
                 String msg = chatting_say.getText().toString(); //채팅 할 때 사용하는 메세지
-
                 if(msg != null) { //칠 내용이 null값이 아닌경우
                     ChatingData chat = new ChatingData(); //주의상황 : 파이어베이스에 다른 클래스의데이터베이스를 넣을거면 전에 있던 값을 삭제
                     chat.setNickname(nick);
                     chat.setMsg(msg);
                     myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
+                }else{
+                    Toast.makeText(getApplicationContext(),"입력 받은 텍스트가 없습니다", Toast.LENGTH_SHORT).show();
                 }
             }
         });

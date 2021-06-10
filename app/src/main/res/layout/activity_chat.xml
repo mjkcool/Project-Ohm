@@ -16,91 +16,22 @@
         android:fitsSystemWindows="true">
 
         <!-- 툴바를 선언해줌 -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="@dimen/dp62"
-            android:background="@color/colorPrimary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <!-- 툴바 안에 시간, 제목, 검색, 메뉴바 설정해주는 layout -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                tools:layout_editor_absoluteX="@dimen/dp16">
-
-                <!-- 채팅 시간을 알려주는 text -->
-                <TextView
-                    android:id="@+id/time_bar"
-                    android:layout_width="@dimen/dp63"
-                    android:layout_height="@dimen/dp21"
-                    android:layout_marginStart="@dimen/dp26"
-                    android:layout_marginTop="@dimen/dp24"
-                    android:layout_marginEnd="@dimen/dp260"
-                    android:text="@string/timer"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <!-- 채팅 주제를 알려주는 text -->
-                <TextView
-                    android:id="@+id/title_bar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/dp19"
-                    android:layout_marginStart="@dimen/dp48"
-                    android:layout_marginTop="@dimen/dp19"
-                    android:layout_marginEnd="@dimen/dp143"
-                    android:text="@string/chat_title1"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/sp16"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/time_bar"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <!-- 검색을 할 수 있게 해주는 이미지 -->
-                <ImageView
-                    android:id="@+id/search_bar"
-                    android:layout_width="@dimen/dp36"
-                    android:layout_height="@dimen/dp36"
-                    android:layout_marginStart="@dimen/dp60"
-                    android:layout_marginTop="@dimen/dp16"
-                    android:layout_marginEnd="@dimen/dp60"
-                    android:src="@drawable/search"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/title_bar"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <!-- 메뉴를 볼 수 있게 해주는 이미지 -->
-                <ImageView
-                    android:id="@+id/hamberger_bar"
-                    android:layout_width="@dimen/dp36"
-                    android:layout_height="@dimen/dp36"
-                    android:layout_marginStart="@dimen/dp16"
-                    android:layout_marginTop="@dimen/dp16"
-                    android:src="@drawable/hamberger"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/search_bar"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.appcompat.widget.Toolbar>
-
+        <include
+            android:id="@+id/chat_toolbar"
+            layout="@layout/activity_bar_chat" />
         <!-- 채팅을 할 수 있는 recyclerView -->
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_recycler_View"
             android:layout_width="@dimen/dp0"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/dp11.67"
-            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginBottom="@dimen/dp11.67"
+            app:layout_constraintBottom_toTopOf="@+id/input_set"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/chat_toolbar"></androidx.recyclerview.widget.RecyclerView>
 
 
         <!--  -->
@@ -157,10 +88,10 @@
 
     <!-- Drawer 역할 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:background="@drawable/chatting_background"
-        android:layout_width="@dimen/dp336"
-        android:layout_height="@dimen/dp809"
         android:fitsSystemWindows="true"
         android:paddingLeft="@dimen/dp21"
         android:paddingTop="@dimen/dp16"
@@ -179,24 +110,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/text_title"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp26"
-                android:layout_marginTop="@dimen/dp4"
-                android:text="@string/text_title2"
-                android:textColor="#000000"
-                android:textSize="@dimen/sp17"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_big_title" />
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp26"
+            android:layout_marginTop="@dimen/dp4"
+            android:text="@string/text_title2"
+            android:textColor="#000000"
+            android:textSize="@dimen/sp17"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_big_title" />
 
         <TextView
             android:id="@+id/header_main_title1"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp19"
+            android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
             android:text="@string/header_main1"
             android:textColor="#000000"
@@ -206,28 +137,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_title" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dp180"
-                android:layout_marginTop="@dimen/dp12"
-                android:background="@drawable/participant_list_bg"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.405"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/header_main_title1">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp180"
+            android:layout_marginTop="@dimen/dp12"
+            android:background="@drawable/participant_list_bg"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.405"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_main_title1">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="@dimen/dp338"
-                    android:layout_height="match_parent"
-                    tools:listitem="@layout/paticipant_item" />
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="@dimen/dp338"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/paticipant_item" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/header_main_title2"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp19"
+            android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
             android:text="@string/header_main_title2"
             android:textColor="#000000"
@@ -237,29 +168,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-            <ImageView
-                android:id="@+id/voit_background"
-                android:layout_width="@dimen/dp301"
-                android:layout_height="@dimen/dp239"
-                android:layout_marginTop="@dimen/dp16"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.542"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/header_main_title2"
-                app:srcCompat="@drawable/main_background" />
+        <ImageView
+            android:id="@+id/voit_background"
+            android:layout_width="@dimen/dp301"
+            android:layout_height="@dimen/dp239"
+            android:layout_marginTop="@dimen/dp16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.542"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_main_title2"
+            app:srcCompat="@drawable/main_background" />
 
-            <TextView
-                android:id="@+id/voit_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dp20"
-                android:layout_marginTop="@dimen/dp8"
-                android:layout_marginEnd="@dimen/dp23"
-                android:text="@string/voit_text"
-                app:layout_constraintEnd_toEndOf="@+id/voit_background"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/voit_background"
-                app:layout_constraintTop_toTopOf="@+id/voit_background" />
+        <TextView
+            android:id="@+id/voit_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginEnd="@dimen/dp23"
+            android:text="@string/voit_text"
+            app:layout_constraintEnd_toEndOf="@+id/voit_background"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/voit_background"
+            app:layout_constraintTop_toTopOf="@+id/voit_background" />
 
 
         <SeekBar
@@ -276,22 +207,22 @@
             app:layout_constraintStart_toStartOf="@+id/voit_background"
             app:layout_constraintTop_toBottomOf="@+id/voit_title" />
 
-            <TextView
-                android:id="@+id/poll_index1"
-                android:layout_width="@dimen/dp0"
-                android:layout_height="@dimen/dp44"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/dp44"
-                android:paddingEnd="@dimen/dp0"
-                android:text="해리포터 망토"
-                app:layout_constraintEnd_toEndOf="@+id/seek_id1"
-                app:layout_constraintStart_toStartOf="@+id/seek_id1"
-                app:layout_constraintTop_toTopOf="@+id/seek_id1" />
+        <TextView
+            android:id="@+id/poll_index1"
+            android:layout_width="@dimen/dp0"
+            android:layout_height="@dimen/dp44"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp44"
+            android:paddingEnd="@dimen/dp0"
+            android:text="해리포터 망토"
+            app:layout_constraintEnd_toEndOf="@+id/seek_id1"
+            app:layout_constraintStart_toStartOf="@+id/seek_id1"
+            app:layout_constraintTop_toTopOf="@+id/seek_id1" />
 
 
         <TextView
             android:id="@+id/poll_result1"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dp0"
             android:layout_height="@dimen/dp40"
             android:layout_marginStart="230dp"
             android:gravity="center_vertical"
@@ -304,8 +235,8 @@
 
         <SeekBar
             android:id="@+id/seek_id2"
-            android:layout_width="309dp"
-            android:layout_height="45dp"
+            android:layout_width="@dimen/dp301"
+            android:layout_height="@dimen/dp45"
             android:layout_marginTop="@dimen/dp6"
             android:max="100"
             android:progress="25"
@@ -318,7 +249,7 @@
         <TextView
             android:id="@+id/poll_index2"
             android:layout_width="304dp"
-            android:layout_height="46dp"
+            android:layout_height="@dimen/dp46"
             android:gravity="center_vertical"
             android:paddingStart="@dimen/dp32"
             android:paddingEnd="@dimen/dp0"
@@ -327,23 +258,23 @@
             app:layout_constraintStart_toStartOf="@+id/seek_id2"
             app:layout_constraintTop_toTopOf="@+id/seek_id2" />
 
-            <TextView
-                android:id="@+id/poll_result2"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp40"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/dp0"
-                android:paddingEnd="@dimen/dp32"
-                android:text="25%"
-                app:layout_constraintEnd_toEndOf="@+id/seek_id2"
-                app:layout_constraintHorizontal_bias="0.996"
-                app:layout_constraintStart_toStartOf="@+id/seek_id2"
-                app:layout_constraintTop_toTopOf="@+id/seek_id2" />
+        <TextView
+            android:id="@+id/poll_result2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp0"
+            android:paddingEnd="@dimen/dp32"
+            android:text="25%"
+            app:layout_constraintEnd_toEndOf="@+id/seek_id2"
+            app:layout_constraintHorizontal_bias="0.996"
+            app:layout_constraintStart_toStartOf="@+id/seek_id2"
+            app:layout_constraintTop_toTopOf="@+id/seek_id2" />
 
         <SeekBar
             android:id="@+id/seek_id3"
-            android:layout_width="300dp"
-            android:layout_height="46dp"
+            android:layout_width="@dimen/dp301"
+            android:layout_height="@dimen/dp46"
             android:layout_marginTop="@dimen/dp6"
             android:max="100"
             android:progress="25"
@@ -367,34 +298,34 @@
             app:layout_constraintTop_toTopOf="@+id/seek_id3" />
 
         <TextView
-                android:id="@+id/poll_result3"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp40"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/dp0"
-                android:paddingEnd="@dimen/dp32"
-                android:text="25%"
-                app:layout_constraintEnd_toEndOf="@+id/seek_id3"
-                app:layout_constraintHorizontal_bias="0.996"
-                app:layout_constraintStart_toStartOf="@+id/seek_id3"
-                app:layout_constraintTop_toTopOf="@+id/seek_id3" />
+            android:id="@+id/poll_result3"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dp0"
+            android:paddingEnd="@dimen/dp32"
+            android:text="25%"
+            app:layout_constraintEnd_toEndOf="@+id/seek_id3"
+            app:layout_constraintHorizontal_bias="0.996"
+            app:layout_constraintStart_toStartOf="@+id/seek_id3"
+            app:layout_constraintTop_toTopOf="@+id/seek_id3" />
 
         <Button
             android:id="@+id/goto_voit"
             android:layout_width="182dp"
             android:layout_height="33dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/voit_button"
             android:text="투표하기"
             android:textSize="10sp"
-            android:background="@drawable/voit_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/seek_id3" />
 
         <ImageButton
             android:id="@+id/exit"
-            android:layout_width="43dp"
-            android:layout_height="49dp"
+            android:layout_width="@dimen/dp43"
+            android:layout_height="@dimen/dp49"
             android:layout_marginTop="@dimen/dp24"
             android:onClick="onDialogBtnClicked"
             app:layout_constraintEnd_toEndOf="parent"

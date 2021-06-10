@@ -1,9 +1,11 @@
 package kr.hs.emirim.ohm;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -19,12 +21,14 @@ public class ChatingAdapter extends RecyclerView.Adapter<ChatingAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private TextView chat_nickname; //닉네임 
         private TextView chat_msg; //채팅 내용
+        private LinearLayout chat_pane;
         private View rootView;
 
-        public ViewHolder(ConstraintLayout v) {
+        public ViewHolder(LinearLayout v) {
             super(v);
             chat_msg = v.findViewById(R.id.chat_msg);
             chat_nickname = v.findViewById(R.id.chat_nickname);
+            chat_pane = v.findViewById(R.id.my_chat_pane);
             rootView = v;
         }
     }
@@ -38,7 +42,7 @@ public class ChatingAdapter extends RecyclerView.Adapter<ChatingAdapter.ViewHold
     @Override
     public ChatingAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // Create a new view, which defines the UI of the list item
-        ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_row_chat, parent, false);
+        LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_row_chat, parent, false);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -54,12 +58,14 @@ public class ChatingAdapter extends RecyclerView.Adapter<ChatingAdapter.ViewHold
         holder.chat_msg.setText(chat.getMsg()); //DTD
 
         if(chat.getNickname() != null && chat.getNickname().equals(this.mNickName)){
-            holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
-            holder.chat_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END); //내가 채팅을 할 경우 오른쪽
+            //holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            //holder.chat_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END); //내가 채팅을 할 경우 오른쪽
+            holder.chat_pane.setGravity(Gravity.RIGHT);
 
         }else{
-            holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-            holder.chat_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START); //상대방이 채팅을 할 경우 왼쪽
+            //holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            //holder.chat_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START); //상대방이 채팅을 할 경우 왼쪽
+            holder.chat_pane.setGravity(Gravity.LEFT);
         }
     }
 

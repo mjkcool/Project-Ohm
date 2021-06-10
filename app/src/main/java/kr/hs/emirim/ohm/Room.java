@@ -8,16 +8,16 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
     public String roomname;
     public String roomtopic;
-    public String roomtime;
+    public String ownerID;
 
     public Room() {
 
     }
 
-    public Room(String roomname, String roomtopic, String roomtime) {
+    public Room(String roomname, String roomtopic, String ownerID) {
         this.roomname = roomname;
         this.roomtopic = roomtopic;
-        this.roomtime = roomtime;
+        this.ownerID = ownerID;
     }
 
 }

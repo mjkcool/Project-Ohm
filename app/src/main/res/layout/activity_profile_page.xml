@@ -61,7 +61,7 @@
 
                 <TextView
                     android:id="@+id/profile_nickname"
-                    android:layout_width="match_parent"
+                    android:layout_width="125dp"
                     android:layout_height="wrap_content"
                     android:text="닉네임"
                     android:textAlignment="textEnd"
@@ -71,7 +71,7 @@
 
                 <TextView
                     android:id="@+id/profile_introduce"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="한줄소개"
                     android:textAlignment="textEnd"
