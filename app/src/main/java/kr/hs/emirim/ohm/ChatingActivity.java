@@ -263,7 +263,7 @@ public class ChatingActivity extends AppCompatActivity {
                                         dilaog01.findViewById(R.id.out_button).setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                Intent intent = new Intent(ChatingActivity.this, out_room_modal.class);
+                                                Intent intent = new Intent(ChatingActivity.this, goout_dialog.class);
                                                 startActivity(intent);
                                                 dilaog01.dismiss();  // 다이얼로그 닫기
                                             }
