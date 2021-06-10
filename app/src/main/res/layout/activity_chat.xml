@@ -21,6 +21,8 @@
             layout="@layout/activity_bar_chat" />
         <!-- 채팅을 할 수 있는 recyclerView -->
 
+
+        <!--  -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/my_recycler_View"
             android:layout_width="@dimen/dp0"
@@ -29,12 +31,10 @@
             android:layout_marginBottom="@dimen/dp11.67"
             app:layout_constraintBottom_toTopOf="@+id/input_set"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/chat_toolbar"></androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/chat_toolbar"
+            app:layout_constraintVertical_bias="0.0"></androidx.recyclerview.widget.RecyclerView>
 
-
-        <!--  -->
         <androidx.cardview.widget.CardView
             android:id="@+id/input_set"
             android:layout_width="match_parent"
@@ -88,9 +88,9 @@
 
     <!-- Drawer 역할 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_gravity="right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
         android:background="@drawable/chatting_background"
         android:fitsSystemWindows="true"
         android:paddingLeft="@dimen/dp21"
@@ -222,8 +222,8 @@
 
         <TextView
             android:id="@+id/poll_result1"
-            android:layout_width="@dimen/dp0"
-            android:layout_height="@dimen/dp40"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
             android:layout_marginStart="230dp"
             android:gravity="center_vertical"
             android:paddingStart="@dimen/dp0"
@@ -324,10 +324,11 @@
 
         <ImageButton
             android:id="@+id/exit"
-            android:layout_width="@dimen/dp43"
-            android:layout_height="@dimen/dp49"
+            android:layout_width="55dp"
+            android:layout_height="59dp"
             android:layout_marginTop="@dimen/dp24"
             android:onClick="onDialogBtnClicked"
+            android:background="#0000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.932"
             app:layout_constraintStart_toStartOf="parent"
