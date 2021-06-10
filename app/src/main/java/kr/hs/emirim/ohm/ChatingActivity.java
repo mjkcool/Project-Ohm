@@ -39,7 +39,7 @@ public class ChatingActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
     private List<ChatingData> chatlist; //채팅 데이터 리스트
 
-    private String nick = "nick"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
+    private String nick = "nick2"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
 
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
