@@ -13,8 +13,8 @@ class goout_dialog : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_goout_dialog)
 
-        ok_button = findViewById<Button>(R.id.ok_button)
-        cancel_button = findViewById<Button>(R.id.cancel_button)
+        ok_button = findViewById(R.id.ok_button)
+        cancel_button = findViewById(R.id.cancel_button)
 
         dilaog03 = android.app.Dialog(this@goout_dialog) //다이얼로그 초기화
         dilaog03.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE) //타이틀 제거

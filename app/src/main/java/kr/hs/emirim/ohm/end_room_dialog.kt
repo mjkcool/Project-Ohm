@@ -14,8 +14,8 @@ class end_room_dialog : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_end_room_dialog)
 
-        end_button = findViewById<Button>(R.id.end_button)
-        cancel_button = findViewById<Button>(R.id.cancel_button)
+        end_button = findViewById(R.id.end_button)
+        cancel_button = findViewById(R.id.cancel_button)
 
         dilaog02 = android.app.Dialog(this@end_room_dialog) //다이얼로그 초기화
         dilaog02.requestWindowFeature(android.view.Window.FEATURE_NO_TITLE) //타이틀 제거
