@@ -34,6 +34,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.ktx.Firebase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class ChatingActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
     private List<ChatingData> chatlist; //채팅 데이터 리스트
 
-    private String nick = "nick2"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
+    private String nick = "nick"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
 
     private TextView text_title;
 
@@ -54,7 +55,7 @@ public class ChatingActivity extends AppCompatActivity {
 
     private TextView title_bar;
 
-    private DatabaseReference myRef; //파이어베이스 값을 불러오는 것
+    private DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("rooms"); //파이어베이스 값을 불러오는 것
 
     private ImageButton exit; //나가기 버튼
     private ImageView search; //검색하는 버튼
@@ -77,7 +78,7 @@ public class ChatingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//        nick = user.getDisplayName();
+        nick = user.getDisplayName(); //사용자 닉네임으로 바꿈
 
         chatting_send = (Button) findViewById(R.id.send); //메세지 보내는 거 id 선언
         chatting_say = (EditText) findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
@@ -121,6 +122,7 @@ public class ChatingActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String code = intent.getExtras().getString("code");
+        myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         mDatabase.child("rooms").child(code).child("roomname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -171,7 +173,6 @@ public class ChatingActivity extends AppCompatActivity {
         });
 
         seekBar2.setOnTouchListener(new View.OnTouchListener() {
-
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return false;
@@ -254,7 +255,7 @@ public class ChatingActivity extends AppCompatActivity {
                                         endBtn.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                Intent intent = new Intent(ChatingActivity.this, end_room_dialog.class);
+                                                //Intent intent = new Intent(ChatingActivity.this, end_room_dialog.class);
                                                 startActivity(intent);
                                                 dilaog01.dismiss(); // 다이얼로그 닫기
                                             }
@@ -263,7 +264,7 @@ public class ChatingActivity extends AppCompatActivity {
                                         dilaog01.findViewById(R.id.out_button).setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                Intent intent = new Intent(ChatingActivity.this, goout_dialog.class);
+                                                //Intent intent = new Intent(ChatingActivity.this, goout_dialog.class);
                                                 startActivity(intent);
                                                 dilaog01.dismiss();  // 다이얼로그 닫기
                                             }
@@ -286,9 +287,6 @@ public class ChatingActivity extends AppCompatActivity {
                 }
             }
         });
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance(); //파이어베이스 값의 읽어 오는 것
-        myRef = database.getReference();
 
         myRef.addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
             @Override

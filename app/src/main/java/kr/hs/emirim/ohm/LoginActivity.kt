@@ -3,7 +3,6 @@ package kr.hs.emirim.ohm
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -111,11 +110,9 @@ class LoginActivity: AppCompatActivity() {
         if (user != null) {
             ref.child(auth.currentUser!!.uid).get().addOnSuccessListener {
                 if (it.value != null) {
-                    Toast.makeText(this, "최초 로그인이 아닌 로그인", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, HomeActivity::class.java))
                     finish()
                 } else {
-                    Toast.makeText(this, "최초 로그인", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, ProfileInitActivity::class.java))
                     finish()
                 }

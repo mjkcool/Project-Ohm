@@ -23,10 +23,6 @@ import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.ktx.storage
-
 
 class ProfileInitActivity : AppCompatActivity() {
     companion object{
@@ -38,7 +34,7 @@ class ProfileInitActivity : AppCompatActivity() {
     private var curFagNum = 0
 
     private lateinit var auth: FirebaseAuth
-    private lateinit var imageUri: Uri
+    var imageUri: Uri  = Uri.parse(R.drawable.profile_basic.toString())
     lateinit var nickname : String
 
     private lateinit var database: DatabaseReference
@@ -46,7 +42,6 @@ class ProfileInitActivity : AppCompatActivity() {
     fun initializeDbRef() {
         database = Firebase.database.reference
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +51,6 @@ class ProfileInitActivity : AppCompatActivity() {
         toBackBtn = findViewById(R.id.back_btn_nickname_set)
         toNextBtn = findViewById(R.id.next_btn_nickname_set)
         setFrag(curFagNum) //첫 프래그먼트
-
         initializeDbRef()
 
         toBackBtn.setOnClickListener{
