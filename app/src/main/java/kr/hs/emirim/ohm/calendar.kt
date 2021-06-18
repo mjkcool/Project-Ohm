@@ -85,6 +85,12 @@ class calendar : AppCompatActivity() {
              date.text = String.format("%d월 %d일", month + 1, dayOfMonth)
         }
 
+        User_profile_btn.setOnClickListener {
+            val intent = Intent(this, ProfilePageActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         fun createCal(title: String, subject: String, time: String, memo: String){
             val cal = cal(title, subject, time, memo)
 

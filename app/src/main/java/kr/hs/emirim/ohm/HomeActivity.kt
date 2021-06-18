@@ -72,7 +72,6 @@ class HomeActivity : AppCompatActivity() {
         bookMeetingBtn.setOnClickListener{
             val intent = Intent(this, calendar::class.java)
             startActivity(intent)
-            finish()
         }
 
         admissionBtn.setOnClickListener {
