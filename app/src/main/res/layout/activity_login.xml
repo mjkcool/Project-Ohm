@@ -132,7 +132,6 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/dp8.33"
             android:layout_weight="1"
-            android:background="#ffffff"
             android:orientation="vertical">
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -140,11 +139,11 @@
                 android:layout_width="@dimen/dp40"
                 android:layout_height="@dimen/dp40"
                 android:layout_weight="1"
-                android:background="@drawable/google_icon"
+                android:background="#B15959"
                 android:clickable="true"
                 app:backgroundTint="#1E349D"
                 app:borderWidth="@dimen/dp0"
-                app:elevation="@dimen/dp40"
+                app:elevation="@dimen/dp0"
                 app:fabSize="mini"
                 app:maxImageSize="@dimen/dp22"
                 app:srcCompat="@drawable/google_icon" />
@@ -159,7 +158,7 @@
                 android:includeFontPadding="false"
                 android:text="Google"
                 android:textColor="#000000"
-                android:textSize="@dimen/sp8" />
+                android:textSize="@dimen/sp8"/>
         </LinearLayout>
 
         <LinearLayout

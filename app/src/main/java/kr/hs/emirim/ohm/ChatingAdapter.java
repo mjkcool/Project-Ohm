@@ -64,6 +64,7 @@ public class ChatingAdapter extends RecyclerView.Adapter<ChatingAdapter.ViewHold
             //holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             //holder.chat_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END); //내가 채팅을 할 경우 오른쪽
             holder.other_profile.setVisibility(View.GONE);
+            holder.chat_nickname.setVisibility(View.GONE);
             holder.chat_pane.setGravity(Gravity.RIGHT);
 
         }else{
