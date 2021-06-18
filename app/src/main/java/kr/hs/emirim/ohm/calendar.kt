@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -30,6 +31,7 @@ class calendar : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     lateinit var storage: FirebaseStorage
     private lateinit var database: DatabaseReference
+    private var user: FirebaseUser = Firebase.auth.currentUser!!
 
     private lateinit var create_intent: ConstraintLayout
     private lateinit var create_window: CardView
@@ -64,6 +66,9 @@ class calendar : AppCompatActivity() {
         subject = findViewById(R.id.conference_subject)
         time = findViewById(R.id.conference_time)
         memo = findViewById(R.id.conference_memo)
+
+        //파베에서 유저 프로필 사진 불러오기, 지정
+        User_profile_btn.setImageURI(user?.photoUrl)
 
         create_intent.setOnClickListener (View.OnClickListener {
             create_window.visibility = View.VISIBLE

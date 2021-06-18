@@ -15,6 +15,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.activity_calendar.*
 import java.util.ArrayList
 
 class HomeActivity : AppCompatActivity() {
@@ -45,7 +46,6 @@ class HomeActivity : AppCompatActivity() {
 
         roomsRecyclerView = findViewById(R.id.rooms_recycleView_home)
 
-        //파베에서 유저 프로필 사진 불러오기, 지정
         userProfileBtn.setImageURI(user?.photoUrl)
 
         //회의 목록 테스트 값

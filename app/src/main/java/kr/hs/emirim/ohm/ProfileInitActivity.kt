@@ -34,7 +34,7 @@ class ProfileInitActivity : AppCompatActivity() {
     private var curFagNum = 0
 
     private lateinit var auth: FirebaseAuth
-    var imageUri: Uri = Uri.parse(R.id.init_profileimg_view.toString())
+    var imageUri: Uri  = Uri.parse(R.drawable.profile_basic.toString())
     lateinit var nickname : String
 
     private lateinit var database: DatabaseReference
