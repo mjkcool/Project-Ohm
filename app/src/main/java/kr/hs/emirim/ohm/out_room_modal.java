@@ -38,7 +38,7 @@ public class out_room_modal extends AppCompatActivity {
 //            public void onClick(View v) {
 //                showDialog02();
 //            }
-//
+
 //            public void showDialog02() {
 //                dilaog02.show();
 //
