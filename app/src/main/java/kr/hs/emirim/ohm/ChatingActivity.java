@@ -295,6 +295,7 @@ public class ChatingActivity extends AppCompatActivity {
                     chat.setNickname(nick);
                     chat.setMsg(msg);
                     myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
+                    chatting_say.setText("");
                 }else{
                     Toast.makeText(getApplicationContext(),"입력 받은 텍스트가 없습니다", Toast.LENGTH_SHORT).show();
                 }
