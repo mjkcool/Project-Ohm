@@ -38,8 +38,13 @@ import com.google.firebase.ktx.Firebase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class ChatingActivity extends AppCompatActivity {
+
+    private TextView tv_hour, tv_minute, tv_second, tv_end;
+    int hour, minute, second;
 
     private RecyclerView recyclerView; //리사이클뷰
     public  RecyclerView.Adapter chatAapter; //리사이클뷰에 들어갈 채팅 어챕터
@@ -124,6 +129,14 @@ public class ChatingActivity extends AppCompatActivity {
         String code = intent.getExtras().getString("code");
         myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        //타이머 관련
+        tv_hour = (TextView)findViewById(R.id.hour);
+        tv_minute = (TextView)findViewById(R.id.minute);
+        tv_second = (TextView)findViewById(R.id.second);
+        tv_end = (TextView)findViewById(R.id.end);
+
+        countDown();
 
         mDatabase.child("rooms").child(code).child("roomname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
@@ -282,6 +295,7 @@ public class ChatingActivity extends AppCompatActivity {
                     chat.setNickname(nick);
                     chat.setMsg(msg);
                     myRef.push().setValue(chat); //푸쉬를 통해 채팅의 데이터 읽어오기
+                    chatting_say.setText("");
                 }else{
                     Toast.makeText(getApplicationContext(),"입력 받은 텍스트가 없습니다", Toast.LENGTH_SHORT).show();
                 }
@@ -320,6 +334,60 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void countDown() {
+        hour = 0;
+        minute = 0;
+        second = 30;
+
+        Timer timer = new Timer();
+        TimerTask timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                //카운트 다운
+                if(second != 0) {
+                    second--;
+                } else if(minute != 0) {
+                    second = 60;
+                    second--;
+                    minute--;
+                } else if(hour != 0) {
+                    second = 60;
+                    minute = 60;
+                    second--;
+                    minute--;
+                    hour--;
+                }
+
+                //시간이 한자리수면 앞에 0 추가
+                if(second <= 9){
+                    tv_second.setText("0" + second);
+                } else {
+                    tv_second.setText(Integer.toString(second));
+                }
+
+                if(minute <= 9){
+                    tv_minute.setText("0" + minute);
+                } else {
+                    tv_minute.setText(Integer.toString(minute));
+                }
+
+                if(hour <= 9){
+                    tv_hour.setText("0" + hour);
+                } else {
+                    tv_hour.setText(Integer.toString(hour));
+                }
+
+                // 시분초가 모두 0이 될 때 때 회의 종료
+                if(hour == 0 && minute == 0 && second == 0) {
+                    timer.cancel();//타이머 종료
+                    tv_end.setText("회의가 종료되었습니다.");
+                }
+            }
+        };
+        timer.schedule(timerTask, 0, 1000);
+    }
+
     private void calculatePercent() {
         double total = count1+count2+count3;
         double percent1 = (count1/total) * 100;

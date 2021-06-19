@@ -34,7 +34,7 @@ class ProfileInitActivity : AppCompatActivity() {
     private var curFagNum = 0
 
     private lateinit var auth: FirebaseAuth
-    var imageUri: Uri  = Uri.parse(R.drawable.profile_basic.toString())
+    var imageUri: Uri = Uri.parse("android.resource://kr.hs.emirim.ohm/drawable/profile_basic")
     lateinit var nickname : String
 
     private lateinit var database: DatabaseReference
