@@ -54,6 +54,7 @@ public class ChatingActivity extends AppCompatActivity {
     private String nick = "nick"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
 
     private TextView text_title;
+    private TextView text_code;
 
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
@@ -124,6 +125,7 @@ public class ChatingActivity extends AppCompatActivity {
 
         title_bar = findViewById(R.id.title_bar);
         text_title = findViewById(R.id.text_title);
+        text_code = findViewById(R.id.text_big_title);
 
         Intent intent = getIntent();
         String code = intent.getExtras().getString("code");
@@ -135,6 +137,8 @@ public class ChatingActivity extends AppCompatActivity {
         tv_minute = (TextView)findViewById(R.id.minute);
         tv_second = (TextView)findViewById(R.id.second);
         tv_end = (TextView)findViewById(R.id.end);
+
+        text_code.setText(code);
 
         countDown();
 

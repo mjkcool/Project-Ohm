@@ -1,5 +1,7 @@
 package kr.hs.emirim.ohm;
 
+import android.net.Uri;
+
 public class ChatingData { //채팅 데이터 값
 
     private String nickname; //닉네임

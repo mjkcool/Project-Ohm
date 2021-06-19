@@ -1,6 +1,7 @@
 package kr.hs.emirim.ohm;
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.List;
 
@@ -59,6 +63,7 @@ public class ChatingAdapter extends RecyclerView.Adapter<ChatingAdapter.ViewHold
 
         holder.chat_nickname.setText(chat.getNickname());
         holder.chat_msg.setText(chat.getMsg()); //DTD
+
 
         if(chat.getNickname() != null && chat.getNickname().equals(this.mNickName)){
             //holder.chat_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
