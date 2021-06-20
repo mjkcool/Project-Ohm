@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
-import android.view.KeyEvent.KEYCODE_ENTER
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -17,7 +15,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_calendar.*
 import java.util.ArrayList
 
 class HomeActivity : AppCompatActivity() {
@@ -72,7 +69,7 @@ class HomeActivity : AppCompatActivity() {
 
         //회의 일정
         bookMeetingBtn.setOnClickListener{
-            val intent = Intent(this, calendar::class.java)
+            val intent = Intent(this, Calendar::class.java)
             startActivity(intent)
         }
 

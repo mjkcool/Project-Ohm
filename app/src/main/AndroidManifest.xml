@@ -23,7 +23,7 @@
         <activity android:name=".createroom_topic" />
         <activity android:name=".createroom_name" />
         <activity android:name=".createroom_time" />
-        <activity android:name=".calendar" />
+        <activity android:name=".Calendar" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".ModifyProfileActivity" />
         <activity android:name=".HomeActivity" />
