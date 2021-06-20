@@ -19,7 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".goout_dialog" />
-        <activity android:name=".out_room_modal" />
         <activity android:name=".createroom_topic" />
         <activity android:name=".createroom_name" />
         <activity android:name=".createroom_time" />

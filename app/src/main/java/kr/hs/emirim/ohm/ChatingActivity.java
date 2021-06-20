@@ -121,7 +121,7 @@ public class ChatingActivity extends AppCompatActivity {
 
         dilaog01 = new Dialog(ChatingActivity.this); //다이얼로그 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); //타이틀 제거
-        dilaog01.setContentView(R.layout.activity_out_room_modal); //레이아웃 연결
+        dilaog01.setContentView(R.layout.activity_goout_dialog); //레이아웃 연결
 
         title_bar = findViewById(R.id.title_bar);
         text_title = findViewById(R.id.text_title);
@@ -268,21 +268,19 @@ public class ChatingActivity extends AppCompatActivity {
                                     public void showDialog01() {
                                         dilaog01.show();
 
-                                        Button endBtn = dilaog01.findViewById(R.id.end_button);
+                                        Button endBtn = dilaog01.findViewById(R.id.ok_button);
                                         endBtn.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //Intent intent = new Intent(ChatingActivity.this, end_room_dialog.class);
+                                                Intent intent = new Intent(ChatingActivity.this, HomeActivity.class);
                                                 startActivity(intent);
                                                 dilaog01.dismiss(); // 다이얼로그 닫기
                                             }
                                         });
 
-                                        dilaog01.findViewById(R.id.out_button).setOnClickListener(new View.OnClickListener() {
+                                        dilaog01.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //Intent intent = new Intent(ChatingActivity.this, goout_dialog.class);
-                                                startActivity(intent);
                                                 dilaog01.dismiss();  // 다이얼로그 닫기
                                             }
                                         });

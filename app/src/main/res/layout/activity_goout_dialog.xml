@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4D000000"
+    android:background="@android:color/transparent"
     tools:context=".goout_dialog"
     >
 
@@ -24,6 +24,7 @@
             android:layout_marginTop="32dp"
             android:gravity="center"
             android:text="정말 회의를 나가시겠습니까?\n회의는 유지됩니다."
+            android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="13.33sp"
             app:layout_constraintEnd_toEndOf="parent"
