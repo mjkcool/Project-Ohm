@@ -58,6 +58,7 @@ public class ChatingActivity extends AppCompatActivity {
 
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
+    private TextView header_main_title1;
 
     private TextView title_bar;
 
@@ -126,9 +127,15 @@ public class ChatingActivity extends AppCompatActivity {
         title_bar = findViewById(R.id.title_bar);
         text_title = findViewById(R.id.text_title);
         text_code = findViewById(R.id.text_big_title);
+        header_main_title1 = findViewById(R.id.header_main_title1);
 
         Intent intent = getIntent();
-        String code = intent.getExtras().getString("code");
+//        String code = intent.getExtras().getString("code");
+        Bundle bundle = intent.getBundleExtra("bundle");
+        hour = bundle.getInt("hour");
+        minute = bundle.getInt("min");
+        second = bundle.getInt("sec");
+        String code = bundle.getString("code");
         myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -340,7 +347,7 @@ public class ChatingActivity extends AppCompatActivity {
     private void countDown() {
         hour = 0;
         minute = 0;
-        second = 30;
+        second = 60;
 
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -405,5 +412,13 @@ public class ChatingActivity extends AppCompatActivity {
         poll_result3.setText((String.format("%.0f%%",percent3)));
 
         seekBar3.setProgress((int)percent3);
+    }
+
+    private void checkPeople(String owner, String member){
+        if(owner.equals(member)) {
+            header_main_title1.setText("참여자 (1)");
+        }else {
+            header_main_title1.setText("참여자 (2)");
+        }
     }
 }
