@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:paddingTop="26.67dp"
-    android:paddingBottom="42dp"
+    android:paddingBottom="30dp"
     tools:context=".WaitingRoomActivity">
 
     <!-- 나의 페이지로 넘어가는 버튼 생성 -->
@@ -52,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/dp30.67"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,20 +63,20 @@
             android:id="@+id/h1_title_01_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp43.33"
-            android:layout_marginBottom="@dimen/dp15.33"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="21dp"
             android:text="@string/mainpage_text1"
             android:textColor="#000000"
-            android:textSize="@dimen/sp20"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/admission_layout_set"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/user_profile_btn" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_profile_btn"
-            android:layout_width="@dimen/dp43.33"
-            android:layout_height="@dimen/dp43.33"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:clickable="true"
             android:src="@mipmap/avatar_foreground"
             app:civ_border_color="#707070"
@@ -95,13 +96,13 @@
             <EditText
                 android:id="@+id/input_invitation_code"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/dp33.33"
+                android:layout_height="40dp"
                 android:layout_marginRight="@dimen/dp8.67"
                 android:background="@drawable/chatting_background"
                 android:hint="참여코드 입력"
                 android:inputType="number"
                 android:paddingHorizontal="@dimen/dp10"
-                android:textSize="@dimen/sp12"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/admission_btn"
@@ -111,8 +112,8 @@
             <Button
                 android:id="@+id/admission_btn"
                 style="?android:attr/borderlessButtonStyle"
-                android:layout_width="@dimen/dp33.33"
-                android:layout_height="@dimen/dp33.33"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/btn_gray"
                 android:drawableLeft="@drawable/ic_admission"
@@ -128,9 +129,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/home_create_btn_layout"
         android:layout_width="0dp"
-        android:layout_height="280dp"
+        android:layout_height="300dp"
         android:layout_marginLeft="@dimen/dp30.67"
-        android:layout_marginTop="13.67dp"
+        android:layout_marginTop="21dp"
         android:layout_marginRight="@dimen/dp5"
         android:clickable="true"
         app:cardBackgroundColor="#E6EAFD"
@@ -146,10 +147,9 @@
 
             <ImageView
                 android:id="@+id/bg_img01_home_create"
-                android:layout_width="@dimen/dp52.33"
-                android:layout_height="@dimen/dp111.13"
+                android:layout_width="65dp"
+                android:layout_height="139dp"
                 android:layout_marginStart="@dimen/dp14"
-                android:layout_marginRight="@dimen/dp8.73"
                 android:clickable="false"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
                 app:layout_constraintEnd_toStartOf="@+id/bg_img02_home_create"
@@ -158,9 +158,8 @@
 
             <ImageView
                 android:id="@+id/bg_img02_home_create"
-                android:layout_width="@dimen/dp57.23"
-                android:layout_height="@dimen/dp111.13"
-                android:layout_marginStart="@dimen/dp9"
+                android:layout_width="73dp"
+                android:layout_height="139dp"
                 android:layout_marginEnd="@dimen/dp12"
                 android:clickable="false"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout01_home_create"
@@ -171,12 +170,12 @@
             <LinearLayout
                 android:id="@+id/txt_layout01_home_create"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp71.33"
+                android:layout_height="100dp"
                 android:background="@drawable/main_background_white"
                 android:clickable="false"
-                android:gravity="bottom"
+                android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:paddingHorizontal="@dimen/dp8.33"
+                android:paddingHorizontal="10dp"
                 android:paddingVertical="@dimen/dp7"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -186,11 +185,12 @@
                 <TextView
                     android:id="@+id/h2_subtitle_home_create"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp22"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:clickable="false"
                     android:text="@string/make_text"
                     android:textColor="#000000"
-                    android:textSize="@dimen/sp15.33"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -199,7 +199,7 @@
                     android:layout_height="@dimen/dp33"
                     android:clickable="false"
                     android:text="텍스트로 빠르고 간편하게\n회의를 생성해보세요."
-                    android:textSize="@dimen/sp8" />
+                    android:textSize="12sp" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -208,9 +208,9 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/home_book_btn_layout"
         android:layout_width="0dp"
-        android:layout_height="280dp"
+        android:layout_height="300dp"
         android:layout_marginLeft="@dimen/dp5"
-        android:layout_marginTop="13.67dp"
+        android:layout_marginTop="21dp"
         android:layout_marginRight="@dimen/dp30.67"
         android:clickable="true"
         app:cardBackgroundColor="#FDF6E6"
@@ -227,8 +227,8 @@
 
             <ImageView
                 android:id="@+id/bg_img01_home_book"
-                android:layout_width="@dimen/dp71"
-                android:layout_height="@dimen/dp113.53"
+                android:layout_width="93dp"
+                android:layout_height="153dp"
                 android:clickable="false"
                 app:layout_constraintBottom_toTopOf="@+id/txt_layout02_home_book"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -239,12 +239,12 @@
             <LinearLayout
                 android:id="@+id/txt_layout02_home_book"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp71.33"
+                android:layout_height="100dp"
                 android:background="@drawable/main_background_white"
                 android:clickable="false"
-                android:gravity="bottom"
+                android:gravity="center_vertical"
                 android:orientation="vertical"
-                android:paddingHorizontal="@dimen/dp8.33"
+                android:paddingHorizontal="10dp"
                 android:paddingVertical="@dimen/dp7"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -254,11 +254,12 @@
                 <TextView
                     android:id="@+id/h2_subtitle_home_book"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dp22"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:clickable="false"
                     android:text="회의 일정"
                     android:textColor="#000000"
-                    android:textSize="@dimen/sp15.33"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -266,8 +267,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp33"
                     android:clickable="false"
-                    android:text="간편하게 회의 일정을 등록하고,\n관리해보세요."
-                    android:textSize="@dimen/sp8" />
+                    android:text="간편하게 회의 일정을 등록하세요."
+                    android:textSize="12sp" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -288,7 +289,7 @@
             android:gravity="left"
             android:text="@string/mainpage_text2"
             android:textColor="#000000"
-            android:textSize="@dimen/sp20"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
