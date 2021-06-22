@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/dp133.33"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/dp133.33"
     android:gravity="center_vertical">
 
     <!-- 카드뷰 -->
