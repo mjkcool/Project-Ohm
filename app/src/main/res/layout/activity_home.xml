@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="26.67dp"
+    android:paddingBottom="42dp"
     tools:context=".WaitingRoomActivity">
 
     <!-- 나의 페이지로 넘어가는 버튼 생성 -->
@@ -92,12 +94,12 @@
 
             <EditText
                 android:id="@+id/input_invitation_code"
-                android:inputType="number"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp33.33"
                 android:layout_marginRight="@dimen/dp8.67"
                 android:background="@drawable/chatting_background"
                 android:hint="참여코드 입력"
+                android:inputType="number"
                 android:paddingHorizontal="@dimen/dp10"
                 android:textSize="@dimen/sp12"
                 android:textStyle="bold"
@@ -126,15 +128,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/home_create_btn_layout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="280dp"
         android:layout_marginLeft="@dimen/dp30.67"
-        android:layout_marginTop="@dimen/dp13.33"
+        android:layout_marginTop="13.67dp"
         android:layout_marginRight="@dimen/dp5"
-        android:layout_marginBottom="60dp"
         android:clickable="true"
         app:cardBackgroundColor="#E6EAFD"
         app:cardCornerRadius="@dimen/dp6.67"
-        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toStartOf="@+id/home_book_btn_layout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_top_layout">
@@ -208,15 +208,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/home_book_btn_layout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="280dp"
         android:layout_marginLeft="@dimen/dp5"
-        android:layout_marginTop="@dimen/dp13.33"
+        android:layout_marginTop="13.67dp"
         android:layout_marginRight="@dimen/dp30.67"
-        android:layout_marginBottom="60dp"
         android:clickable="true"
         app:cardBackgroundColor="#FDF6E6"
         app:cardCornerRadius="@dimen/dp6.67"
-        app:layout_constraintBottom_toTopOf="@+id/home_btm_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/home_create_btn_layout"
         app:layout_constraintTop_toBottomOf="@+id/home_top_layout">
@@ -298,9 +296,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rooms_recycleView_home"
             android:layout_width="0dp"
-            android:layout_height="@dimen/dp151"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/dp3.67"
+            android:layout_marginTop="20.67dp"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/dp30.67"
             android:paddingBottom="@dimen/dp45"

@@ -5,9 +5,10 @@
     android:id="@+id/BaseLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingHorizontal="@dimen/dp0"
-    tools:context=".ProfilePageActivity"
-    android:orientation="vertical">
+    android:paddingTop="26.67dp"
+    tools:context=".ProfilePageActivity">
 
     <LinearLayout
         android:id="@+id/profile_layout_top"
@@ -61,7 +62,7 @@
 
                 <TextView
                     android:id="@+id/profile_nickname"
-                    android:layout_width="125dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="닉네임"
                     android:textAlignment="textEnd"
@@ -73,6 +74,7 @@
                     android:id="@+id/profile_introduce"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="right"
                     android:text="한줄소개"
                     android:textAlignment="textEnd"
                     android:textSize="@dimen/sp10" />
