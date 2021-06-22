@@ -34,12 +34,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static android.content.ContentValues.TAG;
 
 public class ChatingActivity extends AppCompatActivity {
 
@@ -51,7 +54,8 @@ public class ChatingActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
     private List<ChatingData> chatlist; //채팅 데이터 리스트
 
-    private String nick = "nick"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
+    private String nick = "nick";//닉네임 임시설정
+    private String code;
 
     private TextView text_title;
     private TextView text_code;
@@ -130,7 +134,7 @@ public class ChatingActivity extends AppCompatActivity {
         header_main_title1 = findViewById(R.id.header_main_title1);
 
         Intent intent = getIntent();
-        String code = intent.getExtras().getString("code");
+        code = intent.getExtras().getString("code");
         myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -183,6 +187,7 @@ public class ChatingActivity extends AppCompatActivity {
         tv_end = (TextView)findViewById(R.id.end);
 
         text_code.setText(code);
+        checkPeople();
 
         countDown();
 
@@ -451,11 +456,34 @@ public class ChatingActivity extends AppCompatActivity {
         seekBar3.setProgress((int)percent3);
     }
 
-    private void checkPeople(String owner, String member){
-        if(owner.equals(member)) {
-            header_main_title1.setText("참여자 (1)");
-        }else {
-            header_main_title1.setText("참여자 (2)");
-        }
+    private void checkPeople(){
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                header_main_title1.setText("참여자("+dataSnapshot.getValue()+")");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        mDatabase.child("rooms").child(code).child("member").child("Headcount").addValueEventListener(postListener);
+//        mDatabase.child("rooms").child(code).child("member").child("Headcount").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    header_main_title1.setText("참여자("+task.getResult().getValue()+")");
+//                }
+//            }
+//        });
     }
 }

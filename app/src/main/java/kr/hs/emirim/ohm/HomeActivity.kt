@@ -29,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var code: EditText
     private var database: DatabaseReference = Firebase.database.reference.child("rooms")
     private var user: FirebaseUser = Firebase.auth.currentUser!!
+    lateinit var ownerId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,14 +108,44 @@ class HomeActivity : AppCompatActivity() {
         */
     }
     fun checkCode(code:String){
-        database.child(code).get().addOnSuccessListener {
+        database.child(code).child("open").get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
             if(it.value != null){
-                val intent = Intent(this, ChatingActivity::class.java)
-                intent.putExtra("code", code)
-                database.child(code).child("member").child(user.uid)
-                startActivity(intent)
-                finish()
+                if(it.value != "0"){
+                    val intent = Intent(this, ChatingActivity::class.java)
+                    intent.putExtra("code", code)
+
+                    database.child(code).child("ownerID").get()
+                        .addOnSuccessListener {
+                            ownerId = it.value.toString()
+                            if(ownerId == user.uid){
+                                startActivity(intent)
+                                finish()
+                            }else {
+                                database.child(code).child("member").child("member uid").setValue(user.uid)
+                                    .addOnSuccessListener {
+                                        database.child(code).child("member").child("Headcount").get()
+                                            .addOnSuccessListener {
+                                                Log.i("firebase", "Got value ${it.value}")
+
+                                                val headcount = it.value.toString().toInt() + 1
+
+                                                database.child(code).child("member").child("Headcount")
+                                                    .setValue(headcount)
+                                                    .addOnSuccessListener {
+                                                        Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
+                                                        startActivity(intent)
+                                                        finish()
+                                                    }
+
+                                            }.addOnFailureListener {
+                                                Log.e("firebase", "Error getting data", it)
+                                            }
+                                    }
+                            }
+                        }
+                        }
+
             }else {
                 Toast.makeText(this, "해당 코드를 가진 방이 없습니다.", Toast.LENGTH_SHORT).show()
             }

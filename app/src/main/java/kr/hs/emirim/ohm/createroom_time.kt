@@ -57,16 +57,18 @@ class createroom_time : AppCompatActivity() {
 
     fun createroom(){
         val user = Firebase.auth.currentUser
-        val room = Room(room_name, room_topic, user?.uid)
+        val room = Room(room_name, room_topic, user?.uid, "1")
         val time = time(hour.text.toString(), min.text.toString(), sec.text.toString())
         makeCode()
         ref.child(code).setValue(room)
             .addOnSuccessListener {
                 ref.child(code).child("time").setValue(time).addOnSuccessListener {
-                    val intent = Intent(this, ChatingActivity::class.java)
-                    intent.putExtra("code", code)
-                    startActivity(intent)
-                    finish()
+                    ref.child(code).child("member").child("Headcount").setValue("1").addOnSuccessListener {
+                        val intent = Intent(this, ChatingActivity::class.java)
+                        intent.putExtra("code", code)
+                        startActivity(intent)
+                        finish()
+                    }
                 }
             }
             .addOnFailureListener {
