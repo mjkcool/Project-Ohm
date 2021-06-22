@@ -107,13 +107,12 @@ class HomeActivity : AppCompatActivity() {
         */
     }
     fun checkCode(code:String){
-        //한줄소개 불러오는 부분
         database.child(code).get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
             if(it.value != null){
                 val intent = Intent(this, ChatingActivity::class.java)
                 intent.putExtra("code", code)
-                database.child(code).child("member").setValue(user.uid)
+                database.child(code).child("member").child(user.uid)
                 startActivity(intent)
                 finish()
             }else {

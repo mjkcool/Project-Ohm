@@ -55,28 +55,24 @@ class createroom_time : AppCompatActivity() {
             room_topic = roomG[1]
         }
 
-        private fun createroom(){
-            val user = Firebase.auth.currentUser
-
-            val room = Room(room_name, room_topic, user?.uid)
-            makeCode()
-            ref.child(code.toString()).setValue(room)
-                .addOnSuccessListener {
-                    Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
+    fun createroom(){
+        val user = Firebase.auth.currentUser
+        val room = Room(room_name, room_topic, user?.uid)
+        val time = time(hour.text.toString(), min.text.toString(), sec.text.toString())
+        makeCode()
+        ref.child(code).setValue(room)
+            .addOnSuccessListener {
+                ref.child(code).child("time").setValue(time).addOnSuccessListener {
                     val intent = Intent(this, ChatingActivity::class.java)
-                    val bundle = Bundle()
-                    bundle.putInt("hour", hour.text.toString().toInt());
-                    bundle.putInt("min", min.text.toString().toInt());
-                    bundle.putInt("sec", sec.text.toString().toInt());
-                    bundle.putString("code", code);
-                    intent.putExtra("bundle", bundle)
+                    intent.putExtra("code", code)
                     startActivity(intent)
                     finish()
                 }
-                .addOnFailureListener {
-                    Toast.makeText(this, "방 생성 실패", Toast.LENGTH_SHORT).show()
-                }
-        }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "방 생성 실패", Toast.LENGTH_SHORT).show()
+            }
+    }
 
         private fun makeCode(){
             code = (Math.random() * 10000000).toInt().toString()

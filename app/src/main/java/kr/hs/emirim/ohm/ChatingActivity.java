@@ -107,8 +107,8 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index2 = findViewById(R.id.poll_index2);
         poll_index3 = findViewById(R.id.poll_index3);
 
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
-        drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
+//        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
+//        drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_View);
         recyclerView.setHasFixedSize(true); //리사이클뷰의 크기와 넓이를 그대로 지정해주는 것
@@ -130,14 +130,51 @@ public class ChatingActivity extends AppCompatActivity {
         header_main_title1 = findViewById(R.id.header_main_title1);
 
         Intent intent = getIntent();
-//        String code = intent.getExtras().getString("code");
-        Bundle bundle = intent.getBundleExtra("bundle");
-        hour = bundle.getInt("hour");
-        minute = bundle.getInt("min");
-        second = bundle.getInt("sec");
-        String code = bundle.getString("code");
+        String code = intent.getExtras().getString("code");
         myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase.child("rooms").child(code).child("time").child("hour").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    hour = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+
+        mDatabase.child("rooms").child(code).child("time").child("min").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    minute = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+
+        mDatabase.child("rooms").child(code).child("time").child("sec").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    second = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
 
         //타이머 관련
         tv_hour = (TextView)findViewById(R.id.hour);
@@ -164,13 +201,13 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
 
-        drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
-            public void onClick(View v) {
-                if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) { //열리는 쪽이 오른쪽 일 경우
-                    drawerLayout.openDrawer(Gravity.RIGHT);
-                }
-            }
-        });
+//        drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
+//            public void onClick(View v) {
+//                if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) { //열리는 쪽이 오른쪽 일 경우
+//                    drawerLayout.openDrawer(Gravity.RIGHT);
+//                }
+//            }
+//        });
 
         seekBar1.setOnTouchListener(new View.OnTouchListener() {
             @Override
