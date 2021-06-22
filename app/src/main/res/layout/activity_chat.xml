@@ -108,6 +108,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/chatting_background"
         android:fitsSystemWindows="true"
+        android:layout_gravity="right"
         android:orientation="horizontal">
 
         <Space
