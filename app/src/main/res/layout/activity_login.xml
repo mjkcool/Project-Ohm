@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginHorizontal="@dimen/dp30.67"
-    android:layout_marginVertical="@dimen/dp33.33"
+    android:layout_marginTop="255.33dp"
+    android:layout_marginBottom="89dp"
     android:paddingHorizontal="@dimen/dp0"
     tools:context=".WaitingRoomActivity">
 
@@ -51,9 +52,8 @@
 
     <ImageView
         android:id="@+id/login_app_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp131.67"
+        android:layout_width="95.33dp"
+        android:layout_height="143dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -63,11 +63,11 @@
         android:id="@+id/login_txt02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp26.67"
+        android:layout_marginTop="25.67dp"
         android:gravity="center"
         android:text="옴에 오신 것을 환영합니다."
         android:textColor="#000000"
-        android:textSize="@dimen/sp14.67"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,6 @@
             android:layout_width="@dimen/dp96.67"
             android:layout_height="@dimen/dp1.33"
             android:layout_marginStart="@dimen/dp0"
-            android:layout_marginLeft="@dimen/dp51"
             android:layout_weight="1"
             android:background="#1E349D"
             app:layout_constraintStart_toStartOf="parent" />
@@ -120,7 +119,6 @@
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp33.33"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -158,7 +156,7 @@
                 android:includeFontPadding="false"
                 android:text="Google"
                 android:textColor="#000000"
-                android:textSize="@dimen/sp8"/>
+                android:textSize="@dimen/sp8" />
         </LinearLayout>
 
         <LinearLayout

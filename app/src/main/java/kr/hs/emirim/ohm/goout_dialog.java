@@ -3,16 +3,25 @@ package kr.hs.emirim.ohm;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class goout_dialog extends AppCompatActivity {
 
     private Button OK_button;
     private Button cancel_button;
+    private String code;
 
     Dialog dilaog03; //다이얼로그2
 
@@ -28,6 +37,9 @@ public class goout_dialog extends AppCompatActivity {
         dilaog03.requestWindowFeature(Window.FEATURE_NO_TITLE); //타이틀 제거
         dilaog03.setContentView(R.layout.activity_goout_dialog); //레이아웃 연결
 
+        Intent intent = getIntent();
+        code = intent.getExtras().getString("code");
+
         OK_button.setOnClickListener(new View.OnClickListener() { // 나가기 창
             @Override
             public void onClick(View v) {
@@ -41,9 +53,14 @@ public class goout_dialog extends AppCompatActivity {
                 okBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("rooms");
+
+                        myRef.child(code).child("open").setValue("0");
+
                         Intent intent = new Intent(goout_dialog.this, HomeActivity.class);
                         startActivity(intent);
-                        dilaog03.dismiss(); // 다이얼로그 닫기
+                        dilaog03.dismiss();
+                        finish();// 다이얼로그 닫기
                     }
                 });
             }

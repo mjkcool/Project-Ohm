@@ -6,9 +6,10 @@
     android:id="@+id/BaseLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingHorizontal="@dimen/dp0"
-    tools:context=".WaitingRoomActivity"
-    android:orientation="vertical">
+    android:paddingTop="26.67dp"
+    tools:context=".WaitingRoomActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/profile_layout_top"

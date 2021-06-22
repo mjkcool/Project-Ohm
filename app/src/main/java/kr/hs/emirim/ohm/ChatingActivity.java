@@ -34,12 +34,15 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import static android.content.ContentValues.TAG;
 
 public class ChatingActivity extends AppCompatActivity {
 
@@ -51,13 +54,15 @@ public class ChatingActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager; //리사이클뷰에 들어갈 레이아웃
     private List<ChatingData> chatlist; //채팅 데이터 리스트
 
-    private String nick = "nick"; //닉네임 임시설정 (애뮬레이터 당 닉네임 바꿔서)
+    private String nick = "nick";//닉네임 임시설정
+    private String code;
 
     private TextView text_title;
     private TextView text_code;
 
     private EditText chatting_say; //채팅 칠 내용
     private Button chatting_send; // 채팅 보내는 버튼
+    private TextView header_main_title1;
 
     private TextView title_bar;
 
@@ -106,8 +111,8 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index2 = findViewById(R.id.poll_index2);
         poll_index3 = findViewById(R.id.poll_index3);
 
-        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
-        drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
+//        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
+//        drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_View);
         recyclerView.setHasFixedSize(true); //리사이클뷰의 크기와 넓이를 그대로 지정해주는 것
@@ -121,16 +126,59 @@ public class ChatingActivity extends AppCompatActivity {
 
         dilaog01 = new Dialog(ChatingActivity.this); //다이얼로그 초기화
         dilaog01.requestWindowFeature(Window.FEATURE_NO_TITLE); //타이틀 제거
-        dilaog01.setContentView(R.layout.activity_out_room_modal); //레이아웃 연결
+        dilaog01.setContentView(R.layout.activity_goout_dialog); //레이아웃 연결
 
         title_bar = findViewById(R.id.title_bar);
         text_title = findViewById(R.id.text_title);
         text_code = findViewById(R.id.text_big_title);
+        header_main_title1 = findViewById(R.id.header_main_title1);
 
         Intent intent = getIntent();
-        String code = intent.getExtras().getString("code");
+        code = intent.getExtras().getString("code");
         myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mDatabase.child("rooms").child(code).child("time").child("hour").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    hour = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+
+        mDatabase.child("rooms").child(code).child("time").child("min").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    minute = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
+
+        mDatabase.child("rooms").child(code).child("time").child("sec").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                    second = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+                }
+            }
+        });
 
         //타이머 관련
         tv_hour = (TextView)findViewById(R.id.hour);
@@ -139,6 +187,7 @@ public class ChatingActivity extends AppCompatActivity {
         tv_end = (TextView)findViewById(R.id.end);
 
         text_code.setText(code);
+        checkPeople();
 
         countDown();
 
@@ -157,13 +206,13 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
 
-        drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
-            public void onClick(View v) {
-                if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) { //열리는 쪽이 오른쪽 일 경우
-                    drawerLayout.openDrawer(Gravity.RIGHT);
-                }
-            }
-        });
+//        drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
+//            public void onClick(View v) {
+//                if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) { //열리는 쪽이 오른쪽 일 경우
+//                    drawerLayout.openDrawer(Gravity.RIGHT);
+//                }
+//            }
+//        });
 
         seekBar1.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -268,21 +317,19 @@ public class ChatingActivity extends AppCompatActivity {
                                     public void showDialog01() {
                                         dilaog01.show();
 
-                                        Button endBtn = dilaog01.findViewById(R.id.end_button);
+                                        Button endBtn = dilaog01.findViewById(R.id.ok_button);
                                         endBtn.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //Intent intent = new Intent(ChatingActivity.this, end_room_dialog.class);
+                                                Intent intent = new Intent(ChatingActivity.this, HomeActivity.class);
                                                 startActivity(intent);
                                                 dilaog01.dismiss(); // 다이얼로그 닫기
                                             }
                                         });
 
-                                        dilaog01.findViewById(R.id.out_button).setOnClickListener(new View.OnClickListener() {
+                                        dilaog01.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                //Intent intent = new Intent(ChatingActivity.this, goout_dialog.class);
-                                                startActivity(intent);
                                                 dilaog01.dismiss();  // 다이얼로그 닫기
                                             }
                                         });
@@ -342,7 +389,7 @@ public class ChatingActivity extends AppCompatActivity {
     private void countDown() {
         hour = 0;
         minute = 0;
-        second = 30;
+        second = 60;
 
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -407,5 +454,36 @@ public class ChatingActivity extends AppCompatActivity {
         poll_result3.setText((String.format("%.0f%%",percent3)));
 
         seekBar3.setProgress((int)percent3);
+    }
+
+    private void checkPeople(){
+
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                header_main_title1.setText("참여자("+dataSnapshot.getValue()+")");
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        mDatabase.child("rooms").child(code).child("member").child("Headcount").addValueEventListener(postListener);
+//        mDatabase.child("rooms").child(code).child("member").child("Headcount").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    header_main_title1.setText("참여자("+task.getResult().getValue()+")");
+//                }
+//            }
+//        });
     }
 }

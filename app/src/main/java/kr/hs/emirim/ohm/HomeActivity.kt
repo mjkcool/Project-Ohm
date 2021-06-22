@@ -4,8 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.KeyEvent
-import android.view.KeyEvent.KEYCODE_ENTER
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -17,7 +15,6 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.activity_calendar.*
 import java.util.ArrayList
 
 class HomeActivity : AppCompatActivity() {
@@ -32,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var code: EditText
     private var database: DatabaseReference = Firebase.database.reference.child("rooms")
     private var user: FirebaseUser = Firebase.auth.currentUser!!
+    lateinit var ownerId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
 
         //회의 일정
         bookMeetingBtn.setOnClickListener{
-            val intent = Intent(this, calendar::class.java)
+            val intent = Intent(this, Calendar::class.java)
             startActivity(intent)
         }
 
@@ -110,15 +108,44 @@ class HomeActivity : AppCompatActivity() {
         */
     }
     fun checkCode(code:String){
-        //한줄소개 불러오는 부분
-        database.child(code).get().addOnSuccessListener {
+        database.child(code).child("open").get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
             if(it.value != null){
-                val intent = Intent(this, ChatingActivity::class.java)
-                intent.putExtra("code", code)
-                database.child(code).child("member").setValue(user.uid)
-                startActivity(intent)
-                finish()
+                if(it.value != "0"){
+                    val intent = Intent(this, ChatingActivity::class.java)
+                    intent.putExtra("code", code)
+
+                    database.child(code).child("ownerID").get()
+                        .addOnSuccessListener {
+                            ownerId = it.value.toString()
+                            if(ownerId == user.uid){
+                                startActivity(intent)
+                                finish()
+                            }else {
+                                database.child(code).child("member").child("member uid").setValue(user.uid)
+                                    .addOnSuccessListener {
+                                        database.child(code).child("member").child("Headcount").get()
+                                            .addOnSuccessListener {
+                                                Log.i("firebase", "Got value ${it.value}")
+
+                                                val headcount = it.value.toString().toInt() + 1
+
+                                                database.child(code).child("member").child("Headcount")
+                                                    .setValue(headcount)
+                                                    .addOnSuccessListener {
+                                                        Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
+                                                        startActivity(intent)
+                                                        finish()
+                                                    }
+
+                                            }.addOnFailureListener {
+                                                Log.e("firebase", "Error getting data", it)
+                                            }
+                                    }
+                            }
+                        }
+                        }
+
             }else {
                 Toast.makeText(this, "해당 코드를 가진 방이 없습니다.", Toast.LENGTH_SHORT).show()
             }

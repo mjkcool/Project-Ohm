@@ -17,9 +17,9 @@ class createroom_topic : AppCompatActivity() {
 
         lateinit var meeting_topic: EditText
         var text_number2: TextView? = null
-        lateinit var code : String
+//        lateinit var code : String
         lateinit var room_name : String
-        val ref = FirebaseDatabase.getInstance().getReference("rooms")
+//        val ref = FirebaseDatabase.getInstance().getReference("rooms")
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
@@ -32,9 +32,13 @@ class createroom_topic : AppCompatActivity() {
                 room_name = intent.getStringExtra("rname").toString()
             }
 
-            next_button2.setOnClickListener({
-                createroom()
-            })
+            next_button2.setOnClickListener {
+                val intent = Intent(this, createroom_time::class.java)
+                val create = arrayOf(room_name, meeting_topic.text.toString())
+                intent.putExtra("create", create);
+                startActivity(intent);
+                finish()
+            }
 
             back_button2.setOnClickListener {
                 val intent = Intent(this, createroom_name::class.java)
@@ -42,7 +46,7 @@ class createroom_topic : AppCompatActivity() {
                 finish()
             }
 
-            meeting_topic?.addTextChangedListener(object : TextWatcher {
+            meeting_topic.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence,
                     start: Int,
@@ -58,30 +62,30 @@ class createroom_topic : AppCompatActivity() {
             })
         }
 
-    fun makeCode(){
-        code = (Math.random() * 10000000).toInt().toString()
-        ref.child(code).get().addOnSuccessListener {
-            if(it.value != null) {
-                makeCode()
-            }
-        }
-    }
-
-    fun createroom(){
-        val user = Firebase.auth.currentUser
-        val room = Room(room_name, meeting_topic.text.toString(), user?.uid)
-        makeCode()
-        ref.child(code).setValue(room)
-            .addOnSuccessListener {
-                Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, ChatingActivity::class.java)
-                intent.putExtra("code", code)
-                startActivity(intent)
-                finish()
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "방 생성 실패", Toast.LENGTH_SHORT).show()
-            }
-    }
+//    fun makeCode(){
+//        code = (Math.random() * 10000000).toInt().toString()
+//        ref.child(code).get().addOnSuccessListener {
+//            if(it.value != null) {
+//                makeCode()
+//            }
+//        }
+//    }
+//
+//    fun createroom(){
+//        val user = Firebase.auth.currentUser
+//        val room = Room(room_name, meeting_topic.text.toString(), user?.uid)
+//        makeCode()
+//        ref.child(code).setValue(room)
+//            .addOnSuccessListener {
+//                Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
+//                val intent = Intent(this, ChatingActivity::class.java)
+//                intent.putExtra("code", code)
+//                startActivity(intent)
+//                finish()
+//            }
+//            .addOnFailureListener {
+//                Toast.makeText(this, "방 생성 실패", Toast.LENGTH_SHORT).show()
+//            }
+//    }
 
 }

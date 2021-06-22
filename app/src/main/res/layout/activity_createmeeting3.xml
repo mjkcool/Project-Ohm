@@ -9,12 +9,12 @@
 
     <Button
         android:id="@+id/back_button3"
-        android:layout_width="@dimen/dp18.617"
-        android:layout_height="@dimen/dp14.240"
+        android:layout_width="20.443dp"
+        android:layout_height="16dp"
         android:layout_marginStart="@dimen/dp30.667"
-        android:layout_marginTop="@dimen/dp33.333"
-        android:layout_marginEnd="@dimen/dp310.733"
-        android:layout_marginBottom="@dimen/dp592.433"
+        android:layout_marginTop="56.667dp"
+        android:layout_marginEnd="308.900dp"
+        android:layout_marginBottom="727.333dp"
         android:background="@drawable/ic_toback"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,12 +56,13 @@
         android:id="@+id/hour"
         android:layout_width="@dimen/dp50"
         android:layout_height="@dimen/dp50"
-        android:inputType="number"
         android:gravity="center"
         android:hint="00"
+        android:text="00"
+        android:inputType="number"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="@dimen/dp106"
-        tools:layout_editor_absoluteY="@dimen/dp228" />
+        tools:layout_editor_absoluteX="180dp"
+        tools:layout_editor_absoluteY="251dp" />
 
     <EditText
         android:id="@+id/min"
@@ -69,10 +70,11 @@
         android:layout_height="@dimen/dp50"
         android:gravity="center"
         android:hint="00"
+        android:text="00"
         android:inputType="number"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="@dimen/dp156"
-        tools:layout_editor_absoluteY="@dimen/dp228" />
+        tools:layout_editor_absoluteX="77dp"
+        tools:layout_editor_absoluteY="251dp" />
 
     <EditText
         android:id="@+id/second"
@@ -80,9 +82,10 @@
         android:layout_height="@dimen/dp50"
         android:gravity="center"
         android:hint="00"
+        android:text="00"
         android:inputType="number"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="@dimen/dp206"
-        tools:layout_editor_absoluteY="@dimen/dp228" />
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="251dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
