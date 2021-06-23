@@ -10,15 +10,16 @@
         android:id="@+id/calendar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp30.66"
+        android:layout_marginHorizontal="@dimen/dp30.67"
         android:layout_marginTop="@dimen/dp25.1"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="@dimen/dp31">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/back_button"
-            android:layout_width="@dimen/dp10.22"
-            android:layout_height="@dimen/dp16"
+            android:layout_width="24dp"
+            android:layout_height="20dp"
             android:background="@drawable/ic_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="회의 일정"
             android:textColor="#000000"
-            android:textSize="@dimen/sp20.00"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -41,7 +42,7 @@
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp298.6"
+        android:layout_height="300dp"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/dp46"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,8 +51,9 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp273"
+        android:layout_height="321.67dp"
         android:layout_gravity="center"
+        android:background="@drawable/chatting_background"
         app:cardCornerRadius="@dimen/dp13.33"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +63,7 @@
             android:layout_width="@dimen/dp298.66"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/dp16.66"
+            android:layout_marginVertical="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -80,13 +82,14 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleView_cal"
-                android:layout_width="0dp"
-                android:layout_height="170dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/date">
+                app:layout_constraintTop_toBottomOf="@+id/date"
+                tools:listitem="@layout/create_calendar">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -94,7 +97,9 @@
                 android:id="@+id/create_intent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp4"
+                android:layout_marginTop="18.33dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recycleView_cal">
 
                 <ImageView
@@ -127,7 +132,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/create_window"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp362"
+        android:layout_height="674dp"
         android:layout_gravity="center"
         android:visibility="invisible"
         app:cardCornerRadius="@dimen/dp13.33"
@@ -137,9 +142,10 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/dp298.66"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:layout_marginHorizontal="30.67dp"
             android:layout_marginVertical="@dimen/dp26"
             android:orientation="vertical">
 
@@ -210,8 +216,8 @@
                     android:layout_weight="2"
                     android:background="@null"
                     android:ems="10"
-                    android:singleLine="true"
                     android:hint="제목"
+                    android:singleLine="true"
                     android:textSize="@dimen/sp14" />
             </LinearLayout>
 
@@ -253,8 +259,8 @@
                     android:layout_weight="2"
                     android:background="@null"
                     android:ems="10"
-                    android:singleLine="true"
                     android:hint="주제"
+                    android:singleLine="true"
                     android:textSize="@dimen/sp14" />
             </LinearLayout>
 
@@ -368,8 +374,8 @@
                     android:layout_weight="2"
                     android:background="@null"
                     android:ems="10"
-                    android:singleLine="true"
                     android:hint="회의시간"
+                    android:singleLine="true"
                     android:textSize="@dimen/sp14" />
             </LinearLayout>
 
@@ -400,12 +406,12 @@
                 android:layout_width="@dimen/dp298.66"
                 android:layout_height="@dimen/dp231.33"
                 android:layout_marginTop="@dimen/dp13.33"
-                android:hint="회의 내용에 대한 간단한 요약과, 회의 시의 기분 등을 다양하게 적어보세요!"
-                android:textSize="@dimen/sp12"
-                android:gravity="top"
                 android:background="@drawable/border"
                 android:ems="10"
+                android:gravity="top"
+                android:hint="회의 내용에 대한 간단한 요약과, 회의 시의 기분 등을 다양하게 적어보세요!"
                 android:padding="@dimen/dp10"
+                android:textSize="@dimen/sp12"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />

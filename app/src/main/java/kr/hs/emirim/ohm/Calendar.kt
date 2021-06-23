@@ -53,6 +53,8 @@ class Calendar : AppCompatActivity() {
         cal = Firebase.database.getReference("calendars")
 
         date = findViewById(R.id.date)  //날짜
+        //date.text = String.format("%d월 %d일", , )
+
         calendarView = findViewById(R.id.calendarView)  //캘린더
         create_intent = findViewById(R.id.create_intent)    //일정 생성
         create_window = findViewById(R.id.create_window)    //일정 생성 창
