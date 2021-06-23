@@ -7,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/dp0"
     android:paddingTop="26.67dp"
     tools:context=".WaitingRoomActivity">
 
@@ -28,7 +27,7 @@
             android:minHeight="@dimen/dp0"
             android:text="취소"
             android:textColor="#707070"
-            android:textSize="@dimen/sp13.33"
+            android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@+id/modify_profile_save_btn"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -89,7 +88,7 @@
             android:minHeight="@dimen/dp0"
             android:text="저장"
             android:textColor="#1E349D"
-            android:textSize="@dimen/sp13.33"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -125,7 +124,7 @@
                     android:layout_weight="3"
                     android:text="닉네임"
                     android:textColor="#5A5A5A"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/modify_profile_nickname_input"
@@ -137,7 +136,7 @@
                     android:inputType="textPersonName"
                     android:singleLine="true"
                     android:text="닉네임"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <View
@@ -161,7 +160,7 @@
                     android:layout_weight="3"
                     android:text="한줄소개"
                     android:textColor="#5A5A5A"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="16sp" />
 
                 <EditText
                     android:id="@+id/modify_profile_introduce_input"
@@ -172,7 +171,7 @@
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="한줄소개"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="16sp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

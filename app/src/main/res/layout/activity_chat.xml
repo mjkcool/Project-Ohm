@@ -52,7 +52,7 @@
                 android:layout_height="40dp"
                 android:layout_marginHorizontal="@dimen/dp11.67"
                 android:layout_marginVertical="@dimen/dp3.33"
-                android:background="@drawable/edixtext_background"
+                android:background="@drawable/edixtext_background_chat"
                 android:orientation="horizontal">
 
                 <!-- 채팅을 할 수 있게 값을 입력 해주는 Edittext -->
@@ -65,25 +65,47 @@
                     android:background="@null"
                     android:ems="10"
                     android:gravity="start|top"
-                    android:inputType="text"
                     android:imeOptions="actionDone"
+                    android:inputType="text"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/send"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <!-- 채팅 보내는 버튼 -->
-                <Button
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/send"
                     style="?android:attr/borderlessButtonStyle"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_darkblue"
+                    android:background="#B15959"
+                    android:clickable="true"
+                    app:backgroundTint="#1E349D"
+                    app:borderWidth="@dimen/dp0"
+                    app:elevation="@dimen/dp0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_send"
+                    app:fabSize="mini"
+                    />
+
+<!--
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/google_login_btn"
+                    android:layout_width="@dimen/dp40"
+                    android:layout_height="@dimen/dp40"
+                    android:layout_weight="1"
+                    android:background="#B15959"
+                    android:clickable="true"
+                    app:backgroundTint="#1E349D"
+                    app:borderWidth="@dimen/dp0"
+                    app:elevation="@dimen/dp0"
+                    app:fabSize="mini"
+                    app:maxImageSize="@dimen/dp22"
+                    app:srcCompat="@drawable/google_icon" />-->
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
