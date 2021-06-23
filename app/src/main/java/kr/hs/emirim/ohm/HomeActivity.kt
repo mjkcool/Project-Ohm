@@ -53,9 +53,9 @@ class HomeActivity : AppCompatActivity() {
         userProfileBtn.setImageURI(user?.photoUrl)
 
         //회의 목록 테스트 값
-        roomData.add(RoomVo("목적지로 가는 길", "2021.04.22", "5일전"))
-        roomData.add(RoomVo("반민초 vs 민초", "2021.04.26", "하루전"))
-        roomData.add(RoomVo("엄마 vs 아빠", "2021.04.01", "26일전"))
+        roomData.add(RoomVo("IT쇼 주제 선정", "2021.04.06", "이틀 후", "#F9D5D3"))
+        roomData.add(RoomVo("반민초 vs 민초", "2021.04.01", "3일 전", "#CFE1CD"))
+        roomData.add(RoomVo("사진관 결정", "2021.03.20", "2주 전", "#EEDFFF"))
 
         roomAdapter = RoomViewAdapter(this, roomData)
         roomsRecyclerView.adapter = roomAdapter
