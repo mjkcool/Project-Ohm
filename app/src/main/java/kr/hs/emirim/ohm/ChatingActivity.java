@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -356,6 +357,16 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
 
+        chatting_say.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                chatting_send.performClick();
+                return true;
+            }
+
+        });
+
         myRef.addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -434,7 +445,6 @@ public class ChatingActivity extends AppCompatActivity {
 
                 // 시분초가 모두 0이 될 때 때 회의 종료
                 if(hour == 0 && minute == 0 && second == 0) {
-
                     timer.cancel();//타이머 종료
                     tv_end.setText("회의가 종료되었습니다.");
                     chatting_send.setEnabled(false);
