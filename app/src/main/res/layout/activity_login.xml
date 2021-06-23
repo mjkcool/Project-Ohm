@@ -57,7 +57,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_ohm_logo" />
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/login_txt02"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25.67dp"
         android:gravity="center"
-        android:text="옴에 오신 것을 환영합니다."
+        android:text="@string/welcome"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold"

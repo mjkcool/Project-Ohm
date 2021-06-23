@@ -2,17 +2,22 @@ package kr.hs.emirim.ohm
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_splash.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
+        Handler().postDelayed({imageView.visibility = View.VISIBLE},5000L)
         Log.d("start", "oncreate")
         val ref = FirebaseDatabase.getInstance().getReference("users")
         auth = FirebaseAuth.getInstance()
