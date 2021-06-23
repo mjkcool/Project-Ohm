@@ -5,9 +5,10 @@
     android:id="@+id/BaseLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingHorizontal="@dimen/dp0"
-    tools:context=".ProfilePageActivity"
-    android:orientation="vertical">
+    android:paddingTop="26.67dp"
+    tools:context=".ProfilePageActivity">
 
     <LinearLayout
         android:id="@+id/profile_layout_top"
@@ -19,8 +20,8 @@
 
         <ImageButton
             android:id="@+id/quit_btn"
-            android:layout_width="@dimen/dp13.33"
-            android:layout_height="@dimen/dp13.33"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="#00FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +29,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp13.33" />
+            android:layout_height="20dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -41,8 +42,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/User_profile"
-                android:layout_width="@dimen/dp60"
-                android:layout_height="@dimen/dp60"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:clickable="true"
                 android:src="@mipmap/avatar_foreground"
                 app:civ_border_color="#707070"
@@ -61,37 +62,38 @@
 
                 <TextView
                     android:id="@+id/profile_nickname"
-                    android:layout_width="125dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="닉네임"
                     android:textAlignment="textEnd"
                     android:textColor="#000000"
-                    android:textSize="@dimen/dp16.67"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/profile_introduce"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="right"
                     android:text="한줄소개"
                     android:textAlignment="textEnd"
-                    android:textSize="@dimen/sp10" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp16.67" />
+            android:layout_height="20dp" />
 
         <Button
             android:id="@+id/to_modify_btn"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp30"
+            android:layout_height="34dp"
             android:background="@drawable/btn_white_outline"
             android:text="내 정보 수정"
             android:textColor="#5A5A5A"
-            android:textSize="@dimen/sp12"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -128,7 +130,7 @@
                     android:layout_weight="1"
                     android:text="PUSH 알림 설정"
                     android:textColor="#5A5A5A"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="16sp" />
 
                 <Switch
                     android:id="@+id/push_switch"
@@ -162,7 +164,7 @@
                     android:layout_weight="1"
                     android:text="로그아웃"
                     android:textColor="#5A5A5A"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -188,7 +190,7 @@
                     android:layout_weight="1"
                     android:text="회원 탈퇴"
                     android:textColor="#5A5A5A"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </LinearLayout>

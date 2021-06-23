@@ -328,12 +328,13 @@
             android:layout_height="59dp"
             android:layout_marginTop="@dimen/dp24"
             android:onClick="onDialogBtnClicked"
-            android:background="#0000000"
+            android:background="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.932"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/voit_background"
-            app:srcCompat="@drawable/exit" />
+            app:srcCompat="@drawable/exit"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
