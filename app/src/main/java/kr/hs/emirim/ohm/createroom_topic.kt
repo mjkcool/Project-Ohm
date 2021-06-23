@@ -4,14 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
+import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_createmeeting2.*
+
 
 class createroom_topic : AppCompatActivity() {
 
@@ -45,6 +44,13 @@ class createroom_topic : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
+
+            meeting_topic.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    next_button2.performClick()
+                    true
+                } else false
+            })
 
             meeting_topic.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(

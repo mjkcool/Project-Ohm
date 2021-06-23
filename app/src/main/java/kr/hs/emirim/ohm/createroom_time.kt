@@ -64,7 +64,7 @@ class createroom_time : AppCompatActivity() {
             .addOnSuccessListener {
                 ref.child(code).child("time").setValue(time).addOnSuccessListener {
                     ref.child(code).child("member").child("Headcount").setValue("1").addOnSuccessListener {
-                        ref.child(code).child("member").child("user1").setValue(user?.displayName).addOnSuccessListener {
+                        ref.child(code).child("member").child("userlist").child("user1").setValue(user?.displayName).addOnSuccessListener {
                             val intent = Intent(this, ChatingActivity::class.java)
                             intent.putExtra("code", code)
                             startActivity(intent)

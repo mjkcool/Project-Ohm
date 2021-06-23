@@ -1,12 +1,16 @@
 package kr.hs.emirim.ohm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseUser
@@ -15,7 +19,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
-import java.util.ArrayList
+import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     lateinit var roomsRecyclerView: RecyclerView
@@ -55,6 +59,7 @@ class HomeActivity : AppCompatActivity() {
 
         roomAdapter = RoomViewAdapter(this, roomData)
         roomsRecyclerView.adapter = roomAdapter
+        code.setImeOptions(EditorInfo.IME_ACTION_DONE)
 
         createMeetingBtn.setOnClickListener {
             val intent = Intent(this, createroom_name::class.java)
@@ -76,6 +81,15 @@ class HomeActivity : AppCompatActivity() {
 
         admissionBtn.setOnClickListener {
             checkCode(code.text.toString())
+        }
+
+        code.setOnEditorActionListener{ textView, action, event ->
+            var handled = false
+            if (action == EditorInfo.IME_ACTION_DONE) {
+                admissionBtn.performClick()
+                handled = true
+            }
+            handled
         }
         /*
         goto_btn.setOnClickListener(View.OnClickListener {
@@ -131,7 +145,7 @@ class HomeActivity : AppCompatActivity() {
                                                 database.child(code).child("member").child("Headcount")
                                                     .setValue(headcount)
                                                     .addOnSuccessListener {
-                                                        database.child(code).child("member").child("user2")
+                                                        database.child(code).child("member").child("userlist").child("user2")
                                                             .setValue(user.displayName)
                                                             .addOnSuccessListener {
                                                                 Toast.makeText(this, "방 입장", Toast.LENGTH_SHORT).show()

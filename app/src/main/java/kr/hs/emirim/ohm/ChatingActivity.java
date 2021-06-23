@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -37,6 +38,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -55,6 +58,8 @@ public class ChatingActivity extends AppCompatActivity {
     private List<ChatingData> chatlist; //채팅 데이터 리스트
 
     private String nick = "nick";//닉네임 임시설정
+    private String mynick;
+    private String shownick2;
     private String code;
 
     private TextView text_title;
@@ -67,6 +72,7 @@ public class ChatingActivity extends AppCompatActivity {
     private TextView title_bar;
 
     private DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("rooms"); //파이어베이스 값을 불러오는 것
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     private ImageButton exit; //나가기 버튼
     private ImageView search; //검색하는 버튼
@@ -88,8 +94,8 @@ public class ChatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         nick = user.getDisplayName(); //사용자 닉네임으로 바꿈
+        mynick = user.getDisplayName(); // 본인 닉네임 이 변수 지우고 위에 있는 거 써도 됨.
 
         chatting_send = (Button) findViewById(R.id.send); //메세지 보내는 거 id 선언
         chatting_say = (EditText) findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
@@ -138,47 +144,93 @@ public class ChatingActivity extends AppCompatActivity {
         myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("rooms").child(code).child("time").child("hour").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ValueEventListener hourListener = new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    hour = Integer.parseInt(String.valueOf(task.getResult().getValue()));
-                }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                hour = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
             }
-        });
 
-        mDatabase.child("rooms").child(code).child("time").child("min").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    minute = Integer.parseInt(String.valueOf(task.getResult().getValue()));
-                }
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
-        });
+        };
 
-        mDatabase.child("rooms").child(code).child("time").child("sec").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child("rooms").child(code).child("time").child("hour").addValueEventListener(hourListener);
+
+
+//        mDatabase.child("rooms").child(code).child("time").child("hour").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    hour = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+//                }
+//            }
+//        });
+
+        ValueEventListener minListener = new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    second = Integer.parseInt(String.valueOf(task.getResult().getValue()));
-                }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                minute = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
             }
-        });
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        mDatabase.child("rooms").child(code).child("time").child("min").addValueEventListener(minListener);
+
+//        mDatabase.child("rooms").child(code).child("time").child("min").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    minute = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+//                }
+//            }
+//        });
+
+        ValueEventListener secListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                second = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        mDatabase.child("rooms").child(code).child("time").child("sec").addValueEventListener(secListener);
+
+//        mDatabase.child("rooms").child(code).child("time").child("sec").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    second = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+//                }
+//            }
+//        });
 
         //타이머 관련
         tv_hour = (TextView)findViewById(R.id.hour);
@@ -188,7 +240,7 @@ public class ChatingActivity extends AppCompatActivity {
 
         text_code.setText(code);
         checkPeople();
-
+        checkList();
         countDown();
 
         mDatabase.child("rooms").child(code).child("roomname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -353,6 +405,15 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
 
+        chatting_say.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                chatting_send.performClick();
+                return true;
+            }
+        });
+
         myRef.addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -385,11 +446,8 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
     }
-
     private void countDown() {
-        hour = 0;
-        minute = 0;
-        second = 60;
+        second = 4;
 
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -398,18 +456,23 @@ public class ChatingActivity extends AppCompatActivity {
                 //카운트 다운
                 if(second != 0) {
                     second--;
+                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
                 } else if(minute != 0) {
                     second = 60;
                     second--;
                     minute--;
+                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
+                    mDatabase.child("rooms").child(code).child("time").child("min").setValue(minute);
                 } else if(hour != 0) {
                     second = 60;
                     minute = 60;
                     second--;
                     minute--;
                     hour--;
+                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
+                    mDatabase.child("rooms").child(code).child("time").child("min").setValue(minute);
+                    mDatabase.child("rooms").child(code).child("time").child("hour").setValue(hour);
                 }
-
                 //시간이 한자리수면 앞에 0 추가
                 if(second <= 9){
                     tv_second.setText("0" + second);
@@ -431,74 +494,70 @@ public class ChatingActivity extends AppCompatActivity {
 
                 // 시분초가 모두 0이 될 때 때 회의 종료
                 if(hour == 0 && minute == 0 && second == 0) {
-
                     timer.cancel();//타이머 종료
                     tv_end.setText("회의가 종료되었습니다.");
+                    chatting_send.setEnabled(false);
+                    mDatabase.child("rooms").child(code).child("open").setValue(0);
                 }
             }
         };
         timer.schedule(timerTask, 0, 1000);
     }
 
-    private void calculatePercent() {
-        double total = count1+count2+count3;
-        double percent1 = (count1/total) * 100;
-        double percent2 = (count2/total) * 100;
-        double percent3 = (count3/total) * 100;
 
-        poll_result1.setText(String.format("%.0f%%", percent1));
+        private void calculatePercent () {
+            double total = count1 + count2 + count3;
+            double percent1 = (count1 / total) * 100;
+            double percent2 = (count2 / total) * 100;
+            double percent3 = (count3 / total) * 100;
 
-        seekBar1.setProgress((int)percent1);
-        poll_result2.setText((String.format("%.0f%%",percent2)));
+            poll_result1.setText(String.format("%.0f%%", percent1));
 
-        seekBar2.setProgress((int)percent2);
-        poll_result3.setText((String.format("%.0f%%",percent3)));
+            seekBar1.setProgress((int) percent1);
+            poll_result2.setText((String.format("%.0f%%", percent2)));
 
-        seekBar3.setProgress((int)percent3);
+            seekBar2.setProgress((int) percent2);
+            poll_result3.setText((String.format("%.0f%%", percent3)));
+
+            seekBar3.setProgress((int) percent3);
+        }
+
+        private void checkList () {
+            ValueEventListener postListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getValue() != user.getDisplayName()) {
+                        shownick2 = String.valueOf(dataSnapshot.getValue());
+                        Log.d("chat", shownick2);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                }
+            };
+
+            mDatabase.child("rooms").child(code).child("member").child("userlist").child("user1").addValueEventListener(postListener);
+            mDatabase.child("rooms").child(code).child("member").child("userlist").child("user2").addValueEventListener(postListener);
+        }
+
+        private void checkPeople() {
+            ValueEventListener postListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    header_main_title1.setText("참여자(" + dataSnapshot.getValue() + ")");
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                }
+            };
+
+            mDatabase.child("rooms").child(code).child("member").child("Headcount").addValueEventListener(postListener);
+
+        }
     }
-
-    private void checkPeople(){
-
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                header_main_title1.setText("참여자("+dataSnapshot.getValue()+")");
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-
-        mDatabase.child("rooms").child(code).child("member").child("Headcount").addValueEventListener(postListener);
-//        mDatabase.child("rooms").child(code).child("member").child("Headcount").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Log.e("firebase", "Error getting data", task.getException());
-//
-//                }
-//                else {
-//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-//                    header_main_title1.setText("참여자("+task.getResult().getValue()+")");
-//                }
-//            }
-//        });
-
-    }
-
-//    private void itover(){
-//        mDatabase.child("rooms")..addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//                Log.d("CHATCHAT", snapshot.getValue().toString()); //오류가 나서 값이 제대로 실행 되는지 보기 위한 코드
-//                ChatingData chat = snapshot.getValue(ChatingData.class); //데이터값에 데이터 클래스를 넣어주는 것
-//                chatlist.add(chat);
-//                recyclerView.setAdapter(chatAapter);
-//                //recyclerView.invalidate();
-//                //((Chating_Adapter) chatAapter).addChat(chat); //리사이클뷰 어뎁터에 데이터를 넣어 알려주는 것
-//            }
-//    }
-}

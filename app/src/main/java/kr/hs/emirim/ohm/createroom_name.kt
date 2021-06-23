@@ -4,9 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
+import android.widget.TextView.OnEditorActionListener
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_createmeeting1.*
 
@@ -35,6 +36,14 @@ class createroom_name : AppCompatActivity(){
                 startActivity(intent)
                 finish()
             }
+
+            room_name.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    //키보드에 완료버튼을 누른 후 수행할 것
+                        next_button1.performClick()
+                    true
+                } else false
+            })
 
             room_name?.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
