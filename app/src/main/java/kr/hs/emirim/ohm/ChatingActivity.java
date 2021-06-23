@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -58,15 +59,15 @@ public class ChatingActivity extends AppCompatActivity {
     private List<ChatingData> chatlist; //채팅 데이터 리스트
 
     private String nick = "nick";//닉네임 임시설정
-    private String mynick;
-    private String shownick2;
+    private String mynick; //본인 이름
+    private String shownick2; //상대 이름
     private String code;
 
     private TextView text_title;
     private TextView text_code;
 
     private EditText chatting_say; //채팅 칠 내용
-    private Button chatting_send; // 채팅 보내는 버튼
+    private FloatingActionButton chatting_send; // 채팅 보내는 버튼
     private TextView header_main_title1;
 
     private TextView title_bar;
@@ -89,6 +90,10 @@ public class ChatingActivity extends AppCompatActivity {
 
     Dialog dilaog01; //다이얼로그
 
+    private ParticipantAdapter participantAdapter;
+    private ArrayList<ParticipantVo> participantData;
+    private RecyclerView participantView;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +102,7 @@ public class ChatingActivity extends AppCompatActivity {
         nick = user.getDisplayName(); //사용자 닉네임으로 바꿈
         mynick = user.getDisplayName(); // 본인 닉네임 이 변수 지우고 위에 있는 거 써도 됨.
 
-        chatting_send = (Button) findViewById(R.id.send); //메세지 보내는 거 id 선언
+        chatting_send = (FloatingActionButton) findViewById(R.id.send); //메세지 보내는 거 id 선언
         chatting_say = (EditText) findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
 
         exit = (ImageButton) findViewById(R.id.exit); //채팅방 나가는 것
@@ -144,6 +149,16 @@ public class ChatingActivity extends AppCompatActivity {
         myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+
+        participantData = new ArrayList<ParticipantVo>();
+        participantData.add(new ParticipantVo(mynick));
+        participantData.add(new ParticipantVo(shownick2));
+
+        participantAdapter = new ParticipantAdapter(this, participantData);
+        participantView.setAdapter(participantAdapter);
+
+
+
         ValueEventListener hourListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -159,6 +174,12 @@ public class ChatingActivity extends AppCompatActivity {
 
         mDatabase.child("rooms").child(code).child("time").child("hour").addValueEventListener(hourListener);
 
+        
+        //참가자 목록 세팅
+
+        
+        
+        
 
 //        mDatabase.child("rooms").child(code).child("time").child("hour").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 //            @Override
@@ -445,7 +466,8 @@ public class ChatingActivity extends AppCompatActivity {
 
             }
         });
-    }
+    } //end of onCreate
+    
     private void countDown() {
         second = 4;
 
