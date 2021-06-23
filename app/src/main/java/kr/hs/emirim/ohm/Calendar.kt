@@ -94,24 +94,22 @@ class Calendar : AppCompatActivity() {
              date.text = String.format("%d월 %d일", month + 1, dayOfMonth)
         }
 
-//        cal.addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                val newTitle = snapshot.child("title").toString()
-//                val newTime = snapshot.child("time").toString()
-//
-//                conference_title.setText(newTitle)
-//                conference_time.setText(newTime)
-//                view_calendar.visibility = View.INVISIBLE
-//                Toast.makeText(applicationContext, "일정 보여주기", Toast.LENGTH_SHORT).show()
+//        val postListener = object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                // Get Post object and use the values to update the UI
+//                val post = dataSnapshot.getValue<Post>()
 //            }
 //
-//            override fun onCancelled(error: DatabaseError) {
-//                Log.w(TAG, "에러 발생")
-//                Toast.makeText(applicationContext, "일정 안보여주기", Toast.LENGTH_SHORT).show()
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                // Getting Post failed, log a message
+//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
 //            }
-//        })
+//        }
+//        postReference.addValueEventListener(postListener)
 
-        database.child("calendars").child(user!!.uid).child("title").get().addOnSuccessListener {
+
+
+        database.child(user!!.uid).child("calendars").child(user!!.uid).child("title").get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
             conference_title.text = it.value.toString()
             view_calendar.visibility = View.VISIBLE
@@ -126,12 +124,11 @@ class Calendar : AppCompatActivity() {
         }.addOnFailureListener{
             Log.e("firebase", "Error getting data", it)
         }
-
     }
 
     fun createCal(title: String, subject: String, time: String, memo: String) {
         val cal = Calendars(title, subject, time, memo)
-        database.child("calendars").child(auth.currentUser!!.uid).setValue(cal)
+        database.child("users").child(user?.uid!!).child("calendar").setValue(cal)
             .addOnSuccessListener {
                 Toast.makeText(this, "일정이 저장되었습니다.", Toast.LENGTH_SHORT).show()
                 create_window.visibility = View.INVISIBLE
