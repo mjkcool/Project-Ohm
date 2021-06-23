@@ -15,8 +15,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_calendar.*
 import java.util.ArrayList
 
 class Calendar : AppCompatActivity() {
@@ -62,15 +62,7 @@ class Calendar : AppCompatActivity() {
         cancel_btn = findViewById(R.id.cancel_btn)  //취소 버튼
         add_btn = findViewById(R.id.add_btn)
 
-//        conference_title = findViewById(R.id.tv_title)
-//        conference_time = findViewById(R.id.tv_time)
-//        theme_color = findViewById(R.id.theme_color)
-
         RecyclerView_Cal = findViewById(R.id.recycleView_cal)
-
-        CalendarAdapter = CalendarAdapter(this, CalData)
-        RecyclerView_Cal.adapter = CalendarAdapter
-
 
         create_intent.setOnClickListener (View.OnClickListener {
             create_window.visibility = View.VISIBLE
@@ -102,10 +94,6 @@ class Calendar : AppCompatActivity() {
             calendar = String.format("%d-%d-%d", year, month+1, dayOfMonth)
         }
 
-//        CalData.add(Calendars("목적지로 가는 길", "2021.04.22", "이틀전", "메모"))
-//        CalData.add(Calendars("반민초 vs 민초", "2021.04.26", "하루전", "메모"))
-//        CalData.add(Calendars("엄마 vs 아빠", "2021.04.01", "26일전", "메모"))
-
 
 //        database.child(user!!.uid).child("calendars").child(user!!.uid).child("title").get().addOnSuccessListener {
 //            Log.i("firebase", "Got value ${it.value}")
@@ -122,7 +110,26 @@ class Calendar : AppCompatActivity() {
 //        }.addOnFailureListener{
 //            Log.e("firebase", "Error getting data", it)
 //        }
+
+        //읽어오기 -- 에러
+//        val postListener = object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                val post = dataSnapshot.getValue<Calendars>()
+//                CalData.add(post!!)
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                // Getting Post failed, log a message
+//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+//            }
+//        }
+//        FirebaseDatabase.getInstance().getReference("users").child(user?.uid!!).child("calendar").child(calendar).addValueEventListener(postListener)
+//
+//        CalendarAdapter = CalendarAdapter(this, CalData)
+//        RecyclerView_Cal.adapter = CalendarAdapter
+
     }
+
 
     fun createCal(title: String, subject: String, time: String, memo: String) {
         val cal = Calendars(title, subject, time, memo)
@@ -133,6 +140,7 @@ class Calendar : AppCompatActivity() {
             .addOnSuccessListener {
                 Toast.makeText(this, "일정이 저장되었습니다.", Toast.LENGTH_SHORT).show()
                 create_window.visibility = View.INVISIBLE
+
             }
             .addOnFailureListener {
                 Toast.makeText(this, "일정 저장이 실패하였습니다.", Toast.LENGTH_SHORT).show()
