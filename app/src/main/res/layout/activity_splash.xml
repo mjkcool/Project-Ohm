@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="#7D8BCB">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="203dp"
-        android:layout_height="169dp"
-        android:layout_marginTop="160dp"
+        android:id="@+id/logo"
+        android:layout_width="95.33dp"
+        android:layout_height="143.00dp"
+        android:layout_marginStart="132.33dp"
+        android:layout_marginTop="282.33dp"
+        android:layout_marginEnd="132.33dp"
+        android:layout_marginBottom="374.67dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
