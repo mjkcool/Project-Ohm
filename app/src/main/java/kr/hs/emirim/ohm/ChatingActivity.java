@@ -38,6 +38,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -142,47 +144,93 @@ public class ChatingActivity extends AppCompatActivity {
         myRef = myRef.child(code).child("chat");
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-        mDatabase.child("rooms").child(code).child("time").child("hour").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        ValueEventListener hourListener = new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    hour = Integer.parseInt(String.valueOf(task.getResult().getValue()));
-                }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                hour = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
             }
-        });
 
-        mDatabase.child("rooms").child(code).child("time").child("min").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    minute = Integer.parseInt(String.valueOf(task.getResult().getValue()));
-                }
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
-        });
+        };
 
-        mDatabase.child("rooms").child(code).child("time").child("sec").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child("rooms").child(code).child("time").child("hour").addValueEventListener(hourListener);
+
+
+//        mDatabase.child("rooms").child(code).child("time").child("hour").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    hour = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+//                }
+//            }
+//        });
+
+        ValueEventListener minListener = new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    second = Integer.parseInt(String.valueOf(task.getResult().getValue()));
-                }
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                minute = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
             }
-        });
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        mDatabase.child("rooms").child(code).child("time").child("min").addValueEventListener(minListener);
+
+//        mDatabase.child("rooms").child(code).child("time").child("min").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    minute = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+//                }
+//            }
+//        });
+
+        ValueEventListener secListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                second = Integer.parseInt(String.valueOf(dataSnapshot.getValue()));
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        mDatabase.child("rooms").child(code).child("time").child("sec").addValueEventListener(secListener);
+
+//        mDatabase.child("rooms").child(code).child("time").child("sec").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    second = Integer.parseInt(String.valueOf(task.getResult().getValue()));
+//                }
+//            }
+//        });
 
         //타이머 관련
         tv_hour = (TextView)findViewById(R.id.hour);
@@ -364,7 +412,6 @@ public class ChatingActivity extends AppCompatActivity {
                 chatting_send.performClick();
                 return true;
             }
-
         });
 
         myRef.addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
@@ -399,11 +446,8 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
     }
-
     private void countDown() {
-        hour = 0;
-        minute = 0;
-        second = 60;
+        second = 4;
 
         Timer timer = new Timer();
         TimerTask timerTask = new TimerTask() {
@@ -412,18 +456,23 @@ public class ChatingActivity extends AppCompatActivity {
                 //카운트 다운
                 if(second != 0) {
                     second--;
+                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
                 } else if(minute != 0) {
                     second = 60;
                     second--;
                     minute--;
+                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
+                    mDatabase.child("rooms").child(code).child("time").child("min").setValue(minute);
                 } else if(hour != 0) {
                     second = 60;
                     minute = 60;
                     second--;
                     minute--;
                     hour--;
+                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
+                    mDatabase.child("rooms").child(code).child("time").child("min").setValue(minute);
+                    mDatabase.child("rooms").child(code).child("time").child("hour").setValue(hour);
                 }
-
                 //시간이 한자리수면 앞에 0 추가
                 if(second <= 9){
                     tv_second.setText("0" + second);
@@ -448,69 +497,67 @@ public class ChatingActivity extends AppCompatActivity {
                     timer.cancel();//타이머 종료
                     tv_end.setText("회의가 종료되었습니다.");
                     chatting_send.setEnabled(false);
-
+                    mDatabase.child("rooms").child(code).child("open").setValue(0);
                 }
             }
         };
         timer.schedule(timerTask, 0, 1000);
     }
 
-    private void calculatePercent() {
-        double total = count1+count2+count3;
-        double percent1 = (count1/total) * 100;
-        double percent2 = (count2/total) * 100;
-        double percent3 = (count3/total) * 100;
 
-        poll_result1.setText(String.format("%.0f%%", percent1));
+        private void calculatePercent () {
+            double total = count1 + count2 + count3;
+            double percent1 = (count1 / total) * 100;
+            double percent2 = (count2 / total) * 100;
+            double percent3 = (count3 / total) * 100;
 
-        seekBar1.setProgress((int)percent1);
-        poll_result2.setText((String.format("%.0f%%",percent2)));
+            poll_result1.setText(String.format("%.0f%%", percent1));
 
-        seekBar2.setProgress((int)percent2);
-        poll_result3.setText((String.format("%.0f%%",percent3)));
+            seekBar1.setProgress((int) percent1);
+            poll_result2.setText((String.format("%.0f%%", percent2)));
 
-        seekBar3.setProgress((int)percent3);
-    }
+            seekBar2.setProgress((int) percent2);
+            poll_result3.setText((String.format("%.0f%%", percent3)));
 
-    private void checkList(){
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if(dataSnapshot.getValue() != user.getDisplayName()){
-                    shownick2 = String.valueOf(dataSnapshot.getValue());
-                    Log.d("chat", shownick2);
+            seekBar3.setProgress((int) percent3);
+        }
+
+        private void checkList () {
+            ValueEventListener postListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.getValue() != user.getDisplayName()) {
+                        shownick2 = String.valueOf(dataSnapshot.getValue());
+                        Log.d("chat", shownick2);
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                }
+            };
 
-        mDatabase.child("rooms").child(code).child("member").child("userlist").child("user1").addValueEventListener(postListener);
-        mDatabase.child("rooms").child(code).child("member").child("userlist").child("user2").addValueEventListener(postListener);
+            mDatabase.child("rooms").child(code).child("member").child("userlist").child("user1").addValueEventListener(postListener);
+            mDatabase.child("rooms").child(code).child("member").child("userlist").child("user2").addValueEventListener(postListener);
+        }
+
+        private void checkPeople() {
+            ValueEventListener postListener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    header_main_title1.setText("참여자(" + dataSnapshot.getValue() + ")");
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    // Getting Post failed, log a message
+                    Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                }
+            };
+
+            mDatabase.child("rooms").child(code).child("member").child("Headcount").addValueEventListener(postListener);
+
+        }
     }
-
-
-    private void checkPeople(){
-
-        ValueEventListener postListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                header_main_title1.setText("참여자("+dataSnapshot.getValue()+")");
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Getting Post failed, log a message
-                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        };
-
-        mDatabase.child("rooms").child(code).child("member").child("Headcount").addValueEventListener(postListener);
-
-    }
-
-}
