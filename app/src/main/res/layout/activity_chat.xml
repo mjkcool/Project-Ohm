@@ -70,7 +70,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/send"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
 
                 <!-- 채팅 보내는 버튼 -->
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -89,6 +90,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_send"
                     app:fabSize="mini"
+                    app:fabCustomSize="30dp"
                     />
 
 <!--
