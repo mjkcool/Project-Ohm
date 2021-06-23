@@ -131,7 +131,7 @@ class HomeActivity : AppCompatActivity() {
                                                 database.child(code).child("member").child("Headcount")
                                                     .setValue(headcount)
                                                     .addOnSuccessListener {
-                                                        database.child(code).child("member").child("user2")
+                                                        database.child(code).child("member").child("userlist").child("user2")
                                                             .setValue(user.displayName)
                                                             .addOnSuccessListener {
                                                                 Toast.makeText(this, "방 입장", Toast.LENGTH_SHORT).show()

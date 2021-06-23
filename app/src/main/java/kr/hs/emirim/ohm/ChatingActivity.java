@@ -55,6 +55,8 @@ public class ChatingActivity extends AppCompatActivity {
     private List<ChatingData> chatlist; //채팅 데이터 리스트
 
     private String nick = "nick";//닉네임 임시설정
+    private String mynick;
+    private String shownick2;
     private String code;
 
     private TextView text_title;
@@ -67,6 +69,7 @@ public class ChatingActivity extends AppCompatActivity {
     private TextView title_bar;
 
     private DatabaseReference myRef = FirebaseDatabase.getInstance().getReference().child("rooms"); //파이어베이스 값을 불러오는 것
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     private ImageButton exit; //나가기 버튼
     private ImageView search; //검색하는 버튼
@@ -88,8 +91,8 @@ public class ChatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         nick = user.getDisplayName(); //사용자 닉네임으로 바꿈
+        mynick = user.getDisplayName(); // 본인 닉네임 이 변수 지우고 위에 있는 거 써도 됨.
 
         chatting_send = (Button) findViewById(R.id.send); //메세지 보내는 거 id 선언
         chatting_say = (EditText) findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
@@ -188,7 +191,7 @@ public class ChatingActivity extends AppCompatActivity {
 
         text_code.setText(code);
         checkPeople();
-
+        checkList();
         countDown();
 
         mDatabase.child("rooms").child(code).child("roomname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -434,6 +437,8 @@ public class ChatingActivity extends AppCompatActivity {
 
                     timer.cancel();//타이머 종료
                     tv_end.setText("회의가 종료되었습니다.");
+                    chatting_send.setEnabled(false);
+
                 }
             }
         };
@@ -457,6 +462,28 @@ public class ChatingActivity extends AppCompatActivity {
         seekBar3.setProgress((int)percent3);
     }
 
+    private void checkList(){
+        ValueEventListener postListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != user.getDisplayName()){
+                    shownick2 = String.valueOf(dataSnapshot.getValue());
+                    Log.d("chat", shownick2);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        };
+
+        mDatabase.child("rooms").child(code).child("member").child("userlist").child("user1").addValueEventListener(postListener);
+        mDatabase.child("rooms").child(code).child("member").child("userlist").child("user2").addValueEventListener(postListener);
+    }
+
+
     private void checkPeople(){
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -473,32 +500,7 @@ public class ChatingActivity extends AppCompatActivity {
         };
 
         mDatabase.child("rooms").child(code).child("member").child("Headcount").addValueEventListener(postListener);
-//        mDatabase.child("rooms").child(code).child("member").child("Headcount").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                if (!task.isSuccessful()) {
-//                    Log.e("firebase", "Error getting data", task.getException());
-//
-//                }
-//                else {
-//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-//                    header_main_title1.setText("참여자("+task.getResult().getValue()+")");
-//                }
-//            }
-//        });
 
     }
 
-//    private void itover(){
-//        mDatabase.child("rooms")..addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//                Log.d("CHATCHAT", snapshot.getValue().toString()); //오류가 나서 값이 제대로 실행 되는지 보기 위한 코드
-//                ChatingData chat = snapshot.getValue(ChatingData.class); //데이터값에 데이터 클래스를 넣어주는 것
-//                chatlist.add(chat);
-//                recyclerView.setAdapter(chatAapter);
-//                //recyclerView.invalidate();
-//                //((Chating_Adapter) chatAapter).addChat(chat); //리사이클뷰 어뎁터에 데이터를 넣어 알려주는 것
-//            }
-//    }
 }
