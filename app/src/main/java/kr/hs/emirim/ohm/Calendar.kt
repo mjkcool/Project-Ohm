@@ -44,7 +44,6 @@ class Calendar : AppCompatActivity() {
 
     val user = Firebase.auth.currentUser
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calendar)
@@ -63,22 +62,27 @@ class Calendar : AppCompatActivity() {
         add_btn = findViewById(R.id.add_btn)
 
         RecyclerView_Cal = findViewById(R.id.recycleView_cal)
+        CalendarAdapter = CalendarAdapter(this, CalData)
 
+        //생성
         create_intent.setOnClickListener (View.OnClickListener {
             create_window.visibility = View.VISIBLE
             val animation = AnimationUtils.loadAnimation(this, R.anim.translate_bottom)
             create_window.startAnimation(animation)
         })
 
+        //취소
         cancel_btn.setOnClickListener(View.OnClickListener {
             create_window.visibility = View.INVISIBLE
         })
 
+        //뒤로가기
         back_btn.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         })
 
+        //추가
         add_btn.setOnClickListener(View.OnClickListener {
             val title = findViewById<EditText>(R.id.conference_name).text
             val subject = findViewById<EditText>(R.id.conference_subject).text
@@ -92,45 +96,80 @@ class Calendar : AppCompatActivity() {
         calendarView.setOnDateChangeListener { view, year, month, dayOfMonth -> date
             date.text = String.format("%d월 %d일", month + 1, dayOfMonth)
             calendar = String.format("%d-%d-%d", year, month+1, dayOfMonth)
+
+
         }
 
 
-//        database.child(user!!.uid).child("calendars").child(user!!.uid).child("title").get().addOnSuccessListener {
-//            Log.i("firebase", "Got value ${it.value}")
-//            conference_title.text = it.value.toString()
-//            window_calendar.visibility = View.VISIBLE
-//        }.addOnFailureListener{
-//            Log.e("firebase", "Error getting data", it)
-//        }
-//
-//        database.child("calendars").child(user!!.uid).child("time").get().addOnSuccessListener {
-//            Log.i("firebase", "Got value ${it.value}")
-//            conference_time.text = it.value.toString()
-//            view_calendar.visibility = View.VISIBLE
+//        database.child("users").child(user?.uid!!).child("calendar").child(calendar)
+//        Log.i("firebase", "Got value ${it.value}")
+////            conference_title.text = it.value.toString()
+////            window_calendar.visibility = View.VISIBLE
+//            CalData.add(it.value.toString())
 //        }.addOnFailureListener{
 //            Log.e("firebase", "Error getting data", it)
 //        }
 
-        //읽어오기 -- 에러
-//        val postListener = object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                val post = dataSnapshot.getValue<Calendars>()
-//                CalData.add(post!!)
-//            }
+//        val DB = FirebaseDatabase.getInstance().getReference("users")
 //
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                // Getting Post failed, log a message
-//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
-//            }
+//        if (user != null) {
 //        }
-//        FirebaseDatabase.getInstance().getReference("users").child(user?.uid!!).child("calendar").child(calendar).addValueEventListener(postListener)
+//        DB.child(user.uid).child("calendar").child(calendar).child(code).addValueEventListener( object :
+//            ValueEventListener {
+//            override fun onCancelled(p0: DatabaseError) {
+//                Log.w(TAG, "loadPost:onCancelled")
+//            }
 //
-//        CalendarAdapter = CalendarAdapter(this, CalData)
-//        RecyclerView_Cal.adapter = CalendarAdapter
+//            override fun onDataChange(snapshot: DataSnapshot) {
+//                if (snapshot!!.exists()) {
+//                    CalData.clear()
+//                    RecyclerView_Cal.setAdapter(CalendarAdapter)
+//                }
+//            }
+//        })
+
+//        myRef.addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                Log.d("CHATCHAT", snapshot.getValue().toString()); //오류가 나서 값이 제대로 실행 되는지 보기 위한 코드
+//                ChatingData chat = snapshot.getValue(ChatingData.class); //데이터값에 데이터 클래스를 넣어주는 것
+//                chatlist.add(chat);
+//                recyclerView.setAdapter(chatAapter);
+//                //recyclerView.invalidate();
+//                //((Chating_Adapter) chatAapter).addChat(chat); //리사이클뷰 어뎁터에 데이터를 넣어 알려주는 것
+//            }
+
+
+        //읽어오기 -- 에러
+        val postListener = object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if(dataSnapshot.child("calendar") != null) {
+//                    var post: ArrayList<Calendars>
+//                    Log.d("캘린더", dataSnapshot.getValue().toString())
+                    for(dataSnapshot1 in dataSnapshot.child("calendar").children){
+                        Log.d("캘린더", dataSnapshot1.getValue().toString())
+                        for(dataSnapShot2 in dataSnapshot1 .children){
+                            Log.d("캘린더 안", dataSnapShot2.getValue().toString())
+                            val post = dataSnapShot2.getValue<Calendars>()!!
+                            CalData.add(post)
+                        }
+                    }
+                    Log.d("캘린더", "현재 cal 데이터 개수는 :" + CalData.size)
+                    RecyclerView_Cal.adapter = CalendarAdapter
+                }
+
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Getting Post failed, log a message
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
+            }
+        }
+        FirebaseDatabase.getInstance().getReference("users").child(user?.uid!!).addValueEventListener(postListener)
 
     }
 
-
+    //데이터베이스 쓰기
     fun createCal(title: String, subject: String, time: String, memo: String) {
         val cal = Calendars(title, subject, time, memo)
         val ref = FirebaseDatabase.getInstance().getReference("users").child(user?.uid!!).child("calendar").child(calendar)
@@ -147,9 +186,11 @@ class Calendar : AppCompatActivity() {
             }
     }
 
+    //날짜 다음 데이터베이스 추가
     private fun makeCode(){
         code = (Math.random() * 10000000).toInt().toString()
-        var ref = FirebaseDatabase.getInstance().getReference("users").child(user?.uid!!).child("calendar").child(calendar)
+        val ref = FirebaseDatabase.getInstance().getReference("users").child(user?.uid!!).child("calendar").child(calendar)
+
 
         ref.child(code).get().addOnSuccessListener {
             if(it.value != null) {

@@ -81,8 +81,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleView_cal"
                 android:layout_width="0dp"
-                android:layout_height="120dp"
-                android:layout_centerInParent="true"
+                android:layout_height="170dp"
                 android:orientation="vertical"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
