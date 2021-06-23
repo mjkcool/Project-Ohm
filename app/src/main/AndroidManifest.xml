@@ -13,17 +13,16 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_main"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_main_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".goout_dialog"></activity>
-        <activity android:name=".out_room_modal" />
+        <activity android:name=".goout_dialog" />
         <activity android:name=".createroom_topic" />
         <activity android:name=".createroom_name" />
         <activity android:name=".createroom_time" />
-        <activity android:name=".calendar" />
+        <activity android:name=".Calendar" />
         <activity android:name=".ProfilePageActivity" />
         <activity android:name=".ModifyProfileActivity" />
         <activity android:name=".HomeActivity" />
@@ -34,7 +33,6 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

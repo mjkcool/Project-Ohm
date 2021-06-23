@@ -56,6 +56,7 @@
     <string name="voit_main_btn">저장하고 나가기</string>
     <string name="voit_main_title1_1">투표 제목을 입력하세요</string>
     <string name="voit_main_title">항목을 입력해주세요.</string>
+    <string name="welcome">옴에 오신 것을 환영합니다.</string>
 
 
 </resources>

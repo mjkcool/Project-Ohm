@@ -4,66 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".calendar">
+    tools:context=".Calendar">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/calendar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/dp30.67"
-        android:layout_marginTop="@dimen/dp41.33"
+        android:layout_marginHorizontal="@dimen/dp30.66"
+        android:layout_marginTop="@dimen/dp25.1"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="@dimen/dp31">
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="@dimen/dp10.22"
+            android:layout_height="@dimen/dp16"
+            android:background="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/calendar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp15.33"
             android:text="회의 일정"
             android:textColor="#000000"
             android:textSize="@dimen/sp20.00"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/User_profile_btn"
-            android:layout_width="@dimen/dp43.33"
-            android:layout_height="@dimen/dp43.33"
-            android:src="@mipmap/avatar_foreground"
-            app:civ_border_color="#707070"
-            app:civ_border_width="@dimen/dp0.1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:clickable="true"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/dp298.6"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/dp98.66"
+        android:layout_marginTop="@dimen/dp46"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/calendar_layout" />
 
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/dp360"
-        android:layout_height="@dimen/dp200"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp273"
         android:layout_gravity="center"
-        app:cardCornerRadius="@dimen/dp6.66"
+        app:cardCornerRadius="@dimen/dp13.33"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="@dimen/dp298.6"
+            android:layout_width="@dimen/dp298.66"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/dp13.33"
+            android:layout_marginVertical="@dimen/dp16.66"
             android:orientation="vertical">
 
             <TextView
@@ -75,39 +73,49 @@
                 android:singleLine="true"
                 android:text="날짜"
                 android:textColor="#000000"
-                android:textSize="@dimen/dp16"
+                android:textSize="@dimen/sp20.00"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycleView_cal"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/date">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/create_intent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/dp4"
-                app:layout_constraintTop_toBottomOf="@+id/date"
-                tools:layout_editor_absoluteX="0dp">
+                app:layout_constraintTop_toBottomOf="@+id/recycleView_cal">
 
                 <ImageView
                     android:id="@+id/plus_btn"
-                    android:layout_width="@dimen/dp9"
-                    android:layout_height="@dimen/dp9"
-                    android:layout_marginHorizontal="@dimen/dp8.33"
-                    android:layout_marginStart="4dp"
+                    android:layout_width="@dimen/dp16"
+                    android:layout_height="@dimen/dp16"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/calendar_add" />
 
                 <TextView
-                    android:id="@+id/conference_title"
+                    android:id="@+id/create_cal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dp6.33"
+                    android:layout_marginStart="@dimen/dp5"
                     android:singleLine="true"
                     android:text="새 회의 일정 생성하기"
                     android:textColor="#000000"
-                    android:textSize="@dimen/dp10"
+                    android:textSize="@dimen/sp15.33"
                     android:textStyle="normal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/plus_btn"
@@ -119,11 +127,11 @@
 <!--    슬라이드 화면-->
     <androidx.cardview.widget.CardView
         android:id="@+id/create_window"
-        android:layout_width="@dimen/dp360"
-        android:layout_height="@dimen/dp550"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp362"
         android:layout_gravity="center"
         android:visibility="invisible"
-        app:cardCornerRadius="@dimen/dp6.66"
+        app:cardCornerRadius="@dimen/dp13.33"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -133,7 +141,7 @@
             android:layout_width="@dimen/dp298.66"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginVertical="@dimen/dp20"
+            android:layout_marginVertical="@dimen/dp26"
             android:orientation="vertical">
 
             <Button
@@ -145,7 +153,7 @@
                 android:minHeight="@dimen/dp0"
                 android:text="취소"
                 android:textColor="#80000000"
-                android:textSize="@dimen/dp13.33"
+                android:textSize="@dimen/dp16.66"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -158,7 +166,7 @@
                 android:minHeight="@dimen/dp0"
                 android:text="추가"
                 android:textColor="#1E349D"
-                android:textSize="@dimen/dp13.33"
+                android:textSize="@dimen/dp16.66"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -172,7 +180,7 @@
                 android:minHeight="@dimen/dp0"
                 android:text="삭제"
                 android:textColor="#80000000"
-                android:textSize="@dimen/dp13.33"
+                android:textSize="@dimen/dp16.66"
                 app:layout_constraintEnd_toStartOf="@+id/add_btn"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -181,7 +189,7 @@
                 android:id="@+id/linearLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp73"
+                android:layout_marginTop="@dimen/dp60"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -191,10 +199,10 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="제목"
                     android:textColor="#000000"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="@dimen/sp16" />
 
                 <EditText
                     android:id="@+id/conference_name"
@@ -205,15 +213,15 @@
                     android:ems="10"
                     android:singleLine="true"
                     android:hint="제목"
-                    android:textSize="@dimen/dp9.33" />
+                    android:textSize="@dimen/sp14" />
             </LinearLayout>
 
             <View
                 android:id="@+id/view1"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp0.1"
-                android:layout_marginTop="@dimen/dp11.66"
-                android:background="#707070"
+                android:layout_marginTop="@dimen/dp13.33"
+                android:background="#5A5A5A"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -224,20 +232,20 @@
                 android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp116"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="@id/view1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:text="주제"
                     android:textColor="#000000"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="@dimen/sp16" />
 
                 <EditText
                     android:id="@+id/conference_subject"
@@ -248,15 +256,15 @@
                     android:ems="10"
                     android:singleLine="true"
                     android:hint="주제"
-                    android:textSize="@dimen/dp9.33" />
+                    android:textSize="@dimen/sp14" />
             </LinearLayout>
 
             <View
                 android:id="@+id/view2"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp0.1"
-                android:layout_marginTop="@dimen/dp11.66"
-                android:background="#707070"
+                android:layout_marginTop="@dimen/dp13.33"
+                android:background="#5A5A5A"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -267,10 +275,10 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp11.66"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:text="테마 색"
                 android:textColor="#000000"
-                android:textSize="@dimen/dp13.33"
+                android:textSize="@dimen/sp16"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view2" />
 
@@ -278,7 +286,7 @@
                 android:id="@+id/theme_color1"
                 android:layout_width="@dimen/dp36"
                 android:layout_height="@dimen/dp14"
-                android:layout_marginTop="@dimen/dp11.66"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:background="@drawable/important1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -288,7 +296,7 @@
                 android:layout_width="@dimen/dp36"
                 android:layout_height="@dimen/dp14"
                 android:layout_marginStart="@dimen/dp10"
-                android:layout_marginTop="@dimen/dp11.66"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:background="@drawable/need1"
                 app:layout_constraintStart_toEndOf="@+id/theme_color1"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -298,7 +306,7 @@
                 android:layout_width="@dimen/dp44"
                 android:layout_height="@dimen/dp14"
                 android:layout_marginStart="@dimen/dp10"
-                android:layout_marginTop="@dimen/dp11.66"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:background="@drawable/long_time"
                 app:layout_constraintStart_toEndOf="@+id/theme_color2"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -308,7 +316,7 @@
                 android:layout_width="@dimen/dp36"
                 android:layout_height="@dimen/dp14"
                 android:layout_marginStart="@dimen/dp10"
-                android:layout_marginTop="@dimen/dp11.66"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:background="@drawable/pleasantness"
                 app:layout_constraintStart_toEndOf="@+id/theme_color3"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -318,7 +326,7 @@
                 android:layout_width="@dimen/dp36"
                 android:layout_height="@dimen/dp14"
                 android:layout_marginStart="@dimen/dp10"
-                android:layout_marginTop="@dimen/dp11.66"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:background="@drawable/expectation"
                 app:layout_constraintStart_toEndOf="@+id/theme_color4"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -327,8 +335,8 @@
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp0.1"
-                android:layout_marginTop="@dimen/dp11.66"
-                android:background="#707070"
+                android:layout_marginTop="@dimen/dp13.33"
+                android:background="#5A5A5A"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -339,20 +347,20 @@
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp227.66"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="@id/view3">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.5"
+                    android:layout_weight="0.6"
                     android:text="회의 시간"
                     android:textColor="#000000"
-                    android:textSize="@dimen/dp13.33" />
+                    android:textSize="@dimen/sp16" />
 
                 <EditText
                     android:id="@+id/conference_time"
@@ -363,15 +371,15 @@
                     android:ems="10"
                     android:singleLine="true"
                     android:hint="회의시간"
-                    android:textSize="@dimen/dp9.33" />
+                    android:textSize="@dimen/sp14" />
             </LinearLayout>
 
             <View
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp0.1"
-                android:layout_marginTop="@dimen/dp11.66"
-                android:background="#707070"
+                android:layout_marginTop="@dimen/dp13.33"
+                android:background="#5A5A5A"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -381,21 +389,20 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/dp11.66"
+                android:layout_marginTop="@dimen/dp13.33"
                 android:text="회의 메모"
                 android:textColor="#000000"
-                android:textSize="@dimen/dp13.33"
+                android:textSize="@dimen/sp16"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/view4" />
 
             <EditText
                 android:id="@+id/conference_memo"
                 android:layout_width="@dimen/dp298.66"
-                android:layout_height="@dimen/dp208"
-                android:layout_marginTop="@dimen/dp10"
-                android:hint="회의 내용에 대한 간단한 요약과, 회의 시의 기분 등을
-다양하게 적어보세요!"
-                android:textSize="@dimen/dp10"
+                android:layout_height="@dimen/dp231.33"
+                android:layout_marginTop="@dimen/dp13.33"
+                android:hint="회의 내용에 대한 간단한 요약과, 회의 시의 기분 등을 다양하게 적어보세요!"
+                android:textSize="@dimen/sp12"
                 android:gravity="top"
                 android:background="@drawable/border"
                 android:ems="10"

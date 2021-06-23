@@ -8,7 +8,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp50"
+        android:layout_height="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -37,14 +37,16 @@
                 android:text="2학년 3반 반티"
                 android:textAlignment="center"
                 android:textColor="#000000"
-                android:textSize="14sp"
-                tools:layout_editor_absoluteY="50dp" />
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/search_bar"
-                android:layout_width="@dimen/dp17"
-                android:layout_height="@dimen/dp15.33"
-                android:layout_marginEnd="@dimen/dp16.67"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/search"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/hamberger_bar"
@@ -52,34 +54,98 @@
 
             <ImageView
                 android:id="@+id/hamberger_bar"
-                android:layout_width="@dimen/dp16.67"
-                android:layout_height="@dimen/dp15.33"
-                android:layout_marginEnd="@dimen/dp28"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="14dp"
                 android:src="@drawable/hamberger"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/bar_timer"
-                android:layout_width="wrap_content"
+            <!--            <TextView-->
+            <!--                android:id="@+id/bar_timer"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="@dimen/dp28"-->
+            <!--                android:background="@drawable/btn_white"-->
+            <!--                android:includeFontPadding="false"-->
+            <!--                android:paddingHorizontal="5.33dp"-->
+            <!--                android:paddingVertical="2dp"-->
+            <!--                android:singleLine="true"-->
+            <!--                android:text="@string/timer"-->
+            <!--                android:textAlignment="center"-->
+            <!--                android:textSize="13sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintStart_toStartOf="@+id/toolbar"-->
+            <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+            <LinearLayout
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp28"
+                android:layout_marginStart="14dp"
                 android:background="@drawable/btn_white"
-                android:includeFontPadding="false"
+                android:orientation="horizontal"
                 android:paddingHorizontal="5.33dp"
                 android:paddingVertical="2dp"
-                android:singleLine="true"
-                android:text="@string/timer"
-                android:textAlignment="center"
-                android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/toolbar"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
 
+                <TextView
+                    android:id="@+id/hour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/minute"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:gravity="center"
+                    android:text=":"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/second"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.7"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
-
     <!-- 메뉴를 볼 수 있게 해주는 이미지 -->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,7 +38,7 @@
             android:layout_height="@dimen/dp88.67"
             android:layout_gravity="center"
             android:layout_margin="@dimen/dp2"
-            android:src="@mipmap/avatar_foreground"
+            android:src="@drawable/profile_basic"
             app:civ_border_color="#707070"
             app:civ_border_width="@dimen/dp0.1"
             app:layout_constraintEnd_toEndOf="parent"

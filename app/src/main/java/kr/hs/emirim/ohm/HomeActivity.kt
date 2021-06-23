@@ -1,12 +1,16 @@
 package kr.hs.emirim.ohm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import android.view.KeyEvent.KEYCODE_ENTER
+import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseUser
@@ -15,7 +19,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
-import java.util.ArrayList
+import java.util.*
 
 class HomeActivity : AppCompatActivity() {
     lateinit var roomsRecyclerView: RecyclerView
@@ -29,6 +33,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var code: EditText
     private var database: DatabaseReference = Firebase.database.reference.child("rooms")
     private var user: FirebaseUser = Firebase.auth.currentUser!!
+    lateinit var ownerId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +50,6 @@ class HomeActivity : AppCompatActivity() {
 
         roomsRecyclerView = findViewById(R.id.rooms_recycleView_home)
 
-        //파베에서 유저 프로필 사진 불러오기, 지정
         userProfileBtn.setImageURI(user?.photoUrl)
 
         //회의 목록 테스트 값
@@ -55,6 +59,7 @@ class HomeActivity : AppCompatActivity() {
 
         roomAdapter = RoomViewAdapter(this, roomData)
         roomsRecyclerView.adapter = roomAdapter
+        code.setImeOptions(EditorInfo.IME_ACTION_DONE)
 
         createMeetingBtn.setOnClickListener {
             val intent = Intent(this, createroom_name::class.java)
@@ -70,13 +75,21 @@ class HomeActivity : AppCompatActivity() {
 
         //회의 일정
         bookMeetingBtn.setOnClickListener{
-            val intent = Intent(this, calendar::class.java)
+            val intent = Intent(this, Calendar::class.java)
             startActivity(intent)
-            finish()
         }
 
         admissionBtn.setOnClickListener {
             checkCode(code.text.toString())
+        }
+
+        code.setOnEditorActionListener{ textView, action, event ->
+            var handled = false
+            if (action == EditorInfo.IME_ACTION_DONE) {
+                admissionBtn.performClick()
+                handled = true
+            }
+            handled
         }
         /*
         goto_btn.setOnClickListener(View.OnClickListener {
@@ -109,15 +122,46 @@ class HomeActivity : AppCompatActivity() {
         */
     }
     fun checkCode(code:String){
-        //한줄소개 불러오는 부분
-        database.child(code).get().addOnSuccessListener {
+        database.child(code).child("open").get().addOnSuccessListener {
             Log.i("firebase", "Got value ${it.value}")
             if(it.value != null){
-                val intent = Intent(this, ChatingActivity::class.java)
-                intent.putExtra("code", code)
-                database.child(code).child("member").setValue(user.uid)
-                startActivity(intent)
-                finish()
+                if(it.value != "0"){
+                    val intent = Intent(this, ChatingActivity::class.java)
+                    intent.putExtra("code", code)
+
+                    database.child(code).child("ownerID").get()
+                        .addOnSuccessListener {
+                            ownerId = it.value.toString()
+                            if(ownerId == user.uid){
+                                startActivity(intent)
+                                finish()
+                            }else {
+                                database.child(code).child("member").child("member uid").setValue(user.uid)
+                                    .addOnSuccessListener {
+                                        database.child(code).child("member").child("Headcount").get()
+                                            .addOnSuccessListener {
+                                                Log.i("firebase", "Got value ${it.value}")
+                                                val headcount = it.value.toString().toInt() + 1
+                                                database.child(code).child("member").child("Headcount")
+                                                    .setValue(headcount)
+                                                    .addOnSuccessListener {
+                                                        database.child(code).child("member").child("userlist").child("user2")
+                                                            .setValue(user.displayName)
+                                                            .addOnSuccessListener {
+                                                                Toast.makeText(this, "방 입장", Toast.LENGTH_SHORT).show()
+                                                                startActivity(intent)
+                                                                finish()
+                                                            }
+                                                    }
+
+                                            }.addOnFailureListener {
+                                                Log.e("firebase", "Error getting data", it)
+                                            }
+                                    }
+                            }
+                        }
+                        }
+
             }else {
                 Toast.makeText(this, "해당 코드를 가진 방이 없습니다.", Toast.LENGTH_SHORT).show()
             }
@@ -127,4 +171,5 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+
 }

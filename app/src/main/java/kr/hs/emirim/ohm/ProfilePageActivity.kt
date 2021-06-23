@@ -27,10 +27,9 @@ class ProfilePageActivity : AppCompatActivity() {
     lateinit var introduceView: TextView
     lateinit var profileImgView: CircleImageView
     lateinit var toModifyPageBtn: Button
-    lateinit var deleteuser : View
-    val user = Firebase.auth.currentUser
+    lateinit var btn_userout : View
     private lateinit var database: DatabaseReference
-
+    val user = Firebase.auth.currentUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +41,7 @@ class ProfilePageActivity : AppCompatActivity() {
         introduceView = findViewById(R.id.profile_introduce)
         profileImgView = findViewById(R.id.User_profile)
         toModifyPageBtn = findViewById(R.id.to_modify_btn)
-        deleteuser = findViewById(R.id.btn_userout)
+        btn_userout = findViewById(R.id.btn_userout)
 
         //**파이어베이스-최수림 :: 현재 로그인 된 Auth에서 정보 불러오기 & TextView 지정 바랍니다.
         database = Firebase.database.reference
@@ -61,7 +60,6 @@ class ProfilePageActivity : AppCompatActivity() {
 
         toModifyPageBtn.setOnClickListener {
             startActivity(Intent(this, ModifyProfileActivity::class.java))
-            finish()
         }
 
         logoutBtn.setOnClickListener {
@@ -75,7 +73,7 @@ class ProfilePageActivity : AppCompatActivity() {
             finish()
         }
 
-        deleteuser.setOnClickListener {
+        btn_userout.setOnClickListener {
             user.delete()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {

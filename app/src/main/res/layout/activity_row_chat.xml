@@ -6,40 +6,55 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="@dimen/dp3.33"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:paddingHorizontal="14dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/other_profileimg"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="@dimen/dp8"
+        android:src="@drawable/profile_basic"
+        app:civ_border_color="#707070"
+        app:civ_border_width="0.1dp" />
 
     <!--내가 사용하고 있는 이름 -->
     <!--사용자가 지정해야기 때문에 텍스트를 작성 안 했습니다 ! -->
-    <TextView
-        android:id="@+id/chat_nickname"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="clip_vertical"
-        android:includeFontPadding="false"
-        android:singleLine="true"
-        android:text="username"
-        android:textSize="@dimen/sp9.67"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="RtlCompat" />
+        android:orientation="vertical">
 
-    <!--사용자가 지정해야기 때문에 텍스트를 작성 안 했습니다 ! -->
-    <TextView
-        android:id="@+id/chat_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dp13.33"
-        android:layout_marginTop="@dimen/dp5"
-        android:layout_marginEnd="@dimen/dp13.33"
-        android:background="@drawable/chat_bubble"
-        android:paddingHorizontal="@dimen/dp8"
-        android:paddingVertical="@dimen/dp5"
-        android:textColor="#FFFFFF"
-        android:textSize="@dimen/sp11"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chat_nickname" />
+        <TextView
+            android:id="@+id/chat_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="clip_vertical"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:text="username"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlCompat" />
+
+        <!--사용자가 지정해야기 때문에 텍스트를 작성 안 했습니다 ! -->
+        <TextView
+            android:id="@+id/chat_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:background="@drawable/chat_bubble"
+            android:paddingHorizontal="@dimen/dp8"
+            android:paddingVertical="@dimen/dp5"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chat_nickname" />
+    </LinearLayout>
 </LinearLayout>
