@@ -127,15 +127,17 @@ class HomeActivity : AppCompatActivity() {
                                         database.child(code).child("member").child("Headcount").get()
                                             .addOnSuccessListener {
                                                 Log.i("firebase", "Got value ${it.value}")
-
                                                 val headcount = it.value.toString().toInt() + 1
-
                                                 database.child(code).child("member").child("Headcount")
                                                     .setValue(headcount)
                                                     .addOnSuccessListener {
-                                                        Toast.makeText(this, "방 생성", Toast.LENGTH_SHORT).show()
-                                                        startActivity(intent)
-                                                        finish()
+                                                        database.child(code).child("member").child("user2")
+                                                            .setValue(user.displayName)
+                                                            .addOnSuccessListener {
+                                                                Toast.makeText(this, "방 입장", Toast.LENGTH_SHORT).show()
+                                                                startActivity(intent)
+                                                                finish()
+                                                            }
                                                     }
 
                                             }.addOnFailureListener {
@@ -155,4 +157,5 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+
 }

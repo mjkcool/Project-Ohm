@@ -127,7 +127,7 @@ class Calendar : AppCompatActivity() {
     }
 
     fun createCal(title: String, subject: String, time: String, memo: String) {
-        val cal = Calendars(title, subject, time, memo)
+        val cal = Calendars(title, subject, time, "6월  15일" ,memo)
         database.child("users").child(user?.uid!!).child("calendar").setValue(cal)
             .addOnSuccessListener {
                 Toast.makeText(this, "일정이 저장되었습니다.", Toast.LENGTH_SHORT).show()

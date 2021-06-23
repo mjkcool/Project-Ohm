@@ -111,8 +111,8 @@ public class ChatingActivity extends AppCompatActivity {
         poll_index2 = findViewById(R.id.poll_index2);
         poll_index3 = findViewById(R.id.poll_index3);
 
-//        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
-//        drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
+        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.my_drawer_View); //어느정도의 정보만 보일 수 있는 창
+        drawerLayout.closeDrawer(Gravity.RIGHT); //오른쪽으로 지정해 오른쪽으로 열고 닫는 것
 
         recyclerView = (RecyclerView) findViewById(R.id.my_recycler_View);
         recyclerView.setHasFixedSize(true); //리사이클뷰의 크기와 넓이를 그대로 지정해주는 것
@@ -206,13 +206,13 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
 
-//        drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
-//            public void onClick(View v) {
-//                if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) { //열리는 쪽이 오른쪽 일 경우
-//                    drawerLayout.openDrawer(Gravity.RIGHT);
-//                }
-//            }
-//        });
+        drawer.setOnClickListener(new View.OnClickListener() { //drawer창의 이미지을 눌렀을 경우 열리는 코드
+            public void onClick(View v) {
+                if (!drawerLayout.isDrawerOpen(Gravity.RIGHT)) { //열리는 쪽이 오른쪽 일 경우
+                    drawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            }
+        });
 
         seekBar1.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -431,6 +431,7 @@ public class ChatingActivity extends AppCompatActivity {
 
                 // 시분초가 모두 0이 될 때 때 회의 종료
                 if(hour == 0 && minute == 0 && second == 0) {
+
                     timer.cancel();//타이머 종료
                     tv_end.setText("회의가 종료되었습니다.");
                 }
@@ -485,5 +486,19 @@ public class ChatingActivity extends AppCompatActivity {
 //                }
 //            }
 //        });
+
     }
+
+//    private void itover(){
+//        mDatabase.child("rooms")..addChildEventListener(new ChildEventListener() { //파이어베이스에 있는 것들이 실행할 내용
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+//                Log.d("CHATCHAT", snapshot.getValue().toString()); //오류가 나서 값이 제대로 실행 되는지 보기 위한 코드
+//                ChatingData chat = snapshot.getValue(ChatingData.class); //데이터값에 데이터 클래스를 넣어주는 것
+//                chatlist.add(chat);
+//                recyclerView.setAdapter(chatAapter);
+//                //recyclerView.invalidate();
+//                //((Chating_Adapter) chatAapter).addChat(chat); //리사이클뷰 어뎁터에 데이터를 넣어 알려주는 것
+//            }
+//    }
 }
