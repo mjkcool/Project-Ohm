@@ -29,7 +29,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
         android:background="#00ff0000"
-        android:text="코드생성"
+        android:text="회의생성"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

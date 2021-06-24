@@ -45,6 +45,12 @@ class createroom_time : AppCompatActivity() {
             next_button3.setOnClickListener {
                 createroom()
             }
+
+            back_button3.setOnClickListener {
+                val intent = Intent(this, createroom_topic::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
         fun init(){
