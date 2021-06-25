@@ -176,11 +176,6 @@ public class ChatingActivity extends AppCompatActivity {
 
         
         //참가자 목록 세팅
-
-        
-        
-        
-
 //        mDatabase.child("rooms").child(code).child("time").child("hour").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 //            @Override
 //            public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -298,14 +293,16 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (flag1) {
-                    count1++;
-                    count2 = 1;
-                    count3 = 1;
+//                    count1++;
+//                    count2 = 1;
+//                    count3 = 1;
+//
+//                    flag1 = false;
+//                    flag2 = true;
+//                    flag3 = true;
 
-                    flag1 = false;
-                    flag2 = true;
-                    flag3 = true;
-                    calculatePercent();
+                    Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
+//                    calculatePercent();
                 }
 
             }
@@ -322,14 +319,15 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (flag2) {
-                    count1 = 1;
-                    count2++;
-                    count3 = 1;
-
-                    flag1 = true;
-                    flag2 = false;
-                    flag3 = true;
-                    calculatePercent();
+//                    count1 = 1;
+//                    count2++;
+//                    count3 = 1;
+//
+//                    flag1 = true;
+//                    flag2 = false;
+//                    flag3 = true;
+                    Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
+//                    calculatePercent();
                 }
 
             }
@@ -347,15 +345,16 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (flag3) {
-                    count1 = 1;
-                    count2 = 1;
-                    count3++;
+//                    count1 = 1;
+//                    count2 = 1;
+//                    count3++;
+//
+//                    flag1 = true;
+//                    flag2 = true;
+//                    flag3 = false;
+                    Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
 
-                    flag1 = true;
-                    flag2 = true;
-                    flag3 = false;
-
-                    calculatePercent();
+//                    calculatePercent();
                 }
 
             }
