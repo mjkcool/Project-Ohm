@@ -28,12 +28,14 @@ class createroom_name : AppCompatActivity(){
                 val intent = Intent(this, createroom_topic::class.java)
                 intent.putExtra("rname", room_name.text.toString())
                 startActivity(intent)
+                next_button1.setEnabled(false);
                 finish()
             }
 
             back_button1.setOnClickListener {
                 val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
+                back_button1.setEnabled(false);
                 finish()
             }
 
