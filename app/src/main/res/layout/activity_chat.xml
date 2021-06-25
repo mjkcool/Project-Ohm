@@ -151,8 +151,10 @@
             android:paddingTop="97dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/space"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/space3"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/text_big_title"
@@ -196,18 +198,25 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="93.33dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10.67dp"
                 android:background="@drawable/participant_list_bg"
+                android:isScrollContainer="false"
                 android:orientation="vertical"
+                android:overScrollMode="never"
+                android:scrollbars="none"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.405"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/header_main_title1">
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/participantRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:isScrollContainer="false"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
                     tools:listitem="@layout/paticipant_item" />
             </LinearLayout>
 
@@ -365,6 +374,7 @@
                     android:layout_height="30dp"
                     android:layout_marginTop="3.67dp"
                     android:background="@drawable/chatting_background2"
+                    android:clickable="false"
                     android:elevation="0dp"
                     android:text="투표하기"
                     android:textSize="16dp" />

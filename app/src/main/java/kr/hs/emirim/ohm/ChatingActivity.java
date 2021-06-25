@@ -60,8 +60,8 @@ public class ChatingActivity extends AppCompatActivity {
 
     private String nick = "nick";//닉네임 임시설정
     private String mynick; //본인 이름
-    private String shownick2; //상대 이름
-    private String code;
+    private String shownick2 = ""; //상대 이름
+    public static String code;
 
     private TextView text_title;
     private TextView text_code;
@@ -86,13 +86,14 @@ public class ChatingActivity extends AppCompatActivity {
     double count1=1, count2=1, count3=1; //값
     boolean flag1=true, flag2=true, flag3=true; //투표하는 거 클릭시 값 들어가는 것
 
-    private DatabaseReference mDatabase;
+    public static DatabaseReference mDatabase;
 
     Dialog dilaog01; //다이얼로그
 
-    private ParticipantAdapter participantAdapter;
+    private RecyclerView.Adapter participantAdapter;
     private ArrayList<ParticipantVo> participantData;
     private RecyclerView participantView;
+    private RecyclerView.LayoutManager layoutManager2;
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -147,15 +148,20 @@ public class ChatingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         code = intent.getExtras().getString("code");
         myRef = myRef.child(code).child("chat");
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("rooms");
 
+        participantView = findViewById(R.id.participantRecyclerView);
 
-        participantData = new ArrayList<ParticipantVo>();
-        participantData.add(new ParticipantVo(mynick));
-        participantData.add(new ParticipantVo(shownick2));
+        layoutManager2 = new LinearLayoutManager(this);
+        participantView.setLayoutManager(layoutManager2);
 
-        participantAdapter = new ParticipantAdapter(this, participantData);
-        participantView.setAdapter(participantAdapter);
+        participantData = new ArrayList<>();
+
+        myRef.child(code).child("ownerID");
+//        participantData.add(new ParticipantVo(mynick));
+//
+//        participantAdapter = new ParticipantAdapter(participantData, ChatingActivity.this);
+//        participantView.setAdapter(participantAdapter);
 
 
 
@@ -172,7 +178,7 @@ public class ChatingActivity extends AppCompatActivity {
             }
         };
 
-        mDatabase.child("rooms").child(code).child("time").child("hour").addValueEventListener(hourListener);
+        mDatabase.child(code).child("time").child("hour").addValueEventListener(hourListener);
 
         
         //참가자 목록 세팅
@@ -208,7 +214,7 @@ public class ChatingActivity extends AppCompatActivity {
             }
         };
 
-        mDatabase.child("rooms").child(code).child("time").child("min").addValueEventListener(minListener);
+        mDatabase.child(code).child("time").child("min").addValueEventListener(minListener);
 
 //        mDatabase.child("rooms").child(code).child("time").child("min").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 //            @Override
@@ -237,7 +243,7 @@ public class ChatingActivity extends AppCompatActivity {
             }
         };
 
-        mDatabase.child("rooms").child(code).child("time").child("sec").addValueEventListener(secListener);
+        mDatabase.child(code).child("time").child("sec").addValueEventListener(secListener);
 
 //        mDatabase.child("rooms").child(code).child("time").child("sec").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
 //            @Override
@@ -264,7 +270,7 @@ public class ChatingActivity extends AppCompatActivity {
         checkList();
         countDown();
 
-        mDatabase.child("rooms").child(code).child("roomname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+        mDatabase.child(code).child("roomname").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (!task.isSuccessful()) {
@@ -373,6 +379,7 @@ public class ChatingActivity extends AppCompatActivity {
             }
         });
 
+        /*
         goto_voit.setOnClickListener(new View.OnClickListener() { //투표하기 창
             @Override
             public void onClick(View v) {
@@ -380,6 +387,7 @@ public class ChatingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        */
 
         exit.setOnClickListener(new View.OnClickListener() { // 나가기 창
                                     @Override
@@ -478,22 +486,22 @@ public class ChatingActivity extends AppCompatActivity {
                 //카운트 다운
                 if(second != 0) {
                     second--;
-                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
+                    mDatabase.child(code).child("time").child("sec").setValue(second);
                 } else if(minute != 0) {
                     second = 60;
                     second--;
                     minute--;
-                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
-                    mDatabase.child("rooms").child(code).child("time").child("min").setValue(minute);
+                    mDatabase.child(code).child("time").child("sec").setValue(second);
+                    mDatabase.child(code).child("time").child("min").setValue(minute);
                 } else if(hour != 0) {
                     second = 60;
                     minute = 60;
                     second--;
                     minute--;
                     hour--;
-                    mDatabase.child("rooms").child(code).child("time").child("sec").setValue(second);
-                    mDatabase.child("rooms").child(code).child("time").child("min").setValue(minute);
-                    mDatabase.child("rooms").child(code).child("time").child("hour").setValue(hour);
+                    mDatabase.child(code).child("time").child("sec").setValue(second);
+                    mDatabase.child(code).child("time").child("min").setValue(minute);
+                    mDatabase.child(code).child("time").child("hour").setValue(hour);
                 }
                 //시간이 한자리수면 앞에 0 추가
                 if(second <= 9){
@@ -519,7 +527,7 @@ public class ChatingActivity extends AppCompatActivity {
                     timer.cancel();//타이머 종료
                     tv_end.setText("회의가 종료되었습니다.");
                     chatting_send.setEnabled(false);
-                    mDatabase.child("rooms").child(code).child("open").setValue(0);
+                    mDatabase.child(code).child("open").setValue(0);
                 }
             }
         };
@@ -550,7 +558,17 @@ public class ChatingActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.getValue() != user.getDisplayName()) {
                         shownick2 = String.valueOf(dataSnapshot.getValue());
+
+
                         Log.d("chat", shownick2);
+                        //Participant Adapter
+                        if(shownick2 != "null") {
+                            participantData.add(new ParticipantVo(shownick2));
+                        }
+
+                        participantAdapter = new ParticipantAdapter(participantData, ChatingActivity.this);
+                        participantView.setAdapter(participantAdapter);
+
                     }
                 }
 
@@ -561,7 +579,7 @@ public class ChatingActivity extends AppCompatActivity {
                 }
             };
 
-            mDatabase.child("rooms").child(code).child("member").child("userlist").child("user1").addValueEventListener(postListener);
+            mDatabase.child(code).child("member").child("userlist").child("user1").addValueEventListener(postListener);
             mDatabase.child("rooms").child(code).child("member").child("userlist").child("user2").addValueEventListener(postListener);
         }
 
@@ -579,7 +597,7 @@ public class ChatingActivity extends AppCompatActivity {
                 }
             };
 
-            mDatabase.child("rooms").child(code).child("member").child("Headcount").addValueEventListener(postListener);
+            mDatabase.child(code).child("member").child("Headcount").addValueEventListener(postListener);
 
         }
     }

@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="46.67dp"
+    android:layout_height="65dp"
     android:background="@drawable/participant_item_bg">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/ProfileImg"
-        android:layout_width="@dimen/dp30.33"
-        android:layout_height="@dimen/dp30.33"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginStart="@dimen/dp8"
-        android:src="@mipmap/avatar_foreground"
+        android:src="@drawable/profile_basic"
         app:civ_border_color="#707070"
         app:civ_border_width="@dimen/dp0.1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,20 +28,20 @@
         android:singleLine="true"
         android:text="미림인"
         android:textColor="#000000"
-        android:textSize="@dimen/sp11"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ProfileImg"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/State"
-        android:layout_width="@dimen/dp29"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/dp17"
-        android:text="대기중"
+        android:text="참가자"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="@dimen/sp9.67"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

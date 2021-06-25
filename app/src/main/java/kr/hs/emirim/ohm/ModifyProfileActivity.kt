@@ -76,7 +76,6 @@ class ModifyProfileActivity : AppCompatActivity() {
             val profileUpdates = userProfileChangeRequest {
                 displayName = nicknameInput.text.toString() //nickname
                 photoUri = Uri.parse(imageUri.toString()) //추출해서 프로필 사진 담기.
-
             }
 
             user!!.updateProfile(profileUpdates)
@@ -100,6 +99,7 @@ class ModifyProfileActivity : AppCompatActivity() {
         if(requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK && data != null){
             var result = CropImage.getActivityResult(data) //result.uri
             profileImageView.setImageURI(result.uri)
+            ProfilePageActivity.profileImgView.setImageURI(result.uri)
             imageUri = result.uri
         }
     }

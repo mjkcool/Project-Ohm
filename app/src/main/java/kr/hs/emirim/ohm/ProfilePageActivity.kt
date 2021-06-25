@@ -21,11 +21,14 @@ import com.google.firebase.ktx.Firebase
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ProfilePageActivity : AppCompatActivity() {
+    companion object{
+        lateinit var profileImgView: CircleImageView
+    }
     private lateinit var logoutBtn : View
     private lateinit var quitBtn: ImageButton
     private lateinit var nicknameView: TextView
     lateinit var introduceView: TextView
-    lateinit var profileImgView: CircleImageView
+
     lateinit var toModifyPageBtn: Button
     lateinit var btn_userout : View
     private lateinit var database: DatabaseReference
