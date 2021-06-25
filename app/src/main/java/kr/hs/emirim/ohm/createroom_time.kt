@@ -50,6 +50,7 @@ class createroom_time : AppCompatActivity() {
             back_button3.setOnClickListener {
                 val intent = Intent(this, createroom_topic::class.java)
                 startActivity(intent)
+                back_button3.setEnabled(false);
                 finish()
             }
         }

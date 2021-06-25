@@ -36,12 +36,14 @@ class createroom_topic : AppCompatActivity() {
                 val create = arrayOf(room_name, meeting_topic.text.toString())
                 intent.putExtra("create", create);
                 startActivity(intent);
+                next_button2.setEnabled(false);
                 finish()
             }
 
             back_button2.setOnClickListener {
                 val intent = Intent(this, createroom_name::class.java)
                 startActivity(intent)
+                back_button2.setEnabled(false);
                 finish()
             }
 
