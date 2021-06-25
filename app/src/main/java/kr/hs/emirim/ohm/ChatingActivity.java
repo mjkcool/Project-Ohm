@@ -289,14 +289,16 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (flag1) {
-                    count1++;
-                    count2 = 1;
-                    count3 = 1;
+//                    count1++;
+//                    count2 = 1;
+//                    count3 = 1;
+//
+//                    flag1 = false;
+//                    flag2 = true;
+//                    flag3 = true;
 
-                    flag1 = false;
-                    flag2 = true;
-                    flag3 = true;
-                    calculatePercent();
+                    Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
+//                    calculatePercent();
                 }
 
             }
@@ -313,14 +315,15 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (flag2) {
-                    count1 = 1;
-                    count2++;
-                    count3 = 1;
-
-                    flag1 = true;
-                    flag2 = false;
-                    flag3 = true;
-                    calculatePercent();
+//                    count1 = 1;
+//                    count2++;
+//                    count3 = 1;
+//
+//                    flag1 = true;
+//                    flag2 = false;
+//                    flag3 = true;
+                    Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
+//                    calculatePercent();
                 }
 
             }
@@ -338,15 +341,16 @@ public class ChatingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (flag3) {
-                    count1 = 1;
-                    count2 = 1;
-                    count3++;
+//                    count1 = 1;
+//                    count2 = 1;
+//                    count3++;
+//
+//                    flag1 = true;
+//                    flag2 = true;
+//                    flag3 = false;
+                    Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
 
-                    flag1 = true;
-                    flag2 = true;
-                    flag3 = false;
-
-                    calculatePercent();
+//                    calculatePercent();
                 }
 
             }
@@ -355,20 +359,16 @@ public class ChatingActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() { //검색하기 버튼을 눌렀을경우
             @Override
             public void onClick(View v) {
-                Context context = getApplicationContext();
-                CharSequence text = "죄송합니다. 아직 개발하지 못 했습니다. 조금만 기다려주세요 ! ";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
             }
         });
 
         goto_voit.setOnClickListener(new View.OnClickListener() { //투표하기 창
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatingActivity.this, voitActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ChatingActivity.this, voitActivity.class);
+//                startActivity(intent);
+                Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -541,7 +541,7 @@ public class ChatingActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     if (dataSnapshot.getValue() != user.getDisplayName()) {
                         shownick2 = String.valueOf(dataSnapshot.getValue());
-                        Log.d("chat", shownick2);
+
                     }
                 }
 
