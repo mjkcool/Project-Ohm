@@ -150,12 +150,12 @@ public class ChatingActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
 
-        participantData = new ArrayList<ParticipantVo>();
-        participantData.add(new ParticipantVo(mynick));
-        participantData.add(new ParticipantVo(shownick2));
+//        participantData = new ArrayList<ParticipantVo>();
+//        participantData.add(new ParticipantVo(mynick));
+//        participantData.add(new ParticipantVo(shownick2));
 
-        participantAdapter = new ParticipantAdapter(this, participantData);
-        participantView.setAdapter(participantAdapter);
+//        participantAdapter = new ParticipantAdapter(this, participantData);
+//        participantView.setAdapter(participantAdapter);
 
 
 
