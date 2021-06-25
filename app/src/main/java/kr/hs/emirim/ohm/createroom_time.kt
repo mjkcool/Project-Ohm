@@ -43,6 +43,7 @@ class createroom_time : AppCompatActivity() {
 
 
             next_button3.setOnClickListener {
+                next_button3.setEnabled(false);
                 createroom()
             }
 
