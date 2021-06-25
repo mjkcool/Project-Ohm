@@ -363,20 +363,16 @@ public class ChatingActivity extends AppCompatActivity {
         search.setOnClickListener(new View.OnClickListener() { //검색하기 버튼을 눌렀을경우
             @Override
             public void onClick(View v) {
-                Context context = getApplicationContext();
-                CharSequence text = "죄송합니다. 아직 개발하지 못 했습니다. 조금만 기다려주세요 ! ";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
+                Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
             }
         });
 
         goto_voit.setOnClickListener(new View.OnClickListener() { //투표하기 창
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChatingActivity.this, voitActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ChatingActivity.this, voitActivity.class);
+//                startActivity(intent);
+                Toast.makeText(ChatingActivity.this, "데모 버전인 관계로 실행이 불가능합니다. :(", Toast.LENGTH_SHORT).show();
             }
         });
 
