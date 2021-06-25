@@ -30,7 +30,6 @@
         android:layout_marginBottom="32dp"
         android:background="#00ff0000"
         android:text="회의생성"
-        android:textColor="#1E349D"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

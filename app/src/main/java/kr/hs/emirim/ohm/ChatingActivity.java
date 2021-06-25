@@ -12,6 +12,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -102,8 +103,8 @@ public class ChatingActivity extends AppCompatActivity {
         nick = user.getDisplayName(); //사용자 닉네임으로 바꿈
         mynick = user.getDisplayName(); // 본인 닉네임 이 변수 지우고 위에 있는 거 써도 됨.
 
-        chatting_send = (FloatingActionButton) findViewById(R.id.send); //메세지 보내는 거 id 선언
-        chatting_say = (EditText) findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
+        chatting_send = findViewById(R.id.send); //메세지 보내는 거 id 선언
+        chatting_say = findViewById(R.id.editTextTextMultiLine2); //메세지 받는 거 id 선언
 
         exit = (ImageButton) findViewById(R.id.exit); //채팅방 나가는 것
         search = (ImageView) findViewById(R.id.search_bar); //채팅을 하다가 모르는 거 검색
@@ -245,10 +246,10 @@ public class ChatingActivity extends AppCompatActivity {
 //        });
 
         //타이머 관련
-        tv_hour = (TextView)findViewById(R.id.hour);
-        tv_minute = (TextView)findViewById(R.id.minute);
-        tv_second = (TextView)findViewById(R.id.second);
-        tv_end = (TextView)findViewById(R.id.end);
+        tv_hour = findViewById(R.id.hour);
+        tv_minute = findViewById(R.id.minute);
+        tv_second = findViewById(R.id.second);
+        tv_end = findViewById(R.id.end);
 
         text_code.setText(code);
         checkPeople();
@@ -373,32 +374,32 @@ public class ChatingActivity extends AppCompatActivity {
         });
 
         exit.setOnClickListener(new View.OnClickListener() { // 나가기 창
-                                    @Override
-                                    public void onClick(View v) {
-                                        showDialog01();
-                                    }
+            @Override
+            public void onClick(View v) {
+                showDialog01();
+            }
 
-                                    public void showDialog01() {
-                                        dilaog01.show();
+            public void showDialog01() {
+                dilaog01.show();
 
-                                        Button endBtn = dilaog01.findViewById(R.id.ok_button);
-                                        endBtn.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                Intent intent = new Intent(ChatingActivity.this, HomeActivity.class);
-                                                startActivity(intent);
-                                                dilaog01.dismiss(); // 다이얼로그 닫기
-                                            }
-                                        });
+                Button endBtn = dilaog01.findViewById(R.id.ok_button);
+                endBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(ChatingActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        dilaog01.dismiss(); // 다이얼로그 닫기
+                    }
+                });
 
-                                        dilaog01.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view) {
-                                                dilaog01.dismiss();  // 다이얼로그 닫기
-                                            }
-                                        });
-                                    }
-                                });
+                dilaog01.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dilaog01.dismiss();  // 다이얼로그 닫기
+                    }
+                });
+            }
+        });
 
 
         chatting_send.setOnClickListener(new View.OnClickListener() { //채팅을 보내는 버튼을 누를 시
@@ -463,6 +464,7 @@ public class ChatingActivity extends AppCompatActivity {
         second = 4;
 
         Timer timer = new Timer();
+
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -509,14 +511,17 @@ public class ChatingActivity extends AppCompatActivity {
                 if(hour == 0 && minute == 0 && second == 0) {
                     timer.cancel();//타이머 종료
                     tv_end.setText("회의가 종료되었습니다.");
-                    chatting_send.setEnabled(false);
+                    chatting_send.setClickable(false);
                     mDatabase.child("rooms").child(code).child("open").setValue(0);
                 }
             }
         };
-        timer.schedule(timerTask, 0, 1000);
-    }
 
+
+        timer.schedule(timerTask, 0, 1000);
+
+
+    }
 
         private void calculatePercent () {
             double total = count1 + count2 + count3;

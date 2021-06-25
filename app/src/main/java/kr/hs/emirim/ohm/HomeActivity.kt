@@ -1,5 +1,6 @@
 package kr.hs.emirim.ohm
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +23,9 @@ import de.hdodenhof.circleimageview.CircleImageView
 import java.util.*
 
 class HomeActivity : AppCompatActivity() {
+    companion object{
+        lateinit var context: Context
+    }
     lateinit var roomsRecyclerView: RecyclerView
     var roomData = ArrayList<RoomVo>()
     lateinit var roomAdapter: RoomViewAdapter
@@ -38,6 +42,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        context = this
 
         admissionBtn = findViewById(R.id.admission_btn)
         userProfileBtn = findViewById(R.id.user_profile_btn)
@@ -91,6 +97,7 @@ class HomeActivity : AppCompatActivity() {
             }
             handled
         }
+
         /*
         goto_btn.setOnClickListener(View.OnClickListener {
 

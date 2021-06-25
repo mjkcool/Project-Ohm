@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.ArrayList
@@ -25,6 +26,10 @@ class RoomViewAdapter(val context: Context, private val RoomData: ArrayList<Room
 
             card?.radius = 40F;
             card?.setCardBackgroundColor(Color.parseColor(room.color))
+
+            card?.setOnClickListener{
+                Toast.makeText(HomeActivity.context, "데모 버전인 관계로 실행이 불가능합니다.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
